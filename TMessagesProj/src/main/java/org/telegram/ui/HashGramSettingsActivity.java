@@ -32,11 +32,11 @@ public class HashGramSettingsActivity extends UniversalFragment {
         if (item.id == 1) {
             presentFragment(new HashGramGeneralActivity());
         } else if (item.id == 2) {
-            // TODO: presentFragment(new HashGramAppearanceActivity());
+            presentFragment(new HashGramAppearanceActivity());
         } else if (item.id == 3) {
-            // TODO: presentFragment(new HashGramPrivacyActivity());
+            presentFragment(new HashGramPrivacyActivity());
         } else if (item.id == 99) {
-            org.telegram.ui.Components.AlertsCreator.showSimpleAlert(this, "О проекте", "HashGram — это мод Telegram с расширенными функциями настройки и приватности.\n\nРазработано с душой. Наслаждайтесь!");
+            presentFragment(new HashGramAboutActivity());
         }
     }
 

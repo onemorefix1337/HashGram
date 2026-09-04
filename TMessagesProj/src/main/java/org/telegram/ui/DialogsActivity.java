@@ -120,6 +120,7 @@ import org.telegram.messenger.MediaDataController;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.VideoEditedInfo;
 import org.telegram.messenger.MessagesController;
+import org.telegram.messenger.HashGramUpdater;
 import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.NotificationsController;
@@ -3272,6 +3273,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             proxyMenuSubItem.setContentDescription(getString(R.string.ProxySettings));
 
             passcodeItem = menu.addItem(1, R.drawable.outline_header_lock_24);
+            updateItem = menu.addItem(2, R.drawable.msg_download);
+            updateItem.setContentDescription("Скачивание обновления");
+            updateItem.setOnClickListener(v -> {
+                HashGramUpdater.showProgressBottomSheet(getParentActivity());
+            });
+            updateItem.setVisibility(HashGramUpdater.isDownloading ? View.VISIBLE : View.GONE);
             passcodeItem.setContentDescription(getString(R.string.AccDescrPasscodeLock));
 
             downloadsItem = menu.addItem(3, new ColorDrawable(Color.TRANSPARENT));
@@ -7026,6 +7033,26 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     @Override
     public void onResume() {
         super.onResume();
+        if (updateItem != null) {
+            updateItem.setVisibility(HashGramUpdater.isDownloading ? View.VISIBLE : View.GONE);
+        }
+        HashGramUpdater.delegate = new HashGramUpdater.UpdaterDelegate() {
+            @Override
+            public void onProgressChanged(int progress) {
+                if (updateItem != null && updateItem.getVisibility() != View.VISIBLE) {
+                    updateItem.setVisibility(View.VISIBLE);
+                }
+            }
+            @Override
+            public void onDownloadComplete() {
+                if (updateItem != null) updateItem.setVisibility(View.GONE);
+            }
+            @Override
+            public void onDownloadFailed() {
+                if (updateItem != null) updateItem.setVisibility(View.GONE);
+            }
+        };
+
         if (dialogStoriesCell != null) {
             dialogStoriesCell.onResume();
         }

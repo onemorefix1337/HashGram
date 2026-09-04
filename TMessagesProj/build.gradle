@@ -265,7 +265,7 @@ def getProps(String propName) {
     if (propsFile.exists()) {
         def props = new Properties()
         props.load(new FileInputStream(propsFile))
-        return props[propName]
+        return props[propName] != null ? props[propName] : ""
     } else {
         return "";
     }

@@ -1017,7 +1017,12 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
     }
 
     private int getCollapsedHeight() {
-        int height = dp(useForceThreeLines || SharedConfig.useThreeLinesLayout ? heightThreeLines : heightDefault);
+        int baseHeight = heightDefault;
+        boolean compact = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_compact_chats", false);
+        if (compact) {
+            baseHeight -= 10;
+        }
+        int height = dp(useForceThreeLines || SharedConfig.useThreeLinesLayout ? heightThreeLines : baseHeight);
         if (useSeparator || true) {
             height += 1;
         }
@@ -2446,13 +2451,15 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 thumbImage[i].setImageCoords(thumbLeft + (thumbSize + 2) * i, avatarTop + dp(31) + (twoLinesForName ? dp(20) : 0) - (!(useForceThreeLines || SharedConfig.useThreeLinesLayout) && tags != null && !tags.isEmpty() ? dp(9) : 0), dp(18), dp(18));
             }
         } else {
-            avatarTop = dp(9);
-            messageNameTop = dp(31);
-            timeTop = dp(16);
-            errorTop = dp(38);
-            pinTop = dp(39);
-            countTop = isTopic ? dp(35f) : dp(38f);
-            checkDrawTop = dp(17);
+            boolean compact = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_compact_chats", false);
+            int offset = compact ? 5 : 0;
+            avatarTop = dp(9 - offset);
+            messageNameTop = dp(31 - offset);
+            timeTop = dp(16 - offset);
+            errorTop = dp(38 - offset);
+            pinTop = dp(39 - offset);
+            countTop = isTopic ? dp(35f - offset) : dp(38f - offset);
+            checkDrawTop = dp(17 - offset);
             messageWidth = getMeasuredWidth() - dp(messagePaddingStart + 20 - (LocaleController.isRTL ? 0 : 12));
 
             if (LocaleController.isRTL) {

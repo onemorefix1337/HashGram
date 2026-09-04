@@ -6880,7 +6880,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 filterTabsView.removeTabs();
                 for (int a = 0, N = filters.size(); a < N; a++) {
                     if (filters.get(a).isDefault()) {
-                        filterTabsView.addTab(a, 0, LocaleController.getString(R.string.FilterAllChats), null, false, true, filters.get(a).locked);
+                        boolean hideAllChats = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_all_chats", false);
+                        if (!hideAllChats || N == 1) {
+                            filterTabsView.addTab(a, 0, LocaleController.getString(R.string.FilterAllChats), null, false, true, filters.get(a).locked);
+                        }
                     } else {
                         final MessagesController.DialogFilter filter = filters.get(a);
                         filterTabsView.addTab(a, filter.localId, filter.name, filter.entities, filter.title_noanimate, false, filters.get(a).locked);
@@ -8708,6 +8711,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 } else {
                     maxPinnedCount = getMessagesController().maxPinnedDialogsCountDefault;
                 }
+            }
+            if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_unlimited_pins", false)) {
+                maxPinnedCount = 10000;
             }
             hasPinAction[0] = !(newPinnedSecretCount + pinnedSecretCount > maxPinnedCount || newPinnedCount + pinnedCount - alreadyAdded > maxPinnedCount);
         }
@@ -10599,6 +10605,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     communityAvatarImage.setForUserOrChat(community, communityAvatarDrawable);
                 }
             }
+            updateStoriesVisibility(true);
             if (viewPages != null) {
                 for (int a = 0; a < viewPages.length; a++) {
                     if ((mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
@@ -12756,7 +12763,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
         boolean onlySelfStories = !isArchive() && getStoriesController().hasOnlySelfStories();
         boolean newVisibility;
-        if (communityId != 0) {
+        boolean hideStoriesTweak = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_stories", false);
+        
+        if (hideStoriesTweak) {
+            newVisibility = false;
+            onlySelfStories = false;
+        } else if (communityId != 0) {
             newVisibility = false;
         } else if (isArchive()) {
             newVisibility = !getStoriesController().getHiddenList().isEmpty();

@@ -11398,6 +11398,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                 }
             }
+            boolean showIdDc = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_show_id_dc", false);
+            if (showIdDc && user != null) {
+                String dcString = "DC: " + (user.photo != null ? user.photo.dc_id : 0);
+                newString2 = newString2 + " • ID: " + user.id + " • " + dcString;
+            }
             hasCustomPhoto = user.photo != null && user.photo.personal;
             try {
                 newString = Emoji.replaceEmoji(newString, nameTextView[1].getPaint().getFontMetricsInt(), false);
@@ -11420,7 +11425,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     nameTextView[a].setRightDrawable2(titleTextView.getRightDrawable2());
                 } else if (a == 0 && user.id != getUserConfig().getClientUserId() && !MessagesController.isSupportUser(user) && user.phone != null && user.phone.length() != 0 && getContactsController().contactsDict.get(user.id) == null &&
                         (getContactsController().contactsDict.size() != 0 || !getContactsController().isLoadingContacts())) {
-                    nameTextView[a].setText(PhoneFormat.getInstance().format("+" + user.phone));
+                    boolean hidePhone = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_phone", false);
+                    nameTextView[a].setText(hidePhone ? "Скрытый номер" : PhoneFormat.getInstance().format("+" + user.phone));
                 } else {
                     nameTextView[a].setText(newString);
                 }
@@ -11577,7 +11583,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (userInfo != null && userInfo.stars_rating != null && userInfo.stars_rating.stars < 0) {
                     onlineTextView[3].setText(newString2 = getString(R.string.StarRatingLevelNegative).toLowerCase(Locale.ROOT));
                 } else {
-                    onlineTextView[3].setText(LocaleController.getString(R.string.Online));
+                    onlineTextView[3].setText(newString2);
                 }
             } else {
                 if (user.photo != null && user.photo.personal && user.photo.has_video) {
@@ -11857,6 +11863,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         onlineTextView[a].setOnClickListener(null);
                         onlineTextView[a].setClickable(false);
                     }
+                }
+                boolean showIdDc = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_show_id_dc", false);
+                if (showIdDc && currentChat != null) {
+                    CharSequence currentOnlineText = onlineTextView[a].getText();
+                    String dcString = "DC: " + (currentChat.photo != null ? currentChat.photo.dc_id : 0);
+                    onlineTextView[a].setText(currentOnlineText + " • ID: " + currentChat.id + " • " + dcString);
                 }
             }
             if (changed) {
@@ -13487,7 +13499,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         String text;
                         TLRPC.User user = getMessagesController().getUser(userId);
                         String phoneNumber;
-                        if (user != null && !TextUtils.isEmpty(vcardPhone)) {
+                        boolean hidePhone = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_phone", false);
+                        if (hidePhone) {
+                            text = "Скрытый номер";
+                            phoneNumber = null;
+                        } else if (user != null && !TextUtils.isEmpty(vcardPhone)) {
                             text = PhoneFormat.getInstance().format("+" + vcardPhone);
                             phoneNumber = vcardPhone;
                         } else if (user != null && !TextUtils.isEmpty(user.phone)) {
@@ -13584,7 +13600,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (position == numberRow) {
                         TLRPC.User user = UserConfig.getInstance(currentAccount).getCurrentUser();
                         String value;
-                        if (user != null && user.phone != null && user.phone.length() != 0) {
+                        boolean hidePhone = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_phone", false);
+                        if (hidePhone) {
+                            value = "Скрытый номер";
+                        } else if (user != null && user.phone != null && user.phone.length() != 0) {
                             value = PhoneFormat.getInstance().format("+" + user.phone);
                         } else {
                             value = LocaleController.getString(R.string.NumberUnknown);

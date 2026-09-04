@@ -22589,6 +22589,7 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean isSensitive(ArrayList<TLRPC.RestrictionReason> reasons) {
+        if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_disable_censor", false)) return false;
         if (reasons == null || reasons.isEmpty()) {
             return false;
         }
@@ -24671,6 +24672,7 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean showSensitiveContent() {
+        if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_disable_censor", false)) return true;
         if (contentSettings != null && System.currentTimeMillis() - contentSettingsLoadedTime < 1000 * 60 * 60) {
             return contentSettings.sensitive_enabled;
         }

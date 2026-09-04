@@ -3001,7 +3001,21 @@ public class ChatActivityEnterView extends FrameLayout implements
                                     });
                                     return true;
                                 }
-                                MediaController.getInstance().stopRecording(isInScheduleMode() ? 3 : 1, true, 0, voiceOnce, 0);
+                                boolean fg_confirm_voice = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_confirm_voice", false);
+                                if (fg_confirm_voice && !isInScheduleMode()) {
+                                    org.telegram.ui.ActionBar.AlertDialog.Builder builder = new org.telegram.ui.ActionBar.AlertDialog.Builder(parentActivity);
+                                    builder.setTitle("FireGram");
+                                    builder.setMessage("Отправить сообщение?");
+                                    builder.setPositiveButton("Отправить", (dialogInterface, i) -> {
+                                        org.telegram.messenger.MediaController.getInstance().stopRecording(1, true, 0, voiceOnce, 0);
+                                    });
+                                    builder.setNegativeButton("Отмена", (dialogInterface, i) -> {
+                                        org.telegram.messenger.MediaController.getInstance().stopRecording(0, false, 0, voiceOnce, 0);
+                                    });
+                                    builder.show();
+                                } else {
+                                    org.telegram.messenger.MediaController.getInstance().stopRecording(isInScheduleMode() ? 3 : 1, true, 0, voiceOnce, 0);
+                                }
                                 delegate.needStartRecordAudio(0);
                             }
                             recordingAudioVideo = false;
@@ -3120,7 +3134,21 @@ public class ChatActivityEnterView extends FrameLayout implements
                                     AlertsCreator.createScheduleDatePickerDialog(parentActivity, parentFragment.getDialogId(), (notify, scheduleDate, scheduleRepeatPeriod) -> MediaController.getInstance().stopRecording(1, notify, scheduleDate, false, 0), () -> MediaController.getInstance().stopRecording(0, false, 0, false, 0), resourcesProvider);
                                 }
                                 delegate.needStartRecordAudio(0);
-                                MediaController.getInstance().stopRecording(isInScheduleMode() ? 3 : 1, true, 0, voiceOnce, 0);
+                                boolean fg_confirm_voice = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_confirm_voice", false);
+                                if (fg_confirm_voice && !isInScheduleMode()) {
+                                    org.telegram.ui.ActionBar.AlertDialog.Builder builder = new org.telegram.ui.ActionBar.AlertDialog.Builder(parentActivity);
+                                    builder.setTitle("FireGram");
+                                    builder.setMessage("Отправить сообщение?");
+                                    builder.setPositiveButton("Отправить", (dialogInterface, i) -> {
+                                        org.telegram.messenger.MediaController.getInstance().stopRecording(1, true, 0, voiceOnce, 0);
+                                    });
+                                    builder.setNegativeButton("Отмена", (dialogInterface, i) -> {
+                                        org.telegram.messenger.MediaController.getInstance().stopRecording(0, false, 0, voiceOnce, 0);
+                                    });
+                                    builder.show();
+                                } else {
+                                    org.telegram.messenger.MediaController.getInstance().stopRecording(isInScheduleMode() ? 3 : 1, true, 0, voiceOnce, 0);
+                                }
                             }
                             recordingAudioVideo = false;
                             messageTransitionIsRunning = false;

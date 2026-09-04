@@ -1,0 +1,47 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Setup local.properties
+        run: |
+          echo "APP_ID=${{ secrets.APP_ID }}" >> local.properties
+          echo "APP_HASH=${{ secrets.APP_HASH }}" >> local.properties
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Get Short SHA
+        id: vars
+        run: |
+          SHA=$(git rev-parse --short HEAD)
+          echo "sha_short=$SHA" >> $GITHUB_OUTPUT
+          echo "BUILD_HASH=build-$SHA" >> local.properties
+
+      - name: Build Release APK
+        run: ./gradlew :TMessagesProj_App:assembleAfatRelease
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: build-${{ steps.vars.outputs.sha_short }}
+          name: FireGram build-${{ steps.vars.outputs.sha_short }}
+          files: TMessagesProj_App/build/outputs/apk/afat/release/app.apk

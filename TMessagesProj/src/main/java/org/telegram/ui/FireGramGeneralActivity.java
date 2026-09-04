@@ -45,6 +45,8 @@ public class FireGramGeneralActivity extends UniversalFragment {
         items.add(UItem.asCheck(5, "Подтверждение голосовых/видео").setChecked(prefs.getBoolean("fg_confirm_voice", false)));
         items.add(UItem.asCheck(6, "Точное время (с секундами)").setChecked(prefs.getBoolean("fg_seconds_time", false)));
         items.add(UItem.asCheck(14, "Без реакций по двойному тапу").setChecked(prefs.getBoolean("fg_disable_double_tap", false)));
+        items.add(UItem.asCheck(16, "Вырезать спонсорские сообщения").setChecked(prefs.getBoolean("fg_anti_ad", false)));
+        items.add(UItem.asCheck(17, "Копирование части сообщения").setChecked(prefs.getBoolean("fg_copy_part", false)));
         items.add(UItem.asShadow(null));
 
         items.add(UItem.asHeader("Медиа"));
@@ -85,10 +87,14 @@ public class FireGramGeneralActivity extends UniversalFragment {
                 case 13: key = "fg_disable_censor"; break;
                 case 14: key = "fg_disable_double_tap"; break;
                 case 15: key = "fg_unlimited_pins"; break;
+                case 16: key = "fg_anti_ad"; break;
+                case 17: key = "fg_copy_part"; break;
             }
 
             if (key != null) {
                 prefs.edit().putBoolean(key, item.checked).apply();
+                if (key.equals("fg_anti_ad")) SharedConfig.fg_anti_ad = item.checked;
+                if (key.equals("fg_copy_part")) SharedConfig.fg_copy_part = item.checked;
             }
         }
         if (listView.getAdapter() != null) {

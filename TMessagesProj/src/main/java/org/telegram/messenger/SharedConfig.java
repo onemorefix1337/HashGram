@@ -66,6 +66,8 @@ public class SharedConfig {
     }
 
     public static boolean readOnlyStorageDirAlertShowed;
+    public static boolean fg_anti_ad;
+    public static boolean fg_copy_part;
 
     public static void checkSdCard(File file) {
         if (file == null || SharedConfig.storageCacheDir == null || readOnlyStorageDirAlertShowed) {
@@ -508,6 +510,9 @@ public class SharedConfig {
             }
 
             BackgroundActivityPrefs.prefs = ApplicationLoader.applicationContext.getSharedPreferences("background_activity", Context.MODE_PRIVATE);
+            SharedPreferences firegramPrefs = ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", Context.MODE_PRIVATE);
+            fg_anti_ad = firegramPrefs.getBoolean("fg_anti_ad", false);
+            fg_copy_part = firegramPrefs.getBoolean("fg_copy_part", false);
 
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
             saveIncomingPhotos = preferences.getBoolean("saveIncomingPhotos", false);

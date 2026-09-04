@@ -182,7 +182,7 @@ public class VideoAds {
     private void load() {
         if (loading || loaded) return;
 
-        if (UserConfig.getInstance(currentAccount).isPremium() && MessagesController.getInstance(currentAccount).isSponsoredDisabled()) {
+        if (org.telegram.messenger.SharedConfig.fg_anti_ad || (UserConfig.getInstance(currentAccount).isPremium() && MessagesController.getInstance(currentAccount).isSponsoredDisabled())) {
             return;
         }
 

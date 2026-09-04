@@ -514,13 +514,13 @@ public class SharedConfig {
             }
 
             BackgroundActivityPrefs.prefs = ApplicationLoader.applicationContext.getSharedPreferences("background_activity", Context.MODE_PRIVATE);
-            SharedPreferences firegramPrefs = ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", Context.MODE_PRIVATE);
-            fg_anti_ad = firegramPrefs.getBoolean("fg_anti_ad", false);
-            fg_copy_part = firegramPrefs.getBoolean("fg_copy_part", false);
-            fg_original_photo = firegramPrefs.getBoolean("fg_original_photo", false);
-            fg_disable_folder_swipe = firegramPrefs.getBoolean("fg_disable_folder_swipe", false);
-            fg_premium_speed = firegramPrefs.getBoolean("fg_premium_speed", false);
-            fg_disable_sticker_loop = firegramPrefs.getBoolean("fg_disable_sticker_loop", false);
+            SharedPreferences hashgramPrefs = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
+            fg_anti_ad = hashgramPrefs.getBoolean("fg_anti_ad", false);
+            fg_copy_part = hashgramPrefs.getBoolean("fg_copy_part", false);
+            fg_original_photo = hashgramPrefs.getBoolean("fg_original_photo", false);
+            fg_disable_folder_swipe = hashgramPrefs.getBoolean("fg_disable_folder_swipe", false);
+            fg_premium_speed = hashgramPrefs.getBoolean("fg_premium_speed", false);
+            fg_disable_sticker_loop = hashgramPrefs.getBoolean("fg_disable_sticker_loop", false);
 
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
             saveIncomingPhotos = preferences.getBoolean("saveIncomingPhotos", false);

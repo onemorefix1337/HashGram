@@ -11,10 +11,10 @@ import org.telegram.ui.Components.UItem;
 import org.telegram.ui.Components.UniversalAdapter;
 import org.telegram.ui.Components.UniversalFragment;
 
-public class FireGramGeneralActivity extends UniversalFragment {
+public class HashGramGeneralActivity extends UniversalFragment {
 
     public static SharedPreferences getPrefs() {
-        return ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", Context.MODE_PRIVATE);
+        return ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
     }
 
     private SharedPreferences prefs;

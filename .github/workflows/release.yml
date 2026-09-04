@@ -50,5 +50,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: build-${{ steps.vars.outputs.sha_short }}
-          name: FireGram build-${{ steps.vars.outputs.sha_short }}
+          name: HashGram build-${{ steps.vars.outputs.sha_short }}
           files: TMessagesProj_App/build/outputs/apk/afat/release/app.apk

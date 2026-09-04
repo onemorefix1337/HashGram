@@ -5324,7 +5324,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                         dotDividerSpan.setTopPadding(AndroidUtilities.dp(1.5f));
                         dotDividerSpan.setSize(5);
                         spannableStringBuilder.append(" . ").setSpan(dotDividerSpan, spannableStringBuilder.length() - 2, spannableStringBuilder.length() - 1, 0);
-                        String editedPrefix = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_pencil_edited", false) ? "✎" : getString(R.string.EditedMessage);
+                        String editedPrefix = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_pencil_edited", false) ? "✎" : getString(R.string.EditedMessage);
                         spannableStringBuilder.append(editedPrefix);
                         string = spannableStringBuilder;
                     }

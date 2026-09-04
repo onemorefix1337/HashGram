@@ -14,12 +14,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FireGramUpdater {
+public class HashGramUpdater {
 
     public static void checkUpdate(Activity activity, boolean showToastIfLatest) {
         Utilities.globalQueue.postRunnable(() -> {
             try {
-                URL url = new URL("https://api.github.com/repos/onemorefix1337/FireGram/releases/latest");
+                URL url = new URL("https://api.github.com/repos/onemorefix1337/HashGram/releases/latest");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setConnectTimeout(5000);

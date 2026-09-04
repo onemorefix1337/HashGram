@@ -18462,7 +18462,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         } else if (currentMessageObject.isRepostPreview) {
             timeString = LocaleController.formatSmallDateChat(messageObject.messageOwner.date) + ", " + LocaleController.getInstance().getFormatterDay().format((long) (messageObject.messageOwner.date) * 1000);
         } else if (edited) {
-            String editedPrefix = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_pencil_edited", false) ? "✎" : getString(R.string.EditedMessage);
+            String editedPrefix = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_pencil_edited", false) ? "✎" : getString(R.string.EditedMessage);
             timeString = AppGlobalConfig.getInstance(currentAccount).messagePrimaryEditedDate.get() ?
                 LocaleController.formatPmEditedDate(currentMessagesGroup != null ? currentMessagesGroup.getMaxEditDate() : messageObject.messageOwner.edit_date) :
                 (editedPrefix + " " + LocaleController.getInstance().getFormatterDay().format((long) (messageObject.messageOwner.date) * 1000));
@@ -28618,7 +28618,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
             if (edited && !lastDrawingEdited && timeLayout != null) {
-                String editedStr = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_pencil_edited", false) ? "✎" : getString("EditedMessage", R.string.EditedMessage);
+                String editedStr = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_pencil_edited", false) ? "✎" : getString("EditedMessage", R.string.EditedMessage);
                 CharSequence text = timeLayout.getText();
                 int i = text.toString().indexOf(editedStr);
                 if (i >= 0) {

@@ -1,6 +1,6 @@
 import re
 
-with open('/Users/user/FireGram/TMessagesProj/src/main/java/org/telegram/ui/ChatActivity.java', 'r') as f:
+with open('/Users/user/HashGram/TMessagesProj/src/main/java/org/telegram/ui/ChatActivity.java', 'r') as f:
     content = f.read()
 
 replacement = """options.add(OPTION_COPY);

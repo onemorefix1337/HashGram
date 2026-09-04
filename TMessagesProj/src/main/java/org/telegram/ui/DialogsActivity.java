@@ -6880,7 +6880,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 filterTabsView.removeTabs();
                 for (int a = 0, N = filters.size(); a < N; a++) {
                     if (filters.get(a).isDefault()) {
-                        boolean hideAllChats = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_all_chats", false);
+                        boolean hideAllChats = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_all_chats", false);
                         if (!hideAllChats || N == 1) {
                             filterTabsView.addTab(a, 0, LocaleController.getString(R.string.FilterAllChats), null, false, true, filters.get(a).locked);
                         }
@@ -8712,7 +8712,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     maxPinnedCount = getMessagesController().maxPinnedDialogsCountDefault;
                 }
             }
-            if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_unlimited_pins", false)) {
+            if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_unlimited_pins", false)) {
                 maxPinnedCount = 10000;
             }
             hasPinAction[0] = !(newPinnedSecretCount + pinnedSecretCount > maxPinnedCount || newPinnedCount + pinnedCount - alreadyAdded > maxPinnedCount);
@@ -12763,7 +12763,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
         boolean onlySelfStories = !isArchive() && getStoriesController().hasOnlySelfStories();
         boolean newVisibility;
-        boolean hideStoriesTweak = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_stories", false);
+        boolean hideStoriesTweak = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_stories", false);
         
         if (hideStoriesTweak) {
             newVisibility = false;

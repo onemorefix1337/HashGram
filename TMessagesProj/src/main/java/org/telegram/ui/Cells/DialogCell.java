@@ -1018,7 +1018,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
 
     private int getCollapsedHeight() {
         int baseHeight = heightDefault;
-        boolean compact = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_compact_chats", false);
+        boolean compact = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_compact_chats", false);
         if (compact) {
             baseHeight -= 10;
         }
@@ -2451,7 +2451,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 thumbImage[i].setImageCoords(thumbLeft + (thumbSize + 2) * i, avatarTop + dp(31) + (twoLinesForName ? dp(20) : 0) - (!(useForceThreeLines || SharedConfig.useThreeLinesLayout) && tags != null && !tags.isEmpty() ? dp(9) : 0), dp(18), dp(18));
             }
         } else {
-            boolean compact = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_compact_chats", false);
+            boolean compact = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_compact_chats", false);
             int offset = compact ? 5 : 0;
             avatarTop = dp(9 - offset);
             messageNameTop = dp(31 - offset);

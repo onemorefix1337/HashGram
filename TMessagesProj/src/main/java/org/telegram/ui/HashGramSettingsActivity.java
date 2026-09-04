@@ -8,11 +8,11 @@ import org.telegram.ui.Components.UItem;
 import org.telegram.ui.Components.UniversalAdapter;
 import org.telegram.ui.Components.UniversalFragment;
 
-public class FireGramSettingsActivity extends UniversalFragment {
+public class HashGramSettingsActivity extends UniversalFragment {
 
     @Override
     protected CharSequence getTitle() {
-        return "Настройки FireGram";
+        return "Настройки HashGram";
     }
 
     @Override
@@ -23,18 +23,18 @@ public class FireGramSettingsActivity extends UniversalFragment {
         items.add(UItem.asButton(3, R.drawable.msg_secret, "Приватность"));
         items.add(UItem.asShadow(null));
 
-        items.add(UItem.asButton(99, R.drawable.msg_info, "О проекте FireGram"));
+        items.add(UItem.asButton(99, R.drawable.msg_info, "О проекте HashGram"));
         items.add(UItem.asShadow(null));
     }
 
     @Override
     protected void onClick(UItem item, View view, int position, float x, float y) {
         if (item.id == 1) {
-            presentFragment(new FireGramGeneralActivity());
+            presentFragment(new HashGramGeneralActivity());
         } else if (item.id == 2) {
-            // TODO: presentFragment(new FireGramAppearanceActivity());
+            // TODO: presentFragment(new HashGramAppearanceActivity());
         } else if (item.id == 3) {
-            // TODO: presentFragment(new FireGramPrivacyActivity());
+            // TODO: presentFragment(new HashGramPrivacyActivity());
         }
     }
 

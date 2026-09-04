@@ -12041,7 +12041,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean loopStickers() {
-        return LiteMode.isEnabled(LiteMode.FLAG_ANIMATED_STICKERS_CHAT);
+        return !org.telegram.messenger.SharedConfig.fg_disable_sticker_loop && LiteMode.isEnabled(LiteMode.FLAG_ANIMATED_STICKERS_CHAT);
     }
 
     private void calculateUnlockXY() {

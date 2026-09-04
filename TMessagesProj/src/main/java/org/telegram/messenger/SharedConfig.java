@@ -62,12 +62,16 @@ public class SharedConfig {
     private static int legacyDevicePerformanceClass = -1;
 
     public static boolean loopStickers() {
-        return LiteMode.isEnabled(LiteMode.FLAG_ANIMATED_STICKERS_CHAT);
+        return !fg_disable_sticker_loop && LiteMode.isEnabled(LiteMode.FLAG_ANIMATED_STICKERS_CHAT);
     }
 
     public static boolean readOnlyStorageDirAlertShowed;
     public static boolean fg_anti_ad;
     public static boolean fg_copy_part;
+    public static boolean fg_original_photo;
+    public static boolean fg_disable_folder_swipe;
+    public static boolean fg_premium_speed;
+    public static boolean fg_disable_sticker_loop;
 
     public static void checkSdCard(File file) {
         if (file == null || SharedConfig.storageCacheDir == null || readOnlyStorageDirAlertShowed) {
@@ -513,6 +517,10 @@ public class SharedConfig {
             SharedPreferences firegramPrefs = ApplicationLoader.applicationContext.getSharedPreferences("firegram_config", Context.MODE_PRIVATE);
             fg_anti_ad = firegramPrefs.getBoolean("fg_anti_ad", false);
             fg_copy_part = firegramPrefs.getBoolean("fg_copy_part", false);
+            fg_original_photo = firegramPrefs.getBoolean("fg_original_photo", false);
+            fg_disable_folder_swipe = firegramPrefs.getBoolean("fg_disable_folder_swipe", false);
+            fg_premium_speed = firegramPrefs.getBoolean("fg_premium_speed", false);
+            fg_disable_sticker_loop = firegramPrefs.getBoolean("fg_disable_sticker_loop", false);
 
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
             saveIncomingPhotos = preferences.getBoolean("saveIncomingPhotos", false);

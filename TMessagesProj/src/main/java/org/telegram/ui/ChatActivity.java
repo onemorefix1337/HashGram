@@ -1248,6 +1248,7 @@ public class ChatActivity extends BaseFragment implements
 
     public final static int OPTION_VIEW_STATISTICS = 115;
     public final static int OPTION_WELCOME_REVERT = 116;
+    public final static int OPTION_FG_SELECT_TEXT = 1337;
 
     private final static int[] allowedNotificationsDuringChatListAnimations = new int[]{
             NotificationCenter.messagesRead,
@@ -12644,9 +12645,9 @@ public class ChatActivity extends BaseFragment implements
                                 if (editingMessageObject != null && editingMessageObject.needResendWhenEdit()) {
                                     MessageSuggestionParams params = messageSuggestionParams != null ?
                                         messageSuggestionParams : MessageSuggestionParams.of(editingMessageObject.messageOwner.suggested_post);
-                                    SendMessagesHelper.prepareSendingMedia(getAccountInstance(), photos, dialog_id, editingMessageObject, getThreadMessage(), null, replyingQuote, button == 4 || forceDocument, arg, null, notify, scheduleDate, scheduleRepeatPeriod, chatMode, updateStickersOrder, null, getMessageChatSendParams(), effectId, invertMedia, payStars, getSendMonoForumPeerId(), params);
+                                    SendMessagesHelper.prepareSendingMedia(getAccountInstance(), photos, dialog_id, editingMessageObject, getThreadMessage(), null, replyingQuote, button == 4 || forceDocument || org.telegram.messenger.SharedConfig.fg_original_photo, arg, null, notify, scheduleDate, scheduleRepeatPeriod, chatMode, updateStickersOrder, null, getMessageChatSendParams(), effectId, invertMedia, payStars, getSendMonoForumPeerId(), params);
                                 } else {
-                                    SendMessagesHelper.prepareSendingMedia(getAccountInstance(), photos, dialog_id, replyingMessageObject, getThreadMessage(), null, replyingQuote, button == 4 || forceDocument, arg, editingMessageObject, notify, scheduleDate, scheduleRepeatPeriod, chatMode, updateStickersOrder, null, getMessageChatSendParams(), effectId, invertMedia, payStars, getSendMonoForumPeerId(), messageSuggestionParams);
+                                    SendMessagesHelper.prepareSendingMedia(getAccountInstance(), photos, dialog_id, replyingMessageObject, getThreadMessage(), null, replyingQuote, button == 4 || forceDocument || org.telegram.messenger.SharedConfig.fg_original_photo, arg, editingMessageObject, notify, scheduleDate, scheduleRepeatPeriod, chatMode, updateStickersOrder, null, getMessageChatSendParams(), effectId, invertMedia, payStars, getSendMonoForumPeerId(), messageSuggestionParams);
                                 }
                             }
                             afterMessageSend();
@@ -19828,7 +19829,7 @@ public class ChatActivity extends BaseFragment implements
                 entry.reset();
             }
             fillEditingMediaWithCaption(photos.get(0).caption, photos.get(0).entities);
-            SendMessagesHelper.prepareSendingMedia(getAccountInstance(), photos, dialog_id, replyingMessageObject, getThreadMessage(), null, replyingQuote, forceDocument, true, null, notify, scheduleDate, 0, chatMode, photos.get(0).updateStickersOrder, null, getMessageChatSendParams(), 0, false, 0, getSendMonoForumPeerId(), messageSuggestionParams);
+            SendMessagesHelper.prepareSendingMedia(getAccountInstance(), photos, dialog_id, replyingMessageObject, getThreadMessage(), null, replyingQuote, forceDocument || org.telegram.messenger.SharedConfig.fg_original_photo, true, null, notify, scheduleDate, 0, chatMode, photos.get(0).updateStickersOrder, null, getMessageChatSendParams(), 0, false, 0, getSendMonoForumPeerId(), messageSuggestionParams);
             afterMessageSend();
             if (chatActivityEnterView != null) {
                 chatActivityEnterView.setFieldText("");
@@ -33360,6 +33361,21 @@ public class ChatActivity extends BaseFragment implements
                 presentFragment(fragment);
                 break;
             }
+            case OPTION_FG_SELECT_TEXT: {
+                if (selectedObject != null && textSelectionHelper != null) {
+                    for (int i = 0; i < chatListView.getChildCount(); i++) {
+                        View child = chatListView.getChildAt(i);
+                        if (child instanceof ChatMessageCell) {
+                            ChatMessageCell cell = (ChatMessageCell) child;
+                            if (cell.getMessageObject() != null && cell.getMessageObject().getId() == selectedObject.getId()) {
+                                textSelectionHelper.select(cell, 0, 1);
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+            }
             case OPTION_COPY: {
                 final TL_iv.RichMessage copyRichMessage = selectedObject.messageOwner != null ? selectedObject.messageOwner.rich_message : null;
                 if (selectedObject.isDice()) {
@@ -45770,6 +45786,11 @@ public class ChatActivity extends BaseFragment implements
                 items.add(LocaleController.getString(R.string.Copy));
                 options.add(OPTION_COPY);
                 icons.add(R.drawable.msg_copy);
+                if (org.telegram.messenger.SharedConfig.fg_copy_part && !selectedObject.isAnimatedEmoji() && !selectedObject.isAnimatedEmojiStickers()) {
+                    items.add("Выделить текст");
+                    options.add(OPTION_FG_SELECT_TEXT);
+                    icons.add(R.drawable.msg_edit);
+                }
             }
             items.add(LocaleController.getString(R.string.CancelSending));
             options.add(OPTION_CANCEL_SENDING);
@@ -45866,6 +45887,11 @@ public class ChatActivity extends BaseFragment implements
                 items.add(LocaleController.getString(R.string.Copy));
                 options.add(OPTION_COPY);
                 icons.add(R.drawable.msg_copy);
+                if (org.telegram.messenger.SharedConfig.fg_copy_part && !selectedObject.isAnimatedEmoji() && !selectedObject.isAnimatedEmojiStickers()) {
+                    items.add("Выделить текст");
+                    options.add(OPTION_FG_SELECT_TEXT);
+                    icons.add(R.drawable.msg_edit);
+                }
             }
             items.add(LocaleController.getString(chatMode == MODE_SAVED && threadMessageId != getUserConfig().getClientUserId() ? R.string.Remove : R.string.Delete));
             options.add(OPTION_DELETE);
@@ -45897,6 +45923,11 @@ public class ChatActivity extends BaseFragment implements
                     items.add(LocaleController.getString(R.string.Copy));
                     options.add(OPTION_COPY);
                     icons.add(R.drawable.msg_copy);
+                    if (org.telegram.messenger.SharedConfig.fg_copy_part && !selectedObject.isAnimatedEmoji() && !selectedObject.isAnimatedEmojiStickers() && !selectedObject.isDice()) {
+                        items.add("Выделить текст");
+                        options.add(OPTION_FG_SELECT_TEXT);
+                        icons.add(R.drawable.msg_edit);
+                    }
                 }
                 if (!isThreadChat() && chatMode != MODE_SCHEDULED && currentChat != null && primaryMessage != null && (currentChat.has_link || primaryMessage.hasReplies()) && currentChat.megagroup && primaryMessage.canViewThread()) {
                     if (primaryMessage.hasReplies()) {
@@ -46207,6 +46238,11 @@ public class ChatActivity extends BaseFragment implements
                     items.add(LocaleController.getString(R.string.Copy));
                     options.add(OPTION_COPY);
                     icons.add(R.drawable.msg_copy);
+                    if (org.telegram.messenger.SharedConfig.fg_copy_part && !selectedObject.isAnimatedEmoji() && !selectedObject.isAnimatedEmojiStickers()) {
+                        items.add("Выделить текст");
+                        options.add(OPTION_FG_SELECT_TEXT);
+                        icons.add(R.drawable.msg_edit);
+                    }
                 }
                 if (!isThreadChat() && chatMode != MODE_SCHEDULED && currentChat != null && primaryMessage != null && (currentChat.has_link || primaryMessage.hasReplies()) && currentChat.megagroup && primaryMessage.canViewThread()) {
                     if (primaryMessage.hasReplies()) {

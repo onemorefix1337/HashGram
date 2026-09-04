@@ -129,6 +129,17 @@ android {
         minSdkVersion 21
         targetSdkVersion 36
 
+        def props = new Properties()
+        def propsFile = rootProject.file('local.properties')
+        if (propsFile.exists()) {
+            props.load(new FileInputStream(propsFile))
+        }
+        def appId = props.getProperty("APP_ID", "12345") // Dummy default
+        def appHash = props.getProperty("APP_HASH", "dummy_hash") // Dummy default
+
+        buildConfigField "int", "APP_ID", appId
+        buildConfigField "String", "APP_HASH", "\"${appHash}\""
+
         vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']
 
         multiDexEnabled true

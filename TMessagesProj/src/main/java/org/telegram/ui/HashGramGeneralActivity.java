@@ -73,4 +73,9 @@ public class HashGramGeneralActivity extends UniversalFragment {
             listView.getAdapter().notifyItemChanged(position);
         }
     }
+
+    @Override
+    protected boolean onLongClick(UItem item, View view, int position, float x, float y) {
+        return false;
+    }
 }

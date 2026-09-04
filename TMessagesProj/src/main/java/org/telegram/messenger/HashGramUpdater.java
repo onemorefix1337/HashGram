@@ -183,7 +183,7 @@ public class HashGramUpdater {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             if (Build.VERSION.SDK_INT >= 24) {
-                Uri apkUri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", apkFile);
+                Uri apkUri = FileProvider.getUriForFile(activity, ApplicationLoader.applicationContext.getPackageName() + ".provider", apkFile);
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
             } else {

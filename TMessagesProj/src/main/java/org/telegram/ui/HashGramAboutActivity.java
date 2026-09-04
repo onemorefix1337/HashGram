@@ -12,15 +12,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildConfig;
+import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.R;
 import org.telegram.messenger.browser.Browser;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.Theme;
+import org.telegram.ui.ActionBar.ThemeDescription;
 import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.ThemeDescription;
 
 import java.util.ArrayList;
 
@@ -61,10 +61,20 @@ public class HashGramAboutActivity extends BaseFragment {
         titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         linearLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 0));
 
+        String versionName = "Unknown";
+        String versionCode = "0";
+        try {
+            android.content.pm.PackageInfo info = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
+            versionName = info.versionName;
+            versionCode = String.valueOf(info.versionCode);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         TextView versionTextView = new TextView(context);
         versionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         versionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        versionTextView.setText("Версия " + BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
+        versionTextView.setText("Версия " + versionName + " (" + versionCode + ")");
         versionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         linearLayout.addView(versionTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 4, 0, 0));
 

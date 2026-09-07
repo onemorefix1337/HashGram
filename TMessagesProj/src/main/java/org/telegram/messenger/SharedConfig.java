@@ -297,6 +297,10 @@ public class SharedConfig {
     public static boolean inappCamera = true;
     public static boolean roundCamera16to9 = true;
     public static boolean noSoundHintShowed = false;
+    public static int fg_avatar_shape = 0; // 0 - circle, 1 - square, 2 - rounded
+    public static int fg_font_type = 0; // 0 - default, 1 - system, 2 - custom
+    public static boolean fg_hide_mic_cam = false;
+    
     public static boolean streamMedia = true;
     public static boolean streamAllVideo = false;
     public static boolean streamMkv = false;
@@ -521,6 +525,9 @@ public class SharedConfig {
             fg_disable_folder_swipe = hashgramPrefs.getBoolean("fg_disable_folder_swipe", false);
             fg_premium_speed = hashgramPrefs.getBoolean("fg_premium_speed", false);
             fg_disable_sticker_loop = hashgramPrefs.getBoolean("fg_disable_sticker_loop", false);
+            fg_avatar_shape = hashgramPrefs.getInt("fg_avatar_shape", 0);
+            fg_font_type = hashgramPrefs.getInt("fg_font_type", 0);
+            fg_hide_mic_cam = hashgramPrefs.getBoolean("fg_hide_mic_cam", false);
 
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
             saveIncomingPhotos = preferences.getBoolean("saveIncomingPhotos", false);

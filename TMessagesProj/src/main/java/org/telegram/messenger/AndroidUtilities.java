@@ -2391,6 +2391,21 @@ public class AndroidUtilities {
     }
 
     public static Typeface getTypeface(String assetPath) {
+        if (org.telegram.messenger.SharedConfig.fg_font_type == 1) {
+            if (assetPath != null && (assetPath.contains("medium") || assetPath.contains("bold"))) {
+                return Typeface.DEFAULT_BOLD;
+            }
+            return Typeface.DEFAULT;
+        } else if (org.telegram.messenger.SharedConfig.fg_font_type == 2) {
+            try {
+                java.io.File customFont = new java.io.File(ApplicationLoader.getFilesDirFixed(), "custom_font.ttf");
+                if (customFont.exists()) {
+                    return Typeface.createFromFile(customFont);
+                }
+            } catch (Exception e) {
+                FileLog.e(e);
+            }
+        }
         synchronized (typefaceCache) {
             if (!typefaceCache.containsKey(assetPath)) {
                 try {

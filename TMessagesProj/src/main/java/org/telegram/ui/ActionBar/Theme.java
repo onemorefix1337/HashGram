@@ -6694,6 +6694,19 @@ public class Theme {
         return newTheme;
     }
 
+    public static ThemeInfo createPreviewTheme(String name) {
+        ThemeInfo newTheme = new ThemeInfo();
+        newTheme.pathToFile = new File(ApplicationLoader.getFilesDirFixed(), "theme" + Utilities.random.nextLong() + ".attheme").getAbsolutePath();
+        newTheme.name = name;
+        newTheme.account = UserConfig.selectedAccount;
+        
+        newTheme.themeAccents = new ArrayList<>();
+        newTheme.themeAccentsMap = new SparseArray<>();
+        newTheme.currentAccentId = Theme.DEFALT_THEME_ACCENT_ID;
+        
+        return newTheme;
+    }
+
     private static String getWallpaperUrl(OverrideWallpaperInfo wallpaperInfo) {
         if (wallpaperInfo == null || TextUtils.isEmpty(wallpaperInfo.slug) || wallpaperInfo.slug.equals(DEFAULT_BACKGROUND_SLUG)) {
             return null;

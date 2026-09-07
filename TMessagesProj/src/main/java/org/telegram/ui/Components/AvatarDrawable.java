@@ -588,7 +588,13 @@ public class AvatarDrawable extends Drawable {
                 canvas.save();
                 canvas.rotate(-45, size / 2.0f, size / 2.0f);
             }
-            if (roundRadius > 0) {
+            if (org.telegram.messenger.SharedConfig.fg_avatar_shape == 1) {
+                AndroidUtilities.rectTmp.set(0, 0, size, size);
+                canvas.drawRect(AndroidUtilities.rectTmp, backgroundPaint);
+            } else if (org.telegram.messenger.SharedConfig.fg_avatar_shape == 2) {
+                AndroidUtilities.rectTmp.set(0, 0, size, size);
+                canvas.drawRoundRect(AndroidUtilities.rectTmp, size / 4.0f, size / 4.0f, backgroundPaint);
+            } else if (roundRadius > 0) {
                 AndroidUtilities.rectTmp.set(0, 0, size, size);
                 canvas.drawRoundRect(AndroidUtilities.rectTmp, roundRadius, roundRadius, backgroundPaint);
             } else {

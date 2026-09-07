@@ -2945,11 +2945,6 @@ public class ChatActivityEnterView extends FrameLayout implements
         audioVideoButtonContainer = new FrameLayout(context) {
 
             @Override
-            public void setVisibility(int visibility) {
-                super.setVisibility(visibility);
-            }
-
-            @Override
             public boolean onInterceptTouchEvent(MotionEvent ev) {
                 if (isLiveComment) return false;
                 return true;
@@ -8108,7 +8103,7 @@ public class ChatActivityEnterView extends FrameLayout implements
                     }
                 }
             }
-        } else if (message.length() > 0 || forceShowSendButton || richDraftActive || audioToSend != null || videoToSendMessageObject != null || slowModeTimer == Integer.MAX_VALUE && !isSlowModeIgnored() || isLiveComment && getStarsPrice() > 0 || animatorIsBlockedByStreaming.getValue()) {
+        } else if (org.telegram.messenger.SharedConfig.fg_hide_mic_cam || message.length() > 0 || forceShowSendButton || richDraftActive || audioToSend != null || videoToSendMessageObject != null || slowModeTimer == Integer.MAX_VALUE && !isSlowModeIgnored() || isLiveComment && getStarsPrice() > 0 || animatorIsBlockedByStreaming.getValue()) {
             shownSendButton = true;
             final String caption = messageEditText == null ? null : messageEditText.getCaption();
             boolean showBotButton = caption != null && (getSendButtonInternal().getVisibility() == VISIBLE || expandStickersButton != null && expandStickersButton.getVisibility() == VISIBLE);

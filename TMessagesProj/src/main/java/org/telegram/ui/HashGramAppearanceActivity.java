@@ -2,88 +2,446 @@ package org.telegram.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.telegram.messenger.AndroidUtilities;
+import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.LocaleController;
+import org.telegram.messenger.SharedConfig;
+import org.telegram.ui.ActionBar.ActionBar;
+import org.telegram.ui.ActionBar.AlertDialog;
+import org.telegram.ui.ActionBar.BaseFragment;
+import org.telegram.ui.ActionBar.Theme;
+import org.telegram.ui.ActionBar.ThemeDescription;
+import org.telegram.ui.Cells.HeaderCell;
+import org.telegram.ui.Cells.ShadowSectionCell;
+import org.telegram.ui.Cells.TextCell;
+import org.telegram.ui.Cells.TextCheckCell;
+import org.telegram.ui.Cells.TextDetailSettingsCell;
+import org.telegram.ui.Cells.ThemePreviewMessagesCell;
+import org.telegram.ui.Components.LayoutHelper;
+import org.telegram.ui.Components.RecyclerListView;
+
 import java.util.ArrayList;
 
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.SharedConfig;
-import org.telegram.ui.Components.UItem;
-import org.telegram.ui.Components.UniversalAdapter;
-import org.telegram.ui.Components.UniversalFragment;
+public class HashGramAppearanceActivity extends BaseFragment {
 
-public class HashGramAppearanceActivity extends UniversalFragment {
+    private ListAdapter listAdapter;
+    private RecyclerListView listView;
 
-    public static SharedPreferences getPrefs() {
-        return ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
-    }
+    private int rowCount;
+    private int themeHeaderRow;
+    private int themeAmoledRow;
+    private int themeMintRow;
+    private int themeLavenderRow;
+    private int themeHackerRow;
+    private int themeBloodRedRow;
+    private int themeSakuraRow;
+    private int themeSolarizedLightRow;
+    private int themeMidnightBlueRow;
+    private int themeSectionRow;
 
-    private SharedPreferences prefs;
+    private int customHeaderRow;
+    private int avatarShapeRow;
+    private int fontTypeRow;
+    private int hideMicCamRow;
+    private int customSectionRow;
 
     @Override
     public boolean onFragmentCreate() {
-        prefs = getPrefs();
-        return super.onFragmentCreate();
+        super.onFragmentCreate();
+        updateRows();
+        return true;
+    }
+
+    private void updateRows() {
+        rowCount = 0;
+        themeHeaderRow = rowCount++;
+        themeAmoledRow = rowCount++;
+        themeMintRow = rowCount++;
+        themeLavenderRow = rowCount++;
+        themeHackerRow = rowCount++;
+        themeBloodRedRow = rowCount++;
+        themeSakuraRow = rowCount++;
+        themeSolarizedLightRow = rowCount++;
+        themeMidnightBlueRow = rowCount++;
+        themeSectionRow = rowCount++;
+
+        customHeaderRow = rowCount++;
+        avatarShapeRow = rowCount++;
+        fontTypeRow = rowCount++;
+        hideMicCamRow = rowCount++;
+        customSectionRow = rowCount++;
     }
 
     @Override
-    protected CharSequence getTitle() {
-        return "Оформление";
+    public View createView(Context context) {
+        actionBar.setBackButtonImage(org.telegram.messenger.R.drawable.ic_ab_back);
+        actionBar.setTitle("Настройки HashGram");
+        if (AndroidUtilities.isTablet()) {
+            actionBar.setOccupyStatusBar(false);
+        }
+        actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
+            @Override
+            public void onItemClick(int id) {
+                if (id == -1) {
+                    finishFragment();
+                }
+            }
+        });
+
+        listAdapter = new ListAdapter(context);
+
+        fragmentView = new FrameLayout(context);
+        fragmentView.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray));
+        FrameLayout frameLayout = (FrameLayout) fragmentView;
+
+        listView = new RecyclerListView(context);
+        listView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        listView.setVerticalScrollBarEnabled(false);
+        listView.setAdapter(listAdapter);
+        frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
+
+        listView.setOnItemClickListener((view, position) -> {
+            if (position >= themeAmoledRow && position <= themeMidnightBlueRow) {
+                applyThemePreview(position);
+            } else if (position == avatarShapeRow) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                builder.setTitle("Форма аватарок");
+                builder.setItems(new CharSequence[]{"Круг (по умолчанию)", "Квадрат", "Закругленный квадрат"}, (dialog, which) -> {
+                    SharedConfig.fg_avatar_shape = which;
+                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
+                    preferences.edit().putInt("fg_avatar_shape", which).apply();
+                    if (listView != null) {
+                        listView.invalidateViews();
+                    }
+                });
+                showDialog(builder.create());
+            } else if (position == fontTypeRow) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                builder.setTitle("Шрифт");
+                builder.setItems(new CharSequence[]{"По умолчанию (Telegram)", "Системный", "Пользовательский"}, (dialog, which) -> {
+                    SharedConfig.fg_font_type = which;
+                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
+                    preferences.edit().putInt("fg_font_type", which).apply();
+                    if (listView != null) {
+                        listView.invalidateViews();
+                    }
+                    // Requires restart to apply fonts globally effectively
+                    AlertDialog.Builder restartBuilder = new AlertDialog.Builder(getParentActivity());
+                    restartBuilder.setTitle(LocaleController.getString("AppName", org.telegram.messenger.R.string.AppName));
+                    restartBuilder.setMessage("Для применения шрифта необходимо перезапустить приложение.");
+                    restartBuilder.setPositiveButton(LocaleController.getString("OK", org.telegram.messenger.R.string.OK), (dialogInterface, i) -> {
+                        System.exit(0);
+                    });
+                    showDialog(restartBuilder.create());
+                });
+                showDialog(builder.create());
+            } else if (position == hideMicCamRow) {
+                SharedConfig.fg_hide_mic_cam = !SharedConfig.fg_hide_mic_cam;
+                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
+                preferences.edit().putBoolean("fg_hide_mic_cam", SharedConfig.fg_hide_mic_cam).apply();
+                if (view instanceof TextCheckCell) {
+                    ((TextCheckCell) view).setChecked(SharedConfig.fg_hide_mic_cam);
+                }
+            }
+        });
+
+        return fragmentView;
     }
 
-    @Override
-    protected void fillItems(ArrayList<UItem> items, UniversalAdapter adapter) {
-        items.add(UItem.asHeader("Чаты и Папки"));
-        items.add(UItem.asCheck(1, "Скрыть вкладку «Все чаты»").setChecked(prefs.getBoolean("fg_hide_all_chats", false)));
-        items.add(UItem.asCheck(3, "Компактный список чатов").setChecked(prefs.getBoolean("fg_compact_chats", false)));
-        items.add(UItem.asCheck(12, "Полоска папок снизу (iOS)").setChecked(prefs.getBoolean("fg_folders_bottom", false)));
-        items.add(UItem.asCheck(19, "Отключение свайпа папок").setChecked(prefs.getBoolean("fg_disable_folder_swipe", false)));
-        items.add(UItem.asShadow(null));
+    private void applyThemePreview(int position) {
+        String themeName = "HashGram Theme";
+        boolean isDark = true;
+        int actionbarDefaultColor = 0xFF000000;
+        int backgroundColor = 0xFF000000;
+        int msgInColor = 0xFF333333;
+        int msgOutColor = 0xFF555555;
+        int textColor = 0xFFFFFFFF; // added for better text visibility
 
-        items.add(UItem.asHeader("Сообщения и Медиа"));
-        items.add(UItem.asCheck(4, "Карандаш вместо «изменено»").setChecked(prefs.getBoolean("fg_pencil_edited", false)));
-        items.add(UItem.asCheck(8, "Отключить большие эмодзи").setChecked(!SharedConfig.allowBigEmoji));
-        items.add(UItem.asCheck(2, "Скрыть Истории (Stories)").setChecked(prefs.getBoolean("fg_hide_stories", false)));
-        items.add(UItem.asCheck(21, "Отключить зацикливание стикеров").setChecked(prefs.getBoolean("fg_disable_sticker_loop", false)));
-        items.add(UItem.asCheck(6, "Точное время (с секундами)").setChecked(prefs.getBoolean("fg_seconds_time", false)));
-        items.add(UItem.asShadow(null));
-    }
+        Theme.ThemeInfo baseTheme = Theme.getTheme("Night");
 
-    @Override
-    protected void onClick(UItem item, View view, int position, float x, float y) {
-        item.checked = !item.checked;
+        if (position == themeAmoledRow) {
+            themeName = "AMOLED";
+            isDark = true;
+            baseTheme = Theme.getTheme("Night");
+            actionbarDefaultColor = 0xFF000000;
+            backgroundColor = 0xFF000000;
+            msgInColor = 0xFF111111;
+            msgOutColor = 0xFF222222;
+            textColor = 0xFFFFFFFF;
+        } else if (position == themeMintRow) {
+            themeName = "Mint";
+            isDark = false;
+            baseTheme = Theme.getTheme("Day");
+            actionbarDefaultColor = 0xFF98FF98;
+            backgroundColor = 0xFFE0FFE0;
+            msgInColor = 0xFFFFFFFF;
+            msgOutColor = 0xFFC0FFC0;
+            textColor = 0xFF000000;
+        } else if (position == themeLavenderRow) {
+            themeName = "Lavender";
+            isDark = false;
+            baseTheme = Theme.getTheme("Day");
+            actionbarDefaultColor = 0xFFE6E6FA;
+            backgroundColor = 0xFFF8F8FF;
+            msgInColor = 0xFFFFFFFF;
+            msgOutColor = 0xFFD8BFD8;
+            textColor = 0xFF000000;
+        } else if (position == themeHackerRow) {
+            themeName = "Hacker";
+            isDark = true;
+            baseTheme = Theme.getTheme("Night");
+            actionbarDefaultColor = 0xFF000000;
+            backgroundColor = 0xFF000000;
+            msgInColor = 0xFF001100;
+            msgOutColor = 0xFF003300;
+            textColor = 0xFF00FF00;
+        } else if (position == themeBloodRedRow) {
+            themeName = "Blood Red";
+            isDark = true;
+            baseTheme = Theme.getTheme("Night");
+            actionbarDefaultColor = 0xFF660000;
+            backgroundColor = 0xFF110000;
+            msgInColor = 0xFF330000;
+            msgOutColor = 0xFF550000;
+            textColor = 0xFFFFFFFF;
+        } else if (position == themeSakuraRow) {
+            themeName = "Sakura";
+            isDark = false;
+            baseTheme = Theme.getTheme("Day");
+            actionbarDefaultColor = 0xFFFFB7C5;
+            backgroundColor = 0xFFFFF0F5;
+            msgInColor = 0xFFFFFFFF;
+            msgOutColor = 0xFFFFC0CB;
+            textColor = 0xFF000000;
+        } else if (position == themeSolarizedLightRow) {
+            themeName = "Solarized Light";
+            isDark = false;
+            baseTheme = Theme.getTheme("Day");
+            actionbarDefaultColor = 0xFFFDF6E3;
+            backgroundColor = 0xFFEEE8D5;
+            msgInColor = 0xFFFDF6E3;
+            msgOutColor = 0xFFE8DDB5;
+            textColor = 0xFF657B83;
+        } else if (position == themeMidnightBlueRow) {
+            themeName = "Midnight Blue";
+            isDark = true;
+            baseTheme = Theme.getTheme("Night");
+            actionbarDefaultColor = 0xFF191970;
+            backgroundColor = 0xFF0A0A2A;
+            msgInColor = 0xFF111144;
+            msgOutColor = 0xFF222266;
+            textColor = 0xFFFFFFFF;
+        }
+
+        // Safe preview workflow
         
-        if (item.id == 8) {
-            SharedConfig.toggleBigEmoji();
+        // 1. Get base colors synchronously
+        android.util.SparseIntArray baseColors = null;
+        if (baseTheme.pathToFile != null) {
+            baseColors = Theme.getThemeFileValues(new java.io.File(baseTheme.pathToFile), baseTheme.assetName, null);
         } else {
-            String key = null;
-            switch (item.id) {
-                case 1: key = "fg_hide_all_chats"; break;
-                case 3: key = "fg_compact_chats"; break;
-                case 12: key = "fg_folders_bottom"; break;
-                case 19: key = "fg_disable_folder_swipe"; break;
-                case 4: key = "fg_pencil_edited"; break;
-                case 2: key = "fg_hide_stories"; break;
-                case 21: key = "fg_disable_sticker_loop"; break;
-                case 6: key = "fg_seconds_time"; break;
-            }
-
-            if (key != null) {
-                prefs.edit().putBoolean(key, item.checked).apply();
-                if (key.equals("fg_disable_folder_swipe")) SharedConfig.fg_disable_folder_swipe = item.checked;
-                if (key.equals("fg_disable_sticker_loop")) SharedConfig.fg_disable_sticker_loop = item.checked;
-            }
-        }
-        if (listView.getAdapter() != null) {
-            listView.getAdapter().notifyItemChanged(position);
+            baseColors = Theme.getThemeFileValues(null, baseTheme.assetName, null);
         }
         
-        org.telegram.messenger.NotificationCenter.getGlobalInstance().postNotificationName(org.telegram.messenger.NotificationCenter.mainUserInfoChanged);
-        org.telegram.messenger.NotificationCenter.getInstance(org.telegram.messenger.UserConfig.selectedAccount).postNotificationName(org.telegram.messenger.NotificationCenter.dialogFiltersUpdated);
-        org.telegram.messenger.NotificationCenter.getInstance(org.telegram.messenger.UserConfig.selectedAccount).postNotificationName(org.telegram.messenger.NotificationCenter.updateInterfaces, org.telegram.messenger.MessagesController.UPDATE_MASK_ALL);
+        // 2. Create new ThemeInfo using the public factory method
+        Theme.ThemeInfo newTheme = Theme.createPreviewTheme(themeName);
+        
+        // 3. Manually write .attheme file using baseColors
+        try {
+            java.io.FileOutputStream stream = new java.io.FileOutputStream(newTheme.pathToFile);
+            StringBuilder sb = new StringBuilder();
+            
+            if (baseColors != null) {
+                for (int i = 0; i < baseColors.size(); i++) {
+                    int key = baseColors.keyAt(i);
+                    int color = baseColors.valueAt(i);
+                    
+                    if (key == Theme.key_actionBarDefault || key == Theme.key_actionBarDefaultSelector) {
+                        color = actionbarDefaultColor;
+                    } else if (key == Theme.key_windowBackgroundWhite || key == Theme.key_windowBackgroundGray) {
+                        color = backgroundColor;
+                    } else if (key == Theme.key_chat_inBubble) {
+                        color = msgInColor;
+                    } else if (key == Theme.key_chat_outBubble) {
+                        color = msgOutColor;
+                    } else if (key == Theme.key_chat_messageTextIn || 
+                               key == Theme.key_chat_messageTextOut || 
+                               key == Theme.key_windowBackgroundWhiteBlackText || 
+                               key == Theme.key_actionBarDefaultTitle ||
+                               key == Theme.key_actionBarDefaultIcon) {
+                        if (position == themeHackerRow) {
+                            color = 0xFF00FF00;
+                        } else if (position == themeSolarizedLightRow) {
+                            color = 0xFF657B83;
+                        } else {
+                            color = textColor;
+                        }
+                    }
+                    
+                    String colorName = org.telegram.ui.ActionBar.ThemeColors.getStringName(key);
+                    if (colorName != null) {
+                        sb.append(colorName).append("=").append(color).append("\n");
+                    }
+                }
+            }
+            stream.write(sb.toString().getBytes());
+            stream.close();
+        } catch (Exception e) {
+            org.telegram.messenger.FileLog.e(e);
+        }
+        
+        // 4. Present preview
+        Theme.ThemeInfo appliedPreviewTheme = Theme.applyThemeFile(new java.io.File(newTheme.pathToFile), themeName, null, true);
+        if (appliedPreviewTheme != null) {
+            presentFragment(new ThemePreviewActivity(appliedPreviewTheme, true, 0 /* SCREEN_TYPE_PREVIEW */, false, isDark));
+        } else {
+            presentFragment(new ThemePreviewActivity(newTheme, true, 0 /* SCREEN_TYPE_PREVIEW */, false, isDark));
+        }
+    }
+
+    private class ListAdapter extends RecyclerListView.SelectionAdapter {
+
+        private Context mContext;
+
+        public ListAdapter(Context context) {
+            mContext = context;
+        }
+
+        @Override
+        public boolean isEnabled(RecyclerView.ViewHolder holder) {
+            int position = holder.getAdapterPosition();
+            return (position >= themeAmoledRow && position <= themeMidnightBlueRow) ||
+                   position == avatarShapeRow || position == fontTypeRow || position == hideMicCamRow;
+        }
+
+        @Override
+        public int getItemCount() {
+            return rowCount;
+        }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view;
+            switch (viewType) {
+                case 0:
+                    view = new HeaderCell(mContext);
+                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+                    break;
+                case 1:
+                    view = new TextCell(mContext);
+                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+                    break;
+                case 2:
+                    view = new ShadowSectionCell(mContext);
+                    break;
+                case 3:
+                    view = new TextDetailSettingsCell(mContext);
+                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+                    break;
+                case 4:
+                default:
+                    view = new TextCheckCell(mContext);
+                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+                    break;
+            }
+            return new RecyclerListView.Holder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            switch (holder.getItemViewType()) {
+                case 0: {
+                    HeaderCell headerCell = (HeaderCell) holder.itemView;
+                    if (position == themeHeaderRow) {
+                        headerCell.setText("Темы");
+                    } else if (position == customHeaderRow) {
+                        headerCell.setText("Кастомизация");
+                    }
+                    break;
+                }
+                case 1: {
+                    TextCell textCell = (TextCell) holder.itemView;
+                    if (position == themeAmoledRow) textCell.setText("AMOLED", true);
+                    else if (position == themeMintRow) textCell.setText("Mint", true);
+                    else if (position == themeLavenderRow) textCell.setText("Lavender", true);
+                    else if (position == themeHackerRow) textCell.setText("Hacker", true);
+                    else if (position == themeBloodRedRow) textCell.setText("Blood Red", true);
+                    else if (position == themeSakuraRow) textCell.setText("Sakura", true);
+                    else if (position == themeSolarizedLightRow) textCell.setText("Solarized Light", true);
+                    else if (position == themeMidnightBlueRow) textCell.setText("Midnight Blue", false);
+                    break;
+                }
+                case 2: {
+                    ShadowSectionCell shadowCell = (ShadowSectionCell) holder.itemView;
+                    if (position == themeSectionRow) {
+                        shadowCell.setBackgroundDrawable(Theme.getThemedDrawable(mContext, org.telegram.messenger.R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
+                    } else if (position == customSectionRow) {
+                        shadowCell.setBackgroundDrawable(Theme.getThemedDrawable(mContext, org.telegram.messenger.R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
+                    }
+                    break;
+                }
+                case 3: {
+                    TextDetailSettingsCell textCell = (TextDetailSettingsCell) holder.itemView;
+                    if (position == avatarShapeRow) {
+                        String shape;
+                        if (SharedConfig.fg_avatar_shape == 1) shape = "Квадрат";
+                        else if (SharedConfig.fg_avatar_shape == 2) shape = "Закругленный квадрат";
+                        else shape = "Круг (по умолчанию)";
+                        textCell.setTextAndValue("Форма аватарок", shape, true);
+                    } else if (position == fontTypeRow) {
+                        String font;
+                        if (SharedConfig.fg_font_type == 1) font = "Системный";
+                        else if (SharedConfig.fg_font_type == 2) font = "Пользовательский";
+                        else font = "По умолчанию (Telegram)";
+                        textCell.setTextAndValue("Шрифт", font, true);
+                    }
+                    break;
+                }
+                case 4: {
+                    TextCheckCell checkCell = (TextCheckCell) holder.itemView;
+                    if (position == hideMicCamRow) {
+                        checkCell.setTextAndCheck("Скрыть кнопку микрофона/камеры", SharedConfig.fg_hide_mic_cam, false);
+                    }
+                    break;
+                }
+            }
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            if (position == themeHeaderRow || position == customHeaderRow) {
+                return 0;
+            } else if (position >= themeAmoledRow && position <= themeMidnightBlueRow) {
+                return 1;
+            } else if (position == themeSectionRow || position == customSectionRow) {
+                return 2;
+            } else if (position == avatarShapeRow || position == fontTypeRow) {
+                return 3;
+            } else if (position == hideMicCamRow) {
+                return 4;
+            }
+            return 1;
+        }
     }
 
     @Override
-    protected boolean onLongClick(UItem item, View view, int position, float x, float y) {
-        return false;
+    public ArrayList<ThemeDescription> getThemeDescriptions() {
+        ArrayList<ThemeDescription> themeDescriptions = new ArrayList<>();
+        themeDescriptions.add(new ThemeDescription(listView, ThemeDescription.FLAG_CELLBACKGROUNDCOLOR, new Class[]{HeaderCell.class, TextCell.class, TextDetailSettingsCell.class, TextCheckCell.class}, null, null, null, Theme.key_windowBackgroundWhite));
+        themeDescriptions.add(new ThemeDescription(fragmentView, ThemeDescription.FLAG_BACKGROUND, null, null, null, null, Theme.key_windowBackgroundGray));
+        themeDescriptions.add(new ThemeDescription(actionBar, ThemeDescription.FLAG_BACKGROUND, null, null, null, null, Theme.key_actionBarDefault));
+        themeDescriptions.add(new ThemeDescription(listView, ThemeDescription.FLAG_LISTGLOWCOLOR, null, null, null, null, Theme.key_actionBarDefault));
+        themeDescriptions.add(new ThemeDescription(actionBar, ThemeDescription.FLAG_AB_ITEMSCOLOR, null, null, null, null, Theme.key_actionBarDefaultIcon));
+        themeDescriptions.add(new ThemeDescription(actionBar, ThemeDescription.FLAG_AB_TITLECOLOR, null, null, null, null, Theme.key_actionBarDefaultTitle));
+        themeDescriptions.add(new ThemeDescription(actionBar, ThemeDescription.FLAG_AB_SELECTORCOLOR, null, null, null, null, Theme.key_actionBarDefaultSelector));
+        return themeDescriptions;
     }
 }

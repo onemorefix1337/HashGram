@@ -358,6 +358,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
     private boolean allowLoadingOnAttachedOnly = false;
     private boolean skipUpdateFrame;
     public boolean clip = true;
+    public boolean isAvatar = false;
 
     public int animatedFileDrawableRepeatMaxCount;
 
@@ -425,6 +426,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
     }
 
     public void setForUserOrChat(TLObject object, Drawable avatarDrawable, Object parentObject, boolean animationEnabled, int vectorType, boolean big) {
+        isAvatar = true;
         if (parentObject == null) {
             parentObject = object;
         }
@@ -2597,11 +2599,25 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
         currentAccount = value;
     }
 
+    private static int[] avatarSquareRadius = new int[]{1, 1, 1, 1};
+    private int[] avatarRoundedRadius = null;
+
     public int[] getRoundRadius() {
-        return roundRadius;
+        return getRoundRadius(false);
     }
 
     public int[] getRoundRadius(boolean includingEmpty) {
+        if (isAvatar) {
+            if (org.telegram.messenger.SharedConfig.fg_avatar_shape == 1) {
+                return avatarSquareRadius;
+            } else if (org.telegram.messenger.SharedConfig.fg_avatar_shape == 2) {
+                int r = Math.max(1, (int)(imageW / 4.0f));
+                if (avatarRoundedRadius == null || avatarRoundedRadius[0] != r) {
+                    avatarRoundedRadius = new int[]{r, r, r, r};
+                }
+                return avatarRoundedRadius;
+            }
+        }
         return !useRoundRadius && includingEmpty ? emptyRoundRadius : roundRadius;
     }
 

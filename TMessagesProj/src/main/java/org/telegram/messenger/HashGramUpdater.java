@@ -125,7 +125,7 @@ public class HashGramUpdater {
                 int fileLength = connection.getContentLength();
                 InputStream input = connection.getInputStream();
                 
-                File dir = new File(ApplicationLoader.applicationContext.getCacheDir(), "updates");
+                File dir = new File(ApplicationLoader.applicationContext.getFilesDir(), "cache");
                 if (!dir.exists()) dir.mkdirs();
                 File outputFile = new File(dir, "HashGram_" + version + ".apk");
                 

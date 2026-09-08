@@ -69,34 +69,34 @@ public class PremiumTierCell extends ViewGroup {
         checkBox.setColor(Theme.key_radioBackground, Theme.key_radioBackground, Theme.key_checkboxCheck);
         addView(checkBox);
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setSingleLine();
         addView(titleView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 0, 8, 0, 0));
 
-        discountView = new TextView(context);
+        discountView = new org.telegram.ui.Components.TypefaceTextView(context);
         discountView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         discountView.setTextColor(Color.WHITE);
         discountView.setPadding(AndroidUtilities.dp(3), 0, AndroidUtilities.dp(3), 0);
         discountView.setTypeface(AndroidUtilities.bold());
         addView(discountView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.BOTTOM, 0, 0, 0, 8));
 
-        pricePerYearStrikeView = new TextView(context);
+        pricePerYearStrikeView = new org.telegram.ui.Components.TypefaceTextView(context);
         pricePerYearStrikeView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         pricePerYearStrikeView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         pricePerYearStrikeView.getPaint().setStrikeThruText(true);
         pricePerYearStrikeView.setSingleLine();
         addView(pricePerYearStrikeView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.BOTTOM, 0, 0, 0, 8));
 
-        pricePerYearView = new TextView(context);
+        pricePerYearView = new org.telegram.ui.Components.TypefaceTextView(context);
         pricePerYearView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         pricePerYearView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         pricePerYearView.setSingleLine();
         addView(pricePerYearView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.BOTTOM, 0, 0, 0, 8));
 
-        pricePerMonthView = new TextView(context);
+        pricePerMonthView = new org.telegram.ui.Components.TypefaceTextView(context);
         pricePerMonthView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         pricePerMonthView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         pricePerMonthView.setSingleLine();

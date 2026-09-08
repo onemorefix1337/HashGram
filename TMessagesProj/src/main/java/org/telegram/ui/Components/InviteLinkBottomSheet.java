@@ -385,7 +385,7 @@ public class InviteLinkBottomSheet extends BottomSheet {
             }
         });
 
-        titleTextView = new TextView(context);
+        titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setLines(1);
         titleTextView.setSingleLine(true);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -1144,7 +1144,7 @@ public class InviteLinkBottomSheet extends BottomSheet {
 
         public EmptyHintRow(@NonNull Context context) {
             super(context);
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -1180,13 +1180,13 @@ public class InviteLinkBottomSheet extends BottomSheet {
             layout = new LinearLayout(context);
             layout.setOrientation(LinearLayout.VERTICAL);
 
-            priceView = new TextView(context);
+            priceView = new org.telegram.ui.Components.TypefaceTextView(context);
             priceView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             priceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             priceView.setTypeface(AndroidUtilities.bold());
             layout.addView(priceView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT));
 
-            periodView = new TextView(context);
+            periodView = new org.telegram.ui.Components.TypefaceTextView(context);
             periodView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
             periodView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             layout.addView(periodView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT, 0, 1, 0, 0));
@@ -1230,13 +1230,13 @@ public class InviteLinkBottomSheet extends BottomSheet {
             imageView.setColorFilter(new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN));
             addView(imageView, LayoutHelper.createFrame(46, 46, Gravity.LEFT | Gravity.CENTER_VERTICAL, 13, 0, 0, 0));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             titleView.setTypeface(AndroidUtilities.bold());
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 72, 9, 0, 0));
 
-            subtitleView = new TextView(context);
+            subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             subtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             addView(subtitleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 72, 32, 0, 0));
@@ -1317,7 +1317,7 @@ public class InviteLinkBottomSheet extends BottomSheet {
         starFgView.setTranslationX(dp(34));
         starFgView.setTranslationY(dp(35));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -1325,7 +1325,7 @@ public class InviteLinkBottomSheet extends BottomSheet {
         textView.setText(getString(R.string.StarsSubscriptionTitle));
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 20, 0, 20, 4));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4, resourcesProvider));
@@ -1337,7 +1337,7 @@ public class InviteLinkBottomSheet extends BottomSheet {
         }
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 20, 0, 20, 4));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4, resourcesProvider));

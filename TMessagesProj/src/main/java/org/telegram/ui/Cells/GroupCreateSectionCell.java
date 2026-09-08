@@ -36,7 +36,7 @@ public class GroupCreateSectionCell extends FrameLayout {
         drawable = getResources().getDrawable(R.drawable.shadowdown);
         drawable.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_groupcreate_sectionShadow), PorterDuff.Mode.MULTIPLY));
 
-        textView = new TextView(getContext());
+        textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextColor(Theme.getColor(Theme.key_groupcreate_sectionText));

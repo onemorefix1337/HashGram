@@ -278,7 +278,7 @@ public class TranslateAlert2 extends BottomSheet implements NotificationCenter.N
         buttonShadowView.setAlpha(0);
         buttonView.addView(buttonShadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, AndroidUtilities.getShadowHeight() / dpf2(1), Gravity.TOP | Gravity.FILL_HORIZONTAL));
 
-        buttonTextView = new TextView(context);
+        buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         buttonTextView.setLines(1);
         buttonTextView.setSingleLine(true);
         buttonTextView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -1210,7 +1210,7 @@ public class TranslateAlert2 extends BottomSheet implements NotificationCenter.N
             backButton.setOnClickListener(e -> dismiss());
             addView(backButton, LayoutHelper.createFrame(54, 54, Gravity.TOP, 1, 1, 1, 1));
 
-            titleTextView = new TextView(context) {
+            titleTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -1242,7 +1242,7 @@ public class TranslateAlert2 extends BottomSheet implements NotificationCenter.N
             subtitleView.setPivotX(0);
             subtitleView.setPivotY(0);
             if (!TextUtils.isEmpty(fromLanguage) && !"und".equals(fromLanguage)) {
-                fromLanguageTextView = new TextView(context);
+                fromLanguageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                 fromLanguageTextView.setLines(1);
                 fromLanguageTextView.setTextColor(getThemedColor(Theme.key_player_actionBarSubtitle));
                 fromLanguageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

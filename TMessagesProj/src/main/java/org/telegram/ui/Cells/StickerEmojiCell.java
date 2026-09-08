@@ -102,7 +102,7 @@ public class StickerEmojiCell extends FrameLayout implements NotificationCenter.
         imageView.setAllowLoadingOnAttachedOnly(true);
         imageView.setLayerNum(1);
 
-        emojiTextView = new TextView(context);
+        emojiTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emojiTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
        // addView(emojiTextView, LayoutHelper.createFrame(28, 28, Gravity.BOTTOM | Gravity.RIGHT));
 

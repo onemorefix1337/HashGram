@@ -58,14 +58,14 @@ public class StoriesIntro extends FrameLayout {
         linearLayout.setPadding(0, AndroidUtilities.dp(48), 0, AndroidUtilities.dp(48));
         linearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        TextView header = new TextView(context);
+        TextView header = new org.telegram.ui.Components.TypefaceTextView(context);
         header.setTextColor(Color.WHITE);
         header.setTypeface(AndroidUtilities.bold());
         header.setText(LocaleController.getString(R.string.StoriesIntroHeader));
         header.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         linearLayout.addView(header, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
-        TextView subHeader = new TextView(context);
+        TextView subHeader = new org.telegram.ui.Components.TypefaceTextView(context);
         subHeader.setTextColor(0x96FFFFFF); // 60%
         subHeader.setText(LocaleController.getString(R.string.StoriesIntroSubHeader));
         subHeader.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -94,7 +94,7 @@ public class StoriesIntro extends FrameLayout {
         for (StoriesIntroItemView storiesIntroItemView : items) {
             linearLayout.addView(storiesIntroItemView, layoutParams);
         }
-        TextView bottomText = new TextView(context);
+        TextView bottomText = new org.telegram.ui.Components.TypefaceTextView(context);
         bottomText.setTextColor(Color.WHITE);
         bottomText.setTypeface(AndroidUtilities.bold());
         bottomText.setText(LocaleController.getString(R.string.StoriesIntroDismiss));
@@ -200,12 +200,12 @@ public class StoriesIntro extends FrameLayout {
             backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             backgroundPaint.setColor(0x16D8D8D8);
 
-            headerTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            headerTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             headerTextPaint.setColor(Color.WHITE);
             headerTextPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics()));
             headerTextPaint.setTypeface(AndroidUtilities.bold());
 
-            subHeaderTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            subHeaderTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             subHeaderTextPaint.setColor(0x96FFFFFF);
 
             subHeaderTextPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, getResources().getDisplayMetrics()));

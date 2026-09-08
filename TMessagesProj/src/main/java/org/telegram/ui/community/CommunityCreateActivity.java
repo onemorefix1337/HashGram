@@ -271,14 +271,14 @@ public class CommunityCreateActivity extends BaseFragment implements Notificatio
             avatarView.setRoundRadius(dp(20));
             addView(avatarView, LayoutHelper.createFrame(AVATAR_SIZE, AVATAR_SIZE, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 36, 0, 0));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTypeface(AndroidUtilities.bold());
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             titleView.setGravity(Gravity.CENTER);
             addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT,
                     Gravity.TOP | Gravity.CENTER_HORIZONTAL, 24, 123, 24, 0));
 
-            subtitleView = new TextView(context);
+            subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             subtitleView.setGravity(Gravity.CENTER);
             subtitleView.setLineSpacing(dp(2), 1f);

@@ -327,7 +327,7 @@ class QuickShareAvatarCell implements ValueAnimator.AnimatorUpdateListener {
             final int padding = dp(QuickShareSelectorDrawable.Sizes.TEXT_PADDING_INTERNAL * 2 + QuickShareSelectorDrawable.Sizes.TEXT_PADDING_EXTERNAL * 2);
             final int maxWidth = AndroidUtilities.displaySize.x - padding;
 
-            final TextPaint textPaint = new TextPaint(p);
+            final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(p);
 
             final CharSequence title = TextUtils.ellipsize(displayName, textPaint, maxWidth, TextUtils.TruncateAt.END);
             final int width = (int) Math.ceil(textPaint.measureText(title, 0, title.length()));

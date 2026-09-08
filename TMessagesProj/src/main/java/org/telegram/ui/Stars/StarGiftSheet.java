@@ -481,7 +481,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
         checkbox.setChecked(false, false);
         checkbox.setDrawBackgroundAsArc(10);
         checkboxLayout.addView(checkbox, LayoutHelper.createLinear(26, 26, Gravity.CENTER_VERTICAL, 0, 0, 0, 0));
-        checkboxTextView = new TextView(context);
+        checkboxTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         checkboxTextView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
         checkboxTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         checkboxTextView.setText(LocaleController.getString(R.string.Gift2AddSenderName));
@@ -501,14 +501,14 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             wearLayout.setPadding(dp(4) + backgroundPaddingLeft, dp(20), dp(4) + backgroundPaddingLeft, dp(12 + 48 + 6));
             container.addView(wearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL_HORIZONTAL | Gravity.TOP));
 
-            wearTitle = new TextView(context);
+            wearTitle = new org.telegram.ui.Components.TypefaceTextView(context);
             wearTitle.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             wearTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             wearTitle.setGravity(Gravity.CENTER);
             wearTitle.setTypeface(AndroidUtilities.bold());
             wearLayout.addView(wearTitle, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL, 20, 0, 20, 0));
 
-            wearSubtitle = new TextView(context);
+            wearSubtitle = new org.telegram.ui.Components.TypefaceTextView(context);
             wearSubtitle.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             wearSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             wearSubtitle.setGravity(Gravity.CENTER);
@@ -2026,7 +2026,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                 imageView.setColorFilter(new PorterDuffColorFilter(0xFFFFFFFF, PorterDuff.Mode.SRC_IN));
                 addView(imageView, LayoutHelper.createFrame(24, 24, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 8, 0, 0));
 
-                textView = new TextView(context);
+                textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTypeface(AndroidUtilities.bold());
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
                 textView.setTextColor(0xFFFFFFFF);
@@ -2080,7 +2080,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             releasedView.setLinkTextColor(Theme.getColor(Theme.key_chat_messageLinkIn, resourcesProvider));
             releasedView.setPadding(dp(4), 0, dp(4), 0);
 
-            collectionReleasedView = new TextView(context);
+            collectionReleasedView = new org.telegram.ui.Components.TypefaceTextView(context);
             collectionReleasedView.setOnClickListener(v -> {
                 CharSequence cs = collectionReleasedView.getText();
                 if (!(cs instanceof Spanned)) return;
@@ -2095,7 +2095,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             collectionReleasedView.setLinkTextColor(0xFFFFFFFF);
             collectionReleasedView.setPadding(dp(7), 0, dp(7), 0);
 
-            resellPriceView = new TextView(context);
+            resellPriceView = new org.telegram.ui.Components.TypefaceTextView(context);
             resellPriceView.setPadding(dp(8), 0, dp(8), 0);
             resellPriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             resellPriceView.setTextColor(0xFFFFFFFF);
@@ -4275,7 +4275,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             }, 0, to.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             CharSequence comment = null;
             if (details.message != null) {
-                TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 textPaint.setTextSize(dp(14));
 
                 comment = new SpannableStringBuilder(details.message.text);
@@ -6433,13 +6433,13 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                     final LinearLayout topView = new LinearLayout(getContext());
                     topView.setOrientation(LinearLayout.VERTICAL);
                     topView.addView(new GiftTransferTopView(getContext(), gift), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 0, -4, 0, 0));
-                    final TextView titleView = new TextView(getContext());
+                    final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                     titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                     titleView.setTypeface(AndroidUtilities.bold());
                     titleView.setText(getString(R.string.Gift2ExportTONFragmentTitle));
                     topView.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 24, 4, 24, 14));
-                    final TextView textView = new TextView(getContext());
+                    final TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     textView.setText(AndroidUtilities.replaceTags(formatString(R.string.Gift2ExportTONFragmentText, getGiftName())));
@@ -6582,7 +6582,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
         final LinearLayout topView = new LinearLayout(getContext());
         topView.setOrientation(LinearLayout.VERTICAL);
         topView.addView(new GiftTransferTopView(getContext(), gift, obj), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 0, -4, 0, 0));
-        final TextView textView = new TextView(getContext());
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setText(AndroidUtilities.replaceTags(stars > 0 ?
@@ -6632,7 +6632,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
                     builder.setView(linearLayout);
 
-                    TextView messageTextView = new TextView(getContext());
+                    TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -6648,7 +6648,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                     dotImageView.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(11) : 0, AndroidUtilities.dp(9), LocaleController.isRTL ? 0 : AndroidUtilities.dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(getContext());
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -6670,7 +6670,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                     dotImageView.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(11) : 0, AndroidUtilities.dp(9), LocaleController.isRTL ? 0 : AndroidUtilities.dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(getContext());
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -6687,7 +6687,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                         builder.setPositiveButton(LocaleController.getString(R.string.Gift2TransferToTONSetPassword), (dialogInterface, i) -> presentFragment(new TwoStepVerificationSetupActivity(TwoStepVerificationSetupActivity.TYPE_INTRO, null)));
                         builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
                     } else {
-                        messageTextView = new TextView(getContext());
+                        messageTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                         messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                         messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -7898,7 +7898,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             } else {
                 currencyTabsView = null;
 
-                TextView textTonOnlyView = new TextView(context);
+                TextView textTonOnlyView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textTonOnlyView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
                 textTonOnlyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 textTonOnlyView.setText(getString(R.string.Gift2BuyPriceOnlyTON));
@@ -7907,7 +7907,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             }
             topView.addView(new GiftTransferTopView(context, gift, obj), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 0, -4, 0, 0));
 
-            textInfoView = new TextView(context);
+            textInfoView = new org.telegram.ui.Components.TypefaceTextView(context);
             textInfoView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             textInfoView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             topView.addView(textInfoView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 24, 4, 24, 4));
@@ -8073,7 +8073,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                 StarsIntroActivity.setGiftImage(imageView.getImageReceiver(), sticker, 160);
                 linearLayout.addView(imageView, LayoutHelper.createLinear(160, 160, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
-                final TextView priceTextView = new TextView(getContext());
+                final TextView priceTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 priceTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 priceTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText, resourcesProvider));
                 priceTextView.setTypeface(AndroidUtilities.bold());
@@ -8083,7 +8083,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                 linearLayout.addView(priceTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 42, Gravity.CENTER_HORIZONTAL, 0, 12, 0, 15));
                 priceTextView.setText(valuePrice);
 
-                final TextView textView = new TextView(getContext());
+                final TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                 textView.setGravity(Gravity.CENTER);
@@ -8330,7 +8330,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
         public ActionView(Context context) {
             super(context);
 
-            paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             paint.setColor(Color.WHITE);
             paint.setTextSize(dp(13));
 
@@ -8664,7 +8664,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             });
             ScaleStateListAnimator.apply(closeButton);
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTypeface(AndroidUtilities.bold());
             titleView.setGravity(Gravity.CENTER);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -8820,7 +8820,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             craftingIconView.setAnimation(R.raw.gift_crafting, 30, 30);
             titleLayout.addView(craftingIconView, LayoutHelper.createLinear(30, 30, Gravity.CENTER, 0, 0, 4, 0));
 
-            craftingTitleView = new TextView(context);
+            craftingTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             craftingTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             craftingTitleView.setTextColor(0xFFFFFFFF);
             craftingTitleView.setTypeface(AndroidUtilities.bold());
@@ -8829,14 +8829,14 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             titleLayout.addView(craftingTitleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 0, 0, 0));
             craftingLayout.addView(titleLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 350, 0, 0));
 
-            craftingSubtitleView = new TextView(context);
+            craftingSubtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             craftingSubtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             craftingSubtitleView.setTextColor(Theme.multAlpha(0xFFFFFFFF, 0.50f));
             craftingSubtitleView.setTypeface(AndroidUtilities.bold());
             craftingSubtitleView.setGravity(Gravity.CENTER);
             craftingLayout.addView(craftingSubtitleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 383, 0, 0));
 
-            craftingChanceView = new TextView(context);
+            craftingChanceView = new org.telegram.ui.Components.TypefaceTextView(context);
             craftingChanceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             craftingChanceView.setTextColor(0xFFFFFFFF);
             craftingChanceView.setTypeface(AndroidUtilities.bold());
@@ -8845,14 +8845,14 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             craftingChanceView.setBackground(new RoundRectStrokeDrawable(dp(14), Theme.multAlpha(0xFFFFFFFF, 0.08f)));
             craftingLayout.addView(craftingChanceView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 27, Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 0, 0, 50 + 24));
 
-            craftingFooterView = new TextView(context);
+            craftingFooterView = new org.telegram.ui.Components.TypefaceTextView(context);
             craftingFooterView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             craftingFooterView.setTextColor(Theme.multAlpha(0xFFFFFFFF, 0.50f));
             craftingFooterView.setGravity(Gravity.CENTER);
             craftingFooterView.setText(getString(R.string.GiftCraftProgressText));
             craftingLayout.addView(craftingFooterView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 42, 0, 42, 24));
 
-            failedTitle = new TextView(context);
+            failedTitle = new org.telegram.ui.Components.TypefaceTextView(context);
             failedTitle.setText(getString(R.string.GiftCraftFailedTitle));
             failedTitle.setTextColor(0xFFF84A4A);
             failedTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -8860,7 +8860,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
             failedTitle.setGravity(Gravity.CENTER);
             failedLayout.addView(failedTitle, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 32, 352, 32, 0));
 
-            failedSubtitle = new TextView(context);
+            failedSubtitle = new org.telegram.ui.Components.TypefaceTextView(context);
             failedSubtitle.setTextColor(0xFFFFBC9B);
             failedSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             failedSubtitle.setGravity(Gravity.CENTER);
@@ -9549,7 +9549,7 @@ public class StarGiftSheet extends BottomSheetWithRecyclerListView implements No
                 giftImage = new BackupImageView(context);
                 giftLayout.addView(giftImage, LayoutHelper.createFrame(52, 52, Gravity.CENTER));
 
-                chance = new TextView(context);
+                chance = new org.telegram.ui.Components.TypefaceTextView(context);
                 chance.setPadding(dp(5), 0, dp(5), 0);
                 chance.setGravity(Gravity.CENTER);
                 chance.setTypeface(AndroidUtilities.bold());

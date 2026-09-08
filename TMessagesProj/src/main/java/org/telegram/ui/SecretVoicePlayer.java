@@ -664,7 +664,7 @@ public class SecretVoicePlayer extends Dialog {
             containerView.removeView(closeButton);
             closeButton = null;
         }
-        closeButton = new TextView(context);
+        closeButton = new org.telegram.ui.Components.TypefaceTextView(context);
         closeButton.setTextColor(0xFFFFFFFF);
         closeButton.setTypeface(AndroidUtilities.bold());
         if (Theme.isCurrentThemeDark()) {

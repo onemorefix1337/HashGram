@@ -39,20 +39,20 @@ public class StoryFailView extends FrameLayout {
         whitePaint.setColor(Color.WHITE);
         setWillNotDraw(false);
 
-        titleTextView = new TextView(context);
+        titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         titleTextView.setText(LocaleController.getString(R.string.StoryError));
         titleTextView.setTextColor(Color.WHITE);
         addView(titleTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.LEFT, 44, 0, 0, 0));
 
-        subtitleTextView = new TextView(context);
+        subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 8);
         subtitleTextView.setTextColor(Theme.multAlpha(Color.WHITE, .5f));
         subtitleTextView.setVisibility(View.GONE);
         subtitleTextView.setTranslationY(dp(9));
         addView(subtitleTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.LEFT, 44, 0, 0, 0));
 
-        button = new TextView(context);
+        button = new org.telegram.ui.Components.TypefaceTextView(context);
         button.setPadding(dp(13), 0, dp(13), 0);
         button.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(16), 0x1fffffff, 0x38ffffff));
         button.setTypeface(AndroidUtilities.bold());

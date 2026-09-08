@@ -226,7 +226,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             LinearLayout topView = new LinearLayout(getContext());
             topView.setOrientation(LinearLayout.VERTICAL);
-            TextView overscrollTextView = new TextView(getContext());
+            TextView overscrollTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             overscrollTextView.setText("Screen oversrcoll: " + overScrollCoef);
             overscrollTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText));
             SeekBarView seekBar = new SeekBarView(getContext());
@@ -247,7 +247,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
             topView.addView(overscrollTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 38, 0, 20, 20, 5, 0));
 
             topView.addView(seekBar, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 38, 0, 5, 0, 20, 0));
-            TextView collapsedSpringTextView = new TextView(getContext());
+            TextView collapsedSpringTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             collapsedSpringTextView.setText("Collapsed spring: " + collapsedSpringCoef);
             collapsedSpringTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText));
             topView.addView(collapsedSpringTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 38, 0, 20, 0, 20, 0));
@@ -267,7 +267,7 @@ public class DialogStoriesCell extends FrameLayout implements NotificationCenter
             });
             topView.addView(collapsedSpringSeekBar, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 38, 0, 5, 0, 20, 0));
 
-            TextView expandedSpringTextView = new TextView(getContext());
+            TextView expandedSpringTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             expandedSpringTextView.setText("Expanded X spring: " + expandedSpringCoef);
             expandedSpringTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText));
             topView.addView(expandedSpringTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 38, 0, 20, 0, 20, 0));

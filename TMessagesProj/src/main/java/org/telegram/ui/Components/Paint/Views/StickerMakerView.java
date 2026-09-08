@@ -140,7 +140,7 @@ public class StickerMakerView extends FrameLayout implements NotificationCenter.
         dashPaint.setShadowLayer(AndroidUtilities.dpf2(0.75f), 0, 0, 0x50000000);
         dashPaint.setAlpha(140);
 
-        actionTextView = new TextView(context);
+        actionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         actionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         actionTextView.setTextColor(Color.WHITE);
         actionTextView.setAlpha(0f);

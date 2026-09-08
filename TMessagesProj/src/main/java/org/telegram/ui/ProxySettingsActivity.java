@@ -127,7 +127,7 @@ public class ProxySettingsActivity extends BaseFragment {
 
             setWillNotDraw(false);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setLines(1);

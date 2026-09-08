@@ -44,7 +44,7 @@ public class PickerBottomLayout extends FrameLayout {
 
         setBackgroundColor(Theme.getColor(darkTheme ? Theme.key_dialogBackground : Theme.key_windowBackgroundWhite, resourcesProvider));
 
-        cancelButton = new TextView(context);
+        cancelButton = new org.telegram.ui.Components.TypefaceTextView(context);
         cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         cancelButton.setTextColor(Theme.getColor(Theme.key_picker_enabledButton, resourcesProvider));
         cancelButton.setGravity(Gravity.CENTER);
@@ -60,7 +60,7 @@ public class PickerBottomLayout extends FrameLayout {
         doneButton.setPadding(AndroidUtilities.dp(33), 0, AndroidUtilities.dp(33), 0);
         addView(doneButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.RIGHT));
 
-        doneButtonBadgeTextView = new TextView(context);
+        doneButtonBadgeTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         doneButtonBadgeTextView.setTypeface(AndroidUtilities.bold());
         doneButtonBadgeTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         doneButtonBadgeTextView.setTextColor(Theme.getColor(Theme.key_picker_badgeText, resourcesProvider));
@@ -71,7 +71,7 @@ public class PickerBottomLayout extends FrameLayout {
         doneButtonBadgeTextView.setPadding(AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8), AndroidUtilities.dp(1));
         doneButton.addView(doneButtonBadgeTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 23, Gravity.CENTER_VERTICAL, 0, 0, 10, 0));
 
-        doneButtonTextView = new TextView(context);
+        doneButtonTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         doneButtonTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         doneButtonTextView.setTextColor(Theme.getColor(Theme.key_picker_enabledButton, resourcesProvider));
         doneButtonTextView.setGravity(Gravity.CENTER);

@@ -947,7 +947,7 @@ public class BotStarsActivity extends BaseFragment implements NotificationCenter
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
                     builder.setView(linearLayout);
 
-                    TextView messageTextView = new TextView(parentActivity);
+                    TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -963,7 +963,7 @@ public class BotStarsActivity extends BaseFragment implements NotificationCenter
                     dotImageView.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(11) : 0, AndroidUtilities.dp(9), LocaleController.isRTL ? 0 : AndroidUtilities.dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(parentActivity);
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -985,7 +985,7 @@ public class BotStarsActivity extends BaseFragment implements NotificationCenter
                     dotImageView.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(11) : 0, AndroidUtilities.dp(9), LocaleController.isRTL ? 0 : AndroidUtilities.dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(parentActivity);
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -1002,7 +1002,7 @@ public class BotStarsActivity extends BaseFragment implements NotificationCenter
                         builder.setPositiveButton(LocaleController.getString(R.string.EditAdminTransferSetPassword), (dialogInterface, i) -> presentFragment(new TwoStepVerificationSetupActivity(TwoStepVerificationSetupActivity.TYPE_INTRO, null)));
                         builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
                     } else {
-                        messageTextView = new TextView(parentActivity);
+                        messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
                         messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                         messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);

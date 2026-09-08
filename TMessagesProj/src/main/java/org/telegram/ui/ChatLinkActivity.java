@@ -517,7 +517,7 @@ public class ChatLinkActivity extends BaseFragment implements NotificationCenter
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
-        TextView messageTextView = new TextView(getParentActivity());
+        TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(getParentActivity());
         messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -546,7 +546,7 @@ public class ChatLinkActivity extends BaseFragment implements NotificationCenter
         imageView.setRoundRadius(dp(20));
         frameLayout2.addView(imageView, LayoutHelper.createFrame(40, 40, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 22, 5, 22, 0));
 
-        TextView textView = new TextView(getParentActivity());
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(getParentActivity());
         textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -674,7 +674,7 @@ public class ChatLinkActivity extends BaseFragment implements NotificationCenter
             emptyView = new EmptyView(context);
             addView(emptyView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 10, 0, 0));
 
-            messageTextView = new TextView(context);
+            messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             messageTextView.setTextColor(Theme.getColor(Theme.key_chats_message));
             messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             messageTextView.setGravity(Gravity.CENTER);

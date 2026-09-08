@@ -3304,7 +3304,7 @@ public class TopicsFragment extends BaseFragment implements NotificationCenter.N
 
         public EmptyViewContainer(Context context) {
             super(context);
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             SpannableStringBuilder spannableStringBuilder;
             if (LocaleController.isRTL) {
                 spannableStringBuilder = new SpannableStringBuilder("  ");

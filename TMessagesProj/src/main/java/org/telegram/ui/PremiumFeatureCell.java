@@ -58,7 +58,7 @@ public class PremiumFeatureCell extends FrameLayout {
         title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         linearLayout.addView(title, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        description = new TextView(context);
+        description = new org.telegram.ui.Components.TypefaceTextView(context);
         description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         description.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
         description.setLineSpacing(AndroidUtilities.dp(2), 1f);

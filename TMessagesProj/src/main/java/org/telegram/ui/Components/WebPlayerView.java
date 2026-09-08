@@ -1268,7 +1268,7 @@ public class WebPlayerView extends ViewGroup implements VideoPlayer.VideoPlayerD
             super(context);
             setWillNotDraw(false);
 
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(0xffffffff);
             textPaint.setTextSize(AndroidUtilities.dp(12));
 

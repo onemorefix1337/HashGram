@@ -3222,7 +3222,7 @@ public class RichEditorListView extends UniversalRecyclerView {
         LinearLayout alignContainer = new LinearLayout(getContext());
         alignContainer.setMinimumWidth(dp(tableMenuContentWidth));
         alignContainer.setOrientation(LinearLayout.VERTICAL);
-        TextView alignTitle = new TextView(getContext());
+        TextView alignTitle = new org.telegram.ui.Components.TypefaceTextView(getContext());
         alignTitle.setText(getString(R.string.ArticleAlignment));
         alignTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         alignTitle.setGravity(Gravity.CENTER);

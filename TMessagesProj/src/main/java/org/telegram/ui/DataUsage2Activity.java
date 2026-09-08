@@ -908,7 +908,7 @@ public class DataUsage2Activity extends BaseFragment {
         public SubtitleCell(Context context) {
             super(context);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setGravity(Gravity.CENTER);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText));
@@ -1002,7 +1002,7 @@ public class DataUsage2Activity extends BaseFragment {
             }
             linearLayout2.setWeightSum(2);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setEllipsize(TextUtils.TruncateAt.END);
@@ -1024,7 +1024,7 @@ public class DataUsage2Activity extends BaseFragment {
                 linearLayout2.addView(arrowView, LayoutHelper.createLinear(16, 16, Gravity.CENTER_VERTICAL, 3, 0, 0, 0));
             }
 
-            valueTextView = new TextView(context);
+            valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             valueTextView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlueText2));
             valueTextView.setGravity(LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT);

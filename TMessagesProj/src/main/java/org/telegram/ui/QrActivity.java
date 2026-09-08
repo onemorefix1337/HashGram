@@ -987,7 +987,7 @@ public class QrActivity extends BaseFragment {
             }
             if (enable) {
                 if (shareUsernameLayoutPaint == null) {
-                    shareUsernameLayoutPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                    shareUsernameLayoutPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 }
                 shareUsernameLayoutPaint.setShader(gradientTextShader);
                 shareUsernameLayoutPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rcondensedbold.ttf"));
@@ -1253,7 +1253,7 @@ public class QrActivity extends BaseFragment {
 
             int qrColor = 0xff000000;
             int backgroundColor = 0x00ffffff;
-            TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG | Paint.LINEAR_TEXT_FLAG);
+            TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG | Paint.LINEAR_TEXT_FLAG);
             textPaint.setColor(qrColor);
             textPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rcondensedbold.ttf"));
             StaticLayout staticLayout = null;
@@ -1524,7 +1524,7 @@ public class QrActivity extends BaseFragment {
                 }
             };
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
             titleView.setLines(1);
             titleView.setSingleLine(true);
@@ -1600,7 +1600,7 @@ public class QrActivity extends BaseFragment {
             bottomShadow.setBackground(ContextCompat.getDrawable(context, R.drawable.shadowdown));
             rootLayout.addView(bottomShadow);
 
-            shareButton = new TextView(context);
+            shareButton = new org.telegram.ui.Components.TypefaceTextView(context);
             shareButton.setBackground(Theme.AdaptiveRipple.filledRect(fragment.getThemedColor(Theme.key_featuredStickers_addButton), 24));
             shareButton.setEllipsize(TextUtils.TruncateAt.END);
             shareButton.setGravity(Gravity.CENTER);
@@ -1625,7 +1625,7 @@ public class QrActivity extends BaseFragment {
                 scanButtonIcon.setColorFilter(new PorterDuffColorFilter(fragment.getThemedColor(Theme.key_featuredStickers_addButton), PorterDuff.Mode.MULTIPLY));
                 scanButtonWrap.addView(scanButtonIcon);
 
-                scanButton = new TextView(context);
+                scanButton = new org.telegram.ui.Components.TypefaceTextView(context);
                 scanButton.setEllipsize(TextUtils.TruncateAt.END);
                 scanButton.setGravity(Gravity.CENTER);
                 scanButton.setLines(1);

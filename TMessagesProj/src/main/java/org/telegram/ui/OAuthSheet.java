@@ -539,7 +539,7 @@ public class OAuthSheet {
         layout.setOrientation(LinearLayout.VERTICAL);
         b.setCustomView(layout);
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setGravity(Gravity.CENTER);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -642,7 +642,7 @@ public class OAuthSheet {
 
         titleView.setText(getString(emojis ? R.string.BotAuthSelectEmoji : R.string.BotAuthSelectCode));
 
-        final TextView footerView = new TextView(context);
+        final TextView footerView = new org.telegram.ui.Components.TypefaceTextView(context);
         footerView.setGravity(Gravity.CENTER);
         footerView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         footerView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));

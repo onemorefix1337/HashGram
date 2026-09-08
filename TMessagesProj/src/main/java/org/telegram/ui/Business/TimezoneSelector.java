@@ -111,7 +111,7 @@ public class TimezoneSelector extends BaseFragment implements NotificationCenter
         emptyImageView.getImageReceiver().setAllowLoadingOnAttachedOnly(false);
         MediaDataController.getInstance(currentAccount).setPlaceholderImage(emptyImageView, "RestrictedEmoji", "\uD83C\uDF16", "130_130");
         emptyView.addView(emptyImageView, LayoutHelper.createLinear(130, 130, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 42, 0, 12));
-        TextView emptyTextView = new TextView(context);
+        TextView emptyTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyTextView.setText(getString(R.string.TimezoneNotFound));
         emptyTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourceProvider));
         emptyTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);

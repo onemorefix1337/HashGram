@@ -44,7 +44,7 @@ public class ChatUnreadCell extends FrameLayout {
         imageView.setPadding(0, AndroidUtilities.dp(2), 0, 0);
         backgroundLayout.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT | Gravity.CENTER_VERTICAL, 0, 0, 10, 0));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setPadding(0, 0, 0, AndroidUtilities.dp(1));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTextColor(getColor(Theme.key_chat_unreadMessagesStartText));

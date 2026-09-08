@@ -413,7 +413,7 @@ public class EditTextCaption extends EditTextBoldCursor implements FloatingToolb
         editText.setHandlesColor(getThemedColor(Theme.key_chat_TextSelectionCursor));
         container.addView(editText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL));
 
-        TextView pasteTextView = new TextView(getContext());
+        TextView pasteTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         pasteTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         pasteTextView.setTypeface(AndroidUtilities.bold());
         pasteTextView.setText(getString(R.string.Paste));

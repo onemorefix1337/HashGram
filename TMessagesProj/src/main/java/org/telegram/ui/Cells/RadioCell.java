@@ -52,7 +52,7 @@ public class RadioCell extends FrameLayout {
         super(context);
         this.resourcesProvider = resourcesProvider;
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         if (dialog) {
             textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         } else {

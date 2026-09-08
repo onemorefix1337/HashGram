@@ -879,11 +879,11 @@ public class UserInfoActivity extends UniversalFragment implements NotificationC
             textLayout.setPadding(0, dp(10), 0, dp(10));
             addView(textLayout, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1.0f, Gravity.FILL_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0, 32, 0));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.LEFT, 0, 0, 0, 0));
 
-            subtitleView = new TextView(context);
+            subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             textLayout.addView(subtitleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.LEFT, 0, 4.33f, 0, 0));
 

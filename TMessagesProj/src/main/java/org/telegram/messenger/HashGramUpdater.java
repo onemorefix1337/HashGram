@@ -203,7 +203,7 @@ public class HashGramUpdater {
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(AndroidUtilities.dp(24), AndroidUtilities.dp(24), AndroidUtilities.dp(24), AndroidUtilities.dp(24));
         
-        TextView title = new TextView(context);
+        TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
         title.setText("Скачивание обновления...");
         title.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         title.setTextSize(18);
@@ -215,7 +215,7 @@ public class HashGramUpdater {
         progressBar.setProgress(downloadProgress);
         layout.addView(progressBar, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 20));
         
-        TextView progressText = new TextView(context);
+        TextView progressText = new org.telegram.ui.Components.TypefaceTextView(context);
         progressText.setText(downloadProgress + "%");
         progressText.setTextColor(Theme.getColor(Theme.key_dialogTextGray2));
         progressText.setTextSize(14);

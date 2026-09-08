@@ -123,12 +123,12 @@ public class GiveawayResultsMessageCell {
         if (counterTextPaint != null) {
             return;
         }
-        counterTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        counterStarsTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        chatTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        textDividerPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        countriesTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        counterTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        counterStarsTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        chatTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        textDividerPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        countriesTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         counterBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         chatBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 

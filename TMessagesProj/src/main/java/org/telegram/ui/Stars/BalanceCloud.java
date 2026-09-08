@@ -46,7 +46,7 @@ public class BalanceCloud extends LinearLayout implements NotificationCenter.Not
         setPadding(dp(18), dp(9), dp(18), dp(9));
         setBackground(Theme.createRoundRectDrawable(dp(24), Theme.getColor(Theme.key_undo_background, resourcesProvider)));
 
-        textView1 = new TextView(context);
+        textView1 = new org.telegram.ui.Components.TypefaceTextView(context);
         textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         textView1.setTextColor(Theme.getColor(Theme.key_undo_infoColor, resourcesProvider));
         textView1.setGravity(Gravity.CENTER);

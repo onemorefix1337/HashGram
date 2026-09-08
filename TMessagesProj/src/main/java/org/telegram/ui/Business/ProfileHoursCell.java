@@ -73,12 +73,12 @@ public class ProfileHoursCell extends LinearLayout {
                 };
                 line.setMinimumHeight(dp(60));
 
-                textView = new TextView(context);
+                textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 line.addView(textView, LayoutHelper.createFrameRelatively(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.START, 0, 9.33f, 0, 0));
 
-                labelText[i] = new TextView(context);
+                labelText[i] = new org.telegram.ui.Components.TypefaceTextView(context);
                 labelText[i].setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
                 labelText[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 labelText[i].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
@@ -90,7 +90,7 @@ public class ProfileHoursCell extends LinearLayout {
                 todayTimeTextContainer = new FrameLayout(context);
                 timeText[i] = new TextView[2];
                 for (int a = 0; a < 2; ++a) {
-                    timeText[i][a] = new TextView(context);
+                    timeText[i][a] = new org.telegram.ui.Components.TypefaceTextView(context);
                     timeText[i][a].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     timeText[i][a].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
                     timeText[i][a].setGravity(LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT);
@@ -98,7 +98,7 @@ public class ProfileHoursCell extends LinearLayout {
                 }
 
                 for (int a = 0; a < 2; ++a) {
-                    labelTimeText[a] = new TextView(context);
+                    labelTimeText[a] = new org.telegram.ui.Components.TypefaceTextView(context);
                     labelTimeText[a].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     labelTimeText[a].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
                     labelTimeText[a].setGravity(LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT);
@@ -134,7 +134,7 @@ public class ProfileHoursCell extends LinearLayout {
                 LinearLayout line = new LinearLayout(context);
                 line.setOrientation(HORIZONTAL);
 
-                labelText[i] = new TextView(context);
+                labelText[i] = new org.telegram.ui.Components.TypefaceTextView(context);
                 labelText[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 labelText[i].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
                 labelText[i].setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
@@ -142,7 +142,7 @@ public class ProfileHoursCell extends LinearLayout {
                 FrameLayout timeTextContainer = new FrameLayout(context);
                 timeText[i] = new TextView[2];
                 for (int a = 0; a < 2; ++a) {
-                    timeText[i][a] = new TextView(context);
+                    timeText[i][a] = new org.telegram.ui.Components.TypefaceTextView(context);
                     timeText[i][a].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     timeText[i][a].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
                     timeText[i][a].setGravity(LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT);

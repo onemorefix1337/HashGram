@@ -45,7 +45,7 @@ public class DialogRadioCell extends FrameLayout {
     public DialogRadioCell(Context context, boolean dialog) {
         super(context);
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         if (dialog) {
             textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         } else {
@@ -59,7 +59,7 @@ public class DialogRadioCell extends FrameLayout {
         textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
         addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 61 : 23, 0, LocaleController.isRTL ? 23 : 61, 0));
 
-        valueTextView = new TextView(context);
+        valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         if (dialog) {
             valueTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         } else {

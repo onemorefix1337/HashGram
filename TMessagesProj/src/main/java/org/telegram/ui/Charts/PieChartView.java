@@ -49,7 +49,7 @@ public class PieChartView extends StackLinearChartView<PieChartViewData> {
             lookupTable[i] = i + "%";
         }
 
-        textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTextAlign(Paint.Align.CENTER);
         textPaint.setColor(Color.WHITE);
         textPaint.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));

@@ -84,7 +84,7 @@ public class StoryLinkSheet extends BottomSheetWithRecyclerListView implements N
         urlEditText.editText.setCursorColor(0xff54a1db);
         urlEditText.editText.setText(def);
         urlEditText.editText.setSelection(def.length());
-        TextView pasteTextView = new TextView(getContext());
+        TextView pasteTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         pasteTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         pasteTextView.setTypeface(AndroidUtilities.bold());
         pasteTextView.setText(getString(R.string.Paste));

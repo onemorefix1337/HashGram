@@ -171,7 +171,7 @@ public abstract class PrivateVideoPreviewDialogNew extends FrameLayout implement
         });
         addView(actionBar);
 
-        positiveButton = new TextView(getContext()) {
+        positiveButton = new org.telegram.ui.Components.TypefaceTextView(getContext()) {
             private final Paint whitePaint = new Paint();
             private final Paint[] gradientPaint = new Paint[titles.length];
 
@@ -496,7 +496,7 @@ public abstract class PrivateVideoPreviewDialogNew extends FrameLayout implement
             imageView.setImageResource(R.drawable.screencast_big);
             frameLayout.addView(imageView, LayoutHelper.createFrame(82, 82, Gravity.CENTER, 0, 0, 0, 60));
 
-            TextView textView = new TextView(getContext());
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             textView.setText(LocaleController.getString(R.string.VoipVideoPrivateScreenSharing));
             textView.setGravity(Gravity.CENTER);
             textView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);

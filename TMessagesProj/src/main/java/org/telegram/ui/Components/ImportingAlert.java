@@ -75,7 +75,7 @@ public class ImportingAlert extends BottomSheet implements NotificationCenter.No
             imageView.setScaleY(0.8f);
             linearLayout.addView(imageView, LayoutHelper.createLinear(20, 20, Gravity.CENTER_VERTICAL));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setLines(1);
             textView.setSingleLine(true);
             textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -128,7 +128,7 @@ public class ImportingAlert extends BottomSheet implements NotificationCenter.No
         FrameLayout frameLayout = new FrameLayout(context);
         setCustomView(frameLayout);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
@@ -146,7 +146,7 @@ public class ImportingAlert extends BottomSheet implements NotificationCenter.No
         frameLayout.addView(imageView, LayoutHelper.createFrame(160, 160, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 17, 79, 17, 0));
         imageView.getAnimatedDrawable().setOnFinishCallback(onFinishCallback, 178);
 
-        percentTextView = new TextView(context);
+        percentTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         percentTextView.setTypeface(AndroidUtilities.bold());
         percentTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24);
         percentTextView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
@@ -167,13 +167,13 @@ public class ImportingAlert extends BottomSheet implements NotificationCenter.No
         frameLayout.addView(cell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 50, Gravity.LEFT | Gravity.TOP, 34, 247, 34, 0));
 
         for (int a = 0; a < 2; a++) {
-            importCountTextView[a] = new TextView(context);
+            importCountTextView[a] = new org.telegram.ui.Components.TypefaceTextView(context);
             importCountTextView[a].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             importCountTextView[a].setTypeface(AndroidUtilities.bold());
             importCountTextView[a].setTextColor(getThemedColor(Theme.key_dialogTextBlack));
             frameLayout.addView(importCountTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 17, 340, 17, 0));
 
-            infoTextView[a] = new TextView(context);
+            infoTextView[a] = new org.telegram.ui.Components.TypefaceTextView(context);
             infoTextView[a].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             infoTextView[a].setTextColor(getThemedColor(Theme.key_dialogTextGray3));
             infoTextView[a].setGravity(Gravity.CENTER_HORIZONTAL);

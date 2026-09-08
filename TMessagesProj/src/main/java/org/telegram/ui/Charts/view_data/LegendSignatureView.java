@@ -90,10 +90,10 @@ public class LegendSignatureView extends FrameLayout {
         content = new LinearLayout(getContext());
         content.setOrientation(LinearLayout.VERTICAL);
 
-        time = new TextView(context);
+        time = new org.telegram.ui.Components.TypefaceTextView(context);
         time.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         time.setTypeface(AndroidUtilities.bold());
-        hourTime = new TextView(context);
+        hourTime = new org.telegram.ui.Components.TypefaceTextView(context);
         hourTime.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         hourTime.setTypeface(AndroidUtilities.bold());
 
@@ -308,14 +308,14 @@ public class LegendSignatureView extends FrameLayout {
             root.setPadding(AndroidUtilities.dp(4), AndroidUtilities.dp(2), AndroidUtilities.dp(4), AndroidUtilities.dp(2));
 
             if (showPercentage) {
-                root.addView(percentage = new TextView(getContext()));
+                root.addView(percentage = new org.telegram.ui.Components.TypefaceTextView(getContext()));
                 percentage.getLayoutParams().width = AndroidUtilities.dp(36);
                 percentage.setVisibility(GONE);
                 percentage.setTypeface(AndroidUtilities.bold());
                 percentage.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             }
 
-            root.addView(signature = new TextView(getContext()), LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 0, 20, 0));
+            root.addView(signature = new org.telegram.ui.Components.TypefaceTextView(getContext()), LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 0, 20, 0));
 //            signature.getLayoutParams().width = showPercentage ? AndroidUtilities.dp(80) : AndroidUtilities.dp(96);
             root.addView(value = new AnimatedEmojiSpan.TextViewEmojis(getContext()), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 

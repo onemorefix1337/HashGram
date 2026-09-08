@@ -93,7 +93,7 @@ public class AccountFrozenAlert {
         imageView.playAnimation();
         linearLayout.addView(imageView, LayoutHelper.createLinear(115, 115, Gravity.CENTER, 0, 0, 0, 9));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));

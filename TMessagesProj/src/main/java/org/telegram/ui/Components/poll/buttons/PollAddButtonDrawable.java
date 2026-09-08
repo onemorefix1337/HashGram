@@ -45,7 +45,7 @@ public class PollAddButtonDrawable extends PollButtonDrawableBase implements Fac
         super(resourcesProvider);
 
         this.addDrawable = context.getResources().getDrawable(R.drawable.outline_poll_add_24).mutate();
-        this.addAnOptionTextPaint = new TextPaint(Theme.chat_audioPerformerPaint);
+        this.addAnOptionTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Theme.chat_audioPerformerPaint);
 
         setSelectorsColor(Theme.getColor(Theme.key_listSelector, resourcesProvider));
         checkIconsAlpha();

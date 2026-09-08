@@ -269,7 +269,7 @@ public class GiftSheet extends BottomSheetWithRecyclerListView implements Notifi
 
         premiumHeaderView.addView(bottomView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP));
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -306,7 +306,7 @@ public class GiftSheet extends BottomSheetWithRecyclerListView implements Notifi
         starsHeaderView = new LinearLayout(context);
         starsHeaderView.setOrientation(LinearLayout.VERTICAL);
 
-        final TextView titleStarsView = new TextView(context);
+        final TextView titleStarsView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleStarsView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleStarsView.setTypeface(AndroidUtilities.bold());
         titleStarsView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -1117,14 +1117,14 @@ public class GiftSheet extends BottomSheetWithRecyclerListView implements Notifi
             pinView.setScaleY(0.3f);
             pinView.setVisibility(View.GONE);
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             titleView.setGravity(Gravity.CENTER);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             titleView.setTypeface(AndroidUtilities.bold());
             card.addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 0, 93 - 4, 0, 0));
 
-            subtitleView = new TextView(context);
+            subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             subtitleView.setGravity(Gravity.CENTER);
             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
@@ -1140,7 +1140,7 @@ public class GiftSheet extends BottomSheetWithRecyclerListView implements Notifi
                     );
                 }
             };
-            priceView = new TextView(context);
+            priceView = new org.telegram.ui.Components.TypefaceTextView(context);
             priceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             priceView.setTypeface(AndroidUtilities.bold());
             priceView.setPadding(dp(10), 0, dp(10), 0);
@@ -1156,7 +1156,7 @@ public class GiftSheet extends BottomSheetWithRecyclerListView implements Notifi
 
             priceBackground.setBackground(new StarsBackground(Theme.isCurrentThemeDark() ? 0x1EEBA52D : 0x40E8AB02));
 
-            starsPriceView = new TextView(context);
+            starsPriceView = new org.telegram.ui.Components.TypefaceTextView(context);
             starsPriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10.66f);
             starsPriceView.setGravity(Gravity.CENTER);
             starsPriceView.setTextColor(Theme.isCurrentThemeDark() ? 0xFFEBA52D : 0xFFD67722);
@@ -1191,7 +1191,7 @@ public class GiftSheet extends BottomSheetWithRecyclerListView implements Notifi
             tonOnlySaleView.setScaleType(ImageView.ScaleType.CENTER);
             card.addView(tonOnlySaleView, LayoutHelper.createFrame(20, 20, Gravity.TOP | Gravity.LEFT, 3, 3, 3, 3));
 
-            chanceTextView = new TextView(context);
+            chanceTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             chanceTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
             chanceTextView.setTypeface(AndroidUtilities.bold());
             chanceTextView.setPadding(dp(5), 0, dp(5), 0);

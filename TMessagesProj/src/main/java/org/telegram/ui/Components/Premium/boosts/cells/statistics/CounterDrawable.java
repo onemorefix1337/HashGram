@@ -22,8 +22,8 @@ import org.telegram.messenger.R;
 
 public class CounterDrawable extends Drawable {
 
-    private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint bgPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint bgPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private final RectF bgRoundRect = new RectF();
     private final Drawable icon;
     private float textWith;

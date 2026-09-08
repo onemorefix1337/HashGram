@@ -29,11 +29,11 @@ public class AlbumButton extends View {
     private final ImageReceiver imageReceiver = new ImageReceiver(this);
     private final CharSequence title, subtitle;
 
-    private final TextPaint namePaintLayout = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint namePaintLayout = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private StaticLayout nameLayout;
     private float nameLayoutWidth, nameLayoutLeft;
 
-    private final TextPaint countPaintLayout = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint countPaintLayout = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private StaticLayout countLayout;
     private float countLayoutWidth, countLayoutLeft;
 

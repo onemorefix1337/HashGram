@@ -217,7 +217,7 @@ public class GroupCallSheet {
         checkbox.setChecked(MessagesController.getGlobalMainSettings().getBoolean("callmiconstart", true), false);
         checkbox.setDrawBackgroundAsArc(10);
         checkboxLayout.addView(checkbox, LayoutHelper.createLinear(26, 26, Gravity.CENTER_VERTICAL, 0, 0, 0, 0));
-        final TextView checkboxTextView = new TextView(context);
+        final TextView checkboxTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         checkboxTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         checkboxTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         checkboxTextView.setText(getString(R.string.GroupCallLinkMicrophone));

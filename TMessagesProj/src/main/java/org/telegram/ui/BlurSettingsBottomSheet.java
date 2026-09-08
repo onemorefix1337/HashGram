@@ -43,7 +43,7 @@ public class BlurSettingsBottomSheet extends BottomSheet {
         LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-        TextView saturationTextView = new TextView(context);
+        TextView saturationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         saturationTextView.setText("Saturation " + (saturation * 5));
         saturationTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         saturationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -72,7 +72,7 @@ public class BlurSettingsBottomSheet extends BottomSheet {
         linearLayout.addView(seekBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 38, 0, 5, 4, 5, 0));
 
 
-        TextView alphaTextView = new TextView(context);
+        TextView alphaTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         alphaTextView.setText("Alpha " + blurAlpha);
         alphaTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         alphaTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -101,7 +101,7 @@ public class BlurSettingsBottomSheet extends BottomSheet {
 
 
 
-        TextView radiusTextView = new TextView(context);
+        TextView radiusTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         radiusTextView.setText("Blur Radius");
         radiusTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         radiusTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);

@@ -193,7 +193,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
 
     private RectF rect = new RectF();
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     private TLRPC.TL_exportedMessageLink exportedMessageLink;
     private boolean loadingLink;
@@ -1393,7 +1393,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
                 updateLinkTextView();
                 linkContainer.addView(linkTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 20, 1, Gravity.FILL_HORIZONTAL | Gravity.CENTER_VERTICAL, 16, 0, 16, 0));
 
-                linkCopyButton = new TextView(context);
+                linkCopyButton = new org.telegram.ui.Components.TypefaceTextView(context);
                 linkCopyButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 linkCopyButton.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
                 linkCopyButton.setText(LocaleController.getString(R.string.Copy).toUpperCase());
@@ -1442,7 +1442,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
                         imageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_share_icon), PorterDuff.Mode.SRC_IN));
                         sharesLayout.addView(imageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, Gravity.CENTER_VERTICAL));
 
-                        final TextView textView = new TextView(context);
+                        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                         textView.setTextColor(getThemedColor(Theme.key_share_icon));
                         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                         textView.setGravity(Gravity.CENTER);
@@ -1462,7 +1462,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
                 pickerBottomLayout = new FrameLayout(context);
                 pickerBottom.addView(pickerBottomLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL, -2, 0, -2, 0));
 
-                TextView pickerTextView = new TextView(context);
+                TextView pickerTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                 pickerTextView.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), 2, dp(22)));
                 pickerTextView.setTextColor(getThemedColor(darkTheme ? Theme.key_voipgroup_listeningText : Theme.key_dialogTextBlue2));
                 pickerTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -1511,7 +1511,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
                         imageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(darkTheme ? Theme.key_voipgroup_listeningText : Theme.key_dialogTextBlue2), PorterDuff.Mode.MULTIPLY));
                         sharesCountLayout.addView(imageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.CENTER_VERTICAL, 20, 0, 0, 0));
 
-                        TextView textView = new TextView(context);
+                        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                         textView.setText(String.format("%d", messageObject.messageOwner.forwards));
                         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                         textView.setTextColor(getThemedColor(darkTheme ? Theme.key_voipgroup_listeningText : Theme.key_dialogTextBlue2));
@@ -1782,7 +1782,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
             timestampCheckbox.setChecked(false, false);
             timestampCheckbox.setDrawBackgroundAsArc(10);
             timestampLayout.addView(timestampCheckbox, LayoutHelper.createLinear(26, 26, Gravity.CENTER_VERTICAL, 0, 0, 0, 0));
-            timestampTextView = new TextView(context);
+            timestampTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             timestampTextView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
             timestampTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             timestampTextView.setText(LocaleController.formatString(R.string.VideoShareAddTimestamp, AndroidUtilities.formatShortDuration(video_timestamp)));

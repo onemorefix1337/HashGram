@@ -62,7 +62,7 @@ public class DoubledLimitsBottomSheet extends BottomSheetWithRecyclerListView im
         clipToActionBar = true;
 
         titleLayout = new FrameLayout(getContext());
-        titleView = new TextView(getContext());
+        titleView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         titleView.setText(LocaleController.getString(R.string.DoubledLimits));
         titleView.setGravity(Gravity.CENTER);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -204,13 +204,13 @@ public class DoubledLimitsBottomSheet extends BottomSheetWithRecyclerListView im
             setOrientation(VERTICAL);
             setPadding(AndroidUtilities.dp(6), 0, AndroidUtilities.dp(6), 0);
 
-            title = new TextView(context);
+            title = new org.telegram.ui.Components.TypefaceTextView(context);
             title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             title.setTypeface(AndroidUtilities.bold());
             title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             addView(title, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 16, 0, 16, 0));
 
-            subtitle = new TextView(context);
+            subtitle = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitle.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
             subtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addView(subtitle, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 16, 1, 16, 0));
@@ -370,7 +370,7 @@ public class DoubledLimitsBottomSheet extends BottomSheetWithRecyclerListView im
                         titleImage.setImageDrawable(PremiumGradient.getInstance().createGradientDrawable(ContextCompat.getDrawable(context, R.drawable.other_2x_large)));
                         linearLayout.addView(titleImage, LayoutHelper.createFrame(40, 28, Gravity.CENTER_VERTICAL, 0, 0, 8, 0));
 
-                        TextView titleView = new TextView(context);
+                        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
                         titleView.setText(LocaleController.getString(R.string.DoubledLimits));
                         titleView.setGravity(Gravity.CENTER);
                         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);

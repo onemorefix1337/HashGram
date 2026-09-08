@@ -254,7 +254,7 @@ public class TodoItemMenu extends Dialog {
             .setPadding(dp(8))
             .setRadius(dp(16)));
 
-        hintTextView = new TextView(context);
+        hintTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         hintTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         hintTextView.setTextColor(tabsView.getColor());
         hintTextView.setText(LocaleController.getString(R.string.TodoMenuHint));

@@ -705,7 +705,7 @@ public class EmbedBottomSheet extends BottomSheet {
         TextView textView;
 
         if (hasDescription) {
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
             textView.setText(description);
@@ -716,7 +716,7 @@ public class EmbedBottomSheet extends BottomSheet {
             containerLayout.addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM, 0, 0, 0, 48 + 9 + 20));
         }
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextGray));
         textView.setText(title);
@@ -739,7 +739,7 @@ public class EmbedBottomSheet extends BottomSheet {
         linearLayout.setWeightSum(1);
         frameLayout.addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.RIGHT));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue4));
         textView.setGravity(Gravity.CENTER);
@@ -848,7 +848,7 @@ public class EmbedBottomSheet extends BottomSheet {
         imageButtonsContainer.addView(copyButton, LayoutHelper.createFrame(48, 48, Gravity.TOP | Gravity.LEFT));
         copyButton.setOnClickListener(copyClickListener);
 
-        copyTextButton = new TextView(context);
+        copyTextButton = new org.telegram.ui.Components.TypefaceTextView(context);
         copyTextButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         copyTextButton.setTextColor(Theme.getColor(Theme.key_dialogTextBlue4));
         copyTextButton.setGravity(Gravity.CENTER);
@@ -861,7 +861,7 @@ public class EmbedBottomSheet extends BottomSheet {
         linearLayout.addView(copyTextButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
         copyTextButton.setOnClickListener(copyClickListener);
 
-        TextView openInButton = new TextView(context);
+        TextView openInButton = new org.telegram.ui.Components.TypefaceTextView(context);
         openInButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         openInButton.setTextColor(Theme.getColor(Theme.key_dialogTextBlue4));
         openInButton.setGravity(Gravity.CENTER);

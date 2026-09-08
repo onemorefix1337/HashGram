@@ -110,7 +110,7 @@ public class CropRotationWheel extends FrameLayout {
         rotation90Button.setContentDescription(LocaleController.getString(R.string.AccDescrRotate));
         addView(rotation90Button, LayoutHelper.createFrame(70, 64, Gravity.RIGHT | Gravity.CENTER_VERTICAL));
 
-        degreesTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        degreesTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         degreesTextPaint.setColor(Color.WHITE);
         degreesTextPaint.setTextSize(AndroidUtilities.dp(14));
 

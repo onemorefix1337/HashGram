@@ -107,7 +107,7 @@ public class PreviewHighlightView extends FrameLayout {
         FrameLayout editLayout = new FrameLayout(context);
         editLayout.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(22), ColorUtils.setAlphaComponent(Color.BLACK, 122)));
 
-        TextView editText = new TextView(context);
+        TextView editText = new org.telegram.ui.Components.TypefaceTextView(context);
         editText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         editText.setTextColor(1694498815);
         editText.setText(LocaleController.getString(R.string.ReplyPrivately));

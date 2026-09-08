@@ -46,7 +46,7 @@ public class GalleryEmptyView extends LinearLayout {
             addView(stickerView, LayoutHelper.createLinear(110, 110, Gravity.CENTER_HORIZONTAL | Gravity.TOP));
         }
 
-        titleTextView = new TextView(context);
+        titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -54,7 +54,7 @@ public class GalleryEmptyView extends LinearLayout {
         titleTextView.setTypeface(AndroidUtilities.bold());
         addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 15, 0, 7));
 
-        subtitleTextView = new TextView(context);
+        subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleTextView.setTextColor(Theme.getColor(Theme.key_emptyListPlaceholder));
         subtitleTextView.setGravity(Gravity.CENTER_HORIZONTAL);

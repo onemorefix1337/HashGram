@@ -157,7 +157,7 @@ public class MessageSuggestionOfferSheet extends BottomSheet {
         headerLayout.setOrientation(LinearLayout.HORIZONTAL);
         layout.addView(headerLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 56, Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0, 0, 0));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
@@ -245,7 +245,7 @@ public class MessageSuggestionOfferSheet extends BottomSheet {
             dollarsEqView.setGravity(Gravity.RIGHT);
             starsCountEditOutline.addView(dollarsEqView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.RIGHT | Gravity.CENTER_VERTICAL, 0, 0, 16, 0));
 
-            starsCountEditHint = new TextView(context);
+            starsCountEditHint = new org.telegram.ui.Components.TypefaceTextView(context);
             starsCountEditHint.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             starsCountEditHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             bodyLayout.addView(starsCountEditHint, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 33, 4, 33, 0));
@@ -285,7 +285,7 @@ public class MessageSuggestionOfferSheet extends BottomSheet {
             iconArrow.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogEmptyImage, resourcesProvider), PorterDuff.Mode.SRC_IN));
             publishingTimeOutline.addView(iconArrow, LayoutHelper.createFrame(24, 24, Gravity.RIGHT | Gravity.CENTER_VERTICAL, 0, 0, 14, 0));
 
-            TextView publishingTimeHint = new TextView(context);
+            TextView publishingTimeHint = new org.telegram.ui.Components.TypefaceTextView(context);
             publishingTimeHint.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             publishingTimeHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
 

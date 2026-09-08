@@ -139,7 +139,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
 
         int additionalPadding;
         if (needAddButton) {
-            addButton = new TextView(context);
+            addButton = new org.telegram.ui.Components.TypefaceTextView(context);
             addButton.setGravity(Gravity.CENTER);
             addButton.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText, resourcesProvider));
             addButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -223,7 +223,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
         }
 
         if (admin) {
-            adminTextView = new TextView(context);
+            adminTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             ScaleStateListAnimator.apply(adminTextView, .05f, 1.2f);
             adminTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             adminTextView.setTextColor(Theme.getColor(Theme.key_profile_creatorIcon, resourcesProvider));

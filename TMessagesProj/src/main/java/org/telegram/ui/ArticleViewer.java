@@ -793,7 +793,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
 
             setWillNotDraw(false);
 
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(dp(16));
 
             sizeBar = new SeekBarView(context, getResourcesProvider());
@@ -870,7 +870,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             radioButton.setColor(getThemedColor(Theme.key_dialogRadioBackground), getThemedColor(Theme.key_dialogRadioBackgroundChecked));
             addView(radioButton, LayoutHelper.createFrame(22, 22, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, (LocaleController.isRTL ? 0 : 22), 13, (LocaleController.isRTL ? 22 : 0), 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setLines(1);
@@ -1629,7 +1629,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             });
             popupLayout.setShownFromBottom(false);
 
-            deleteView = new TextView(parentActivity);
+            deleteView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
             deleteView.setBackgroundDrawable(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), 2));
             deleteView.setGravity(Gravity.CENTER_VERTICAL);
             deleteView.setPadding(dp(20), 0, dp(20), 0);
@@ -2413,7 +2413,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
                         }
                     }
                 });
-                TextView textView = new TextView(parentActivity) {
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(parentActivity) {
                     @Override
                     protected void onDraw(Canvas canvas) {
                         canvas.drawLine(0, getMeasuredHeight() - 1, getMeasuredWidth(), getMeasuredHeight() - 1, dividerPaint);
@@ -2593,7 +2593,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
     public static final int TEXT_FLAG_SUP         = 1 << 8;
     public static final int TEXT_FLAG_WEBPAGE_URL = 1 << 9;
 
-    private static final TextPaint audioTimePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private static final TextPaint audioTimePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private static final Resources resources = new Resources(false);
 
     @Override
@@ -3349,7 +3349,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
         }
         if (currentMap == null) {
             if (resources.errorTextPaint == null) {
-                resources.errorTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                resources.errorTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 resources.errorTextPaint.setColor(0xffff0000);
             }
             resources.errorTextPaint.setTextSize(dp(14));
@@ -3357,7 +3357,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
         }
         TextPaint paint = currentMap.get(flags);
         if (paint == null) {
-            paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             if ((flags & TEXT_FLAG_MONO) != 0) {
                 paint.setTypeface(AndroidUtilities.getTypeface("fonts/rmono.ttf"));
             } else {
@@ -3453,14 +3453,14 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             TL_iv.pageBlockEmbedPost pageBlockEmbedPost = (TL_iv.pageBlockEmbedPost) parentBlock;
             if (pageBlockEmbedPost.author == plainText) {
                 if (embedPostAuthorPaint == null) {
-                    embedPostAuthorPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                    embedPostAuthorPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                     embedPostAuthorPaint.setColor(parent.getTextColor());
                 }
                 embedPostAuthorPaint.setTextSize(dp(15) + additionalSize);
                 paint = embedPostAuthorPaint;
             } else {
                 if (embedPostDatePaint == null) {
-                    embedPostDatePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                    embedPostDatePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                     embedPostDatePaint.setColor(parent.getGrayTextColor());
                 }
                 embedPostDatePaint.setTextSize(dp(14) + additionalSize);
@@ -3468,10 +3468,10 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             }
         } else if (parentBlock instanceof TL_iv.pageBlockChannel) {
             if (channelNamePaint == null) {
-                channelNamePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                channelNamePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 channelNamePaint.setTypeface(AndroidUtilities.bold());
 
-                channelNamePhotoPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                channelNamePhotoPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 channelNamePhotoPaint.setTypeface(AndroidUtilities.bold());
             }
             channelNamePaint.setColor(parent.getTextColor());
@@ -3485,7 +3485,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             TL_pageBlockRelatedArticlesChild pageBlockRelatedArticlesChild = (TL_pageBlockRelatedArticlesChild) parentBlock;
             if (plainText == pageBlockRelatedArticlesChild.parent.articles.get(pageBlockRelatedArticlesChild.num).title) {
                 if (relatedArticleHeaderPaint == null) {
-                    relatedArticleHeaderPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                    relatedArticleHeaderPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                     relatedArticleHeaderPaint.setTypeface(AndroidUtilities.bold());
                 }
                 relatedArticleHeaderPaint.setColor(parent.getTextColor());
@@ -3493,7 +3493,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
                 paint = relatedArticleHeaderPaint;
             } else {
                 if (relatedArticleTextPaint == null) {
-                    relatedArticleTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                    relatedArticleTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 }
                 relatedArticleTextPaint.setColor(parent.getGrayTextColor());
                 relatedArticleTextPaint.setTextSize(dp(14) + additionalSize);
@@ -3501,11 +3501,11 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             }
         } else if (isListItemBlock(parentBlock) && plainText != null) {
             if (listTextPointerPaint == null) {
-                listTextPointerPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                listTextPointerPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 listTextPointerPaint.setColor(parent.getTextColor());
             }
             if (listTextNumPaint == null) {
-                listTextNumPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                listTextNumPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 listTextNumPaint.setColor(parent.getTextColor());
             }
             listTextPointerPaint.setTextSize(dp(19) + additionalSize);
@@ -7124,7 +7124,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
                 }
                 case 100:
                 default: {
-                    TextView textView = new TextView(context);
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     textView.setBackgroundColor(0xffff0000);
                     textView.setTextColor(0xff000000);
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -13209,7 +13209,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             backgroundPaint = new Paint();
             currentType = type;
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setText(LocaleController.getString(R.string.ChannelJoin));
@@ -14274,14 +14274,14 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             this.web = web;
             setTag(90);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setText(LocaleController.getString(web ? R.string.PreviewFeedbackAuto : R.string.PreviewFeedback2));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             textView.setGravity(Gravity.CENTER);
             textView.setPadding(dp(18), 0, dp(18), 0);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 34, Gravity.LEFT | Gravity.TOP, 0, 10, 0, 0));
 
-            viewsTextView = new TextView(context);
+            viewsTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             viewsTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             viewsTextView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
             viewsTextView.setPadding(dp(18), 0, dp(18), 0);
@@ -16377,20 +16377,20 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
             imageView = new BackupImageView(context);
             layout.addView(imageView, LayoutHelper.createLinear(100, 100));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19);
             titleView.setTypeface(AndroidUtilities.bold());
             titleView.setTextColor(0xFFFFFFFF);
             layout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT, 0, 4, 0, 2));
 
-            descriptionView = new TextView(context);
+            descriptionView = new org.telegram.ui.Components.TypefaceTextView(context);
             descriptionView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,  15);
             descriptionView.setTextColor(0xFFFFFFFF);
             descriptionView.setSingleLine(false);
             descriptionView.setMaxLines(3);
             layout.addView(descriptionView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT, 0, 0, 0, 1));
 
-            codeView = new TextView(context);
+            codeView = new org.telegram.ui.Components.TypefaceTextView(context);
             codeView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,  12);
             codeView.setTextColor(0xFFFFFFFF);
             codeView.setAlpha(.4f);

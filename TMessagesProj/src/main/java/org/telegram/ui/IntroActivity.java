@@ -333,7 +333,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
         });
 
         startMessagingButtonBackground = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, null);
-        startMessagingButton = new TextView(context) {
+        startMessagingButton = new org.telegram.ui.Components.TypefaceTextView(context) {
             private final CellFlickerDrawable cellFlickerDrawable = new CellFlickerDrawable(); {
                 cellFlickerDrawable.drawFrame = false;
                 cellFlickerDrawable.repeatProgress = 2f;
@@ -391,7 +391,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
         bottomPages = new BottomPagesView(context, viewPager, 6);
         frameContainerView.addView(bottomPages, LayoutHelper.createFrame(66, 5, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, ICON_HEIGHT_DP + 200, 0, 0));
 
-        switchLanguageTextView = new TextView(context);
+        switchLanguageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         switchLanguageTextView.setGravity(Gravity.CENTER);
         switchLanguageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         frameContainerView.addView(switchLanguageTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 30, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 20));
@@ -565,9 +565,9 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
         @NonNull
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            TextView headerTextView = new TextView(container.getContext());
+            TextView headerTextView = new org.telegram.ui.Components.TypefaceTextView(container.getContext());
             headerTextView.setTag(pagerHeaderTag);
-            TextView messageTextView = new TextView(container.getContext());
+            TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(container.getContext());
             messageTextView.setTag(pagerMessageTag);
 
             FrameLayout frameLayout = new FrameLayout(container.getContext()) {

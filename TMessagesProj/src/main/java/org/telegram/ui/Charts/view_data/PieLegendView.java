@@ -20,9 +20,9 @@ public class PieLegendView extends LegendSignatureView {
         super(context);
         LinearLayout root = new LinearLayout(getContext());
         root.setPadding(AndroidUtilities.dp(4), AndroidUtilities.dp(2), AndroidUtilities.dp(4), AndroidUtilities.dp(2));
-        root.addView(signature = new TextView(getContext()));
+        root.addView(signature = new org.telegram.ui.Components.TypefaceTextView(getContext()));
         signature.getLayoutParams().width = AndroidUtilities.dp(96);
-        root.addView(value = new TextView(getContext()));
+        root.addView(value = new org.telegram.ui.Components.TypefaceTextView(getContext()));
         addView(root);
         value.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
 

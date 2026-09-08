@@ -609,7 +609,7 @@ public class SelectChatUserSheet extends BottomSheetWithRecyclerListView {
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
                     builder.setView(linearLayout);
 
-                    TextView messageTextView = new TextView(context);
+                    TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -629,7 +629,7 @@ public class SelectChatUserSheet extends BottomSheetWithRecyclerListView {
                     dotImageView.setPadding(LocaleController.isRTL ? dp(11) : 0, dp(9), LocaleController.isRTL ? 0 : dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(context);
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -651,7 +651,7 @@ public class SelectChatUserSheet extends BottomSheetWithRecyclerListView {
                     dotImageView.setPadding(LocaleController.isRTL ? dp(11) : 0, dp(9), LocaleController.isRTL ? 0 : dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(context);
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -676,7 +676,7 @@ public class SelectChatUserSheet extends BottomSheetWithRecyclerListView {
                             button.setLoading(false);
                         });
                     } else {
-                        messageTextView = new TextView(context);
+                        messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                         messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                         messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);

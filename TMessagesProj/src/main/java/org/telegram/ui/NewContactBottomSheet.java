@@ -234,7 +234,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         contentLayout.addView(underPhoneTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 12, 0, 12, 0));
 
         FrameLayout countryContainer = new FrameLayout(context);
-        countryFlag = new TextView(context) {
+        countryFlag = new org.telegram.ui.Components.TypefaceTextView(context) {
 
             final NotificationCenter.NotificationCenterDelegate delegate = (id, account, args) -> invalidate();
 
@@ -271,7 +271,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         countryContainer.addView(countryFlag, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL));
         linearLayout.addView(countryContainer, LayoutHelper.createLinear(42, LayoutHelper.MATCH_PARENT));
 
-        plusTextView = new TextView(context);
+        plusTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         plusTextView.setText("+");
         plusTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         plusTextView.setFocusable(false);
@@ -588,7 +588,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
         checkBox.setChecked(false, false);
         checkBox.setDrawBackgroundAsArc(10);
 
-        checkTextView = new TextView(context);
+        checkTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         checkTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         checkTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         checkTextView.setText(getString(R.string.AddContactSync));
@@ -787,7 +787,7 @@ public class NewContactBottomSheet extends BottomSheet implements AdapterView.On
 
 
         doneButtonContainer = new FrameLayout(getContext());
-        doneButton = new TextView(context);
+        doneButton = new org.telegram.ui.Components.TypefaceTextView(context);
         doneButton.setEllipsize(TextUtils.TruncateAt.END);
         doneButton.setGravity(Gravity.CENTER);
         doneButton.setLines(1);

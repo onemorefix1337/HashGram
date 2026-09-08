@@ -57,7 +57,7 @@ public class ThemeCell extends FrameLayout {
         paintStroke.setStyle(Paint.Style.STROKE);
         paintStroke.setStrokeWidth(AndroidUtilities.dp(2));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setLines(1);
         textView.setMaxLines(1);

@@ -355,7 +355,7 @@ public class StarGiftPreviewSheet extends BottomSheetWithRecyclerListView {
         ScaleStateListAnimator.apply(headerPlay);
         headerView.addView(headerPlay, LayoutHelper.createFrame(32, 32, Gravity.TOP | Gravity.RIGHT, 0, 14, 12, 0));
 
-        giftNameTextView = new TextView(context);
+        giftNameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         giftNameTextView.setTypeface(AndroidUtilities.bold());
         giftNameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 21);
         giftNameTextView.setText(collectionTitle);
@@ -364,7 +364,7 @@ public class StarGiftPreviewSheet extends BottomSheetWithRecyclerListView {
         headerView.addView(giftNameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 16, 0, 16, 102));
 
 
-        giftStatusTextView = new TextView(context);
+        giftStatusTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         giftStatusTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         giftStatusTextView.setText(getString(R.string.Gift2PreviewRandomTraits));
         giftStatusTextView.setGravity(Gravity.CENTER);
@@ -613,7 +613,7 @@ public class StarGiftPreviewSheet extends BottomSheetWithRecyclerListView {
             imageView.getImageReceiver().setAutoRepeat(0);
             addView(imageView, LayoutHelper.createFrame(80, 80, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 17, 0, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             textView.setGravity(Gravity.CENTER);
@@ -621,7 +621,7 @@ public class StarGiftPreviewSheet extends BottomSheetWithRecyclerListView {
             textView.setTextColor(Color.WHITE);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.NO_GRAVITY, 12, 106, 12, 14));
 
-            percentageView = new TextView(context);
+            percentageView = new org.telegram.ui.Components.TypefaceTextView(context);
             percentageView.setClickable(false);
             percentageView.setTypeface(AndroidUtilities.bold());
             percentageView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
@@ -909,7 +909,7 @@ public class StarGiftPreviewSheet extends BottomSheetWithRecyclerListView {
 
             addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 16, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 4, 6, 4, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             textView.setTextColor(0x8FFFFFFF);
             textView.setGravity(Gravity.CENTER);

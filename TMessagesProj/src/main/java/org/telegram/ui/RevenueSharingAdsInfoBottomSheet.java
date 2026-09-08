@@ -100,7 +100,7 @@ public class RevenueSharingAdsInfoBottomSheet extends BottomSheetWithRecyclerLis
 
         linearLayout.addView(topView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 100, 0, 0, 0, 0));
 
-        TextView topTitle = new TextView(context);
+        TextView topTitle = new org.telegram.ui.Components.TypefaceTextView(context);
         topTitle.setText(LocaleController.getString(R.string.AboutRevenueSharingAds));
         topTitle.setTypeface(AndroidUtilities.bold());
         topTitle.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
@@ -108,7 +108,7 @@ public class RevenueSharingAdsInfoBottomSheet extends BottomSheetWithRecyclerLis
         topTitle.setGravity(Gravity.CENTER_HORIZONTAL);
         linearLayout.addView(topTitle, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 22, 14, 22, 0));
 
-        TextView topSubtitle = new TextView(context);
+        TextView topSubtitle = new org.telegram.ui.Components.TypefaceTextView(context);
         topSubtitle.setText(LocaleController.getString(R.string.RevenueSharingAdsAlertSubtitle));
         topSubtitle.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         topSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -139,7 +139,7 @@ public class RevenueSharingAdsInfoBottomSheet extends BottomSheetWithRecyclerLis
         dividerLayoutParams.setMargins(AndroidUtilities.dp(24), AndroidUtilities.dp(20), AndroidUtilities.dp(24), AndroidUtilities.dp(20));
         linearLayout.addView(divider, dividerLayoutParams);
 
-        TextView textViewDescription4 = new TextView(context);
+        TextView textViewDescription4 = new org.telegram.ui.Components.TypefaceTextView(context);
         textViewDescription4.setText(LocaleController.getString(bot ? R.string.RevenueSharingAdsInfo4TitleBot : R.string.RevenueSharingAdsInfo4Title));
         textViewDescription4.setTypeface(AndroidUtilities.bold());
         textViewDescription4.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
@@ -170,7 +170,7 @@ public class RevenueSharingAdsInfoBottomSheet extends BottomSheetWithRecyclerLis
         textViewSubtitle4.setLineSpacing(AndroidUtilities.dp(2), 1f);
         linearLayout.addView(textViewSubtitle4, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 26, 8, 26, 0));
 
-        TextView buttonTextView = new TextView(context);
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         buttonTextView.setLines(1);
         buttonTextView.setSingleLine(true);
         buttonTextView.setGravity(Gravity.CENTER);
@@ -216,7 +216,7 @@ public class RevenueSharingAdsInfoBottomSheet extends BottomSheetWithRecyclerLis
             ivIcon.setImageDrawable(iconDrawable);
             addView(ivIcon, LayoutHelper.createFrame(ICON_SIZE, ICON_SIZE, isRtl ? Gravity.RIGHT : Gravity.LEFT, isRtl ? 0 : ITEM_HORIZONTAL_PADDING, 6, isRtl ? ITEM_HORIZONTAL_PADDING : 0, 0));
 
-            TextView tvTitle = new TextView(getContext());
+            TextView tvTitle = new org.telegram.ui.Components.TypefaceTextView(getContext());
             tvTitle.setText(header);
             tvTitle.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

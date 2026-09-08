@@ -2570,7 +2570,7 @@ public class RichEditor extends BaseFragment implements NotificationCenter.Notif
         topIcon.setBackground(Theme.createCircleDrawable(dp(80), Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider)));
         layout.addView(topIcon, LayoutHelper.createLinear(80, 80, Gravity.CENTER_HORIZONTAL, 0, 18, 0, 0));
 
-        final TextView titleTextView = new TextView(context);
+        final TextView titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setText(getString(R.string.ArticleConversionTitle));
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleTextView.setTypeface(AndroidUtilities.bold());
@@ -2578,7 +2578,7 @@ public class RichEditor extends BaseFragment implements NotificationCenter.Notif
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         layout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 25, 16, 25, 0));
 
-        final TextView textView = new TextView(context);
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setText(AndroidUtilities.replaceTags(getString(R.string.ArticleConversionText)));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER);

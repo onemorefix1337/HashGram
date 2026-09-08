@@ -1116,7 +1116,7 @@ public class ThemePreviewActivity extends BaseFragment implements DownloadContro
                 actionBar2.addView(dropDownContainer, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, AndroidUtilities.isTablet() ? 64 : 56, 0, 40, 0));
                 dropDownContainer.setOnClickListener(view -> dropDownContainer.toggleSubMenu());
 
-                dropDown = new TextView(context);
+                dropDown = new org.telegram.ui.Components.TypefaceTextView(context);
                 dropDown.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
                 dropDown.setGravity(Gravity.LEFT);
                 dropDown.setSingleLine(true);
@@ -1548,7 +1548,7 @@ public class ThemePreviewActivity extends BaseFragment implements DownloadContro
             sheetDrawable.getPadding(paddings);
             sheetDrawable.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_windowBackgroundWhite), PorterDuff.Mode.MULTIPLY));
 
-            TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(dp(14));
             textPaint.setTypeface(AndroidUtilities.bold());
             if (!(currentWallpaper instanceof WallpapersListActivity.EmojiWallpaper)) {
@@ -1909,7 +1909,7 @@ public class ThemePreviewActivity extends BaseFragment implements DownloadContro
                         patternsButtonsContainer[a].setClickable(true);
                         patternLayout[a].addView(patternsButtonsContainer[a], LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 51, Gravity.BOTTOM));
 
-                        patternsCancelButton[a] = new TextView(context);
+                        patternsCancelButton[a] = new org.telegram.ui.Components.TypefaceTextView(context);
                         patternsCancelButton[a].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                         patternsCancelButton[a].setTypeface(AndroidUtilities.bold());
                         patternsCancelButton[a].setTextColor(getThemedColor(Theme.key_chat_fieldOverlayText));
@@ -1958,7 +1958,7 @@ public class ThemePreviewActivity extends BaseFragment implements DownloadContro
                             }
                         });
 
-                        patternsSaveButton[a] = new TextView(context);
+                        patternsSaveButton[a] = new org.telegram.ui.Components.TypefaceTextView(context);
                         patternsSaveButton[a].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                         patternsSaveButton[a].setTypeface(AndroidUtilities.bold());
                         patternsSaveButton[a].setTextColor(getThemedColor(Theme.key_chat_fieldOverlayText));
@@ -1980,7 +1980,7 @@ public class ThemePreviewActivity extends BaseFragment implements DownloadContro
                     }
 
                     if (a == 1) {
-                        patternTitleView = new TextView(context);
+                        patternTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
                         patternTitleView.setLines(1);
                         patternTitleView.setSingleLine(true);
                         patternTitleView.setText(LocaleController.getString(R.string.BackgroundChoosePattern));
@@ -2292,7 +2292,7 @@ public class ThemePreviewActivity extends BaseFragment implements DownloadContro
             };
             saveButtonsContainer.addView(dotsContainer, LayoutHelper.createFrame(22, 8, Gravity.CENTER));
 
-            cancelButton = new TextView(context);
+            cancelButton = new org.telegram.ui.Components.TypefaceTextView(context);
             cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             cancelButton.setTextColor(getButtonsColor(Theme.key_chat_fieldOverlayText));
             cancelButton.setGravity(Gravity.CENTER);
@@ -2303,7 +2303,7 @@ public class ThemePreviewActivity extends BaseFragment implements DownloadContro
             saveButtonsContainer.addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
             cancelButton.setOnClickListener(v -> cancelThemeApply(false));
 
-            doneButton = new TextView(context);
+            doneButton = new org.telegram.ui.Components.TypefaceTextView(context);
             doneButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             doneButton.setTextColor(getButtonsColor(Theme.key_chat_fieldOverlayText));
             doneButton.setGravity(Gravity.CENTER);
@@ -6087,9 +6087,9 @@ public class ThemePreviewActivity extends BaseFragment implements DownloadContro
         public final Paint chat_actionBackgroundSelectedPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
         public final Paint chat_actionBackgroundGradientDarkenPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
 
-        public final TextPaint chat_actionTextPaint = new TextPaint();
-        public final TextPaint chat_actionTextPaint2 = new TextPaint();
-        public final TextPaint chat_botButtonPaint = new TextPaint();
+        public final TextPaint chat_actionTextPaint = new org.telegram.ui.Components.TypefaceTextPaint();
+        public final TextPaint chat_actionTextPaint2 = new org.telegram.ui.Components.TypefaceTextPaint();
+        public final TextPaint chat_botButtonPaint = new org.telegram.ui.Components.TypefaceTextPaint();
 
         private Bitmap serviceBitmap;
         public BitmapShader serviceBitmapShader;

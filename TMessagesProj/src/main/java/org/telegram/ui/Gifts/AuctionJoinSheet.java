@@ -147,7 +147,7 @@ public class AuctionJoinSheet extends BottomSheetWithRecyclerListView implements
 
         headerContainer.addView(giftCell, LayoutHelper.createFrame(130, 130, Gravity.CENTER, 0, 18, 0, 14));
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setGravity(Gravity.CENTER);
         titleView.setText(title);
@@ -368,7 +368,7 @@ public class AuctionJoinSheet extends BottomSheetWithRecyclerListView implements
 
             headerContainer.addView(topView, 0, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 288, Gravity.TOP));
 
-            headerStatus = new TextView(context);
+            headerStatus = new org.telegram.ui.Components.TypefaceTextView(context);
             headerStatus.setGravity(Gravity.CENTER);
             headerStatus.setTypeface(AndroidUtilities.bold());
             headerStatus.setTextColor(Color.WHITE);
@@ -386,7 +386,7 @@ public class AuctionJoinSheet extends BottomSheetWithRecyclerListView implements
             headerStatus.setPadding(dp(12), 0, dp(12), 0);
             headerContainer.addView(headerStatus, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 26, Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 16, 0, 16, 77));
 
-            TextView giftNameTextView = new TextView(context);
+            TextView giftNameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             giftNameTextView.setTypeface(AndroidUtilities.bold());
             giftNameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 21);
             giftNameTextView.setText(title);
@@ -395,7 +395,7 @@ public class AuctionJoinSheet extends BottomSheetWithRecyclerListView implements
             headerContainer.addView(giftNameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 16, 0, 16, 40));
 
 
-            TextView giftStatusTextView = new TextView(context);
+            TextView giftStatusTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             giftStatusTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             giftStatusTextView.setText(replaceArrows(getString(R.string.Gift2AuctionLearnMore2), false, dp(8f / 3f), dp(1)));
             giftStatusTextView.setPadding(dp(8), dp(8), dp(8), dp(8));
@@ -565,7 +565,7 @@ public class AuctionJoinSheet extends BottomSheetWithRecyclerListView implements
 
         linearLayout.addView(backupImageView, LayoutHelper.createLinear(80, 80, Gravity.CENTER, 0, 21, 0, 16));
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setGravity(Gravity.CENTER);
         titleView.setText(getString(R.string.GiftAuctionInfoHeader));
@@ -573,7 +573,7 @@ public class AuctionJoinSheet extends BottomSheetWithRecyclerListView implements
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         linearLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 20, 0, 20, 6));
 
-        final TextView titleView2 = new TextView(context);
+        final TextView titleView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView2.setGravity(Gravity.CENTER);
         titleView2.setText(getString(R.string.GiftAuctionInfoText));
         titleView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -714,7 +714,7 @@ public class AuctionJoinSheet extends BottomSheetWithRecyclerListView implements
         topView.setOrientation(LinearLayout.VERTICAL);
         topView.addView(new StarGiftSheet.UserToUserTransferTopView(context, fromObj, toObj), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 0, -4, 0, 0));
         {
-            TextView titleTextView = new TextView(context);
+            TextView titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             NotificationCenter.listenEmojiLoading(titleTextView);
             titleTextView.setText(getString(R.string.Gift2AuctionsChangeRecipient));
             titleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -724,7 +724,7 @@ public class AuctionJoinSheet extends BottomSheetWithRecyclerListView implements
             topView.addView(titleTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 24, 19, 24, 2));
         }
         {
-            final TextView textView = new TextView(context);
+            final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setText(AndroidUtilities.replaceTags(

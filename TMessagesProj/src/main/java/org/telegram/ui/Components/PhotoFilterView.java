@@ -503,7 +503,7 @@ public class PhotoFilterView extends FrameLayout implements FilterShaders.Filter
         frameLayout.setBackgroundColor(0xff000000);
         toolsView.addView(frameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.LEFT));
 
-        cancelTextView = new TextView(context);
+        cancelTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         cancelTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         cancelTextView.setTextColor(0xffffffff);
         cancelTextView.setGravity(Gravity.CENTER);
@@ -513,7 +513,7 @@ public class PhotoFilterView extends FrameLayout implements FilterShaders.Filter
         cancelTextView.setTypeface(AndroidUtilities.bold());
         frameLayout.addView(cancelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
-        doneTextView = new TextView(context);
+        doneTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         doneTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         doneTextView.setTextColor(getThemedColor(Theme.key_chat_editMediaButton));
         doneTextView.setGravity(Gravity.CENTER);
@@ -594,7 +594,7 @@ public class PhotoFilterView extends FrameLayout implements FilterShaders.Filter
             curveRadioButton[a].setSize(AndroidUtilities.dp(20));
             frameLayout1.addView(curveRadioButton[a], LayoutHelper.createFrame(30, 30, Gravity.TOP | Gravity.CENTER_HORIZONTAL));
 
-            TextView curveTextView = new TextView(context);
+            TextView curveTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             curveTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             curveTextView.setGravity(Gravity.CENTER_VERTICAL);
             if (a == 0) {
@@ -635,7 +635,7 @@ public class PhotoFilterView extends FrameLayout implements FilterShaders.Filter
         blurLayout.setVisibility(INVISIBLE);
         toolsView.addView(blurLayout, LayoutHelper.createFrame(280, 60, Gravity.CENTER_HORIZONTAL, 0, 40 + (!ownLayout ? 40 : 0), 0, 0));
 
-        blurOffButton = new TextView(context);
+        blurOffButton = new org.telegram.ui.Components.TypefaceTextView(context);
         blurOffButton.setCompoundDrawablePadding(AndroidUtilities.dp(2));
         blurOffButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         blurOffButton.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -650,7 +650,7 @@ public class PhotoFilterView extends FrameLayout implements FilterShaders.Filter
             }
         });
 
-        blurRadialButton = new TextView(context);
+        blurRadialButton = new org.telegram.ui.Components.TypefaceTextView(context);
         blurRadialButton.setCompoundDrawablePadding(AndroidUtilities.dp(2));
         blurRadialButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         blurRadialButton.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -666,7 +666,7 @@ public class PhotoFilterView extends FrameLayout implements FilterShaders.Filter
             }
         });
 
-        blurLinearButton = new TextView(context);
+        blurLinearButton = new org.telegram.ui.Components.TypefaceTextView(context);
         blurLinearButton.setCompoundDrawablePadding(AndroidUtilities.dp(2));
         blurLinearButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         blurLinearButton.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -1354,8 +1354,8 @@ public class PhotoFilterView extends FrameLayout implements FilterShaders.Filter
 
     public static class EnhanceView extends View {
 
-        private TextPaint topTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        private TextPaint bottomTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private TextPaint topTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        private TextPaint bottomTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
         private StaticLayout topText;
         private float topTextWidth, topTextLeft;

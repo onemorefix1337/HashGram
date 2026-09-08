@@ -77,7 +77,7 @@ public class ReactionsLayoutInBubble {
     private static final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private static final Paint tagPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private static final Paint cutTagPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private static final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private static final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     public static void initPaints(Theme.ResourcesProvider resourcesProvider) {
         paint.setColor(Theme.getColor(Theme.key_chat_inLoader, resourcesProvider));
@@ -1809,7 +1809,7 @@ public class ReactionsLayoutInBubble {
         }
 
         public CharSequence toCharSequence(int textSizeDp) {
-            TextPaint textPaint = new TextPaint();
+            TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint();
             textPaint.setTextSize(AndroidUtilities.dp(textSizeDp));
             if (!TextUtils.isEmpty(emojicon)) {
                 CharSequence string = emojicon;

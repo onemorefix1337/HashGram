@@ -270,7 +270,7 @@ public class ChatAttachAlertLocationLayout extends ChatAttachAlert.AttachAlertLa
                 }
             });
 
-            TextView nameTextView = new TextView(context);
+            TextView nameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             nameTextView.setMaxLines(1);
             nameTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -280,7 +280,7 @@ public class ChatAttachAlertLocationLayout extends ChatAttachAlert.AttachAlertLa
             nameTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
             lastPressedMarkerView.addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT), 18, 10, 18, 0));
 
-            TextView addressTextView = new TextView(context);
+            TextView addressTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             addressTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addressTextView.setMaxLines(1);
             addressTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -621,7 +621,7 @@ public class ChatAttachAlertLocationLayout extends ChatAttachAlert.AttachAlertLa
         emptyImageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_dialogEmptyImage), PorterDuff.Mode.MULTIPLY));
         emptyView.addView(emptyImageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
-        emptyTitleTextView = new TextView(context);
+        emptyTitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyTitleTextView.setTextColor(getThemedColor(Theme.key_dialogEmptyText));
         emptyTitleTextView.setGravity(Gravity.CENTER);
         emptyTitleTextView.setTypeface(AndroidUtilities.bold());
@@ -629,7 +629,7 @@ public class ChatAttachAlertLocationLayout extends ChatAttachAlert.AttachAlertLa
         emptyTitleTextView.setText(LocaleController.getString(R.string.NoPlacesFound));
         emptyView.addView(emptyTitleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 11, 0, 0));
 
-        emptySubtitleTextView = new TextView(context);
+        emptySubtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptySubtitleTextView.setTextColor(getThemedColor(Theme.key_dialogEmptyText));
         emptySubtitleTextView.setGravity(Gravity.CENTER);
         emptySubtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);

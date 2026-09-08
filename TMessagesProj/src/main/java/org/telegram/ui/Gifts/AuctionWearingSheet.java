@@ -207,7 +207,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
         }
         avatarImageView.setForUserOrChat(userOrChat, avatarDrawable);
 
-        giftNameTextView = new TextView(context);
+        giftNameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         giftNameTextView.setTypeface(AndroidUtilities.bold());
         giftNameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 21);
         giftNameTextView.setText(DialogObject.getShortName(dialogId != 0 ? dialogId : UserConfig.getInstance(currentAccount).getClientUserId()));
@@ -219,7 +219,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
         giftNameTextView.setMaxLines(1);
         headerContainer.addView(giftNameTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 16, 0, 16, 40));
 
-        TextView giftStatusTextView = new TextView(context);
+        TextView giftStatusTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         giftStatusTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         giftStatusTextView.setPadding(dp(8), dp(8), dp(8), dp(8));
         giftStatusTextView.setGravity(Gravity.CENTER);
@@ -329,7 +329,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
         horizontalLayout.addView(giftCell2, LayoutHelper.createLinear(116, 116, 0f));
 
 
-        TextView hint1 = new TextView(context);
+        TextView hint1 = new org.telegram.ui.Components.TypefaceTextView(context);
         hint1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         hint1.setGravity(Gravity.CENTER);
         hint1.setText(getString(R.string.Gift2WearingHint));
@@ -341,7 +341,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
             limitContainer = new FrameLayout(context);
             limitContainer.setBackground(Theme.createRoundRectDrawable(dp(14), ColorUtils.blendARGB(Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider), Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider), 0.2f)));
 
-            TextView leftTextView = new TextView(context);
+            TextView leftTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             leftTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             leftTextView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
             leftTextView.setTypeface(AndroidUtilities.bold());
@@ -349,7 +349,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
             leftTextView.setText(LocaleController.formatPluralStringComma("Gift2AvailabilityLeft", starGift.availability_remains));
             limitContainer.addView(leftTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT, 11, 0, 11, 0));
 
-            TextView soldTextView = new TextView(context);
+            TextView soldTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             soldTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             soldTextView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
             soldTextView.setTypeface(AndroidUtilities.bold());
@@ -379,7 +379,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
             limitContainer.addView(valueContainerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL));
 
 
-            TextView leftTextView2 = new TextView(context);
+            TextView leftTextView2 = new org.telegram.ui.Components.TypefaceTextView(context);
             leftTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             leftTextView2.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
             leftTextView2.setTypeface(AndroidUtilities.bold());
@@ -387,7 +387,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
             leftTextView2.setText(LocaleController.formatPluralStringComma("Gift2AvailabilityLeft", starGift.availability_remains));
             valueContainerView.addView(leftTextView2, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT, 11, 0, 11, 0));
 
-            TextView soldTextView2 = new TextView(context);
+            TextView soldTextView2 = new org.telegram.ui.Components.TypefaceTextView(context);
             soldTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             soldTextView2.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
             soldTextView2.setTypeface(AndroidUtilities.bold());
@@ -505,7 +505,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
             return;
         }
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setGravity(Gravity.CENTER);
         titleView.setText(formatString(R.string.GiftAuctionWearInfoHeader, starGift.title));
@@ -513,7 +513,7 @@ public class AuctionWearingSheet extends BottomSheetWithRecyclerListView impleme
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         linearLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 20, 14, 20, 6));
 
-        final TextView titleView2 = new TextView(context);
+        final TextView titleView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView2.setGravity(Gravity.CENTER);
         titleView2.setText(getString(R.string.GiftAuctionWearInfoText));
         titleView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

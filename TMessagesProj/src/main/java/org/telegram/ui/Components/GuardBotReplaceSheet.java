@@ -70,7 +70,7 @@ public class GuardBotReplaceSheet extends BottomSheetWithRecyclerListView {
         avatarsRow.addView(avatarLine, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
         contentLayout.addView(avatarsRow, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 23, 0, 19));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setGravity(Gravity.CENTER);
         titleView.setText(getString(R.string.GuardBotReplaceTitle));
@@ -81,7 +81,7 @@ public class GuardBotReplaceSheet extends BottomSheetWithRecyclerListView {
         final String currentName = DialogObject.getShortName(currentBot);
         final String newName     = DialogObject.getShortName(newBot);
 
-        TextView subtitleView = new TextView(context);
+        TextView subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setGravity(Gravity.CENTER);
         subtitleView.setText(buildSubtitle(currentName, newName));
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

@@ -74,7 +74,7 @@ public class StickerTabView extends FrameLayout {
             visibleView = imageView;
         }
 
-        textView = new TextView(context) {
+        textView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public void setText(CharSequence text, BufferType type) {
                 super.setText(text, type);

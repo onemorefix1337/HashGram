@@ -93,7 +93,7 @@ public class CommunityPendingRequestCell extends FrameLayout implements Theme.Co
         span = new ColoredImageSpan(R.drawable.mini_user_channels_10);
         span.setTranslateX(dp(2));
 
-        membersCountView = new TextView(context);
+        membersCountView = new org.telegram.ui.Components.TypefaceTextView(context);
         membersCountView.setTypeface(AndroidUtilities.bold());
         membersCountView.setVisibility(GONE);
         membersCountView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 9.33f);
@@ -113,7 +113,7 @@ public class CommunityPendingRequestCell extends FrameLayout implements Theme.Co
         rightBlock.setOrientation(LinearLayout.VERTICAL);
         rightBlock.setClipChildren(false);
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         titleView.setSingleLine(true);
@@ -132,7 +132,7 @@ public class CommunityPendingRequestCell extends FrameLayout implements Theme.Co
         });
         addView(requesterAvatarView, LayoutHelper.createFrame(16, 16, Gravity.LEFT | Gravity.TOP, 75, 35, 0, 0));
 
-        subtitleView = new TextView(context);
+        subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         subtitleView.setSingleLine(true);
         subtitleView.setEllipsize(TextUtils.TruncateAt.END);
@@ -143,7 +143,7 @@ public class CommunityPendingRequestCell extends FrameLayout implements Theme.Co
         });
         rightBlock.addView(subtitleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 20, 0, 0, 1.33f));
 
-        hiddenLabelView = new TextView(context);
+        hiddenLabelView = new org.telegram.ui.Components.TypefaceTextView(context);
         hiddenLabelView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         hiddenLabelView.setBackground(Theme.createRoundRectDrawable(dp(12), Theme.multAlpha(
                 Theme.getColor(Theme.key_windowBackgroundWhiteGrayText6, resourcesProvider), 0.14f)));

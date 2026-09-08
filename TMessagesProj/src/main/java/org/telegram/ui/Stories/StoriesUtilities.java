@@ -934,7 +934,7 @@ public class StoriesUtilities {
             Bitmap bitmap = Bitmap.createBitmap(360, 180, Bitmap.Config.ARGB_8888);
             bitmap.eraseColor(Color.GRAY);
             Canvas canvas = new Canvas(bitmap);
-            TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(15);
             textPaint.setTextAlign(Paint.Align.CENTER);
             textPaint.setColor(ColorUtils.setAlphaComponent(Color.BLACK, 100));

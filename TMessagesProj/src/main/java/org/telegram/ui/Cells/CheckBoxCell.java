@@ -180,7 +180,7 @@ public class CheckBoxCell extends FrameLayout {
             textView = linksTextView;
         }
 
-        valueTextView = new TextView(context);
+        valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         valueTextView.setTag(type == TYPE_CHECK_BOX_DEFAULT || type == TYPE_CHECK_BOX_URL ? Theme.key_dialogTextBlue : Theme.key_windowBackgroundWhiteValueText);
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         valueTextView.setLines(1);

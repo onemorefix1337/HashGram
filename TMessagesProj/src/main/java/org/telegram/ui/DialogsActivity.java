@@ -608,7 +608,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
     private RectF rect = new RectF();
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     private FragmentContextView fragmentLocationContextView;
     private FrameLayout fragmentLocationContextViewWrapper;
@@ -14400,7 +14400,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         avatarView.setForUserOrChat(user, avatarDrawable);
         avatarContainer.addView(avatarView, LayoutHelper.createLinear(32, 32, Gravity.CENTER, 1, 1, 1, 1));
 
-        final TextView textView = new TextView(getContext());
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
         textView.setText(UserObject.getUserName(user));

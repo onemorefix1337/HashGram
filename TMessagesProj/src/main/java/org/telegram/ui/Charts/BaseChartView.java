@@ -102,9 +102,9 @@ public abstract class BaseChartView<T extends ChartData, L extends LineViewData>
 
     Paint linePaint = new Paint();
     Paint selectedLinePaint = new Paint();
-    TextPaint signaturePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-    TextPaint signaturePaint2 = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-    Paint bottomSignaturePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    TextPaint signaturePaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    TextPaint signaturePaint2 = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    Paint bottomSignaturePaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
     Paint pickerSelectorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Paint unactiveBottomChartPaint = new Paint();
     Paint selectionBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

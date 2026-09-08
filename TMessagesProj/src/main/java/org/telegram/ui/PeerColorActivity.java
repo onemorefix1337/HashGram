@@ -510,7 +510,7 @@ public class PeerColorActivity extends BaseFragment implements NotificationCente
                                         selectedTab = tabs.size();
                                     }
                                     index2gift.put(tabs.size(), starGift);
-                                    final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                                    final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                                     textPaint.setTextSize(dp(14));
                                     final SpannableStringBuilder sb = new SpannableStringBuilder("x ");
                                     final AnimatedEmojiSpan span = new AnimatedEmojiSpan(starGift.getDocument(), textPaint.getFontMetricsInt());
@@ -918,7 +918,7 @@ public class PeerColorActivity extends BaseFragment implements NotificationCente
 
                 setBackgroundColor(getThemedColor(Theme.key_windowBackgroundWhite));
 
-                textView = new TextView(context);
+                textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
                 if (type == PAGE_NAME) {

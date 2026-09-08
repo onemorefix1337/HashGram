@@ -59,7 +59,7 @@ public class StickersArchiveAlert extends AlertDialog.Builder {
         container.setOrientation(LinearLayout.VERTICAL);
         setView(container);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setGravity(LayoutHelper.getAbsoluteGravityStart());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);

@@ -183,7 +183,7 @@ public class SelfStoryViewsPage extends FrameLayout implements NotificationCente
         // state.set(sharedFilterState);
         currentAccount = storyViewer.currentAccount;
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.bold());
@@ -1530,14 +1530,14 @@ public class SelfStoryViewsPage extends FrameLayout implements NotificationCente
             LinearLayout linearLayout = new LinearLayout(context);
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-            allViewersView = new TextView(context);
+            allViewersView = new org.telegram.ui.Components.TypefaceTextView(context);
             allViewersView.setText(LocaleController.getString(R.string.AllViewers));
             allViewersView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             allViewersView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             allViewersView.setTypeface(AndroidUtilities.bold());
             allViewersView.setPadding(AndroidUtilities.dp(12), AndroidUtilities.dp(4), AndroidUtilities.dp(12), AndroidUtilities.dp(4));
 
-            contactsViewersView = new TextView(context);
+            contactsViewersView = new org.telegram.ui.Components.TypefaceTextView(context);
             contactsViewersView.setText(LocaleController.getString(R.string.Contacts));
             contactsViewersView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             contactsViewersView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

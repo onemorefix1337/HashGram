@@ -59,7 +59,7 @@ public class PhotoEditToolCell extends FrameLayout {
         super(context);
         this.resourcesProvider = resourcesProvider;
 
-        nameTextView = new TextView(context);
+        nameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         nameTextView.setGravity(Gravity.RIGHT);
         nameTextView.setTextColor(0xffffffff);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
@@ -68,7 +68,7 @@ public class PhotoEditToolCell extends FrameLayout {
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
         addView(nameTextView, LayoutHelper.createFrame(80, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL, 0, 0, 0, 0));
 
-        valueTextView = new TextView(context);
+        valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         valueTextView.setTextColor(getThemedColor(Theme.key_chat_editMediaButton));
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         valueTextView.setGravity(Gravity.RIGHT);

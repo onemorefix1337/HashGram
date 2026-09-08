@@ -138,7 +138,7 @@ public class SenderSelectPopup extends ActionBarPopupWindow {
             }
         };
         recyclerContainer.setOrientation(LinearLayout.VERTICAL);
-        headerText = new TextView(context);
+        headerText = new org.telegram.ui.Components.TypefaceTextView(context);
         headerText.setTextColor(Theme.getColor(Theme.key_dialogTextBlue, resourcesProvider));
         headerText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         headerText.setText(LocaleController.getString(R.string.SendMessageAsTitle));
@@ -529,14 +529,14 @@ public class SenderSelectPopup extends ActionBarPopupWindow {
             textRow.setOrientation(VERTICAL);
             addView(textRow, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f, 12, 0, 0, 0));
 
-            title = new TextView(context);
+            title = new org.telegram.ui.Components.TypefaceTextView(context);
             title.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider));
             title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             title.setTag(this.title);
             title.setMaxLines(1);
             textRow.addView(title);
 
-            subtitle = new TextView(context);
+            subtitle = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitle.setTextColor(ColorUtils.setAlphaComponent(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider), 0x66));
             subtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             subtitle.setTag(this.subtitle);

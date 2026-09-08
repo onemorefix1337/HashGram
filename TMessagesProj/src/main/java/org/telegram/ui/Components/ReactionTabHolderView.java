@@ -62,7 +62,7 @@ public class ReactionTabHolderView extends FrameLayout {
         reactView = new BackupImageView(context);
         addView(reactView, LayoutHelper.createFrameRelatively(24, 24, Gravity.START | Gravity.CENTER_VERTICAL, 8, 0, 8, 0));
 
-        counterView = new TextView(context);
+        counterView = new org.telegram.ui.Components.TypefaceTextView(context);
         counterView.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
         counterView.setTextColor(Theme.getColor(Theme.key_avatar_nameInMessageBlue));
         counterView.setTypeface(AndroidUtilities.bold());

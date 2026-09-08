@@ -53,13 +53,13 @@ public class CommunityLinkView2 extends FrameLayout implements Theme.Colorable {
         textBlock.setOrientation(LinearLayout.VERTICAL);
         textBlock.setGravity(Gravity.CENTER_VERTICAL);
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         titleView.setSingleLine(true);
         titleView.setEllipsize(TextUtils.TruncateAt.END);
         textBlock.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        subtitleView = new TextView(context);
+        subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         subtitleView.setSingleLine(true);
         subtitleView.setEllipsize(TextUtils.TruncateAt.END);

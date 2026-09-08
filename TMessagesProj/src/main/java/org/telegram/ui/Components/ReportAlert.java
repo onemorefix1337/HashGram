@@ -44,7 +44,7 @@ public class ReportAlert extends BottomSheet {
             background.setBackground(Theme.AdaptiveRipple.filledRectByKey(Theme.key_featuredStickers_addButton, 8));
             addView(background, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0, 16, 16, 16, 16));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setLines(1);
             textView.setSingleLine(true);
             textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -83,7 +83,7 @@ public class ReportAlert extends BottomSheet {
         imageView.playAnimation();
         frameLayout.addView(imageView, LayoutHelper.createFrame(160, 160, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 17, 14, 17, 0));
 
-        TextView percentTextView = new TextView(context);
+        TextView percentTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         percentTextView.setTypeface(AndroidUtilities.bold());
         percentTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24);
         percentTextView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
@@ -102,7 +102,7 @@ public class ReportAlert extends BottomSheet {
         }
         frameLayout.addView(percentTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 17, 197, 17, 0));
 
-        TextView infoTextView = new TextView(context);
+        TextView infoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         infoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         infoTextView.setTextColor(getThemedColor(Theme.key_dialogTextGray3));
         infoTextView.setGravity(Gravity.CENTER_HORIZONTAL);

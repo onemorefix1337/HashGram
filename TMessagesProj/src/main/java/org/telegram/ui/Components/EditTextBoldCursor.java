@@ -333,7 +333,7 @@ public class EditTextBoldCursor extends EditTextEffects {
     private void init() {
         linePaint = new Paint();
         activeLinePaint = new Paint();
-        errorPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        errorPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         errorPaint.setTextSize(dp(11));
         if (Build.VERSION.SDK_INT >= 26) {
             setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);

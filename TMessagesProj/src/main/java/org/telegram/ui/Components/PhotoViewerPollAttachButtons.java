@@ -44,7 +44,7 @@ public class PhotoViewerPollAttachButtons extends LinearLayout {
         icon.setImageResource(iconRes);
         button.addView(icon, LayoutHelper.createLinear(24, 24, 0, 0, 8, 0));
 
-        TextView tv = new TextView(context);
+        TextView tv = new org.telegram.ui.Components.TypefaceTextView(context);
         tv.setGravity(Gravity.CENTER_VERTICAL);
         tv.setText(text);
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);

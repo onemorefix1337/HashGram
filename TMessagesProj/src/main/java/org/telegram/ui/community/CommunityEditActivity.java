@@ -205,7 +205,7 @@ public class CommunityEditActivity extends BaseFragment implements ImageUpdater.
             }
         });
 
-        doneItem = new TextView(context) {
+        doneItem = new org.telegram.ui.Components.TypefaceTextView(context) {
             Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
             @Override
             protected void onDraw(Canvas canvas) {

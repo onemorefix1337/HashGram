@@ -28,7 +28,7 @@ public class HelloParticles {
 
     public static class Drawable {
 
-        private TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
         private float bitmapScale = 1;
         private HashMap<String, Bitmap> bitmaps = new HashMap<>();

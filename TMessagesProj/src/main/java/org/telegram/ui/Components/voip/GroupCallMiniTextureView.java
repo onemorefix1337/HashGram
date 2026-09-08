@@ -179,12 +179,12 @@ public class GroupCallMiniTextureView extends FrameLayout implements GroupCallSt
 
         castingScreenDrawable = parentContainer.getContext().getResources().getDrawable(R.drawable.screencast_big).mutate();
 
-        TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTypeface(AndroidUtilities.bold());
         textPaint.setTextSize(dp(13));
         textPaint.setColor(Color.WHITE);
 
-        TextPaint textPaint2 = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint textPaint2 = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         textPaint2.setTypeface(AndroidUtilities.bold());
         textPaint2.setTextSize(dp(15));
         textPaint2.setColor(Color.WHITE);
@@ -536,7 +536,7 @@ public class GroupCallMiniTextureView extends FrameLayout implements GroupCallSt
         screencastIcon.setColorFilter(new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY));
 
         final Drawable rippleDrawable = Theme.createSimpleSelectorRoundRectDrawable(dp(19), Color.TRANSPARENT, ColorUtils.setAlphaComponent(Color.WHITE, 100));
-        stopSharingTextView = new TextView(parentContainer.getContext()) {
+        stopSharingTextView = new org.telegram.ui.Components.TypefaceTextView(parentContainer.getContext()) {
             @Override
             public boolean onTouchEvent(MotionEvent event) {
                 if (Math.abs(stopSharingTextView.getAlpha() - 1.0f) > 0.001f) {
@@ -560,7 +560,7 @@ public class GroupCallMiniTextureView extends FrameLayout implements GroupCallSt
         });
         addView(stopSharingTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 38, Gravity.LEFT | Gravity.TOP));
 
-        noRtmpStreamTextView = new TextView(parentContainer.getContext());
+        noRtmpStreamTextView = new org.telegram.ui.Components.TypefaceTextView(parentContainer.getContext());
         noRtmpStreamTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         noRtmpStreamTextView.setPadding(dp(21), 0, dp(21), 0);
         noRtmpStreamTextView.setTextColor(Theme.getColor(Theme.key_voipgroup_lastSeenText));

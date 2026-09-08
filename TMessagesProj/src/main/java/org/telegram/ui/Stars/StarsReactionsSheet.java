@@ -315,7 +315,7 @@ public class StarsReactionsSheet extends BottomSheet implements NotificationCent
         ScaleStateListAnimator.apply(dialogSelectorLayout);
         BotStarsController.getInstance(currentAccount).loadAdminedChannels();
 
-        titleView = new TextView(context) {
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(ActionBar.getCurrentActionBarHeight(), MeasureSpec.EXACTLY));
@@ -360,7 +360,7 @@ public class StarsReactionsSheet extends BottomSheet implements NotificationCent
         topLayout.addView(topLayoutTextLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, liveStories ? 0 : sendEnabled ? 135 + 44 : 45, 0, 15));
 
         TLRPC.Chat chat = MessagesController.getInstance(currentAccount).getChat(-dialogId);
-        statusView = new TextView(context);
+        statusView = new org.telegram.ui.Components.TypefaceTextView(context);
         statusView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         statusView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         statusView.setGravity(Gravity.CENTER);
@@ -483,7 +483,7 @@ public class StarsReactionsSheet extends BottomSheet implements NotificationCent
         }
         checkBox.setDrawBackgroundAsArc(10);
 
-        checkTextView = new TextView(context);
+        checkTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         checkTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         checkTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         checkTextView.setText(LocaleController.getString(R.string.StarsReactionShowMeInTopSenders));

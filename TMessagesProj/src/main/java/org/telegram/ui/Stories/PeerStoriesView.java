@@ -2514,7 +2514,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                 MediaDataController.getInstance(currentAccount).setPlaceholderImage(imageView, AndroidUtilities.STICKERS_PLACEHOLDER_PACK_NAME_2, "😎", "150_150");
                 layout.addView(imageView, LayoutHelper.createLinear(150, 150, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 16));
 
-                TextView headerView = new TextView(getContext());
+                TextView headerView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 headerView.setTypeface(AndroidUtilities.bold());
                 headerView.setGravity(Gravity.CENTER);
                 headerView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -2522,7 +2522,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                 headerView.setText(getString(R.string.StoryQualityPremium));
                 layout.addView(headerView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 0, 12, 0));
 
-                TextView descriptionView = new TextView(getContext());
+                TextView descriptionView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 descriptionView.setGravity(Gravity.CENTER);
                 descriptionView.setTextColor(Theme.getColor(Theme.key_dialogTextGray3, resourcesProvider));
                 descriptionView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -2853,12 +2853,12 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         imageView.setImageResource(R.drawable.mini_switch_lock);
         imageView.setColorFilter(new PorterDuffColorFilter(0xFF858585, PorterDuff.Mode.SRC_IN));
 
-        premiumBlockedText1 = new TextView(getContext());
+        premiumBlockedText1 = new org.telegram.ui.Components.TypefaceTextView(getContext());
         premiumBlockedText1.setTextColor(0xFF858585);
         premiumBlockedText1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         premiumBlockedText1.setText(getString(isGroup ? R.string.StoryGroupRepliesLocked : R.string.StoryRepliesLocked));
 
-        premiumBlockedText2 = new TextView(getContext());
+        premiumBlockedText2 = new org.telegram.ui.Components.TypefaceTextView(getContext());
         premiumBlockedText2.setTextColor(0xFFFFFFFF);
         premiumBlockedText2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         premiumBlockedText2.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(40), 0x1affffff, 0x32ffffff));
@@ -3158,7 +3158,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
                     final long stars = Math.max(messageStars, getMessageMinPrice());
 
                     final TLRPC.TL_textWithEntities text = getTextWithEntities();
-                    final CharSequence stringText = MessageObject.formatTextWithEntities(text, false, new TextPaint());
+                    final CharSequence stringText = MessageObject.formatTextWithEntities(text, false, new org.telegram.ui.Components.TypefaceTextPaint());
                     if (stringText.length() > getMaxLength(currentAccount)) {
                         if (captionLimitView != null) {
                             AndroidUtilities.shakeViewSpring(captionLimitView, 3.5f);
@@ -4392,14 +4392,14 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         LinearLayout linearLayout = new LinearLayout(getContext());
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-        TextView textView = new TextView(getContext());
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTypeface(AndroidUtilities.bold());
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setText(getString(R.string.StoryUnsupported));
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
 
-        TextView buttonTextView = new TextView(getContext());
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         ScaleStateListAnimator.apply(buttonTextView);
         buttonTextView.setText(getString(R.string.AppUpdate));
         buttonTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText, resourcesProvider));
@@ -4599,7 +4599,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         selfAvatarsView.setAvatarsTextSize(AndroidUtilities.dp(18));
         selfView.addView(selfAvatarsView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 28, 0, 13, 13, 0, 0));
 
-        selfStatusView = new TextView(getContext());
+        selfStatusView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         selfStatusView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         selfStatusView.setTextColor(Color.WHITE);
         selfView.addView(selfStatusView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 0, 16, 0, 9));
@@ -5715,7 +5715,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
         if (replyDisabledTextView != null) {
             return;
         }
-        replyDisabledTextView = new TextView(getContext()) {
+        replyDisabledTextView = new org.telegram.ui.Components.TypefaceTextView(getContext()) {
             @Override
             public void setTranslationY(float translationY) {
                 super.setTranslationY(translationY);
@@ -6662,7 +6662,7 @@ public class PeerStoriesView extends SizeNotifierFrameLayout implements Notifica
             addView(titleView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 54, 0, 86, 0));
 
             for (int a = 0; a < 2; ++a) {
-                subtitleView[a] = new TextView(context);
+                subtitleView[a] = new org.telegram.ui.Components.TypefaceTextView(context);
                 subtitleView[a].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
                 subtitleView[a].setMaxLines(1);
                 subtitleView[a].setSingleLine(true);

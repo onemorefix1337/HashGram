@@ -156,7 +156,7 @@ public class CropEditor extends FrameLayout {
         buttonsLayout = new FrameLayout(context);
         controlsLayout.addView(buttonsLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 52, Gravity.BOTTOM, 0, 0, 0, 0));
 
-        cancelButton = new TextView(context);
+        cancelButton = new org.telegram.ui.Components.TypefaceTextView(context);
         cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         cancelButton.setTypeface(AndroidUtilities.bold());
         cancelButton.setBackground(Theme.createSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, 0));
@@ -168,7 +168,7 @@ public class CropEditor extends FrameLayout {
             close();
         });
 
-        resetButton = new TextView(context);
+        resetButton = new org.telegram.ui.Components.TypefaceTextView(context);
         resetButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         resetButton.setTypeface(AndroidUtilities.bold());
         resetButton.setBackground(Theme.createSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, 0));
@@ -184,7 +184,7 @@ public class CropEditor extends FrameLayout {
             contentView.invalidate();
         });
 
-        cropButton = new TextView(context);
+        cropButton = new org.telegram.ui.Components.TypefaceTextView(context);
         cropButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         cropButton.setTypeface(AndroidUtilities.bold());
         cropButton.setBackground(Theme.createSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, 0));

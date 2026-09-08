@@ -168,7 +168,7 @@ public class ChatbotsActivity extends BaseFragment {
         };
         emptyView.setBackgroundColor(getThemedColor(Theme.key_windowBackgroundWhite));
 
-        emptyViewText = new TextView(context);
+        emptyViewText = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyViewText.setText(getString(R.string.BusinessBotNotFound));
         emptyViewText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         emptyViewText.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText2));

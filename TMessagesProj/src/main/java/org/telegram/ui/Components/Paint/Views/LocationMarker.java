@@ -52,7 +52,7 @@ public class LocationMarker extends View {
     private final float flagIconPadding = 2.25f;
     private final float iconSize = 21.33f;
 
-    private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     public final Paint outlinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Drawable icon;
 

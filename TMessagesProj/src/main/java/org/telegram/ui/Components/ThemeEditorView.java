@@ -851,7 +851,7 @@ public class ThemeEditorView {
             bottomSaveLayout.setBackgroundColor(0xffffffff);
             containerView.addView(bottomSaveLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.LEFT | Gravity.BOTTOM));
 
-            TextView closeButton = new TextView(context);
+            TextView closeButton = new org.telegram.ui.Components.TypefaceTextView(context);
             closeButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             closeButton.setTextColor(0xff19a7e8);
             closeButton.setGravity(Gravity.CENTER);
@@ -862,7 +862,7 @@ public class ThemeEditorView {
             bottomSaveLayout.addView(closeButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
             closeButton.setOnClickListener(v -> dismiss());
 
-            TextView saveButton = new TextView(context);
+            TextView saveButton = new org.telegram.ui.Components.TypefaceTextView(context);
             saveButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             saveButton.setTextColor(0xff19a7e8);
             saveButton.setGravity(Gravity.CENTER);
@@ -883,7 +883,7 @@ public class ThemeEditorView {
             bottomLayout.setBackgroundColor(0xffffffff);
             containerView.addView(bottomLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.LEFT | Gravity.BOTTOM));
 
-            TextView cancelButton = new TextView(context);
+            TextView cancelButton = new org.telegram.ui.Components.TypefaceTextView(context);
             cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             cancelButton.setTextColor(0xff19a7e8);
             cancelButton.setGravity(Gravity.CENTER);
@@ -903,7 +903,7 @@ public class ThemeEditorView {
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
             bottomLayout.addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.RIGHT));
 
-            TextView defaultButtom = new TextView(context);
+            TextView defaultButtom = new org.telegram.ui.Components.TypefaceTextView(context);
             defaultButtom.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             defaultButtom.setTextColor(0xff19a7e8);
             defaultButtom.setGravity(Gravity.CENTER);
@@ -919,7 +919,7 @@ public class ThemeEditorView {
                 setColorPickerVisible(false);
             });
 
-            saveButton = new TextView(context);
+            saveButton = new org.telegram.ui.Components.TypefaceTextView(context);
             saveButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             saveButton.setTextColor(0xff19a7e8);
             saveButton.setGravity(Gravity.CENTER);

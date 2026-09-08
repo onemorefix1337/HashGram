@@ -116,7 +116,7 @@ public class HashGramAppearanceActivity extends BaseFragment {
                 builder.setTitle("Форма аватарок");
                 builder.setItems(new CharSequence[]{"Круг (по умолчанию)", "Квадрат", "Закругленный квадрат"}, (dialog, which) -> {
                     SharedConfig.fg_avatar_shape = which;
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
+                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
                     preferences.edit().putInt("fg_avatar_shape", which).apply();
                     if (listView != null) {
                         listView.invalidateViews();
@@ -127,25 +127,76 @@ public class HashGramAppearanceActivity extends BaseFragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setTitle("Шрифт");
                 builder.setItems(new CharSequence[]{"По умолчанию (Telegram)", "Системный", "Пользовательский"}, (dialog, which) -> {
-                    SharedConfig.fg_font_type = which;
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
-                    preferences.edit().putInt("fg_font_type", which).apply();
-                    if (listView != null) {
-                        listView.invalidateViews();
+                    if (which == 2) {
+                        if (android.os.Build.VERSION.SDK_INT >= 30) {
+                            if (!android.os.Environment.isExternalStorageManager()) {
+                                android.content.Intent intent = new android.content.Intent(android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                                intent.setData(android.net.Uri.parse("package:" + org.telegram.messenger.ApplicationLoader.applicationContext.getPackageName()));
+                                getParentActivity().startActivity(intent);
+                                android.widget.Toast.makeText(getParentActivity(), "Пожалуйста, предоставьте доступ ко всем файлам для выбора шрифтов.", android.widget.Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                        } else if (android.os.Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                            getParentActivity().requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
+                            return;
+                        }
+                        java.io.File fontsDir = new java.io.File(android.os.Environment.getExternalStorageDirectory(), "Download/HashGram/fonts");
+                        if (!fontsDir.exists()) {
+                            fontsDir.mkdirs();
+                        }
+                        java.io.File[] files = fontsDir.listFiles((dir, name) -> name.toLowerCase().endsWith(".ttf") || name.toLowerCase().endsWith(".otf"));
+                        if (files == null || files.length == 0) {
+                            AlertDialog.Builder emptyBuilder = new AlertDialog.Builder(getParentActivity());
+                            emptyBuilder.setTitle("Нет шрифтов");
+                            emptyBuilder.setMessage("Поместите файлы шрифтов (.ttf или .otf) в папку Download/HashGram/fonts и попробуйте снова. Также убедитесь, что приложению выданы права на доступ к памяти.");
+                            emptyBuilder.setPositiveButton("OK", null);
+                            showDialog(emptyBuilder.create());
+                            return;
+                        }
+                        CharSequence[] fileNames = new CharSequence[files.length];
+                        for (int i = 0; i < files.length; i++) {
+                            fileNames[i] = files[i].getName();
+                        }
+                        AlertDialog.Builder pickerBuilder = new AlertDialog.Builder(getParentActivity());
+                        pickerBuilder.setTitle("Выберите шрифт");
+                        pickerBuilder.setItems(fileNames, (pickerDialog, fileIndex) -> {
+                            SharedConfig.fg_font_type = 2;
+                            SharedConfig.fg_custom_font_path = files[fileIndex].getAbsolutePath();
+                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
+                            preferences.edit().putInt("fg_font_type", 2).putString("fg_custom_font_path", SharedConfig.fg_custom_font_path).apply();
+                            if (listView != null) {
+                                listView.invalidateViews();
+                            }
+                            AlertDialog.Builder restartBuilder = new AlertDialog.Builder(getParentActivity());
+                            restartBuilder.setTitle(LocaleController.getString("AppName", org.telegram.messenger.R.string.AppName));
+                            restartBuilder.setMessage("Для применения шрифта необходимо перезапустить приложение.");
+                            restartBuilder.setPositiveButton(LocaleController.getString("OK", org.telegram.messenger.R.string.OK), (restartDialog, i) -> {
+                                System.exit(0);
+                            });
+                            showDialog(restartBuilder.create());
+                        });
+                        showDialog(pickerBuilder.create());
+                    } else {
+                        SharedConfig.fg_font_type = which;
+                        SharedConfig.fg_custom_font_path = "";
+                        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
+                        preferences.edit().putInt("fg_font_type", which).putString("fg_custom_font_path", "").apply();
+                        if (listView != null) {
+                            listView.invalidateViews();
+                        }
+                        AlertDialog.Builder restartBuilder = new AlertDialog.Builder(getParentActivity());
+                        restartBuilder.setTitle(LocaleController.getString("AppName", org.telegram.messenger.R.string.AppName));
+                        restartBuilder.setMessage("Для применения шрифта необходимо перезапустить приложение.");
+                        restartBuilder.setPositiveButton(LocaleController.getString("OK", org.telegram.messenger.R.string.OK), (dialogInterface, i) -> {
+                            System.exit(0);
+                        });
+                        showDialog(restartBuilder.create());
                     }
-                    // Requires restart to apply fonts globally effectively
-                    AlertDialog.Builder restartBuilder = new AlertDialog.Builder(getParentActivity());
-                    restartBuilder.setTitle(LocaleController.getString("AppName", org.telegram.messenger.R.string.AppName));
-                    restartBuilder.setMessage("Для применения шрифта необходимо перезапустить приложение.");
-                    restartBuilder.setPositiveButton(LocaleController.getString("OK", org.telegram.messenger.R.string.OK), (dialogInterface, i) -> {
-                        System.exit(0);
-                    });
-                    showDialog(restartBuilder.create());
                 });
                 showDialog(builder.create());
             } else if (position == hideMicCamRow) {
                 SharedConfig.fg_hide_mic_cam = !SharedConfig.fg_hide_mic_cam;
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
+                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
                 preferences.edit().putBoolean("fg_hide_mic_cam", SharedConfig.fg_hide_mic_cam).apply();
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(SharedConfig.fg_hide_mic_cam);
@@ -399,7 +450,13 @@ public class HashGramAppearanceActivity extends BaseFragment {
                     } else if (position == fontTypeRow) {
                         String font;
                         if (SharedConfig.fg_font_type == 1) font = "Системный";
-                        else if (SharedConfig.fg_font_type == 2) font = "Пользовательский";
+                        else if (SharedConfig.fg_font_type == 2) {
+                            font = "Пользовательский";
+                            if (SharedConfig.fg_custom_font_path != null && !SharedConfig.fg_custom_font_path.isEmpty()) {
+                                java.io.File f = new java.io.File(SharedConfig.fg_custom_font_path);
+                                font += " (" + f.getName() + ")";
+                            }
+                        }
                         else font = "По умолчанию (Telegram)";
                         textCell.setTextAndValue("Шрифт", font, true);
                     }

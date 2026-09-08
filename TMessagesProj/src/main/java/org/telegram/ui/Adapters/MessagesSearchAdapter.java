@@ -339,14 +339,14 @@ public class MessagesSearchAdapter extends RecyclerListView.SelectionAdapter imp
             avatarsDrawable.setSize(dp(22));
 
             for (int i = 0; i < 2; ++i) {
-                titleTextView[i] = new TextView(context);
+                titleTextView[i] = new org.telegram.ui.Components.TypefaceTextView(context);
                 titleTextView[i].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
                 titleTextView[i].setTypeface(AndroidUtilities.bold());
                 titleTextView[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 titleTextView[i].setVisibility(i == 0 ? View.VISIBLE : View.GONE);
                 addView(titleTextView[i], LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 76, 7, 40, 0));
 
-                subtitleTextView[i] = new TextView(context);
+                subtitleTextView[i] = new org.telegram.ui.Components.TypefaceTextView(context);
                 subtitleTextView[i].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
                 subtitleTextView[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
                 subtitleTextView[i].setVisibility(i == 0 ? View.VISIBLE : View.GONE);

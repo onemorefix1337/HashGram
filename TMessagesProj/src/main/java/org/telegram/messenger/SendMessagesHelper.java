@@ -4039,7 +4039,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
                     builder.setView(linearLayout);
 
-                    TextView messageTextView = new TextView(parentFragment.getParentActivity());
+                    TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentFragment.getParentActivity());
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -4055,7 +4055,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                     dotImageView.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(11) : 0, AndroidUtilities.dp(9), LocaleController.isRTL ? 0 : AndroidUtilities.dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(parentFragment.getParentActivity());
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentFragment.getParentActivity());
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -4077,7 +4077,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                     dotImageView.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(11) : 0, AndroidUtilities.dp(9), LocaleController.isRTL ? 0 : AndroidUtilities.dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(parentFragment.getParentActivity());
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentFragment.getParentActivity());
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -4094,7 +4094,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                         builder.setPositiveButton(LocaleController.getString(R.string.EditAdminTransferSetPassword), (dialogInterface, i) -> parentFragment.presentFragment(new TwoStepVerificationSetupActivity(TwoStepVerificationSetupActivity.TYPE_INTRO, null)));
                         builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
                     } else {
-                        messageTextView = new TextView(parentFragment.getParentActivity());
+                        messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentFragment.getParentActivity());
                         messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                         messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);

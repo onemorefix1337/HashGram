@@ -3918,7 +3918,7 @@ public class EmojiView extends FrameLayout implements
                     openEmojiPackAlert(this.pack.set);
                 }
             });
-            markView = new TextView(context);
+            markView = new org.telegram.ui.Components.TypefaceTextView(context);
             markView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
             markView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelStickerSetName));
             markView.setTypeface(AndroidUtilities.bold());
@@ -3944,7 +3944,7 @@ public class EmojiView extends FrameLayout implements
             });
             addView(buttonsView, LayoutHelper.createFrameRelatively(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.END | Gravity.FILL_VERTICAL));
 
-            addButtonView = new TextView(context);
+            addButtonView = new org.telegram.ui.Components.TypefaceTextView(context);
             addButtonView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addButtonView.setTypeface(AndroidUtilities.bold());
             addButtonView.setText(getString(R.string.Add));
@@ -3999,7 +3999,7 @@ public class EmojiView extends FrameLayout implements
             });
             buttonsView.addView(addButtonView, LayoutHelper.createFrameRelatively(LayoutHelper.WRAP_CONTENT, 26, Gravity.END | Gravity.TOP));
 
-            removeButtonView = new TextView(context);
+            removeButtonView = new org.telegram.ui.Components.TypefaceTextView(context);
             removeButtonView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             removeButtonView.setTypeface(AndroidUtilities.bold());
             removeButtonView.setText(getString(R.string.StickersRemove));
@@ -6878,7 +6878,7 @@ public class EmojiView extends FrameLayout implements
                     icon.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_emojiPanelIcon), PorterDuff.Mode.SRC_IN));
                     containerLayout.addView(icon, LayoutHelper.createLinear(24, 24, Gravity.CENTER, 0, 0, 0, 0));
 
-                    final TextView text = new TextView(context);
+                    final TextView text = new org.telegram.ui.Components.TypefaceTextView(context);
                     text.setGravity(Gravity.CENTER);
                     text.setTextColor(getThemedColor(Theme.key_chat_emojiPanelIcon));
                     text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
@@ -7117,7 +7117,7 @@ public class EmojiView extends FrameLayout implements
 
         public EmojiPackExpand(Context context, Theme.ResourcesProvider resourcesProvider) {
             super(context);
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider));
             textView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(11), ColorUtils.setAlphaComponent(Theme.getColor(Theme.key_chat_emojiPanelStickerSetName, resourcesProvider), 99)));
@@ -8037,7 +8037,7 @@ public class EmojiView extends FrameLayout implements
                         }
                     };
 
-                    TextView textView = new TextView(getContext());
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     textView.setText(getString(R.string.NoEmojiFound));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     textView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelEmptyText));
@@ -8062,7 +8062,7 @@ public class EmojiView extends FrameLayout implements
                             imageView1.setImageResource(R.drawable.smiles_info);
                             linearLayout.addView(imageView1, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 15, 0, 0));
 
-                            TextView textView = new TextView(getContext());
+                            TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                             textView.setText(getString(R.string.EmojiSuggestions));
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                             textView.setTextColor(getThemedColor(Theme.key_dialogTextBlue2));
@@ -8070,14 +8070,14 @@ public class EmojiView extends FrameLayout implements
                             textView.setTypeface(AndroidUtilities.bold());
                             linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 24, 0, 0));
 
-                            textView = new TextView(getContext());
+                            textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                             textView.setText(AndroidUtilities.replaceTags(getString(R.string.EmojiSuggestionsInfo)));
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                             textView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
                             textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
                             linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 11, 0, 0));
 
-                            textView = new TextView(getContext());
+                            textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                             textView.setText(LocaleController.formatString("EmojiSuggestionsUrl", R.string.EmojiSuggestionsUrl, lastSearchAlias != null ? lastSearchAlias : lastSearchKeyboardLanguage));
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                             textView.setTextColor(getThemedColor(Theme.key_dialogTextLink));
@@ -9133,7 +9133,7 @@ public class EmojiView extends FrameLayout implements
             imageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_emojiPanelEmptyText), PorterDuff.Mode.MULTIPLY));
             addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 8, 0, 0));
 
-            textView = new TextView(getContext());
+            textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             textView.setText(getString(R.string.NoGIFsFound));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelEmptyText));
@@ -9780,7 +9780,7 @@ public class EmojiView extends FrameLayout implements
                     imageView.setTranslationY(-AndroidUtilities.dp(24));
                     frameLayout.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 42, 0, 28));
 
-                    TextView textView = new TextView(context);
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     textView.setText(getString(R.string.NoStickersFound));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     textView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelEmptyText));

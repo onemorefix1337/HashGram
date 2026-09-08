@@ -70,7 +70,7 @@ public class NotificationPermissionDialog extends BottomSheet implements Notific
         });
         linearLayout.addView(block, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 110));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -79,7 +79,7 @@ public class NotificationPermissionDialog extends BottomSheet implements Notific
         textView.setPadding(AndroidUtilities.dp(30), 0, AndroidUtilities.dp(30), 0);
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -94,7 +94,7 @@ public class NotificationPermissionDialog extends BottomSheet implements Notific
         setCustomView(linearLayout);
         fixNavigationBar(getThemedColor(Theme.key_dialogBackground));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setText(LocaleController.getString(settings ? R.string.NotificationsPermissionSettings : R.string.NotificationsPermissionContinue));
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(AndroidUtilities.bold());
@@ -273,7 +273,7 @@ public class NotificationPermissionDialog extends BottomSheet implements Notific
             imageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
             addView(imageView, LayoutHelper.createFrame(24, 24, Gravity.CENTER_VERTICAL | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT), LocaleController.isRTL ? 0 : 22, 0, LocaleController.isRTL ? 22 : 0, 0));
 
-            TextView textView = new TextView(context);
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);

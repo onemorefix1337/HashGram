@@ -102,7 +102,7 @@ public class TableView extends TableLayout {
     public TableRow addRowMonospaced(CharSequence title, CharSequence text, int textFontSizeDp, Runnable copyButton) {
         FrameLayout idLayout = new FrameLayout(getContext());
         idLayout.setPadding(dp(12.66f), dp(9.33f), dp(10.66f), dp(9.33f));
-        TextView textView = new TextView(getContext());
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MONO));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textFontSizeDp);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));

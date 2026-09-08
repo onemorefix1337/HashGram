@@ -835,7 +835,7 @@ public class CollageLayoutView2 extends FrameLayout implements ItemOptions.Scrim
         imageView.setColorFilter(new PorterDuffColorFilter(0xFFFFFFFF, PorterDuff.Mode.SRC_IN));
         imageView.setScaleType(ImageView.ScaleType.CENTER);
         hintLayout.addView(imageView, LayoutHelper.createFrame(24, 24, Gravity.LEFT | Gravity.CENTER_VERTICAL, 12, 12, 12, 12));
-        TextView textView = new TextView(getContext());
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setText(LocaleController.getString(R.string.StoryCollageMenuHint));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         textView.setTextColor(0xFFFFFFFF);

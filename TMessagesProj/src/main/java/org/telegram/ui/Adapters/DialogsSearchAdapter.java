@@ -2418,7 +2418,7 @@ public class DialogsSearchAdapter extends RecyclerListView.SelectionAdapter {
             imageView.setImageDrawable(new RLottieDrawable(R.raw.utyan_empty, "utyan_empty", dp(120), dp(120)));
             addView(imageView, LayoutHelper.createLinear(120, 120, Gravity.CENTER_HORIZONTAL, 0, 27, 0, 0));
 
-            TextView titleView = new TextView(context);
+            TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             titleView.setTypeface(AndroidUtilities.bold());
@@ -2426,14 +2426,14 @@ public class DialogsSearchAdapter extends RecyclerListView.SelectionAdapter {
             titleView.setGravity(Gravity.CENTER);
             addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 8, 0, 9));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             textView.setText(LocaleController.formatString(R.string.SearchMessagesFilterEmptyText, ""));
             textView.setGravity(Gravity.CENTER);
             addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 14));
 
-            TextView button = new TextView(context);
+            TextView button = new org.telegram.ui.Components.TypefaceTextView(context);
             button.setPadding(dp(12), dp(4), dp(12), dp(4));
             button.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             button.setText(LocaleController.getString(R.string.SearchMessagesFilterEmptySearchAll));

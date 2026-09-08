@@ -247,13 +247,13 @@ public class RateCallLayout extends FrameLayout {
             this.backgroundProvider = backgroundProvider;
             backgroundProvider.attach(this);
             setWillNotDraw(false);
-            titleTextView = new TextView(context);
+            titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleTextView.setTextColor(Color.WHITE);
             titleTextView.setText(LocaleController.getString(R.string.VoipRateCallTitle));
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
             titleTextView.setTypeface(AndroidUtilities.bold());
-            messageTextView = new TextView(context);
+            messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             messageTextView.setTextColor(Color.WHITE);
             messageTextView.setGravity(Gravity.CENTER_HORIZONTAL);

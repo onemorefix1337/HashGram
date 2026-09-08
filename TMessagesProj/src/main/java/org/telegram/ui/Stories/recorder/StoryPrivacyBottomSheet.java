@@ -3378,13 +3378,13 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
             setOrientation(VERTICAL);
             this.resourcesProvider = resourcesProvider;
 
-            titleTextView = new TextView(context);
+            titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             titleTextView.setTypeface(AndroidUtilities.bold());
             addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 27, 16, 27, withSubtitle ? 4 : 13));
 
-            subtitleTextView = new TextView(context);
+            subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextGray2, resourcesProvider));
             subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             if (withSubtitle) {
@@ -3412,7 +3412,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
             super(context);
             this.resourcesProvider = resourcesProvider;
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
@@ -4700,7 +4700,7 @@ public class StoryPrivacyBottomSheet extends BottomSheet implements Notification
                 }
             });
 
-            headerView = new TextView(getContext());
+            headerView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             headerView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             headerView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             headerView.setPadding(backgroundPaddingLeft + dp(22), dp(2), backgroundPaddingLeft + dp(22), dp(14));

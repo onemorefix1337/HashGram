@@ -432,7 +432,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
         titleTextView = new AudioPlayerAlert.ClippingTextViewSwitcher(context) {
             @Override
             protected TextView createTextView() {
-                TextView textView = new TextView(context);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setMaxLines(1);
                 textView.setLines(1);
                 textView.setSingleLine(true);
@@ -462,7 +462,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
         subtitleTextView = new AudioPlayerAlert.ClippingTextViewSwitcher(context) {
             @Override
             protected TextView createTextView() {
-                TextView textView = new TextView(context);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setMaxLines(1);
                 textView.setLines(1);
                 textView.setSingleLine(true);
@@ -478,7 +478,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
         joinButtonFlicker = new CellFlickerDrawable();
         joinButtonFlicker.setProgress(1);
         joinButtonFlicker.repeatEnabled = false;
-        joinButton = new TextView(context) {
+        joinButton = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public void draw(Canvas canvas) {
                 super.draw(canvas);
@@ -2408,7 +2408,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
                 TLRPC.Chat chat = chatActivity.getCurrentChat();
                 if (call.isScheduled()) {
                     if (gradientPaint == null) {
-                        gradientTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                        gradientTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                         gradientTextPaint.setColor(0xffffffff);
                         gradientTextPaint.setTextSize(dp(14));
                         gradientTextPaint.setTypeface(AndroidUtilities.bold());

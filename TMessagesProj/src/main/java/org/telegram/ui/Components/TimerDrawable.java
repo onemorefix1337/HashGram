@@ -33,7 +33,7 @@ import org.telegram.ui.ActionBar.Theme;
 
 public class TimerDrawable extends Drawable {
 
-    private TextPaint timePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint timePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint linePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private StaticLayout timeLayout;

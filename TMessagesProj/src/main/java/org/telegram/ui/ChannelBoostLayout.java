@@ -204,7 +204,7 @@ public class ChannelBoostLayout extends FrameLayout {
                             super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(50), MeasureSpec.EXACTLY));
                         }
                     };
-                    TextView textView = new TextView(getContext());
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     textView.setText(LocaleController.getString(isChannel() ? R.string.NoBoostersHint : R.string.NoBoostersGroupHint));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
@@ -641,7 +641,7 @@ public class ChannelBoostLayout extends FrameLayout {
         imageView.playAnimation();
 
 
-        TextView loadingTitle = new TextView(context);
+        TextView loadingTitle = new org.telegram.ui.Components.TypefaceTextView(context);
         loadingTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         loadingTitle.setTypeface(AndroidUtilities.bold());
         loadingTitle.setTextColor(Theme.getColor(Theme.key_player_actionBarTitle));
@@ -649,7 +649,7 @@ public class ChannelBoostLayout extends FrameLayout {
         loadingTitle.setText(LocaleController.getString(R.string.LoadingStats));
         loadingTitle.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        TextView loadingSubtitle = new TextView(context);
+        TextView loadingSubtitle = new org.telegram.ui.Components.TypefaceTextView(context);
         loadingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         loadingSubtitle.setTextColor(Theme.getColor(Theme.key_player_actionBarSubtitle));
         loadingSubtitle.setTag(Theme.key_player_actionBarSubtitle);

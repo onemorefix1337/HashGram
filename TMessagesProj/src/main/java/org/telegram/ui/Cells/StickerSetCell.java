@@ -139,7 +139,7 @@ public class StickerSetCell extends FrameLayout {
 
         sideButtons = new FrameLayout(getContext());
 
-        addButtonView = new TextView(context);
+        addButtonView = new org.telegram.ui.Components.TypefaceTextView(context);
         addButtonView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         addButtonView.setTypeface(AndroidUtilities.bold());
         addButtonView.setText(LocaleController.getString(R.string.Add));
@@ -151,7 +151,7 @@ public class StickerSetCell extends FrameLayout {
         sideButtons.addView(addButtonView, LayoutHelper.createFrameRelatively(LayoutHelper.WRAP_CONTENT, 28, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL));
         ScaleStateListAnimator.apply(addButtonView);
 
-        removeButtonView = new TextView(context);
+        removeButtonView = new org.telegram.ui.Components.TypefaceTextView(context);
         removeButtonView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         removeButtonView.setTypeface(AndroidUtilities.bold());
         removeButtonView.setText(LocaleController.getString(R.string.StickersRemove));
@@ -190,7 +190,7 @@ public class StickerSetCell extends FrameLayout {
             }
         });
 
-        textView = new TextView(context) {
+        textView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public void setText(CharSequence text, BufferType type) {
                 text = Emoji.replaceEmoji(text, getPaint().getFontMetricsInt(), false);
@@ -208,7 +208,7 @@ public class StickerSetCell extends FrameLayout {
         textView.setGravity(LayoutHelper.getAbsoluteGravityStart());
         addView(textView, LayoutHelper.createFrameRelatively(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START, 71, 9, 70, 0));
 
-        valueTextView = new TextView(context);
+        valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         valueTextView.setLines(1);

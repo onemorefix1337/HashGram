@@ -329,7 +329,7 @@ public class SeekBar {
         timestamps = new ArrayList<>();
         timestampsAppearing = 0;
         if (timestampLabelPaint == null) {
-            timestampLabelPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            timestampLabelPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             timestampLabelPaint.setTextSize(AndroidUtilities.dp(12));
             timestampLabelPaint.setColor(0xffffffff);
         }

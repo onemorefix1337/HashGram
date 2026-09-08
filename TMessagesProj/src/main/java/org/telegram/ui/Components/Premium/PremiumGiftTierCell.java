@@ -64,24 +64,24 @@ public class PremiumGiftTierCell extends ViewGroup {
         checkBox.setColor(Theme.key_radioBackground, Theme.key_radioBackground, Theme.key_checkboxCheck);
         addView(checkBox);
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         addView(titleView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 0, 8, 0, 0));
 
-        discountView = new TextView(context);
+        discountView = new org.telegram.ui.Components.TypefaceTextView(context);
         discountView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         discountView.setTextColor(Color.WHITE);
         discountView.setPadding(AndroidUtilities.dp(3), 0, AndroidUtilities.dp(3), 0);
         discountView.setTypeface(AndroidUtilities.bold());
         addView(discountView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.BOTTOM, 0, 0, 0, 8));
 
-        pricePerMonthView = new TextView(context);
+        pricePerMonthView = new org.telegram.ui.Components.TypefaceTextView(context);
         pricePerMonthView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         pricePerMonthView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         addView(pricePerMonthView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.BOTTOM, 0, 0, 0, 8));
 
-        priceTotalView = new TextView(context);
+        priceTotalView = new org.telegram.ui.Components.TypefaceTextView(context);
         priceTotalView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         priceTotalView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         addView(priceTotalView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.END));

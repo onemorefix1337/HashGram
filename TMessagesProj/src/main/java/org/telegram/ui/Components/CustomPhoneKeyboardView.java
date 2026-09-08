@@ -281,8 +281,8 @@ public class CustomPhoneKeyboardView extends ViewGroup {
     }
 
     private final static class NumberButtonView extends View {
-        private final TextPaint numberTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        private final TextPaint symbolsTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint numberTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint symbolsTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private final String mNumber;
         private final String mSymbols;
         private final Rect rect = new Rect();

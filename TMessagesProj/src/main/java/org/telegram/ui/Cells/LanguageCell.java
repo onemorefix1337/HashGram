@@ -46,7 +46,7 @@ public class LanguageCell extends FrameLayout {
         radioButton.setColor(Theme.getColor(Theme.key_dialogRadioBackground), Theme.getColor(Theme.key_dialogRadioBackgroundChecked));
         addView(radioButton, LayoutHelper.createFrame(22, 22, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL, (LocaleController.isRTL ? 0 : 20), 0, (LocaleController.isRTL ? 20 : 0), 0));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setSingleLine(true);
@@ -54,7 +54,7 @@ public class LanguageCell extends FrameLayout {
         textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
         addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? marginEndDp : marginStartDp, 0, LocaleController.isRTL ? marginStartDp : marginEndDp, 17));
 
-        textView2 = new TextView(context);
+        textView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         textView2.setTextColor(Theme.getColor(Theme.key_dialogTextGray3));
         textView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         textView2.setSingleLine(true);

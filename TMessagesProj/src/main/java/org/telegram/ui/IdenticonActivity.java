@@ -152,7 +152,7 @@ public class IdenticonActivity extends BaseFragment implements NotificationCente
         linearLayout1.setPadding(AndroidUtilities.dp(10), 0, AndroidUtilities.dp(10), 0);
         container.addView(linearLayout1, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
-        codeTextView = new TextView(context);
+        codeTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         codeTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
         codeTextView.setGravity(Gravity.CENTER);
         codeTextView.setTypeface(Typeface.MONOSPACE);
@@ -167,7 +167,7 @@ public class IdenticonActivity extends BaseFragment implements NotificationCente
         });*/
         linearLayout1.addView(codeTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
         textView.setLinkTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteLinkText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -177,7 +177,7 @@ public class IdenticonActivity extends BaseFragment implements NotificationCente
         textView.setMovementMethod(new LinkMovementMethodMy());
         linearLayout1.addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL));
 
-        emojiTextView = new TextView(context);
+        emojiTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emojiTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
         emojiTextView.setGravity(Gravity.CENTER);
         emojiTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 32);

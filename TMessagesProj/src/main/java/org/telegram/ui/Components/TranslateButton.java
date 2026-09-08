@@ -445,7 +445,7 @@ public class TranslateButton extends FrameLayout implements Theme.Colorable {
         titleView.setImageResource(R.drawable.cocoon_text);
         topViewLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 32, 12, 32, 0));
 
-        final TextView subtitleView = new TextView(context);
+        final TextView subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextColor(0xFFB8C9EF);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         subtitleView.setGravity(Gravity.CENTER);

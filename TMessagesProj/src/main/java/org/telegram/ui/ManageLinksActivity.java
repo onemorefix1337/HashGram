@@ -709,7 +709,7 @@ public class ManageLinksActivity extends BaseFragment implements NotificationCen
             emptyView = new EmptyView(context);
             addView(emptyView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 10, 0, 0));
 
-            messageTextView = new TextView(context);
+            messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             messageTextView.setTextColor(Theme.getColor(Theme.key_chats_message));
             messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             messageTextView.setGravity(Gravity.CENTER);
@@ -1059,14 +1059,14 @@ public class ManageLinksActivity extends BaseFragment implements NotificationCen
             textLayout.setOrientation(LinearLayout.VERTICAL);
             addView(textLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 64, 0, 30, 0));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             titleView.setLines(1);
             titleView.setEllipsize(TextUtils.TruncateAt.END);
             textLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-            subtitleView = new TextView(context);
+            subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             subtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             textLayout.addView(subtitleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 4.33f, 0, 0));
@@ -1156,7 +1156,7 @@ public class ManageLinksActivity extends BaseFragment implements NotificationCen
             priceLayout = new LinearLayout(context);
             priceLayout.setOrientation(LinearLayout.VERTICAL);
 
-            priceTitleView = new TextView(context);
+            priceTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             priceTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             priceTitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             priceTitleView.setLines(1);
@@ -1165,7 +1165,7 @@ public class ManageLinksActivity extends BaseFragment implements NotificationCen
             priceTitleView.setGravity(Gravity.RIGHT);
             priceLayout.addView(priceTitleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT));
 
-            priceSubitleView = new TextView(context);
+            priceSubitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             priceSubitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             priceSubitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             priceSubitleView.setGravity(Gravity.RIGHT);

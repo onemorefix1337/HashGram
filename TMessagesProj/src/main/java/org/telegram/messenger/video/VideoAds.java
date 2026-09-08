@@ -420,7 +420,7 @@ public class VideoAds {
                 ArrayList<View> sections = new ArrayList<>();
 
                 if (ad.url != null && !TextUtils.equals(AndroidUtilities.getHostAuthority(ad.url), MessagesController.getInstance(currentAccount).linkPrefix)) {
-                    TextView textView = new TextView(context);
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     textView.setTextColor(Theme.getColor(Theme.key_chat_messageLinkIn, resourcesProvider1));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -441,7 +441,7 @@ public class VideoAds {
                 }
 
                 if (ad.sponsor_info != null) {
-                    TextView textView = new TextView(context);
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider1));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -457,7 +457,7 @@ public class VideoAds {
                 }
 
                 if (ad.additional_info != null) {
-                    TextView textView = new TextView(context);
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider1));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));

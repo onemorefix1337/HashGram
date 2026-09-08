@@ -58,7 +58,7 @@ public class PopupAudioView extends BaseCell implements SeekBar.SeekBarDelegate,
 
     public PopupAudioView(Context context) {
         super(context);
-        timePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+        timePaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
         timePaint.setTextSize(AndroidUtilities.dp(16));
 
         TAG = DownloadController.getInstance(currentAccount).generateObserverTag();

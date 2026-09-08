@@ -1383,7 +1383,7 @@ public class BottomSheet extends Dialog implements BaseFragment.AttachedSheet {
 
         int topOffset = 0;
         if (title != null) {
-            titleView = new TextView(getContext()) {
+            titleView = new org.telegram.ui.Components.TypefaceTextView(getContext()) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                     super.onMeasure(widthMeasureSpec, heightMeasureSpec);

@@ -165,7 +165,7 @@ public class SearchTagsList extends FrameLayout implements NotificationCenter.No
         premiumLayout.setOrientation(LinearLayout.HORIZONTAL);
         ScaleStateListAnimator.apply(premiumLayout, 0.03f, 1.25f);
 
-        TextView tagView = new TextView(getContext()) {
+        TextView tagView = new org.telegram.ui.Components.TypefaceTextView(getContext()) {
             private final Path path = new Path();
             private final RectF bounds = new RectF();
             private final Paint paint = new Paint();
@@ -206,7 +206,7 @@ public class SearchTagsList extends FrameLayout implements NotificationCenter.No
         tagView.setText(ssb);
         tagView.setPadding(dp(4), dp(4), dp(9), dp(4));
 
-        TextView textView = new TextView(getContext());
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText2, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         textView.setTypeface(AndroidUtilities.bold());
@@ -501,7 +501,7 @@ public class SearchTagsList extends FrameLayout implements NotificationCenter.No
         LinearLayout container = new LinearLayout(context);
         container.setOrientation(LinearLayout.VERTICAL);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setText(LocaleController.getString(R.string.SavedTagLabelTagText));

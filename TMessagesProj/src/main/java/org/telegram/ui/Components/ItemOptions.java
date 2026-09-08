@@ -874,7 +874,7 @@ public class ItemOptions {
         imageView.setForUserOrChat(obj, avatarDrawable);
         userButton.addView(imageView, LayoutHelper.createFrame(34, 34, Gravity.LEFT | Gravity.CENTER_VERTICAL, 13, 0, 0, 0));
 
-        final TextView titleText = new TextView(context);
+        final TextView titleText = new org.telegram.ui.Components.TypefaceTextView(context);
         titleText.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         titleText.setEllipsize(TextUtils.TruncateAt.END);
@@ -887,7 +887,7 @@ public class ItemOptions {
         }
         userButton.addView(titleText, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 59, 6, 16, 0));
 
-        final TextView subtitleText = new TextView(context);
+        final TextView subtitleText = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleText.setTextColor(Theme.getColor(Theme.key_dialogTextGray2, resourcesProvider));
         subtitleText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         subtitleText.setText(AndroidUtilities.replaceArrows(subtitle, false, dp(1), dp(.66f)));
@@ -915,7 +915,7 @@ public class ItemOptions {
         imageView.setForUserOrChat(obj, avatarDrawable);
         userButton.addView(imageView, LayoutHelper.createFrame(34, 34, Gravity.LEFT | Gravity.TOP, 13, 11, 0, 11));
 
-        final TextView titleText = new TextView(context);
+        final TextView titleText = new org.telegram.ui.Components.TypefaceTextView(context);
         titleText.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         titleText.setText(text);
@@ -942,7 +942,7 @@ public class ItemOptions {
     }
 
     public ItemOptions addText(CharSequence text, int textSizeDp, Typeface typeface, int maxWidth) {
-        final TextView textView = new TextView(context) {
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec);

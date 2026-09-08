@@ -89,7 +89,7 @@ public class ChatbotSheet extends BottomSheetWithRecyclerListView {
 
         topView.addView(imageView, LayoutHelper.createLinear(80, 80, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
         titleView.setGravity(Gravity.CENTER);
@@ -98,7 +98,7 @@ public class ChatbotSheet extends BottomSheetWithRecyclerListView {
         topView.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 15.66f, 32, 3.66f));
         actionBar.setTitle(UserObject.getUserName(user));
 
-        subtitleView = new TextView(context);
+        subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText));
         subtitleView.setGravity(Gravity.CENTER);
@@ -107,7 +107,7 @@ public class ChatbotSheet extends BottomSheetWithRecyclerListView {
 
         final String username = UserObject.getPublicUsername(user);
         if (!TextUtils.isEmpty(username)) {
-            linkView = new TextView(context);
+            linkView = new org.telegram.ui.Components.TypefaceTextView(context);
             linkView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             linkView.setTextColor(getThemedColor(Theme.key_chat_messageLinkIn));
             linkView.setText("@" + username);

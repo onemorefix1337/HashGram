@@ -470,14 +470,14 @@ public class ProfileGiftsContainer extends FrameLayout implements NotificationCe
                 emptyView1Image.setImageDrawable(new RLottieDrawable(R.raw.utyan_empty, "utyan_empty", dp(120), dp(120)));
                 emptyView1Layout.addView(emptyView1Image, LayoutHelper.createLinear(120, 120, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
-                emptyView1Title = new TextView(getContext());
+                emptyView1Title = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 emptyView1Title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
                 emptyView1Title.setTypeface(AndroidUtilities.bold());
                 emptyView1Title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
                 emptyView1Title.setText(LocaleController.getString(R.string.ProfileGiftsNotFoundTitle));
                 emptyView1Layout.addView(emptyView1Title, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 12, 0, 0));
 
-                emptyView1Button = new TextView(getContext());
+                emptyView1Button = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 emptyView1Button.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 emptyView1Button.setTextColor(Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider));
                 emptyView1Button.setText(LocaleController.getString(R.string.ProfileGiftsNotFoundButton));
@@ -505,14 +505,14 @@ public class ProfileGiftsContainer extends FrameLayout implements NotificationCe
                 emptyView2Layout.setOrientation(LinearLayout.VERTICAL);
                 emptyView2.addView(emptyView2Layout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
-                emptyView2Title = new TextView(getContext());
+                emptyView2Title = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 emptyView2Title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 emptyView2Title.setTypeface(AndroidUtilities.bold());
                 emptyView2Title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
                 emptyView2Title.setText(getString(R.string.Gift2CollectionEmptyTitle));
                 emptyView2Layout.addView(emptyView2Title, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
-                emptyView2Subtitle = new TextView(getContext());
+                emptyView2Subtitle = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 emptyView2Subtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 emptyView2Subtitle.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
                 emptyView2Subtitle.setText(getString(R.string.Gift2CollectionEmptyText));
@@ -1123,7 +1123,7 @@ public class ProfileGiftsContainer extends FrameLayout implements NotificationCe
                 }
                 final SpannableStringBuilder sb = new SpannableStringBuilder(collection.title);
                 if (collection.icon != null) {
-                    final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                    final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                     textPaint.setTextSize(dp(16));
                     final SpannableStringBuilder emoji = new SpannableStringBuilder("e ");
                     final AnimatedEmojiSpan span = new AnimatedEmojiSpan(collection.icon, textPaint.getFontMetricsInt());
@@ -1314,7 +1314,7 @@ public class ProfileGiftsContainer extends FrameLayout implements NotificationCe
         checkbox.setChecked(false, false);
         checkbox.setDrawBackgroundAsArc(10);
         checkboxLayout.addView(checkbox, LayoutHelper.createLinear(26, 26, Gravity.CENTER_VERTICAL, 0, 0, 0, 0));
-        checkboxTextView = new TextView(context);
+        checkboxTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         checkboxTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         checkboxTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         checkboxTextView.setText(LocaleController.getString(R.string.Gift2ChannelNotify));

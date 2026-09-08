@@ -50,7 +50,7 @@ public class VoIPStatusTextView extends FrameLayout {
         this.backgroundProvider = backgroundProvider;
 
         for (int i = 0; i < 2; i++) {
-            textView[i] = new TextView(context);
+            textView[i] = new org.telegram.ui.Components.TypefaceTextView(context);
             textView[i].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             textView[i].setTextColor(Color.WHITE);
             textView[i].setGravity(Gravity.CENTER_HORIZONTAL);
@@ -58,7 +58,7 @@ public class VoIPStatusTextView extends FrameLayout {
         }
 
         badConnectionLayer = new FrameLayout(context);
-        badConnectionTextView = new TextView(context) {
+        badConnectionTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
 
             private final RectF bgRect = new RectF();
 
@@ -85,7 +85,7 @@ public class VoIPStatusTextView extends FrameLayout {
         badConnectionLayer.setVisibility(View.GONE);
         addView(badConnectionLayer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 44, 0, 0));
 
-        reconnectTextView = new TextView(context);
+        reconnectTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         reconnectTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         reconnectTextView.setTextColor(Color.WHITE);
         reconnectTextView.setGravity(Gravity.CENTER_HORIZONTAL);

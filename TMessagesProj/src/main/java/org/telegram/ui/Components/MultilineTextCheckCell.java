@@ -34,14 +34,14 @@ public class MultilineTextCheckCell extends FrameLayout {
         textLayout.setOrientation(LinearLayout.VERTICAL);
         addView(textLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, LocaleController.isRTL ? 70 : 22, 0, LocaleController.isRTL ? 22 : 70, 0));
 
-        titleTextView = new TextView(context);
+        titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         titleTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
         textLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        subtitleTextView = new TextView(context);
+        subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         subtitleTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);

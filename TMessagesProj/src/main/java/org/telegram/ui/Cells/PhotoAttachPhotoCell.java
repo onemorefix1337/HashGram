@@ -264,7 +264,7 @@ public class PhotoAttachPhotoCell extends FrameLayout {
         videoPlayImageView.setImageResource(R.drawable.play_mini_video);
         videoInfoContainer.addView(videoPlayImageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL));
 
-        videoTextView = new TextView(context);
+        videoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         videoTextView.setTextColor(0xffffffff);
         videoTextView.setTypeface(AndroidUtilities.bold());
         videoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);

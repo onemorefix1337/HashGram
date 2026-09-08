@@ -28,7 +28,7 @@ public class SharedMediaSectionCell extends FrameLayout {
     public SharedMediaSectionCell(Context context) {
         super(context);
 
-        textView = new TextView(getContext());
+        textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));

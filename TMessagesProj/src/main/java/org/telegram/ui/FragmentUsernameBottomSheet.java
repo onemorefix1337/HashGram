@@ -142,7 +142,7 @@ public class FragmentUsernameBottomSheet {
         chipAvatar.setForUserOrChat(owner, avatarDrawable);
         chipLayout.addView(chipAvatar, LayoutHelper.createFrame(28, 28, Gravity.LEFT | Gravity.TOP));
 
-        TextView chipText = new TextView(context);
+        TextView chipText = new org.telegram.ui.Components.TypefaceTextView(context);
         chipText.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         chipText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         chipText.setSingleLine();
@@ -151,7 +151,7 @@ public class FragmentUsernameBottomSheet {
 
         layout.addView(chipLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, Gravity.CENTER_HORIZONTAL, 42, 10, 42, 18));
 
-        TextView descriptionView = new TextView(context);
+        TextView descriptionView = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionView.setGravity(Gravity.CENTER);
         descriptionView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         descriptionView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

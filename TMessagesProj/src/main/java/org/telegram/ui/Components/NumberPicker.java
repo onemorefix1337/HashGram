@@ -175,7 +175,7 @@ public class NumberPicker extends LinearLayout {
 
         setWillNotDraw(false);
 
-        mInputText = new TextView(getContext());
+        mInputText = new org.telegram.ui.Components.TypefaceTextView(getContext());
         mInputText.setGravity(Gravity.CENTER);
         mInputText.setSingleLine(true);
         mInputText.setTextColor(getThemedColor(Theme.key_dialogTextBlack));

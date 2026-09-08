@@ -457,7 +457,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
 
         ActionBarMenu menu = actionBar.createMenu();
         ActionBarMenuItem view = menu.addItemWithWidth(2, 0, AndroidUtilities.dp(56));
-        countText = new TextView(this);
+        countText = new org.telegram.ui.Components.TypefaceTextView(this);
         countText.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubtitle));
         countText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         countText.setGravity(Gravity.CENTER);
@@ -483,7 +483,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         layoutParams2.topMargin = AndroidUtilities.dp(3);
         avatarImageView.setLayoutParams(layoutParams2);
 
-        nameTextView = new TextView(this);
+        nameTextView = new org.telegram.ui.Components.TypefaceTextView(this);
         nameTextView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultTitle));
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         nameTextView.setLines(1);
@@ -501,7 +501,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         layoutParams2.gravity = Gravity.BOTTOM;
         nameTextView.setLayoutParams(layoutParams2);
 
-        onlineTextView = new TextView(this);
+        onlineTextView = new org.telegram.ui.Components.TypefaceTextView(this);
         onlineTextView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubtitle));
         onlineTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         onlineTextView.setLines(1);
@@ -821,7 +821,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                             view.setOnTouchListener((v, event) -> true);
                         }
 
-                        TextView textView = new TextView(this);
+                        TextView textView = new org.telegram.ui.Components.TypefaceTextView(this);
                         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText));
                         textView.setTypeface(AndroidUtilities.bold());
@@ -888,7 +888,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                 backupImageView.setTag(311);
                 frameLayout.addView(backupImageView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
-                TextView textView = new TextView(this);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(this);
                 textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 textView.setGravity(Gravity.CENTER);
@@ -999,7 +999,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                 linearLayout.setPadding(AndroidUtilities.dp(10), AndroidUtilities.dp(10), AndroidUtilities.dp(10), AndroidUtilities.dp(10));
                 linearLayout.setOnClickListener(v -> openCurrentMessage());
 
-                TextView textView = new TextView(this);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(this);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 textView.setTag(301);
                 textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));

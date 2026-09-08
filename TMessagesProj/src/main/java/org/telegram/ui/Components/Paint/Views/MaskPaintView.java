@@ -144,7 +144,7 @@ public class MaskPaintView extends FrameLayout {
         buttonsLayout.setVisibility(View.GONE);
         addView(buttonsLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 44, Gravity.BOTTOM));
 
-        cancelButton = new TextView(context);
+        cancelButton = new org.telegram.ui.Components.TypefaceTextView(context);
         cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         cancelButton.setTypeface(AndroidUtilities.bold());
         cancelButton.setBackground(Theme.createSelectorDrawable(Theme.multAlpha(Color.WHITE, .15f), Theme.RIPPLE_MASK_CIRCLE_TO_BOUND_EDGE));
@@ -154,7 +154,7 @@ public class MaskPaintView extends FrameLayout {
         cancelButton.setGravity(Gravity.CENTER);
         buttonsLayout.addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 44, Gravity.LEFT, -8, 0, 0, 0));
 
-        doneButton = new TextView(context);
+        doneButton = new org.telegram.ui.Components.TypefaceTextView(context);
         doneButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         doneButton.setTypeface(AndroidUtilities.bold());
         doneButton.setBackground(Theme.createSelectorDrawable(Theme.multAlpha(Theme.getColor(Theme.key_chat_editMediaButton), .15f), Theme.RIPPLE_MASK_CIRCLE_TO_BOUND_EDGE));

@@ -243,7 +243,7 @@ public class TooManyCommunitiesActivity extends BaseFragment {
             }
         };
         buttonLayout.setWillNotDraw(false);
-        buttonTextView = new TextView(context);
+        buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         buttonTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
         buttonTextView.setGravity(Gravity.CENTER);
         buttonTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

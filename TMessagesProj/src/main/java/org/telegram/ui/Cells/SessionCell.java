@@ -105,7 +105,7 @@ public class SessionCell extends FrameLayout {
         }
 
 
-        nameTextView = new TextView(context);
+        nameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         nameTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, type == 0 ? 15 : 16);
         nameTextView.setLines(1);
@@ -115,7 +115,7 @@ public class SessionCell extends FrameLayout {
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
         nameTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
 
-        onlineTextView = new TextView(context);
+        onlineTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         onlineTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, type == 0 ? 12 : 13);
         onlineTextView.setGravity((LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.TOP);
 
@@ -137,7 +137,7 @@ public class SessionCell extends FrameLayout {
             rightMargin = 21;
         }
 
-        detailTextView = new TextView(context);
+        detailTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         detailTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         detailTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, type == 0 ? 13 : 14);
         detailTextView.setLines(1);
@@ -147,7 +147,7 @@ public class SessionCell extends FrameLayout {
         detailTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
         addView(detailTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, leftMargin, type == 0 ? 28 : 36, rightMargin, 0));
 
-        detailExTextView = new TextView(context);
+        detailExTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         detailExTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3));
         detailExTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, type == 0 ? 13 : 14);
         detailExTextView.setLines(1);

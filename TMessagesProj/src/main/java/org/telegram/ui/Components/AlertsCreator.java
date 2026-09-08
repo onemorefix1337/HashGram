@@ -767,7 +767,7 @@ public class AlertsCreator {
             }, start, end - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
-        final TextView message = new TextView(activity);
+        final TextView message = new org.telegram.ui.Components.TypefaceTextView(activity);
         message.setText(spanned);
         message.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         message.setLinkTextColor(Theme.getColor(Theme.key_dialogTextLink));
@@ -1528,7 +1528,7 @@ public class AlertsCreator {
             if (descriptions[a] == null) {
                 continue;
             }
-            TextView textView = new TextView(parentFragment.getParentActivity());
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(parentFragment.getParentActivity());
             Drawable drawable = parentFragment.getParentActivity().getResources().getDrawable(icons[a]);
             if (a == descriptions.length - 1) {
                 textView.setTextColor(Theme.getColor(Theme.key_text_RedBold));
@@ -1765,7 +1765,7 @@ public class AlertsCreator {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context, resourcesProvider);
         builder.setTitle(LocaleController.getString(R.string.OpenUrlTitle));
 
-        final TextView urlView = new TextView(context);
+        final TextView urlView = new org.telegram.ui.Components.TypefaceTextView(context);
         urlView.setText(urlFinal);
         urlView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         urlView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -1824,7 +1824,7 @@ public class AlertsCreator {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context, resourcesProvider);
         builder.setTitle(LocaleController.getString(R.string.OpenUrlTitle));
 
-        final TextView urlView = new TextView(context);
+        final TextView urlView = new org.telegram.ui.Components.TypefaceTextView(context);
         urlView.setText(url);
         urlView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         urlView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -2001,7 +2001,7 @@ public class AlertsCreator {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         long selfUserId = UserConfig.getInstance(account).getClientUserId();
 
-        TextView messageTextView = new TextView(context);
+        TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -2016,7 +2016,7 @@ public class AlertsCreator {
         imageView.setRoundRadius(dp(20));
         frameLayout.addView(imageView, LayoutHelper.createFrame(40, 40, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 22, 5, 22, 0));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -2122,7 +2122,7 @@ public class AlertsCreator {
             textView.setRightDrawable(verifiedDrawable);
         }
 
-        TextView subtitleView = new TextView(context);
+        TextView subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue));
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setLines(1);
@@ -2243,7 +2243,7 @@ public class AlertsCreator {
             titleView.setRightDrawable(verifiedDrawable);
         }
 
-        TextView subtitleView = new TextView(context);
+        TextView subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue));
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setLines(1);
@@ -2520,7 +2520,7 @@ public class AlertsCreator {
         final CheckBoxCell[] cell = new CheckBoxCell[1];
         final boolean[] value = new boolean[1];
 
-        final TextView messageTextView = new TextView(context) {
+        final TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public void setText(CharSequence text, BufferType type) {
                 text = Emoji.replaceEmoji(text, getPaint().getFontMetricsInt(), false);
@@ -2545,7 +2545,7 @@ public class AlertsCreator {
         builder.setCustomViewOffset(6);
         builder.setView(frameLayout);
 
-        final TextView textView = new TextView(context);
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -2615,7 +2615,7 @@ public class AlertsCreator {
 
         CheckBoxCell[] cell = new CheckBoxCell[1];
 
-        TextView messageTextView = new TextView(context) {
+        TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public void setText(CharSequence text, BufferType type) {
                 text = Emoji.replaceEmoji(text, getPaint().getFontMetricsInt(), false);
@@ -3013,7 +3013,7 @@ public class AlertsCreator {
 
         CheckBoxCell[] cell = new CheckBoxCell[1];
         boolean[] deleteForAll = new boolean[1];
-        TextView messageTextView = new TextView(context);
+        TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -3029,7 +3029,7 @@ public class AlertsCreator {
         builder.setCustomViewOffset(6);
         builder.setView(frameLayout);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -3095,7 +3095,7 @@ public class AlertsCreator {
 
         CheckBoxCell[] cell = new CheckBoxCell[1];
 
-        TextView messageTextView = new TextView(context) {
+        TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public void setText(CharSequence text, BufferType type) {
                 text = Emoji.replaceEmoji(text, getPaint().getFontMetricsInt(), false);
@@ -3118,7 +3118,7 @@ public class AlertsCreator {
         };
         builder.setView(frameLayout);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -3213,7 +3213,7 @@ public class AlertsCreator {
             message = LocaleController.formatString("CallAlert", R.string.CallAlert, UserObject.getUserName(user));
         }
 
-        TextView messageTextView = new TextView(context) {
+        TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public void setText(CharSequence text, BufferType type) {
                 text = Emoji.replaceEmoji(text, getPaint().getFontMetricsInt(), false);
@@ -3236,7 +3236,7 @@ public class AlertsCreator {
         imageView.setForUserOrChat(user, avatarDrawable);
         frameLayout.addView(imageView, LayoutHelper.createFrame(40, 40, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 22, 5, 22, 0));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -3553,7 +3553,7 @@ public class AlertsCreator {
         builder.setTitle(isChannel ? LocaleController.getString(R.string.ChatWithAdminChannelTitle) : LocaleController.getString(R.string.ChatWithAdminGroupTitle), true);
         LinearLayout linearLayout = new LinearLayout(fragment.getParentActivity());
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-        TextView messageTextView = new TextView(fragment.getParentActivity());
+        TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(fragment.getParentActivity());
         linearLayout.addView(messageTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0, 21, 0, 21, 8));
         messageTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -3561,7 +3561,7 @@ public class AlertsCreator {
         messageTextView.setText(replaceTags(LocaleController.formatString("ChatWithAdminMessage", R.string.ChatWithAdminMessage, chatWithAdmin, LocaleController.formatDateAudio(chatWithAdminDate, false))));
 
 
-        TextView buttonTextView = new TextView(fragment.getParentActivity());
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(fragment.getParentActivity());
         buttonTextView.setPadding(dp(34), 0, dp(34), 0);
         buttonTextView.setGravity(Gravity.CENTER);
         buttonTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -3820,7 +3820,7 @@ public class AlertsCreator {
 
         FrameLayout titleLayout = new FrameLayout(context);
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(title);
         titleView.setTextColor(datePickerColors.textColor);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -4011,7 +4011,7 @@ public class AlertsCreator {
 
         FrameLayout titleLayout = new FrameLayout(context);
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(title);
         titleView.setTextColor(datePickerColors.textColor);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -4445,7 +4445,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         if (!TextUtils.isEmpty(forcedTitle)) {
             titleView.setText(forcedTitle);
         } else if (dialogId == selfUserId) {
@@ -4515,7 +4515,7 @@ public class AlertsCreator {
 
         Calendar calendar = Calendar.getInstance();
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -4641,7 +4641,7 @@ public class AlertsCreator {
             final int backgroundColor = datePickerColors != null ? Theme.blendOver(datePickerColors.backgroundColor, Theme.multAlpha(datePickerColors.textColor, 0.075f)) : Theme.getColor(Theme.key_dialogBackgroundGray, resourcesProvider);
             final int selectorColor = datePickerColors != null ? Theme.multAlpha(datePickerColors.textColor, 0.1f) : Theme.getColor(Theme.key_listSelector, resourcesProvider);
 
-            repeatTextView = new TextView(context);
+            repeatTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             repeatTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             repeatTextView.setTextColor(textColor);
             repeatTextView.setPadding(dp(12), 0, dp(12), 0);
@@ -4864,7 +4864,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(title);
 
         titleView.setTextColor(datePickerColors.textColor);
@@ -4880,7 +4880,7 @@ public class AlertsCreator {
 
         Calendar calendar = Calendar.getInstance();
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -5035,7 +5035,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(title);
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -5098,7 +5098,7 @@ public class AlertsCreator {
 
         long currentTime = System.currentTimeMillis();
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -5388,7 +5388,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(getString(R.string.RelativeDateAddDate));
         titleView.setTextColor(datePickerColors.textColor);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -5584,7 +5584,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(R.string.StopPollDeadlineHeader));
         titleView.setTextColor(datePickerColors.textColor);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -5597,14 +5597,14 @@ public class AlertsCreator {
         linearLayout.setWeightSum(1.0f);
         container.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 1f, 0, 0, 23, 0, 23));
 
-        TextView closesInTextView = new TextView(context);
+        TextView closesInTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         closesInTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         closesInTextView.setTextColor(Theme.getColor(Theme.key_dialogTextGray2, resourcesProvider));
         closesInTextView.setGravity(Gravity.CENTER);
 
         Calendar calendar = Calendar.getInstance();
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -5782,7 +5782,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(R.string.SetEmojiStatusUntilTitle));
 
         titleView.setTextColor(datePickerColors.textColor);
@@ -5798,7 +5798,7 @@ public class AlertsCreator {
 
         Calendar calendar = Calendar.getInstance();
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -5987,7 +5987,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(R.string.AutoDeleteAfteTitle));
 
         titleView.setTextColor(datePickerColors.textColor);
@@ -6128,7 +6128,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(R.string.NotfificationsFrequencyTitle));
 
         titleView.setTextColor(datePickerColors.textColor);
@@ -6142,7 +6142,7 @@ public class AlertsCreator {
         linearLayout.setWeightSum(1.0f);
         container.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 1f, 0, 0, 12, 0, 12));
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -6289,7 +6289,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(R.string.MuteForAlert));
         titleView.setTextColor(datePickerColors.textColor);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -6302,7 +6302,7 @@ public class AlertsCreator {
         linearLayout.setWeightSum(1.0f);
         container.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 1f, 0, 0, 12, 0, 12));
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -6454,7 +6454,7 @@ public class AlertsCreator {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(R.string.ChooseDate));
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -6469,7 +6469,7 @@ public class AlertsCreator {
 
         long currentTime = System.currentTimeMillis();
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -7161,7 +7161,7 @@ public class AlertsCreator {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setPadding(0, 0, 0, dp(4));
 
-        TextView titleTextView = new TextView(parentActivity);
+        TextView titleTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
         if (expand) {
             titleTextView.setText(LocaleController.getString(R.string.LiveLocationAlertExpandMessage));
         } else if (user != null) {
@@ -8326,7 +8326,7 @@ public class AlertsCreator {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         builder.setView(linearLayout);
 
-        final TextView message = new TextView(context);
+        final TextView message = new org.telegram.ui.Components.TypefaceTextView(context);
         if (type != 0) {
             message.setText(replaceTags(LocaleController.getString(R.string.EnterThemeNameEdit)));
         } else {
@@ -8945,7 +8945,7 @@ public class AlertsCreator {
         titleLayout.setOrientation(LinearLayout.VERTICAL);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 22, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(mode == SUGGEST_DATE_PICKER_MODE_ACCEPT ? R.string.SuggestedPostAcceptTitle : R.string.PostSuggestionsAddTime));
         titleView.setTextColor(datePickerColors.textColor);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -8953,7 +8953,7 @@ public class AlertsCreator {
         titleLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 12, 0, 0));
         titleView.setOnTouchListener((v, event) -> true);
 
-        TextView subtitleView = new TextView(context);
+        TextView subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setText(LocaleController.getString(R.string.PostSuggestionsAddTimeHint));
@@ -8973,7 +8973,7 @@ public class AlertsCreator {
         final long minDateSeconds = MessagesController.getInstance(UserConfig.selectedAccount).config.starsSuggestedPostFutureMin.get(TimeUnit.SECONDS) * 2;
         final long maxDateSeconds = MessagesController.getInstance(UserConfig.selectedAccount).config.starsSuggestedPostFutureMax.get(TimeUnit.SECONDS) - 86400;
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -9063,7 +9063,7 @@ public class AlertsCreator {
         ScaleStateListAnimator.apply(buttonTextView, 0.02f, 1.2f);
 
 
-        TextView buttonAnytimeTextView = new TextView(context) {
+        TextView buttonAnytimeTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -9117,7 +9117,7 @@ public class AlertsCreator {
         circle.setBackground(Theme.createCircleDrawable(dp(80), Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider)));
         topView.addView(circle, LayoutHelper.createFrame(80, 80, Gravity.CENTER_HORIZONTAL, 0, 12, 0, 0));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -9125,7 +9125,7 @@ public class AlertsCreator {
         textView.setGravity(Gravity.CENTER);
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 32, 16, 32, 8));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setText(replaceTags(LocaleController.formatString(R.string.CallForbiddenInviteLinkText, DialogObject.getName(currentAccount, dialogId))));
@@ -9201,7 +9201,7 @@ public class AlertsCreator {
         final LinearLayout topView = new LinearLayout(context);
         topView.setOrientation(LinearLayout.VERTICAL);
         topView.addView(new StarGiftSheet.GiftThemeReuseTopView(context, gift, user), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 0, -4, 0, 0));
-        final TextView textView = new TextView(context);
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setText(replaceTags(formatString(R.string.GiftThemesSetInReuseInfo, DialogObject.getDialogTitle(user))));
@@ -9265,7 +9265,7 @@ public class AlertsCreator {
 
         FrameLayout titleLayout = new FrameLayout(context);
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(title);
         titleView.setTextColor(datePickerColors.textColor);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -9315,7 +9315,7 @@ public class AlertsCreator {
         backupImageView.setAutoRepeat(false);
         backupImageView.playAnimation();
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setGravity(Gravity.CENTER);
         titleView.setText(getString(R.string.DisableSharingInfoHeader));

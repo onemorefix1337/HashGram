@@ -1034,7 +1034,7 @@ public class CachedMediaLayout extends FrameLayout implements NestedSizeNotifier
             });
             container = new FrameLayout(context);
 
-            sizeTextView = new TextView(context);
+            sizeTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             sizeTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             sizeTextView.setGravity(Gravity.RIGHT);
             sizeTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText));

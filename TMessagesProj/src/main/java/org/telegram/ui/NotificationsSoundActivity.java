@@ -751,7 +751,7 @@ public class NotificationsSoundActivity extends BaseFragment implements ChatAtta
             addView(checkBox, LayoutHelper.createFrame(26, 26, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL, (LocaleController.isRTL ? 0 : 18), 0, (LocaleController.isRTL ? 18 : 0), 0));
             checkBox.setChecked(true, false);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setLines(1);

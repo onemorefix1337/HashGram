@@ -83,7 +83,7 @@ public class ChatActivityMemberRequestsDelegate {
             avatarsView.reset();
             requestsDataLayout.addView(avatarsView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP, 8, 0, 10, 0));
 
-            requestsCountTextView = new TextView(fragment.getParentActivity());
+            requestsCountTextView = new org.telegram.ui.Components.TypefaceTextView(fragment.getParentActivity());
             requestsCountTextView.setEllipsize(TextUtils.TruncateAt.END);
             requestsCountTextView.setGravity(Gravity.CENTER_VERTICAL);
             requestsCountTextView.setSingleLine();

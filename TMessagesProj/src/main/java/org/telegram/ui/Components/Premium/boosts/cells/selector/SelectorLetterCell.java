@@ -24,7 +24,7 @@ public class SelectorLetterCell extends FrameLayout {
         super(context);
         this.resourcesProvider = resourcesProvider;
         setBackgroundColor(getThemedColor(Theme.key_graySection));
-        textView = new TextView(getContext());
+        textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextColor(getThemedColor(Theme.key_graySectionText));

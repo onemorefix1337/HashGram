@@ -176,7 +176,7 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
     private Drawable writeButtonDrawable;
     private SizeNotifierFrameLayout sizeNotifierFrameLayout;
     private int itemsPerRow = 3;
-    private TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private RectF rect = new RectF();
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private AnimatorSet animatorSet;

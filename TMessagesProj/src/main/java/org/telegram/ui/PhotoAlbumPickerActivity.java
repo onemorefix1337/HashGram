@@ -114,7 +114,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
     private SizeNotifierFrameLayout sizeNotifierFrameLayout;
     private View selectedCountView;
     private View shadow;
-    private TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private RectF rect = new RectF();
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -333,7 +333,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
         listView.setAdapter(listAdapter = new ListAdapter(context));
         listView.setGlowColor(Theme.getColor(Theme.key_dialogBackground));
 
-        emptyView = new TextView(context);
+        emptyView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyView.setTextColor(0xff808080);
         emptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         emptyView.setGravity(Gravity.CENTER);

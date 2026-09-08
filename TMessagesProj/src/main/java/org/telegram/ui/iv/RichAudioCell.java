@@ -64,7 +64,7 @@ public class RichAudioCell extends RichBlockCell
     private final Theme.ResourcesProvider resourcesProvider;
 
     private final Paint selectionPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final TextPaint audioTimePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint audioTimePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     private final RadialProgress2 radialProgress;
     private final SeekBar seekBar;

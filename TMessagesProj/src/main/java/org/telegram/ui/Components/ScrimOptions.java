@@ -692,7 +692,7 @@ public class ScrimOptions extends Dialog {
         bitmapPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
 
         cell.setupTextColors();
-        final TextPaint paint = new TextPaint(layout.getPaint());
+        final TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint(layout.getPaint());
         paint.set(layout.getPaint());
         CharSequence text = new SpannableStringBuilder(AnimatedEmojiSpan.cloneSpans(layout.getText(), -1, paint.getFontMetricsInt()));
         if (text instanceof Spannable) {

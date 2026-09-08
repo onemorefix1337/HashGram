@@ -152,7 +152,7 @@ public class RichBlockChrome {
 
     // --- marker drawing (bullet / number; checkbox is a non-interactive glyph for now) ---
 
-    private final TextPaint markerPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint markerPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     public RichBlockChrome() {
         markerPaint.setTextSize(dp(16));

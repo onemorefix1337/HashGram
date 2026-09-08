@@ -64,7 +64,7 @@ public class WebPagePreviewView extends FrameLayout {
         textBlock.setOrientation(LinearLayout.VERTICAL);
 
         if (webPage.site_name != null) {
-            final TextView siteNameView = new TextView(getContext());
+            final TextView siteNameView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             siteNameView.setTypeface(AndroidUtilities.bold());
             siteNameView.setText(webPage.site_name);
             siteNameView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -75,7 +75,7 @@ public class WebPagePreviewView extends FrameLayout {
         }
 
         if (webPage.title != null) {
-            final TextView titleView = new TextView(getContext());
+            final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             titleView.setTypeface(AndroidUtilities.bold());
             titleView.setText(webPage.title);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -86,7 +86,7 @@ public class WebPagePreviewView extends FrameLayout {
         }
 
         if (webPage.description != null) {
-            final TextView descView = new TextView(getContext());
+            final TextView descView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             descView.setText(webPage.description);
             descView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             descView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));

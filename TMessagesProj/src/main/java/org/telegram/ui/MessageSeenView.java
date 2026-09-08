@@ -374,7 +374,7 @@ public class MessageSeenView extends FrameLayout {
             statusBadgeComponent = new StatusBadgeComponent(this);
             nameView.setDrawablePadding(AndroidUtilities.dp(3));
 
-            readView = new TextView(context);
+            readView = new org.telegram.ui.Components.TypefaceTextView(context);
             readView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             readView.setLines(1);
             readView.setEllipsize(TextUtils.TruncateAt.END);

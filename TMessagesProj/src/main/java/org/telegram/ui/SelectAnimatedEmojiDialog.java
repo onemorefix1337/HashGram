@@ -886,7 +886,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
             emojiSearchGridView.getItemAnimator().setDurations(180);
             emojiSearchGridView.getItemAnimator().setMoveInterpolator(CubicBezierInterpolator.EASE_OUT_QUINT);
         }
-        TextView emptyViewText = new TextView(context);
+        TextView emptyViewText = new org.telegram.ui.Components.TypefaceTextView(context);
         if (type == TYPE_AVATAR_CONSTRUCTOR) {
             emptyViewText.setText(LocaleController.getString(R.string.NoEmojiOrStickersFound));
         } else if (type == TYPE_EMOJI_STATUS || type == TYPE_STICKER_SET_EMOJI || type == TYPE_EMOJI_STATUS_TOP || type == TYPE_TAGS || type == TYPE_EMOJI_STATUS_CHANNEL || type == TYPE_EMOJI_STATUS_CHANNEL_TOP) {
@@ -2515,7 +2515,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
             } else if (viewType == VIEW_TYPE_BUTTON) {
                 view = new EmojiPackButton(getContext());
             } else if (viewType == VIEW_TYPE_HINT) {
-                TextView textView = new TextView(getContext()) {
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext()) {
                     @Override
                     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                         super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(AndroidUtilities.dp(26)), MeasureSpec.EXACTLY));
@@ -2941,7 +2941,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
             lockView.setColorFilter(Theme.getColor(Theme.key_chat_emojiPanelStickerSetName, resourcesProvider));
             layoutView.addView(lockView, LayoutHelper.createLinear(20, 20));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_chat_emojiPanelStickerSetName, resourcesProvider));
             textView.setTypeface(AndroidUtilities.bold());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -3160,7 +3160,7 @@ public class SelectAnimatedEmojiDialog extends FrameLayout implements Notificati
 
         public EmojiPackExpand(Context context, Theme.ResourcesProvider resourcesProvider) {
             super(context);
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             textView.setTextColor(0xffffffff);// Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider));
             final int backgroundColor = useAccentForPlus ? Theme.blendOver(accentColor, Theme.multAlpha(Theme.getColor(Theme.key_windowBackgroundWhite), .4f)) : ColorUtils.setAlphaComponent(Theme.getColor(Theme.key_chat_emojiPanelStickerSetName, resourcesProvider), 99);

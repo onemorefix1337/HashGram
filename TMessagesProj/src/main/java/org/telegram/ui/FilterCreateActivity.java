@@ -200,7 +200,7 @@ public class FilterCreateActivity extends BaseFragment {
             filter.color = (int) (Math.random() * 8);
             creatingNew = true;
         }
-        TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         paint.setTextSize(dp(17));
         newFilterName = new SpannableStringBuilder(filter.name);
         newFilterName = Emoji.replaceEmoji(newFilterName, paint.getFontMetricsInt(), false);
@@ -1784,7 +1784,7 @@ public class FilterCreateActivity extends BaseFragment {
             imageView.setScaleType(ImageView.ScaleType.CENTER);
             addView(imageView, LayoutHelper.createFrame(24, 24, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL, 24, 0, 24, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setLines(1);
             textView.setSingleLine();
@@ -1855,7 +1855,7 @@ public class FilterCreateActivity extends BaseFragment {
         public CreateLinkCell(Context context) {
             super(context);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setText(LocaleController.getString(R.string.CreateNewLink));
@@ -2205,7 +2205,7 @@ public class FilterCreateActivity extends BaseFragment {
 
     public static class NewSpan extends ReplacementSpan {
 
-        TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         Paint bgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         StaticLayout layout;
         float width, height;
@@ -2425,7 +2425,7 @@ public class FilterCreateActivity extends BaseFragment {
 
             fixNavigationBar(Theme.getColor(Theme.key_dialogBackground));
 
-            button = new TextView(getContext());
+            button = new org.telegram.ui.Components.TypefaceTextView(getContext());
             button.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             button.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
             button.setTypeface(AndroidUtilities.bold());
@@ -2600,7 +2600,7 @@ public class FilterCreateActivity extends BaseFragment {
                         view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray));
                     } else {
                         view = new HeaderView(getContext());
-//                        TextView textView = new TextView(getContext());
+//                        TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
 //                        textView.setTypeface(AndroidUtilities.medium());
 //                        textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
 //                        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19);
@@ -2675,7 +2675,7 @@ public class FilterCreateActivity extends BaseFragment {
                 titleView.cacheType = filter != null && filter.title_noanimate ? AnimatedEmojiDrawable.CACHE_TYPE_NOANIMATE_FOLDER : AnimatedEmojiDrawable.CACHE_TYPE_MESSAGES;
                 addView(titleView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 20, 84, 20, 0));
 
-                subtitleView = new TextView(context);
+                subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
                 subtitleView.setText(invites.isEmpty() ?
                     LocaleController.getString(R.string.FolderLinkShareSubtitleEmpty) :
                     LocaleController.getString(R.string.FolderLinkShareSubtitle)
@@ -2805,7 +2805,7 @@ public class FilterCreateActivity extends BaseFragment {
         public HeaderCellColorPreview(Context context) {
             super(context, Theme.key_windowBackgroundWhiteBlueHeader, 22, 15, false, resourceProvider);
 
-            noTag = new TextView(getContext());
+            noTag = new org.telegram.ui.Components.TypefaceTextView(getContext());
             noTag.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             noTag.setTextColor(FilterCreateActivity.this.getThemedColor(Theme.key_windowBackgroundWhiteGrayText2));
             noTag.setText(LocaleController.getString(getUserConfig().isPremium() ? R.string.FolderTagNoColor : R.string.FolderTagNoColorPremium));

@@ -56,11 +56,11 @@ public class CommunityRequestsCell extends LinearLayout implements Theme.Colorab
         textLayout = new LinearLayout(context);
         textLayout.setOrientation(VERTICAL);
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, 0));
 
-        valueView = new TextView(context);
+        valueView = new org.telegram.ui.Components.TypefaceTextView(context);
         valueView.setGravity(Gravity.CENTER);
         valueView.setMinWidth(dp(20.66f));
         valueView.setPadding(dp(6.33f), 0, dp(6.33f), 0);

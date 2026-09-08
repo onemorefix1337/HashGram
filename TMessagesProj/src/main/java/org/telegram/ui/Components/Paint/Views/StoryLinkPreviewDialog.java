@@ -158,14 +158,14 @@ public class StoryLinkPreviewDialog extends Dialog {
         actionBarContainer.setBackgroundColor(0xFF1F1F1F);
         previewContainer.addView(actionBarContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 56, Gravity.FILL_HORIZONTAL | Gravity.TOP));
 
-        titleTextView = new TextView(context);
+        titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setText(LocaleController.getString(R.string.StoryLinkPreviewTitle));
         titleTextView.setTextColor(0xFFFFFFFF);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         titleTextView.setTypeface(AndroidUtilities.bold());
         actionBarContainer.addView(titleTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 18, 8.33f, 18, 0));
 
-        subtitleTextView = new TextView(context);
+        subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleTextView.setText(LocaleController.getString(R.string.StoryLinkPreviewSubtitle));
         subtitleTextView.setTextColor(0xFF7F7F7F);
         subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

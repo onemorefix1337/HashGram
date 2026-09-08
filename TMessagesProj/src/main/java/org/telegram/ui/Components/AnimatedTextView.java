@@ -52,7 +52,7 @@ public class AnimatedTextView extends View {
 
     public static class AnimatedTextDrawable extends Drawable {
 
-        private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private int gravity = 0;
 
         private boolean isRTL = false;

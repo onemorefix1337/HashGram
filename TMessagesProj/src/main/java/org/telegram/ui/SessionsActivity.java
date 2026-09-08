@@ -1115,7 +1115,7 @@ public class SessionsActivity extends BaseFragment implements NotificationCenter
 
             textView.setText(spanned);
 
-            buttonTextView = new TextView(context) {
+            buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
                 @Override
                 public void draw(Canvas canvas) {
                     super.draw(canvas);

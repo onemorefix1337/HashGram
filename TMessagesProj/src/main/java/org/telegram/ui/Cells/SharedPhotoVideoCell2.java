@@ -1227,7 +1227,7 @@ public class SharedPhotoVideoCell2 extends FrameLayout {
     }
 
     public static class SharedResources {
-        TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private Paint backgroundPaint = new Paint();
         Drawable playDrawable;
         Drawable viewDrawable;

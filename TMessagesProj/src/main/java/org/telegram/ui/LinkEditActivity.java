@@ -144,7 +144,7 @@ public class LinkEditActivity extends BaseFragment {
             }
         });
 
-        createTextView = new TextView(context);
+        createTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         createTextView.setBackground(new Drawable() {
             final Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -336,7 +336,7 @@ public class LinkEditActivity extends BaseFragment {
         linearLayout.setPadding(dp(12), dp(4), dp(12), dp(79 + 12));
         scrollView.addView(linearLayout);
 /*
-        buttonTextView = new TextView(context);
+        buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         ScaleStateListAnimator.apply(buttonTextView, 0.02f, 1.5f);
 
         buttonTextView.setPadding(dp(34), 0, dp(34), 0);
@@ -356,7 +356,7 @@ public class LinkEditActivity extends BaseFragment {
         linearLayout.addView(timeHeaderCell);
         timeChooseView = new SlideChooseView(context);
         linearLayout.addView(timeChooseView);
-        timeEditText = new TextView(context);
+        timeEditText = new org.telegram.ui.Components.TypefaceTextView(context);
         timeEditText.setPadding(dp(22), 0, dp(22), 0);
         timeEditText.setGravity(Gravity.CENTER_VERTICAL);
         timeEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -545,7 +545,7 @@ public class LinkEditActivity extends BaseFragment {
                 });
                 linearLayout.addView(subCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 
-                subPriceView = new TextView(context);
+                subPriceView = new org.telegram.ui.Components.TypefaceTextView(context);
                 subPriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 subPriceView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3));
                 subEditPriceCell = new EditTextCell(context, getString(getConnectionsManager().isTestBackend() ? R.string.RequireMonthlyFeePriceHintTest5Minutes : R.string.RequireMonthlyFeePriceHint), false, false, -1, resourceProvider) {

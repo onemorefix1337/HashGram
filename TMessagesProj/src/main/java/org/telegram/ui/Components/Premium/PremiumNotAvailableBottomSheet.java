@@ -28,7 +28,7 @@ public class PremiumNotAvailableBottomSheet extends BottomSheet {
         LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-        TextView title = new TextView(context);
+        TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
         title.setGravity(Gravity.START);
         title.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -36,13 +36,13 @@ public class PremiumNotAvailableBottomSheet extends BottomSheet {
 
         linearLayout.addView(title, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 21, 16, 21, 0));
 
-        TextView description = new TextView(context);
+        TextView description = new org.telegram.ui.Components.TypefaceTextView(context);
         description.setGravity(Gravity.START);
         description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         description.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         linearLayout.addView(description, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 21, 15, 21, 16));
 
-        TextView buttonTextView = new TextView(context);
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         buttonTextView.setPadding(AndroidUtilities.dp(34), 0, AndroidUtilities.dp(34), 0);
         buttonTextView.setGravity(Gravity.CENTER);
         buttonTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));

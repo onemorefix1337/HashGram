@@ -443,7 +443,7 @@ public final class FloatingToolbar {
             mOverflowButtonIcon.setPaddingRelative(dp(16), dp(12), dp(16), dp(12));
             mOverflowButtonIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             mOverflowButtonIcon.setImageDrawable(mOverflow);
-            mOverflowButtonText = new TextView(mContext);
+            mOverflowButtonText = new org.telegram.ui.Components.TypefaceTextView(mContext);
             mOverflowButtonText.setText(LocaleController.getString(R.string.Back));
             mOverflowButtonText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             mOverflowButtonText.setAlpha(0f);
@@ -1417,7 +1417,7 @@ public final class FloatingToolbar {
         menuItemButton.setMinimumHeight(dp(overflow ? 42 : 48));
         menuItemButton.setPaddingRelative(dp(16), 0, dp(16), 0);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setGravity(Gravity.CENTER);
         textView.setSingleLine(true);
         textView.setEllipsize(TextUtils.TruncateAt.END);

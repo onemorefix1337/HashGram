@@ -76,7 +76,7 @@ public class CheckBox extends View {
         eraser2.setStrokeWidth(AndroidUtilities.dp(28));
         backgroundPaint.setStrokeWidth(AndroidUtilities.dp(2));
 
-        textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTextSize(AndroidUtilities.dp(18));
         textPaint.setTypeface(AndroidUtilities.bold());
 

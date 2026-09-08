@@ -158,7 +158,7 @@ public class JoinGroupAlert extends BottomSheet {
         final boolean isChannel = chatInvite != null && (chatInvite.channel && !chatInvite.megagroup || ChatObject.isChannelAndNotMegaGroup(chatInvite.chat)) || ChatObject.isChannel(currentChat) && !currentChat.megagroup;
         boolean hasAbout = !TextUtils.isEmpty(about);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         textView.setTextColor(getThemedColor(Theme.key_dialogTextGray3));
         textView.setSingleLine(true);
@@ -175,7 +175,7 @@ public class JoinGroupAlert extends BottomSheet {
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 10, 0, 10, hasAbout ? 0 : 20));
 
         if (hasAbout) {
-            TextView aboutTextView = new TextView(context);
+            TextView aboutTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             aboutTextView.setGravity(Gravity.CENTER);
             aboutTextView.setText(about);
             aboutTextView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
@@ -193,7 +193,7 @@ public class JoinGroupAlert extends BottomSheet {
             requestProgressView.setVisibility(View.INVISIBLE);
             requestFrameLayout.addView(requestProgressView, LayoutHelper.createFrame(48, 48, Gravity.CENTER));
 
-            requestTextView = new TextView(getContext());
+            requestTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             requestTextView.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(24), getThemedColor(Theme.key_featuredStickers_addButton), getThemedColor(Theme.key_featuredStickers_addButtonPressed)));
             requestTextView.setEllipsize(TextUtils.TruncateAt.END);
             requestTextView.setGravity(Gravity.CENTER);
@@ -264,7 +264,7 @@ public class JoinGroupAlert extends BottomSheet {
             });
             requestFrameLayout.addView(requestTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48, Gravity.START, 14, 0, 14, 0));
 
-            TextView descriptionTextView = new TextView(getContext());
+            TextView descriptionTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             descriptionTextView.setGravity(Gravity.CENTER);
             descriptionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             descriptionTextView.setText(getString(isChannel ? R.string.RequestToJoinChannelDescription : R.string.RequestToJoinGroupDescription));
@@ -288,7 +288,7 @@ public class JoinGroupAlert extends BottomSheet {
                 int avatarContainerWidth = (int) (avatarSize + (visibleAvatarsCount - 1) * (avatarSize * factor + 1));
                 linearLayout.addView(avatarsImageView, LayoutHelper.createLinear(avatarContainerWidth, 44, Gravity.CENTER, 0, 2, 0, 4));
 
-                textView = new TextView(context);
+                textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 textView.setTextColor(getThemedColor(Theme.key_dialogTextGray3));
                 textView.setGravity(Gravity.CENTER);
@@ -324,7 +324,7 @@ public class JoinGroupAlert extends BottomSheet {
             }
 
             boolean isJoinToChannel = chatInvite.channel && !chatInvite.megagroup || ChatObject.isChannel(chatInvite.chat) && !chatInvite.chat.megagroup;
-            final TextView joinTextView = new TextView(getContext());
+            final TextView joinTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             joinTextView.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(24), getThemedColor(Theme.key_featuredStickers_addButton), getThemedColor(Theme.key_featuredStickers_addButtonPressed)));
             ScaleStateListAnimator.apply(joinTextView, .02f, 1.2f);
             joinTextView.setEllipsize(TextUtils.TruncateAt.END);

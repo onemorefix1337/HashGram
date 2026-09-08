@@ -59,14 +59,14 @@ public class DownloadsInfoBottomSheet extends BottomSheet {
         imageView.getImageReceiver().setAutoRepeat(1);
         linearLayout.addView(imageView, LayoutHelper.createLinear(110, 110, Gravity.CENTER_HORIZONTAL, 0, 26, 0, 0));
 
-        TextView title = new TextView(context);
+        TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
         title.setGravity(Gravity.CENTER_HORIZONTAL);
         title.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         title.setText(LocaleController.getString(R.string.DownloadedFiles));
         linearLayout.addView(title, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 21, 20, 21, 0));
 
-        TextView description = new TextView(context);
+        TextView description = new org.telegram.ui.Components.TypefaceTextView(context);
         description.setGravity(Gravity.CENTER_HORIZONTAL);
         description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         description.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
@@ -74,7 +74,7 @@ public class DownloadsInfoBottomSheet extends BottomSheet {
         description.setText(LocaleController.formatString("DownloadedFilesMessage", R.string.DownloadedFilesMessage));
         linearLayout.addView(description, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 28, 7, 28, 0));
 
-        TextView storageBtn = new TextView(context);
+        TextView storageBtn = new org.telegram.ui.Components.TypefaceTextView(context);
         storageBtn.setGravity(Gravity.CENTER);
         storageBtn.setEllipsize(TextUtils.TruncateAt.END);
         storageBtn.setSingleLine(true);
@@ -85,7 +85,7 @@ public class DownloadsInfoBottomSheet extends BottomSheet {
         storageBtn.setBackground(Theme.createSimpleSelectorRoundRectDrawable(AndroidUtilities.dp(8), Theme.getColor(Theme.key_featuredStickers_addButton), ColorUtils.setAlphaComponent(Theme.getColor(Theme.key_windowBackgroundWhite), 120)));
         linearLayout.addView(storageBtn, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, 0, 14, 28, 14, 6));
 
-        TextView clearBtn = new TextView(context);
+        TextView clearBtn = new org.telegram.ui.Components.TypefaceTextView(context);
         clearBtn.setGravity(Gravity.CENTER);
         clearBtn.setEllipsize(TextUtils.TruncateAt.END);
         clearBtn.setSingleLine(true);

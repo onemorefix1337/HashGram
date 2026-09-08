@@ -510,7 +510,7 @@ public class CameraScanActivity extends BaseFragment {
         Paint selectionPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         selectionPaint.setPathEffect(LinkPath.getRoundedEffect());
         selectionPaint.setColor(ColorUtils.setAlphaComponent(Color.WHITE, 40));
-        titleTextView = new TextView(context) {
+        titleTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             LinkPath textPath;
             private LinkSpanDrawable<URLSpanNoUnderline> pressedLink;
             LinkSpanDrawable.LinkCollector links = new LinkSpanDrawable.LinkCollector(this);
@@ -595,13 +595,13 @@ public class CameraScanActivity extends BaseFragment {
 
         viewGroup.addView(titleTextView);
 
-        descriptionText = new TextView(context);
+        descriptionText = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText6));
         descriptionText.setGravity(Gravity.CENTER_HORIZONTAL);
         descriptionText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         viewGroup.addView(descriptionText);
 
-        recognizedMrzView = new TextView(context);
+        recognizedMrzView = new org.telegram.ui.Components.TypefaceTextView(context);
         recognizedMrzView.setTextColor(0xffffffff);
         recognizedMrzView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
         recognizedMrzView.setAlpha(0);

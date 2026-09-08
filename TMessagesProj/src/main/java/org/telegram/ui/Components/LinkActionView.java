@@ -84,7 +84,7 @@ public class LinkActionView extends LinearLayout {
 
         setOrientation(VERTICAL);
         frameLayout = new FrameLayout(context);
-        linkView = new TextView(context);
+        linkView = new org.telegram.ui.Components.TypefaceTextView(context);
         linkView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(13), AndroidUtilities.dp(40), AndroidUtilities.dp(13));
         linkView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         linkView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
@@ -102,7 +102,7 @@ public class LinkActionView extends LinearLayout {
         LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(HORIZONTAL);
 
-        copyView = new TextView(context);
+        copyView = new org.telegram.ui.Components.TypefaceTextView(context);
         ScaleStateListAnimator.apply(copyView, .025f, 1.2f);
         copyView.setGravity(Gravity.CENTER);
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -117,7 +117,7 @@ public class LinkActionView extends LinearLayout {
         copyView.setSingleLine(true);
         linearLayout.addView(copyView, LayoutHelper.createLinear(0, 42, 1f, 0, containerPadding, 0, 4, 0));
 
-        shareView = new TextView(context);
+        shareView = new org.telegram.ui.Components.TypefaceTextView(context);
         ScaleStateListAnimator.apply(shareView, .025f, 1.2f);
         shareView.setGravity(Gravity.CENTER);
         spannableStringBuilder = new SpannableStringBuilder();
@@ -133,7 +133,7 @@ public class LinkActionView extends LinearLayout {
         linearLayout.addView(shareView, LayoutHelper.createLinear(0, 42, 1f, 4, 0, containerPadding, 0));
 
 
-        removeView = new TextView(context);
+        removeView = new org.telegram.ui.Components.TypefaceTextView(context);
         ScaleStateListAnimator.apply(removeView, .025f, 1.2f);
         removeView.setGravity(Gravity.CENTER);
         spannableStringBuilder = new SpannableStringBuilder();
@@ -491,7 +491,7 @@ public class LinkActionView extends LinearLayout {
 
             addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.CENTER_HORIZONTAL));
 
-            countTextView = new TextView(context);
+            countTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             countTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             countTextView.setTypeface(AndroidUtilities.bold());
 

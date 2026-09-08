@@ -283,7 +283,7 @@ public class TableCell extends FrameLayout {
             textView = new LinkSpanDrawable.LinksTextView(getContext(), resourcesProvider);
             textView.setLinkTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteLinkText, resourcesProvider));
         } else {
-            textView = new TextView(getContext());
+            textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         }
 
         textView.setTextColor(Theme.getColor(blueColor ? Theme.key_dialogTextBlue : Theme.key_dialogTextBlack, resourcesProvider));

@@ -45,7 +45,7 @@ public class GiftMessageDrawable extends Drawable {
     private NinePatchDrawable bubble;
     private NinePatchDrawable bubbleBorder;
 
-    private final TextPaint textPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
     private final ImageReceiver avatarReceiver = new ImageReceiver();
     private final AvatarDrawable avatarDrawable = new AvatarDrawable();
 

@@ -386,13 +386,13 @@ public class PhotoViewerWebView extends FrameLayout {
         errorLayout.setVisibility(GONE);
         addView(errorLayout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
-        errorMessage = new TextView(context);
+        errorMessage = new org.telegram.ui.Components.TypefaceTextView(context);
         errorMessage.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         errorMessage.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         errorMessage.setGravity(Gravity.CENTER);
         errorLayout.addView(errorMessage, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL));
 
-        errorButton = new TextView(context);
+        errorButton = new org.telegram.ui.Components.TypefaceTextView(context);
         errorButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         errorButton.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText));
         errorButton.setPadding(AndroidUtilities.dp(12), AndroidUtilities.dp(8), AndroidUtilities.dp(12), AndroidUtilities.dp(8));

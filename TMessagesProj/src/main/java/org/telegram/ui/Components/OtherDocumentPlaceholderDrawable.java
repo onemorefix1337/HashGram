@@ -58,12 +58,12 @@ public class OtherDocumentPlaceholderDrawable extends RecyclableDrawable impleme
     static {
         paint = new Paint();
         progressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        docPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        namePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        sizePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        buttonPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        percentPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        openPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        docPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        namePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        sizePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        buttonPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        percentPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        openPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
         decelerateInterpolator = new DecelerateInterpolator();
 

@@ -46,7 +46,7 @@ public class PhotoAttachPermissionCell extends FrameLayout {
         imageView2.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_attachPermissionMark), PorterDuff.Mode.MULTIPLY));
         addView(imageView2, LayoutHelper.createFrame(44, 44, Gravity.CENTER, 5, 0, 0, 27));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(getThemedColor(Theme.key_chat_attachPermissionText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         textView.setGravity(Gravity.CENTER);

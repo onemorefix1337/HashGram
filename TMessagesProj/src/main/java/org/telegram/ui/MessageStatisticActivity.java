@@ -290,7 +290,7 @@ public class MessageStatisticActivity extends BaseFragment implements Notificati
         imageView.setAnimation(R.raw.statistic_preload, 120, 120);
         imageView.playAnimation();
 
-        TextView loadingTitle = new TextView(context);
+        TextView loadingTitle = new org.telegram.ui.Components.TypefaceTextView(context);
         loadingTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         loadingTitle.setTypeface(AndroidUtilities.bold());
         loadingTitle.setTextColor(Theme.getColor(Theme.key_player_actionBarTitle, getResourceProvider()));
@@ -298,7 +298,7 @@ public class MessageStatisticActivity extends BaseFragment implements Notificati
         loadingTitle.setText(LocaleController.getString(R.string.LoadingStats));
         loadingTitle.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        TextView loadingSubtitle = new TextView(context);
+        TextView loadingSubtitle = new org.telegram.ui.Components.TypefaceTextView(context);
         loadingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         loadingSubtitle.setTextColor(Theme.getColor(Theme.key_player_actionBarSubtitle, getResourceProvider()));
         loadingSubtitle.setTag(Theme.key_player_actionBarSubtitle);
@@ -1079,8 +1079,8 @@ public class MessageStatisticActivity extends BaseFragment implements Notificati
 
                     LinearLayout infoLayout = new LinearLayout(context);
                     infoLayout.setOrientation(HORIZONTAL);
-                    primary[i * 2 + j] = new TextView(context);
-                    title[i * 2 + j] = new TextView(context);
+                    primary[i * 2 + j] = new org.telegram.ui.Components.TypefaceTextView(context);
+                    title[i * 2 + j] = new org.telegram.ui.Components.TypefaceTextView(context);
 
                     primary[i * 2 + j].setTypeface(AndroidUtilities.bold());
                     primary[i * 2 + j].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);

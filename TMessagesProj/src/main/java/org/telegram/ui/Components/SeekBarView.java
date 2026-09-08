@@ -626,7 +626,7 @@ public class SeekBarView extends FrameLayout {
         }
 
         if (timestampLabelPaint == null) {
-            timestampLabelPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            timestampLabelPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             timestampLabelPaint.setTextSize(AndroidUtilities.dp(12));
             timestampLabelPaint.setColor(0xffffffff);
         }
@@ -859,7 +859,7 @@ public class SeekBarView extends FrameLayout {
 
     private StaticLayout makeStaticLayout(CharSequence text, int width) {
         if (timestampLabelPaint == null) {
-            timestampLabelPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            timestampLabelPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             timestampLabelPaint.setTextSize(AndroidUtilities.dp(12));
         }
         timestampLabelPaint.setColor(getThemedColor(Theme.key_player_time));

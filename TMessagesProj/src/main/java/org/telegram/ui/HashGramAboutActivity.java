@@ -53,7 +53,7 @@ public class HashGramAboutActivity extends BaseFragment {
         imageView.setImageResource(R.mipmap.ic_launcher);
         linearLayout.addView(imageView, LayoutHelper.createLinear(120, 120, Gravity.CENTER_HORIZONTAL));
 
-        TextView titleTextView = new TextView(context);
+        TextView titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24);
         titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
@@ -71,21 +71,21 @@ public class HashGramAboutActivity extends BaseFragment {
             e.printStackTrace();
         }
 
-        TextView versionTextView = new TextView(context);
+        TextView versionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         versionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         versionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         versionTextView.setText("Версия " + versionName + " (" + versionCode + ")");
         versionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         linearLayout.addView(versionTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 4, 0, 0));
 
-        TextView descriptionTextView = new TextView(context);
+        TextView descriptionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         descriptionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         descriptionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         descriptionTextView.setText("HashGram — это мод Telegram с расширенными функциями настройки, улучшенной приватностью и уникальным дизайном.\n\nРазработано с душой. Наслаждайтесь!");
         linearLayout.addView(descriptionTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 24, 32, 0));
 
-        TextView githubButton = new TextView(context);
+        TextView githubButton = new org.telegram.ui.Components.TypefaceTextView(context);
         githubButton.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
         githubButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         githubButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));

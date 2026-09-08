@@ -365,7 +365,7 @@ public class UserSelectorBottomSheet extends BottomSheetWithRecyclerListView imp
             videoCheckbox.setChecked(false, false);
             videoCheckbox.setDrawBackgroundAsArc(10);
             videoLayout.addView(videoCheckbox, LayoutHelper.createLinear(26, 26, Gravity.CENTER_VERTICAL, 0, 0, 0, 0));
-            TextView videoTextView = new TextView(context);
+            TextView videoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             videoTextView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
             videoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             videoTextView.setText(LocaleController.getString(R.string.ConferenceCallWithVideo));

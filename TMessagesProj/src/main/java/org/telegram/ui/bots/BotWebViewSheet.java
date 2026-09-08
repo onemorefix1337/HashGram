@@ -1362,7 +1362,7 @@ public class BotWebViewSheet extends Dialog implements NotificationCenter.Notifi
         final TLRPC.User userbot = MessagesController.getInstance(currentAccount).getUser(botId);
         CharSequence title = UserObject.getUserName(userbot);
         try {
-            TextPaint tp = new TextPaint();
+            TextPaint tp = new org.telegram.ui.Components.TypefaceTextPaint();
             tp.setTextSize(dp(20));
             title = Emoji.replaceEmoji(title, tp.getFontMetricsInt(), false);
         } catch (Exception ignore) {}

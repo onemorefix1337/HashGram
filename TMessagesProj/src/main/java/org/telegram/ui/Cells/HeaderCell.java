@@ -90,7 +90,7 @@ public class HeaderCell extends FrameLayout {
             animatedTextView.getDrawable().setHacks(true, true, false);
             addView(animatedTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, height - topMargin, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, padding, topMargin, padding, text2 ? 0 : bottomMargin));
         } else {
-            textView = new TextView(getContext());
+            textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setEllipsize(TextUtils.TruncateAt.END);

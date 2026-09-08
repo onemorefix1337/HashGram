@@ -40,7 +40,7 @@ public class ChatActivityBotWebViewButton extends FrameLayout {
     public ChatActivityBotWebViewButton(Context context) {
         super(context);
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setSingleLine();
         textView.setAlpha(0f);

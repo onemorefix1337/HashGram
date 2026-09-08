@@ -49,7 +49,7 @@ public class PullForegroundDrawable {
     private final Paint paintBackgroundAccent = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint backgroundPaint = new Paint();
     private final RectF rectF = new RectF();
-    private final TextPaint tooltipTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint tooltipTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private final ArrowDrawable arrowDrawable = new ArrowDrawable();
     private int generalTopicDrawableColor;
     private Drawable generalTopicDrawable;

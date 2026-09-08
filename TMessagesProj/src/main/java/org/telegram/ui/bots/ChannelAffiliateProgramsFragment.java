@@ -458,7 +458,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
             textLayout.setOrientation(LinearLayout.VERTICAL);
             addView(textLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 72 - 6, 8.66f, 16 - 6, 0));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setMaxLines(1);
             titleView.setSingleLine(true);
             titleView.setEllipsize(TextUtils.TruncateAt.END);
@@ -468,7 +468,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
             NotificationCenter.listenEmojiLoading(titleView);
             textLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 6, 0, 24, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setMaxLines(1);
             textView.setSingleLine(true);
             textView.setEllipsize(TextUtils.TruncateAt.END);
@@ -684,7 +684,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
             FrameLayout badge1Outer = new FrameLayout(context);
             badge1Outer.setBackground(Theme.createRoundRectDrawable(dp(10), Theme.getColor(Theme.key_dialogBackground, resourcesProvider)));
             badge1Outer.setPadding(dp(1.33f), dp(1.33f), dp(1.33f), dp(1.33f));
-            TextView badge1 = new TextView(context);
+            TextView badge1 = new org.telegram.ui.Components.TypefaceTextView(context);
             badge1.setBackground(Theme.createRoundRectDrawable(dp(10), Theme.getColor(Theme.key_color_green, resourcesProvider)));
             badge1.setTypeface(AndroidUtilities.bold());
             badge1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
@@ -716,7 +716,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
         FrameLayout badge2Outer = new FrameLayout(context);
         badge2Outer.setBackground(Theme.createRoundRectDrawable(dp(10), Theme.getColor(Theme.key_dialogBackground, resourcesProvider)));
         badge2Outer.setPadding(dp(1.33f), dp(1.33f), dp(1.33f), dp(1.33f));
-        TextView badge2 = new TextView(context);
+        TextView badge2 = new org.telegram.ui.Components.TypefaceTextView(context);
         badge2.setBackground(Theme.createRoundRectDrawable(dp(10), Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider)));
         badge2.setTypeface(AndroidUtilities.bold());
         badge2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
@@ -735,7 +735,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
 
         linearLayout.addView(topView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setGravity(Gravity.CENTER);
@@ -746,7 +746,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
         LinearLayout botChip = new LinearLayout(context);
         botChip.setOrientation(LinearLayout.HORIZONTAL);
         botChip.setBackground(Theme.createRoundRectDrawable(dp(28), Theme.getColor(Theme.key_windowBackgroundGray, resourcesProvider)));
-        TextView botChipTextView = new TextView(context);
+        TextView botChipTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         botChipTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         botChipTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         botChipTextView.setText(LocaleController.formatString(R.string.ChannelAffiliateProgramJoinViewBot, DialogObject.getName(currentAccount, bot.bot_id)));
@@ -761,7 +761,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
         linearLayout.addView(botChip, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, Gravity.CENTER_HORIZONTAL, 4, 0, 4, 0));
         ScaleStateListAnimator.apply(botChip);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER);
@@ -771,7 +771,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
         textView.setText(StarsIntroActivity.replaceStarsWithPlain(formatSpannable(R.string.ChannelAffiliateProgramJoinRevenue, revenueStars), .725f));
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 10, 0, 20));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER);
@@ -783,7 +783,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
         TextView chipTextView;
         LinearLayout chipLayout;
         if (dialogId >= 0) {
-            TextView sendToTextView = new TextView(context);
+            TextView sendToTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             sendToTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             sendToTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             sendToTextView.setGravity(Gravity.CENTER);
@@ -797,7 +797,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
             chipImageView = new BackupImageView(context);
             chipImageView.setRoundRadius(dp(14));
             chipLayout.addView(chipImageView, LayoutHelper.createLinear(28, 28));
-            chipTextView = new TextView(context);
+            chipTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             chipTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             chipTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             chipLayout.addView(chipTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 6, 0, 0, 0));
@@ -996,7 +996,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
             countLayout.setBackground(Theme.createRoundRectDrawable(dp(50), Theme.getColor(Theme.key_dialogBackground, resourcesProvider)));
             topView.addView(countLayout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 66, 0, 0));
 
-            TextView textView = new TextView(context);
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             textView.setBackground(Theme.createRoundRectDrawable(dp(19 / 2.0f), Theme.getColor(bot.revoked ? Theme.key_color_red : Theme.key_color_green, resourcesProvider)));
@@ -1017,7 +1017,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
 
         linearLayout.addView(topView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setGravity(Gravity.CENTER);
@@ -1032,7 +1032,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
         imageView.setRoundRadius(dp(14));
         AvatarDrawable avatarDrawable = new AvatarDrawable();
         botChip.addView(imageView, LayoutHelper.createLinear(28, 28));
-        TextView botChipTextView = new TextView(context);
+        TextView botChipTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         botChipTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         botChipTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         botChipTextView.setText(DialogObject.getName(currentAccount, bot.bot_id));
@@ -1049,7 +1049,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
         linearLayout.addView(botChip, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, Gravity.CENTER_HORIZONTAL, 4, 0, 4, 0));
         ScaleStateListAnimator.apply(botChip);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER);
@@ -1064,7 +1064,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
 
         LinearLayout chipLayout = null;
         if (!bot.revoked) {
-            TextView sendToTextView = new TextView(context);
+            TextView sendToTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             sendToTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             sendToTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             sendToTextView.setGravity(Gravity.CENTER);
@@ -1078,7 +1078,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
             imageView.setRoundRadius(dp(14));
             avatarDrawable = new AvatarDrawable();
             chipLayout.addView(imageView, LayoutHelper.createLinear(28, 28));
-            TextView chipTextView = new TextView(context);
+            TextView chipTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             chipTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             chipTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             if (dialogId >= 0) {
@@ -1101,7 +1101,7 @@ public class ChannelAffiliateProgramsFragment extends GradientHeaderActivity imp
             linearLayout.addView(chipLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, Gravity.CENTER_HORIZONTAL, 0, 9, 0, 22));
         }
 
-        TextView linkView = new TextView(context);
+        TextView linkView = new org.telegram.ui.Components.TypefaceTextView(context);
         linkView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         linkView.setGravity(Gravity.CENTER);
         linkView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));

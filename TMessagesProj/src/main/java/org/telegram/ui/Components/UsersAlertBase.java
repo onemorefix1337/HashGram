@@ -585,7 +585,7 @@ public class UsersAlertBase extends BottomSheet {
     @Override
     public void setTitle(CharSequence title) {
         if (titleView == null) {
-            titleView = new TextView(getContext());
+            titleView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             titleView.setTypeface(AndroidUtilities.bold());

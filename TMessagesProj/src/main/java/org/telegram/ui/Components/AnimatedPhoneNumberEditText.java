@@ -31,7 +31,7 @@ public class AnimatedPhoneNumberEditText extends HintEditText {
 
     private ArrayList<StaticLayout> letters = new ArrayList<>();
     private ArrayList<StaticLayout> oldLetters = new ArrayList<>();
-    private TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private ObjectAnimator animator;
     private float progress;
     private String oldText = "";

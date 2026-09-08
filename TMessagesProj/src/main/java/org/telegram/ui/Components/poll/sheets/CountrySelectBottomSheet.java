@@ -169,7 +169,7 @@ public class CountrySelectBottomSheet extends BottomSheetWithRecyclerListView im
             dismiss();
         });
 
-        doneItem = new TextView(context) {
+        doneItem = new org.telegram.ui.Components.TypefaceTextView(context) {
             final Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
             @Override
             protected void onDraw(Canvas canvas) {

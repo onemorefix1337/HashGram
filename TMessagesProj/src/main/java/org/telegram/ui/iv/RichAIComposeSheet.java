@@ -71,7 +71,7 @@ public class RichAIComposeSheet extends BottomSheetWithRecyclerListView {
 
         topView = new FrameLayout(context);
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(getString(R.string.ArticleAICreate));
         titleView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.bold());

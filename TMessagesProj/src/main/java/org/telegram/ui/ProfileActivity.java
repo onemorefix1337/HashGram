@@ -1848,7 +1848,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             super(context);
             setVisibility(GONE);
 
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(Color.WHITE);
             textPaint.setTypeface(Typeface.SANS_SERIF);
             textPaint.setTextAlign(Paint.Align.CENTER);
@@ -5193,7 +5193,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 presentFragment(fragment);
             });
 
-            TextView textView = new TextView(context);
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(getThemedColor(Theme.key_text_RedRegular));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             textView.setGravity(Gravity.CENTER);
@@ -5655,7 +5655,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         mediaCounterTextView = new AudioPlayerAlert.ClippingTextViewSwitcher(context) {
             @Override
             protected TextView createTextView() {
-                TextView textView = new TextView(context);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextColor(getThemedColor(Theme.key_player_actionBarSubtitle));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, AndroidUtilities.dp(13.5f));
                 textView.setSingleLine(true);
@@ -16797,7 +16797,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             textView[1].setText(sb);
         }
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setGravity(Gravity.CENTER);
         titleView.setText(getString(R.string.StarRatingTitle));
@@ -16805,7 +16805,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         linearLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 20, 0, 20, 6));
 
-        final TextView titleView2 = new TextView(context);
+        final TextView titleView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView2.setGravity(Gravity.CENTER);
         if (userFull.id == UserConfig.getInstance(currentAccount).getClientUserId()) {
             titleView2.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.StarRatingSelfDescription)));

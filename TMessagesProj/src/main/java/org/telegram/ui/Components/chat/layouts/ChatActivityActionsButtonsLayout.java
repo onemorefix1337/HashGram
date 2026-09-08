@@ -81,7 +81,7 @@ public class ChatActivityActionsButtonsLayout extends LinearLayout {
     }
 
     private void addTextView(ButtonHolder button, String text, @DrawableRes int iconRes, boolean iconLeft) {
-        TextView forwardButton = new TextView(getContext());
+        TextView forwardButton = new org.telegram.ui.Components.TypefaceTextView(getContext());
         forwardButton.setText(text);
         forwardButton.setGravity(Gravity.CENTER_VERTICAL);
         forwardButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);

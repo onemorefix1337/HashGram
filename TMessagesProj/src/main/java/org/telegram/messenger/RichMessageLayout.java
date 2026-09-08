@@ -177,8 +177,8 @@ public class RichMessageLayout {
 
     public boolean invalidateAnimatedEmojiInParent;
 
-    public final TextPaint textPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-    public final TextPaint numTextPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    public final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    public final TextPaint numTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
     public final ReplyMessageLine quoteLine = new ReplyMessageLine(null);
     public final GradientClip clip = new GradientClip();
 
@@ -919,7 +919,7 @@ public class RichMessageLayout {
 
             level++;
             numTextPaint.setTextSize(dp(SharedConfig.fontSize));
-            final TextPaint markerMeasurePaint = new TextPaint(numTextPaint);
+            final TextPaint markerMeasurePaint = new org.telegram.ui.Components.TypefaceTextPaint(numTextPaint);
             markerMeasurePaint.setTypeface(AndroidUtilities.bold());
             int maxNumWidth = dp(ORDERED_LIST_MARKER_WIDTH_DP);
             for (int i = 0; i < list.items.size(); i++) {
@@ -1777,7 +1777,7 @@ public class RichMessageLayout {
         final LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-        final TextView header = new TextView(context);
+        final TextView header = new org.telegram.ui.Components.TypefaceTextView(context);
         header.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         header.setTypeface(AndroidUtilities.bold());
         header.setText(LocaleController.getString(R.string.InstantViewReference));
@@ -2124,7 +2124,7 @@ public class RichMessageLayout {
             final int block = flags & TEXT_FLAG_BLOCKS;
             final AnimatedEmojiSpan emojiSpan;
             if (block >= TEXT_FLAG_BLOCK_HEADING1 && block <= TEXT_FLAG_BLOCK_HEADING6) {
-                final TextPaint headingPaint = new TextPaint(textPaint);
+                final TextPaint headingPaint = new org.telegram.ui.Components.TypefaceTextPaint(textPaint);
                 new StyleSpan(this, flags, true).applyStyle(headingPaint);
                 emojiSpan = new AnimatedEmojiSpan(customEmoji.document_id, .85f, headingPaint.getFontMetricsInt());
             } else {
@@ -2405,7 +2405,7 @@ public class RichMessageLayout {
                 for (StyleSpan span : ((Spanned) text).getSpans(0, text.length(), StyleSpan.class)) {
                     final int block = span.flags & TEXT_FLAG_BLOCKS;
                     if (block >= TEXT_FLAG_BLOCK_HEADING1 && block <= TEXT_FLAG_BLOCK_HEADING6) {
-                        final TextPaint headingPaint = new TextPaint(root.textPaint);
+                        final TextPaint headingPaint = new org.telegram.ui.Components.TypefaceTextPaint(root.textPaint);
                         span.applyStyle(headingPaint);
                         emojiMetrics = headingPaint.getFontMetricsInt();
                         heading = true;
@@ -7428,7 +7428,7 @@ public class RichMessageLayout {
 
         private final RadialProgress2 radialProgress;
         private final SeekBar seekBar;
-        private final TextPaint audioTimePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint audioTimePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
         private StaticLayout titleLayout;
         private StaticLayout durationLayout;
@@ -7768,8 +7768,8 @@ public class RichMessageLayout {
         private final RadialProgress2 radialProgress;
         private final ImageReceiver previewImage = new ImageReceiver();
         private final Paint previewBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final TextPaint titlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        private final TextPaint sizePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint titlePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint sizePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private StaticLayout titleLayout;
         private StaticLayout sizeLayout;
         private final int buttonX = dp(16);

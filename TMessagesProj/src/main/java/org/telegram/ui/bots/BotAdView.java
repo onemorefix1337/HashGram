@@ -72,14 +72,14 @@ public class BotAdView extends FrameLayout {
         titleLayout.setOrientation(LinearLayout.HORIZONTAL);
         textLayout.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, Gravity.LEFT | Gravity.TOP, 0, 0, 0, 0));
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         titleView.setTypeface(AndroidUtilities.bold());
         titleLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, Gravity.CENTER_VERTICAL));
         NotificationCenter.listenEmojiLoading(titleView);
 
-        removeView = new TextView(context);
+        removeView = new org.telegram.ui.Components.TypefaceTextView(context);
         removeView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
         removeView.setTextColor(Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider));
         ScaleStateListAnimator.apply(removeView, .1f, 1.5f);
@@ -88,7 +88,7 @@ public class BotAdView extends FrameLayout {
         removeView.setText(LocaleController.getString(R.string.BotAdWhat));
         titleLayout.addView(removeView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 17, 0, Gravity.LEFT | Gravity.CENTER_VERTICAL, 5, 1, 0, 0));
 
-        channelTitleView = new TextView(context);
+        channelTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         channelTitleView.setVisibility(View.GONE);
         channelTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         channelTitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));

@@ -2543,7 +2543,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                 }
             };
         } else if (profileActivity instanceof ProfileActivity) {
-            saveItem = new TextView(context);
+            saveItem = new org.telegram.ui.Components.TypefaceTextView(context);
             saveItem.setText(getString(R.string.Save).toUpperCase());
             saveItem.setTypeface(AndroidUtilities.bold());
             saveItem.setTextColor(getThemedColor(Theme.key_featuredStickers_addButton));
@@ -2987,7 +2987,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
 
                             } else {
                                 if (archivedHintPaint == null) {
-                                    archivedHintPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                                    archivedHintPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                                     archivedHintPaint.setTextSize(dp(14));
                                     archivedHintPaint.setColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText2));
                                 }
@@ -8397,7 +8397,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
 
         public EmptyStubView(Context context, Theme.ResourcesProvider resourcesProvider) {
             super(context);
-            emptyTextView = new TextView(context);
+            emptyTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             emptyImageView = new ImageView(context);
 
             setOrientation(LinearLayout.VERTICAL);

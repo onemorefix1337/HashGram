@@ -170,7 +170,7 @@ public class PollVotesAlert extends BottomSheet {
             textView.setEllipsize(TextUtils.TruncateAt.END);
             textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
 
-            middleTextView = new TextView(getContext());
+            middleTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             middleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             middleTextView.setTextColor(Theme.getColor(Theme.key_graySectionText));
             middleTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
@@ -322,12 +322,12 @@ public class PollVotesAlert extends BottomSheet {
             nameTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
             addView(nameTextView, LayoutHelper.createLinear(0, 24, 1, Gravity.CENTER_VERTICAL, 0, 0, 0, 0));
 
-            dateTextView = new TextView(context);
+            dateTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             dateTextView.setTextColor(Theme.getColor(Theme.key_dialogTextGray3));
             dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             addView(dateTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, Gravity.CENTER_VERTICAL | Gravity.RIGHT, 4, 0, 2, 0));
 
-            timeTextView = new TextView(context);
+            timeTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             timeTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
             timeTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             addView(timeTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, Gravity.CENTER_VERTICAL | Gravity.RIGHT, 2, 0, 4, 0));

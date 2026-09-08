@@ -302,7 +302,7 @@ public class PollCreateActivity extends BaseFragment implements NotificationCent
         if (media instanceof TLRPC.TL_messageMediaToDo) {
             final TLRPC.TL_messageMediaToDo m = (TLRPC.TL_messageMediaToDo) media;
 
-            final TextPaint paint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+            final TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
             paint.setTextSize(dp(16));
 
             questionString = new SpannableStringBuilder(m.todo.title.text);

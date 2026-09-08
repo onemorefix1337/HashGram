@@ -551,7 +551,7 @@ public class MainTabsActivity extends ViewPagerActivity implements NotificationC
         private static final float HEIGHT_DP = 17.333f;
         private final String count;
         private final boolean hasUnmutedUnreadDialogs;
-        private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private final Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final float counterWidth;
 
@@ -711,7 +711,7 @@ public class MainTabsActivity extends ViewPagerActivity implements NotificationC
         avatarView.setForUserOrChat(user, avatarDrawable);
         avatarContainer.addView(avatarView, LayoutHelper.createLinear(32, 32, Gravity.CENTER, 1, 1, 1, 1));
 
-        final TextView textView = new TextView(getContext());
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
         textView.setText(UserObject.getUserName(user));

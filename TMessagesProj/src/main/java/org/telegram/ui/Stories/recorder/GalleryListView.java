@@ -323,7 +323,7 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
         actionBar.addView(dropDownContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, AndroidUtilities.isTablet() ? 64 : 56, 0, 40, 0));
         dropDownContainer.setOnClickListener(view -> dropDownContainer.toggleSubMenu());
 
-        dropDown = new TextView(context);
+        dropDown = new org.telegram.ui.Components.TypefaceTextView(context);
         dropDown.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
         dropDown.setGravity(Gravity.LEFT);
         dropDown.setSingleLine(true);
@@ -903,8 +903,8 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
         private final Matrix gradientMatrix = new Matrix();
 
         private final Paint durationBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final TextPaint durationTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        private final TextPaint draftTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint durationTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint draftTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private final Drawable durationPlayDrawable;
 
         private boolean drawDurationPlay;
@@ -1530,7 +1530,7 @@ public class GalleryListView extends FrameLayout implements NotificationCenter.N
                 addView(searchButton, LayoutHelper.createFrame(24, 24, Gravity.RIGHT | Gravity.CENTER_VERTICAL));
             }
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setTextColor(0xFFFFFFFF);
             textView.setTypeface(AndroidUtilities.bold());

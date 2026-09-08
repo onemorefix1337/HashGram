@@ -117,7 +117,7 @@ public class HintView2 extends View {
     private AnimatedTextView.AnimatedTextDrawable textDrawable;
 
     private boolean multiline;
-    private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private Layout.Alignment textLayoutAlignment = Layout.Alignment.ALIGN_NORMAL;
     private StaticLayout textLayout;
     private AnimatedEmojiSpan.EmojiGroupedSpans emojiGroupedSpans;

@@ -35,7 +35,7 @@ public class SelectorHeaderCell extends FrameLayout {
         super(context);
         this.resourcesProvider = resourcesProvider;
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);

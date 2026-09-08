@@ -102,7 +102,7 @@ public class CreateBotAlert {
         imageView.setRoundRadius(dp(40));
         layout.addView(imageView, LayoutHelper.createLinear(80, 80, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 22, 0, 16));
 
-        final TextView titleTextView = new TextView(context);
+        final TextView titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTypeface(AndroidUtilities.bold());
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -110,7 +110,7 @@ public class CreateBotAlert {
         titleTextView.setGravity(Gravity.CENTER);
         layout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 16, 0, 16, 8));
 
-        final TextView subtitleTextView = new TextView(context);
+        final TextView subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleTextView.setText(
@@ -139,7 +139,7 @@ public class CreateBotAlert {
         usernameEdit.editText.setHintColor(Theme.getColor(Theme.key_windowBackgroundWhiteHintText, resourcesProvider));
         usernameEdit.editText.setRightText("bot");
         usernameEdit.editText.setPadding(0, dp(15), dp(42 + 21), dp(15));
-        final TextView at = new TextView(context);
+        final TextView at = new org.telegram.ui.Components.TypefaceTextView(context);
         at.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
         at.setText("@");
         at.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));

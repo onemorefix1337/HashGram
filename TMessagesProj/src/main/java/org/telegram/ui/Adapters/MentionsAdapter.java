@@ -1932,7 +1932,7 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
                 view = new BotSwitchCell(mContext);
                 break;
             case 3:
-                TextView textView = new TextView(mContext);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(mContext);
                 textView.setPadding(dp(8), dp(8), dp(8), dp(8));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText2));
@@ -2137,12 +2137,12 @@ public class MentionsAdapter extends RecyclerListView.SelectionAdapter implement
             textLayout.setOrientation(VERTICAL);
             addView(textLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 0, 4, 12, 4));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             textLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             textView.setTextColor(transparent ? Theme.multAlpha(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider), .5f) : Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
             textLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));

@@ -57,7 +57,7 @@ public class LetterDrawable extends Drawable {
         this.style = style;
         if (style == STYLE_DEFAULT) {
             if (namePaint == null) {
-                namePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                namePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             }
             namePaint.setTextSize(dp(28));
             paint.setColor(Theme.getColor(Theme.key_sharedMedia_linkPlaceholder, resourcesProvider));
@@ -65,7 +65,7 @@ public class LetterDrawable extends Drawable {
             textPaint = namePaint;
         } else if (style == STYLE_TOPIC_DRAWABLE) {
             if (namePaintTopic == null) {
-                namePaintTopic = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                namePaintTopic = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             }
             namePaintTopic.setColor(Color.WHITE);
             namePaintTopic.setTextSize(dp(13));
@@ -73,7 +73,7 @@ public class LetterDrawable extends Drawable {
             textPaint = namePaintTopic;
         } else {
             if (namePaintSmallTopic == null) {
-                namePaintSmallTopic = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                namePaintSmallTopic = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             }
             namePaintSmallTopic.setColor(Color.WHITE);
             namePaintSmallTopic.setTextSize(Theme.chat_topicTextPaint.getTextSize() * .75f);

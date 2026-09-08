@@ -1167,12 +1167,12 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
         stickerImageView.setLayerNum(7);
         stickerPreviewLayout.addView(stickerImageView);
 
-        stickerEmojiTextView = new TextView(context);
+        stickerEmojiTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         stickerEmojiTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
         stickerEmojiTextView.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
         stickerPreviewLayout.addView(stickerEmojiTextView);
 
-        previewSendButton = new TextView(context);
+        previewSendButton = new org.telegram.ui.Components.TypefaceTextView(context);
         previewSendButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         previewSendButton.setTextColor(getThemedColor(Theme.key_dialogTextBlue2));
         previewSendButton.setBackground(Theme.createSelectorWithBackgroundDrawable(getThemedColor(Theme.key_dialogBackground), getThemedColor(Theme.key_listSelector)));
@@ -1216,7 +1216,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
             return;
         }
         if (!UserConfig.getInstance(currentAccount).isPremium() && MessageObject.isPremiumEmojiPack(stickerSet)) {
-//            descriptionTextView = new TextView(getContext());
+//            descriptionTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
 //            descriptionTextView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelTrendingDescription));
 //            descriptionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
 //            descriptionTextView.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
@@ -1657,9 +1657,9 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
 
         linearLayout.addView(fieldLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 36, Gravity.TOP | Gravity.LEFT, 24, 6, 24, 0));
 
-        TextView message = new TextView(context);
+        TextView message = new org.telegram.ui.Components.TypefaceTextView(context);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setTextColor(getThemedColor(Theme.key_dialogTextHint));
         textView.setMaxLines(1);

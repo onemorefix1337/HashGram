@@ -835,14 +835,14 @@ public class TONIntroActivity extends GradientHeaderActivity implements Notifica
 
                 addView(topView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 180));
 
-                titleView = new TextView(context);
+                titleView = new org.telegram.ui.Components.TypefaceTextView(context);
                 titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 titleView.setTypeface(AndroidUtilities.bold());
                 titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                 titleView.setGravity(Gravity.CENTER);
                 addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 2, 0, 0));
 
-                subtitleView = new TextView(context);
+                subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
                 subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 subtitleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                 subtitleView.setGravity(Gravity.CENTER);

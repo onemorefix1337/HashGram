@@ -709,7 +709,7 @@ public class FiltersView extends RecyclerListView {
             avatarImageView = new BackupImageView(context);
             addView(avatarImageView, LayoutHelper.createFrame(30, 30));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addView(titleView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 36, 0, 14, 0));
             updateColors();

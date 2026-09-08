@@ -30,7 +30,7 @@ public class SponsoredMessageInfoView extends FrameLayout {
         LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setText(LocaleController.getString(R.string.SponsoredMessageInfo));
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
@@ -71,7 +71,7 @@ public class SponsoredMessageInfoView extends FrameLayout {
         buttonPaint.setStyle(Paint.Style.STROKE);
         buttonPaint.setColor(Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider));
         buttonPaint.setStrokeWidth(AndroidUtilities.dp(1));
-        TextView button = new TextView(context) {
+        TextView button = new org.telegram.ui.Components.TypefaceTextView(context) {
 
             @Override
             protected void onDraw(Canvas canvas) {

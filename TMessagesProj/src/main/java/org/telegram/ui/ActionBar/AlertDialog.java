@@ -255,7 +255,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
             imageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_dialogIcon), PorterDuff.Mode.MULTIPLY));
             addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 40, Gravity.CENTER_VERTICAL | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT)));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setLines(1);
             textView.setSingleLine(true);
             textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -797,7 +797,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
         }
 
         if (secondTitle != null && title != null) {
-            secondTitleTextView = new TextView(getContext());
+            secondTitleTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             secondTitleTextView.setText(secondTitle);
             secondTitleTextView.setTextColor(getThemedColor(Theme.key_dialogTextGray3));
             secondTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -806,7 +806,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
         }
 
         if (subtitle != null) {
-            subtitleTextView = new TextView(getContext());
+            subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             subtitleTextView.setText(subtitle);
             subtitleTextView.setTextColor(getThemedColor(Theme.key_dialogIcon));
             subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -866,7 +866,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
             lineProgressView.setBackColor(getThemedColor(Theme.key_dialogLineProgressBackground));
             containerView.addView(lineProgressView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 4, Gravity.LEFT | Gravity.CENTER_VERTICAL, 24, 0, 24, 0));
 
-            lineProgressViewPercent = new TextView(getContext());
+            lineProgressViewPercent = new org.telegram.ui.Components.TypefaceTextView(getContext());
             lineProgressViewPercent.setTypeface(AndroidUtilities.bold());
             lineProgressViewPercent.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
             lineProgressViewPercent.setTextColor(getThemedColor(Theme.key_dialogTextGray2));
@@ -932,7 +932,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback, Notificati
         if (hasButtons) {
             if (!verticalButtons) {
                 int buttonsWidth = 0;
-                TextPaint paint = new TextPaint();
+                TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint();
                 paint.setTextSize(dp(16));
                 paint.setTypeface(AndroidUtilities.bold());
                 if (positiveButtonText != null) {

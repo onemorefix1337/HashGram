@@ -160,7 +160,7 @@ public class ProximitySheet extends FrameLayout {
         FrameLayout titleLayout = new FrameLayout(context);
         customView.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(R.string.LocationNotifiation));
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -177,9 +177,9 @@ public class ProximitySheet extends FrameLayout {
 
         FrameLayout buttonContainer = new FrameLayout(context);
 
-        infoTextView = new TextView(context);
+        infoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
 
-        buttonTextView = new TextView(context) {
+        buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();

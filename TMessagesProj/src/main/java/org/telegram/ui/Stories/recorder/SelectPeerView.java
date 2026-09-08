@@ -43,7 +43,7 @@ public class SelectPeerView extends FrameLayout {
         imageView.setRoundRadius(dp(15));
         addView(imageView, LayoutHelper.createFrame(30, 30, Gravity.CENTER_VERTICAL | Gravity.LEFT, 14, 0, 0, 0));
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         titleView.setTextColor(0xFFFFFFFF);
         titleView.setTypeface(AndroidUtilities.bold());
@@ -52,7 +52,7 @@ public class SelectPeerView extends FrameLayout {
         titleView.setEllipsize(TextUtils.TruncateAt.END);
         addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 53, 11.33f, 12, 0));
 
-        subtitleView = new TextView(context);
+        subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         subtitleView.setTextColor(Theme.multAlpha(0xFFFFFFFF, 0.85f));
         addView(subtitleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 53, 29.33f, 12, 0));

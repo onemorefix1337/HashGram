@@ -1178,7 +1178,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         emptyImageView.setVisibility(View.GONE);
         emptyLayoutView.addView(emptyImageView, LayoutHelper.createLinear(54, 54, Gravity.CENTER, 16, 20, 16, -4));
 
-        emptyView = new TextView(context) {
+        emptyView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 super.onMeasure(MeasureSpec.makeMeasureSpec(Math.min(MeasureSpec.getSize(widthMeasureSpec), dp(220)), MeasureSpec.getMode(widthMeasureSpec)), heightMeasureSpec);
@@ -1504,7 +1504,7 @@ public class ChannelAdminLogActivity extends BaseFragment implements Notificatio
         bottomOverlayChat2.setupDrawableForContainer();
         contentView.addView(bottomOverlayChat2, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 56, Gravity.BOTTOM, 54, 0, 0, (44 - 56) / 2 + 9));
 
-        bottomOverlayChatText = new TextView(context);
+        bottomOverlayChatText = new org.telegram.ui.Components.TypefaceTextView(context);
         bottomOverlayChatText.setOnClickListener(view -> {
             if (getParentActivity() == null) {
                 return;

@@ -1801,7 +1801,7 @@ public class ContentPreviewViewer {
                 return;
             }
             if (textPaint == null) {
-                textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 textPaint.setTextSize(AndroidUtilities.dp(24));
             }
 

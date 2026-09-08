@@ -52,7 +52,7 @@ public class RecentVotersCell extends FrameLayout {
 
         avatarsListDrawable = new AvatarsListDrawable(currentAccount, this, dp(24), dp(10), dpf2(1));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider));
         textView.setLines(1);
         textView.setSingleLine(true);

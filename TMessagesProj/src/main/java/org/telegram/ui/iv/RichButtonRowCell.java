@@ -75,7 +75,7 @@ public class RichButtonRowCell extends RichBlockCell implements Theme.Colorable 
         });
         addView(addButton, LayoutHelper.createFrame(38, 38, Gravity.RIGHT | Gravity.CENTER_VERTICAL));
 
-        emptyAddButton = new TextView(context);
+        emptyAddButton = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyAddButton.setText(org.telegram.messenger.LocaleController.getString(R.string.RichEditorAddButton));
         emptyAddButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         emptyAddButton.setTypeface(AndroidUtilities.bold());

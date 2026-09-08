@@ -30,7 +30,7 @@ public class DiscountSpan extends ReplacementSpan {
         return spannableStringBuilder;
     }
 
-    TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     Paint bgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     StaticLayout layout;
     float width, height;

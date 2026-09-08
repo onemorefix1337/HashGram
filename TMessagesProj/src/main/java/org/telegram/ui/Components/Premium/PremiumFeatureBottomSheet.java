@@ -688,7 +688,7 @@ public class PremiumFeatureBottomSheet extends BottomSheet implements Notificati
             addView(topView);
             topHeader = (PagerHeaderView) topView;
 
-            title = new TextView(context);
+            title = new org.telegram.ui.Components.TypefaceTextView(context);
             title.setGravity(Gravity.CENTER_HORIZONTAL);
             title.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
             title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);

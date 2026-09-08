@@ -137,7 +137,7 @@ public class ChatNotificationsPopupWrapper {
         gap.setBackgroundColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuSeparator, resourcesProvider));
         windowLayout.addView(gap, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
 
-        topicsExceptionsTextView = new TextView(context);
+        topicsExceptionsTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         topicsExceptionsTextView.setPadding(AndroidUtilities.dp(13), AndroidUtilities.dp(8), AndroidUtilities.dp(13), AndroidUtilities.dp(8));
         topicsExceptionsTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         topicsExceptionsTextView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider));

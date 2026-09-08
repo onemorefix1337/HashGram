@@ -25,7 +25,7 @@ import org.telegram.ui.ActionBar.Theme;
 
 public class AddReactionsSpan extends ReplacementSpan {
 
-    private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private final RectF rectF = new RectF();
     private StaticLayout layout;
     private float width, height;

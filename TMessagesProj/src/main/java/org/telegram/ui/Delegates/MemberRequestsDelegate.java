@@ -729,8 +729,8 @@ public class MemberRequestsDelegate implements MemberRequestCell.OnClickListener
         private final int shadowPaddingTop;
         private final int shadowPaddingLeft;
         private final Drawable pagerShadowDrawable = getContext().getResources().getDrawable(R.drawable.popup_fixed_alert2).mutate();
-        private final TextView nameText = new TextView(getContext());
-        private final TextView bioText = new TextView(getContext());
+        private final TextView nameText = new org.telegram.ui.Components.TypefaceTextView(getContext());
+        private final TextView bioText = new org.telegram.ui.Components.TypefaceTextView(getContext());
         private final ActionBarPopupWindow.ActionBarPopupWindowLayout popupLayout;
         private final ProfileGalleryView viewPager;
         private final AvatarPreviewPagerIndicator pagerIndicator;

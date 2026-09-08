@@ -537,7 +537,7 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
         }
         if (customPaints) {
             if (namePaint == null) {
-                namePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                namePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 namePaint.setTypeface(AndroidUtilities.bold());
             }
             namePaint.setTextSize(dp(callCellStyle ? 15 : 16));
@@ -704,7 +704,7 @@ public class ProfileSearchCell extends BaseCell implements NotificationCenter.No
         }
         if (customPaints) {
             if (statusPaint == null) {
-                statusPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                statusPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             }
             statusPaint.setTextSize(dp(callCellStyle ? 13f : 15));
             if (currentStatusPaint == Theme.dialogs_offlinePaint) {

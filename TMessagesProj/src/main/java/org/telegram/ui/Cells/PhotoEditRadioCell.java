@@ -54,7 +54,7 @@ public class PhotoEditRadioCell extends FrameLayout {
     public PhotoEditRadioCell(Context context) {
         super(context);
 
-        nameTextView = new TextView(context);
+        nameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         nameTextView.setGravity(Gravity.RIGHT);
         nameTextView.setTextColor(0xffffffff);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);

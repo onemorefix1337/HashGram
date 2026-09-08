@@ -26,7 +26,7 @@ public class SearchCounterView extends View {
 
     int animationType = -1;
 
-    TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     RectF rectF = new RectF();
 
     int currentCount;

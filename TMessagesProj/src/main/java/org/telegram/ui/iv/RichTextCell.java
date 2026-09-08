@@ -150,7 +150,7 @@ public class RichTextCell extends FrameLayout implements Theme.Colorable, TextSe
         indentSpacer = new View(context);
         row.addView(indentSpacer, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        bullet = new TextView(context) {
+        bullet = new org.telegram.ui.Components.TypefaceTextView(context) {
             private final Paint markerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             @Override
             protected void onDraw(Canvas canvas) {
@@ -458,7 +458,7 @@ public class RichTextCell extends FrameLayout implements Theme.Colorable, TextSe
             languageButton.setPadding(dp(6), dp(2), dp(2), dp(2));
             addView(languageButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT | Gravity.TOP, 0, -15, -5, 0));
 
-            languageButtonText = new TextView(getContext());
+            languageButtonText = new org.telegram.ui.Components.TypefaceTextView(getContext());
             languageButtonText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             languageButtonText.setGravity(Gravity.CENTER);
             languageButton.addView(languageButtonText, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 0, 0, 0, 0));

@@ -89,7 +89,7 @@ public class BlockingUpdateView extends FrameLayout implements NotificationCente
 
         scrollView.addView(container);
 
-        TextView titleTextView = new TextView(context);
+        TextView titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleTextView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.TOP);
@@ -97,7 +97,7 @@ public class BlockingUpdateView extends FrameLayout implements NotificationCente
         titleTextView.setText(LocaleController.getString(R.string.UpdateTelegram));
         container.addView(titleTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setLinkTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteLinkText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -158,7 +158,7 @@ public class BlockingUpdateView extends FrameLayout implements NotificationCente
             }
         });
 
-        acceptTextView = new TextView(context);
+        acceptTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         acceptTextView.setGravity(Gravity.CENTER);
         acceptTextView.setTypeface(AndroidUtilities.bold());
         acceptTextView.setTextColor(0xffffffff);

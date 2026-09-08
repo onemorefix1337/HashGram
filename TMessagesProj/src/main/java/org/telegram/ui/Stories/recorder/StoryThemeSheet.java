@@ -52,7 +52,7 @@ public class StoryThemeSheet extends FrameLayout {
         });
         addView(backButtonView, LayoutHelper.createFrame(44, 44, Gravity.TOP | Gravity.LEFT, 7, 8, 0, 0));
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);

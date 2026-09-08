@@ -207,7 +207,7 @@ public class BoostDialogs {
         LinearLayout container = new LinearLayout(context) {
 
             boolean ignoreLayout = false;
-            final TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            final TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
             {
                 setWillNotDraw(false);
@@ -254,7 +254,7 @@ public class BoostDialogs {
         FrameLayout titleLayout = new FrameLayout(context);
         container.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 22, 0, 0, 4));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(getString("BoostingSelectDateTime", R.string.BoostingSelectDateTime));
         titleView.setTextColor(datePickerColors.textColor);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -272,7 +272,7 @@ public class BoostDialogs {
         calendar.setTimeInMillis(currentTime);
         int currentYear = calendar.get(Calendar.YEAR);
 
-        TextView buttonTextView = new TextView(context) {
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             public CharSequence getAccessibilityClassName() {
                 return Button.class.getName();
@@ -621,7 +621,7 @@ public class BoostDialogs {
 
         if (giveawayInfo.refunded) {
             String str = getString("BoostingGiveawayCanceledByPayment", R.string.BoostingGiveawayCanceledByPayment);
-            TextView bottomTextView = new TextView(context);
+            TextView bottomTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             bottomTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             bottomTextView.setTypeface(AndroidUtilities.bold());
             bottomTextView.setGravity(Gravity.CENTER);

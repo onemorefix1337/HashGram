@@ -1010,7 +1010,7 @@ public class BotPreviewsEditContainer extends FrameLayout implements Notificatio
             this.emptyView.button.setOnClickListener(v -> {
                 createStory(list == null ? "" : list.lang_code);
             });
-            this.emptyViewOr = new TextView(context) {
+            this.emptyViewOr = new org.telegram.ui.Components.TypefaceTextView(context) {
                 private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
                 @Override
                 protected void dispatchDraw(Canvas canvas) {
@@ -1795,7 +1795,7 @@ public class BotPreviewsEditContainer extends FrameLayout implements Notificatio
                 setPadding(dp(24), dp(21), dp(24), dp(21));
                 setOrientation(VERTICAL);
 
-                textView = new TextView(context);
+                textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 textView.setGravity(Gravity.CENTER);
@@ -1812,7 +1812,7 @@ public class BotPreviewsEditContainer extends FrameLayout implements Notificatio
                 buttonView.setText(LocaleController.getString(R.string.ProfileBotAddPreview), false);
                 addView(buttonView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 44, Gravity.CENTER));
 
-                orTextView = new TextView(context) {
+                orTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
                     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
                     @Override
                     protected void dispatchDraw(Canvas canvas) {
@@ -1936,13 +1936,13 @@ public class BotPreviewsEditContainer extends FrameLayout implements Notificatio
                 setPadding(dp(22), 0, dp(22), 0);
                 setOrientation(VERTICAL);
 
-                title = new TextView(context);
+                title = new org.telegram.ui.Components.TypefaceTextView(context);
                 title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 title.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                 title.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
                 addView(title, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 7, 0, 0));
 
-                subtitle = new TextView(context);
+                subtitle = new org.telegram.ui.Components.TypefaceTextView(context);
                 subtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 subtitle.setTextColor(Theme.getColor(Theme.key_dialogTextGray2));
                 subtitle.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);

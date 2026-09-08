@@ -42,7 +42,7 @@ public class FoundStickerPackCell extends FrameLayout implements FactorAnimator.
         stickerView = new StickerEmojiCell(context, false, resourcesProvider);
         addView(stickerView, LayoutHelper.createFrame(45, 45, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 8, 0, 0));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
         textView.setGravity(Gravity.CENTER);
         textView.setEllipsize(TextUtils.TruncateAt.END);

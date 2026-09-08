@@ -58,7 +58,7 @@ public class ProfileSuggestionView extends FrameLayout {
         textLayout.setOrientation(LinearLayout.VERTICAL);
         layout.addView(textLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL, 0, 0, 26, 0));
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextColor(0xFFFFFFFF);
@@ -66,7 +66,7 @@ public class ProfileSuggestionView extends FrameLayout {
         NotificationCenter.listenEmojiLoading(titleView);
         textLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, 3));
 
-        subtitleView = new TextView(context);
+        subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         subtitleView.setTextColor(Theme.multAlpha(0xFFFFFFFF, 0.75f));
         subtitleView.setSingleLine();

@@ -90,7 +90,7 @@ public class EnterPrizeCell extends LinearLayout {
         });
         editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
 

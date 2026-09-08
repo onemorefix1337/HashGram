@@ -366,13 +366,13 @@ public class QuickRepliesActivity extends BaseFragment implements NotificationCe
 
         FrameLayout textContainer = new FrameLayout(context);
 
-        final TextView textView = new TextView(context);
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setText(LocaleController.getString(currentReply == null && currentName == null ? R.string.BusinessRepliesNewMessage : R.string.BusinessRepliesEditMessage));
         textContainer.addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM));
 
-        final TextView errorTextView = new TextView(context);
+        final TextView errorTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         errorTextView.setTextColor(Theme.getColor(Theme.key_text_RedBold, resourcesProvider));
         errorTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         errorTextView.setText(LocaleController.getString(R.string.BusinessRepliesNameBusy));
@@ -734,7 +734,7 @@ public class QuickRepliesActivity extends BaseFragment implements NotificationCe
             this.resourcesProvider = resourcesProvider;
             setWillNotDraw(false);
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setSingleLine();
             titleView.setEllipsize(TextUtils.TruncateAt.END);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
@@ -742,7 +742,7 @@ public class QuickRepliesActivity extends BaseFragment implements NotificationCe
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL, LocaleController.isRTL ? 40 : 78, 10.33f, LocaleController.isRTL ? 78 : 40, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setLines(2);
             textView.setEllipsize(TextUtils.TruncateAt.END);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));

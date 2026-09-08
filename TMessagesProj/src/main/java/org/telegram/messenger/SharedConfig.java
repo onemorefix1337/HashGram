@@ -299,6 +299,7 @@ public class SharedConfig {
     public static boolean noSoundHintShowed = false;
     public static int fg_avatar_shape = 0; // 0 - circle, 1 - square, 2 - rounded
     public static int fg_font_type = 0; // 0 - default, 1 - system, 2 - custom
+    public static String fg_custom_font_path = "";
     public static boolean fg_hide_mic_cam = false;
     
     public static boolean streamMedia = true;
@@ -527,6 +528,7 @@ public class SharedConfig {
             fg_disable_sticker_loop = hashgramPrefs.getBoolean("fg_disable_sticker_loop", false);
             fg_avatar_shape = hashgramPrefs.getInt("fg_avatar_shape", 0);
             fg_font_type = hashgramPrefs.getInt("fg_font_type", 0);
+            fg_custom_font_path = hashgramPrefs.getString("fg_custom_font_path", "");
             fg_hide_mic_cam = hashgramPrefs.getBoolean("fg_hide_mic_cam", false);
 
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);

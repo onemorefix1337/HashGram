@@ -78,13 +78,13 @@ public class PublicStoriesList extends FrameLayout {
             onMessagesClick();
         });
 
-        topTitleView = new TextView(context);
+        topTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         topTitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         topTitleView.setTypeface(AndroidUtilities.bold());
         topTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         topView.addView(topTitleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 13.66f, 6.66f, 13.66f, 0));
 
-        textTitleView = new TextView(context);
+        textTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         textTitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         textTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         topView.addView(textTitleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 13.66f, 25, 13.66f, 0));

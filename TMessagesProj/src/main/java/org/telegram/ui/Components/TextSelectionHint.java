@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 public class TextSelectionHint extends View {
 
     StaticLayout textLayout;
-    TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     Paint selectionPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     int padding = AndroidUtilities.dp(24);

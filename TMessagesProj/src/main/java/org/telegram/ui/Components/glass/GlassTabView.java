@@ -84,7 +84,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
 
         imageView.setColorFilter(new PorterDuffColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12f);
         textView.setSingleLine();
         textView.setLines(1);
@@ -92,7 +92,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         textView.setTypeface(AndroidUtilities.bold());
         textView.setGravity(Gravity.CENTER);
 
-        defaultTextPaint = new TextPaint(textView.getPaint());
+        defaultTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(textView.getPaint());
         addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 28.33f, 0, 0));
 
         counter = new AnimatedTextView.AnimatedTextDrawable();
@@ -522,7 +522,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
     @Override
     public float measureTextWidth(float textSizeDp) {
         if (scaledTextPaint == null) {
-            scaledTextPaint = new TextPaint(defaultTextPaint);
+            scaledTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(defaultTextPaint);
         }
         scaledTextPaint.setTextSize(dp(textSizeDp));
         return scaledTextPaint.measureText(textView.getText().toString());

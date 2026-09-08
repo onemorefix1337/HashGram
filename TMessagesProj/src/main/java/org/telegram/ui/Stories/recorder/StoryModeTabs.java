@@ -66,7 +66,7 @@ public class StoryModeTabs extends FrameLayout implements FlashViews.Invertable 
         layout.setOrientation(LinearLayout.HORIZONTAL);
 
         liveLayout = new FrameLayout(context);
-        live = new TextView(context);
+        live = new org.telegram.ui.Components.TypefaceTextView(context);
         live.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         live.setTypeface(AndroidUtilities.bold());
         live.setTextColor(0xFFFFFFFF);
@@ -77,7 +77,7 @@ public class StoryModeTabs extends FrameLayout implements FlashViews.Invertable 
         ScaleStateListAnimator.apply(liveLayout);
 
         photoLayout = new FrameLayout(context);
-        photo = new TextView(context);
+        photo = new org.telegram.ui.Components.TypefaceTextView(context);
         photo.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         photo.setTypeface(AndroidUtilities.bold());
         photo.setTextColor(0xFFFFFFFF);
@@ -88,7 +88,7 @@ public class StoryModeTabs extends FrameLayout implements FlashViews.Invertable 
         ScaleStateListAnimator.apply(photoLayout);
 
         videoLayout = new FrameLayout(context);
-        video = new TextView(context);
+        video = new org.telegram.ui.Components.TypefaceTextView(context);
         video.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         video.setTypeface(AndroidUtilities.bold());
         video.setTextColor(0xFFFFFFFF);

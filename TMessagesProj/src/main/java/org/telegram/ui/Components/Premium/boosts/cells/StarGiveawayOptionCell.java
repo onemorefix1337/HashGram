@@ -70,7 +70,7 @@ public class StarGiveawayOptionCell extends FrameLayout {
         loading2 = new SpannableString("x");
         loading2.setSpan(new LoadingSpan(subtitleView, dp(70)), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        priceView = new TextView(context);
+        priceView = new org.telegram.ui.Components.TypefaceTextView(context);
         priceView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         priceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         priceView.setGravity(Gravity.RIGHT);

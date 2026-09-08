@@ -440,9 +440,9 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
     private StaticLayout settingWallpaperProgressTextLayout;
     private float giftPremiumButtonWidth;
 
-    private TextPaint giftTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-    private TextPaint giftTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-    private TextPaint giftSubtitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint giftTitlePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint giftTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint giftSubtitlePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     private TLRPC.Document giftSticker;
     private TLRPC.VideoSize giftEffectAnimation;
@@ -2996,7 +2996,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
             if (messageObject.type == MessageObject.TYPE_ACTION_WALLPAPER) {
                 if (radialProgress.getTransitionProgress() != 1f || radialProgress.getIcon() != MediaActionDrawable.ICON_NONE) {
                     if (settingWallpaperLayout == null) {
-                        settingWallpaperPaint = new TextPaint();
+                        settingWallpaperPaint = new org.telegram.ui.Components.TypefaceTextPaint();
                         settingWallpaperPaint.setTextSize(dp(13));
                         SpannableStringBuilder cs = new SpannableStringBuilder(getString(R.string.ActionSettingWallpaper));
                         int index = cs.toString().indexOf("..."), len = 3;
@@ -3316,7 +3316,7 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
             if (overrideBackgroundPaint == null) {
                 overrideBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
                 overrideBackgroundPaint.setColor(color);
-                overrideTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                overrideTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 overrideTextPaint.setTypeface(AndroidUtilities.bold());
                 overrideTextPaint.setTextSize(dp(Math.max(16, SharedConfig.fontSize) - 2));
                 overrideTextPaint.setColor(getThemedColor(overrideText));

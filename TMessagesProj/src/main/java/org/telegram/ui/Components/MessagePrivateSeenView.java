@@ -102,7 +102,7 @@ public class MessagePrivateSeenView extends FrameLayout {
         drawable.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_actionBarDefaultSubmenuItemIcon, resourcesProvider), PorterDuff.Mode.MULTIPLY));
         iconView.setImageDrawable(drawable);
 
-        loadingView = new TextView(context);
+        loadingView = new org.telegram.ui.Components.TypefaceTextView(context);
         SpannableStringBuilder text = new SpannableStringBuilder("loading text ");
         text.setSpan(new LoadingSpan(loadingView, dp(96), dp(2), resourcesProvider), 0, text.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         loadingView.setTextColor(Theme.multAlpha(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider), .7f));
@@ -115,12 +115,12 @@ public class MessagePrivateSeenView extends FrameLayout {
         valueLayout.setAlpha(0f);
         addView(valueLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL, 38, 0, 8, 0));
 
-        valueTextView = new TextView(context);
+        valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         valueTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         valueLayout.addView(valueTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL, 0, -1, 0, 0));
 
-        premiumTextView = new TextView(context);
+        premiumTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         premiumTextView.setBackground(Theme.createRoundRectDrawable(dp(20), Theme.multAlpha(Theme.getColor(Theme.key_divider, resourcesProvider), .75f)));
         premiumTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         premiumTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
@@ -206,7 +206,7 @@ public class MessagePrivateSeenView extends FrameLayout {
         imageView.setBackground(Theme.createCircleDrawable(dp(80), Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider)));
         layout.addView(imageView, LayoutHelper.createLinear(80, 80, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 16));
 
-        TextView headerView = new TextView(context);
+        TextView headerView = new org.telegram.ui.Components.TypefaceTextView(context);
         headerView.setTypeface(AndroidUtilities.bold());
         headerView.setGravity(Gravity.CENTER);
         headerView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -214,7 +214,7 @@ public class MessagePrivateSeenView extends FrameLayout {
         headerView.setText(LocaleController.getString(lastSeen ? R.string.PremiumLastSeenHeader1 : R.string.PremiumReadHeader1));
         layout.addView(headerView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 0, 12, 0));
 
-        TextView descriptionView = new TextView(context);
+        TextView descriptionView = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionView.setGravity(Gravity.CENTER);
         descriptionView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         descriptionView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -296,7 +296,7 @@ public class MessagePrivateSeenView extends FrameLayout {
             or.setTextSize(14);
             layout.addView(or, LayoutHelper.createLinear(270, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 17, 12, 17));
 
-            TextView headerView2 = new TextView(context);
+            TextView headerView2 = new org.telegram.ui.Components.TypefaceTextView(context);
             headerView2.setTypeface(AndroidUtilities.bold());
             headerView2.setGravity(Gravity.CENTER);
             headerView2.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -304,7 +304,7 @@ public class MessagePrivateSeenView extends FrameLayout {
             headerView2.setText(LocaleController.getString(lastSeen ? R.string.PremiumLastSeenHeader2 : R.string.PremiumReadHeader2));
             layout.addView(headerView2, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 0, 12, 0));
 
-            TextView descriptionView2 = new TextView(context);
+            TextView descriptionView2 = new org.telegram.ui.Components.TypefaceTextView(context);
             descriptionView2.setGravity(Gravity.CENTER);
             descriptionView2.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             descriptionView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

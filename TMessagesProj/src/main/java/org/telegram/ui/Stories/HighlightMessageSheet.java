@@ -169,7 +169,7 @@ public class HighlightMessageSheet {
 
         final int[] tiers = MessagesController.getInstance(currentAccount).starsGroupcallMessageLimits;
 
-        final CharSequence stringText = MessageObject.formatTextWithEntities(text, false, new TextPaint());
+        final CharSequence stringText = MessageObject.formatTextWithEntities(text, false, new org.telegram.ui.Components.TypefaceTextPaint());
         int emojisCount = 0;
         if (stringText instanceof Spannable) {
             final Spannable spannable = (Spannable) stringText;
@@ -319,7 +319,7 @@ public class HighlightMessageSheet {
             titleTextView.setAllowCancel(true);
             layout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 20, 0, 0, 0, 1.66f));
 
-            subtitleTextView = new TextView(context);
+            subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
             subtitleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             subtitleTextView.setGravity(Gravity.CENTER);

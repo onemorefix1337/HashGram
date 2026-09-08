@@ -43,7 +43,7 @@ public class LocationLoadingCell extends FrameLayout {
         imageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_dialogEmptyImage), PorterDuff.Mode.MULTIPLY));
         addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 0, 0, 24));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(getThemedColor(Theme.key_dialogEmptyText));
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(AndroidUtilities.bold());

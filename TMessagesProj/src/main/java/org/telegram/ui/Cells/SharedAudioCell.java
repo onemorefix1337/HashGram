@@ -138,18 +138,18 @@ public class SharedAudioCell extends FrameLayout implements DownloadController.F
         addView(checkBox, LayoutHelper.createFrame(24, 24, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 38.1f, 32.1f, LocaleController.isRTL ? 6 : 0, 0));
 
         if (viewType == VIEW_TYPE_GLOBAL_SEARCH) {
-            description2TextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            description2TextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             description2TextPaint.setTextSize(dp(13));
 
             dotSpan = new SpannableStringBuilder(".");
             dotSpan.setSpan(new DotDividerSpan(), 0, 1, 0);
         }
 
-        captionTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        captionTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         captionTextPaint.setTextSize(dp(13));
 
         if (resourcesProvider != null) {
-            titlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            titlePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             titlePaint.setTypeface(AndroidUtilities.bold());
             titlePaint.setTextSize(dp(15));
             titlePaint.setColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));

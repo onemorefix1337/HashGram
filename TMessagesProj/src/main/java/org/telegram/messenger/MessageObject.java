@@ -6101,7 +6101,7 @@ public class MessageObject {
         Theme.createCommonChatResources();
         TextPaint paint = Theme.chat_actionTextPaint;
         if (paint == null) {
-            paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             paint.setTypeface(AndroidUtilities.bold());
             paint.setTextSize(dp(Math.max(16, SharedConfig.fontSize) - 2));
         }

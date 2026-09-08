@@ -20,20 +20,20 @@ public class AboutPremiumView extends LinearLayout {
         setOrientation(VERTICAL);
         setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setTypeface(AndroidUtilities.bold());
         textView.setText(LocaleController.getString(R.string.AboutPremiumTitle));
         addView(textView);
 
-        TextView description = new TextView(context);
+        TextView description = new org.telegram.ui.Components.TypefaceTextView(context);
         description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         description.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         description.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.AboutPremiumDescription)));
         addView(description, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, 0, 0, 0));
 
-        TextView description2 = new TextView(context);
+        TextView description2 = new org.telegram.ui.Components.TypefaceTextView(context);
         description2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         description2.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         description2.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.AboutPremiumDescription2)));

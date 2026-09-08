@@ -227,7 +227,7 @@ public class BoostsActivity extends GradientHeaderActivity implements Notificati
                             super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(50), MeasureSpec.EXACTLY));
                         }
                     };
-                    TextView textView = new TextView(getContext());
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     textView.setText(LocaleController.getString(isChannel() ? R.string.NoBoostersHint : R.string.NoBoostersGroupHint));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
@@ -767,7 +767,7 @@ public class BoostsActivity extends GradientHeaderActivity implements Notificati
             super(context);
             setWillNotDraw(false);
             imageView = new ImageView(context);
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Color.WHITE);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);

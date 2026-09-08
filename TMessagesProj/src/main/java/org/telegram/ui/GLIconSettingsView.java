@@ -24,7 +24,7 @@ public class GLIconSettingsView extends LinearLayout {
         super(context);
         setOrientation(VERTICAL);
 
-        TextView saturationTextView = new TextView(context);
+        TextView saturationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         saturationTextView.setText("Spectral top ");
         saturationTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         saturationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -53,7 +53,7 @@ public class GLIconSettingsView extends LinearLayout {
         addView(seekBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 38, 0, 5, 4, 5, 0));
 
 
-        saturationTextView = new TextView(context);
+        saturationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         saturationTextView.setText("Spectral bottom ");
         saturationTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         saturationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -82,7 +82,7 @@ public class GLIconSettingsView extends LinearLayout {
         addView(seekBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 38, 0, 5, 4, 5, 0));
 
 
-        saturationTextView = new TextView(context);
+        saturationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         saturationTextView.setText("Setup spec color");
         saturationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         saturationTextView.setLines(1);
@@ -119,7 +119,7 @@ public class GLIconSettingsView extends LinearLayout {
         addView(saturationTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.CENTER_VERTICAL, 16, 0, 16, 0));
 
 
-        saturationTextView = new TextView(context);
+        saturationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         saturationTextView.setText("Diffuse ");
         saturationTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         saturationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -147,7 +147,7 @@ public class GLIconSettingsView extends LinearLayout {
         seekBar.setReportChanges(true);
         addView(seekBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 38, 0, 5, 4, 5, 0));
 
-        saturationTextView = new TextView(context);
+        saturationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         saturationTextView.setText("Normal map spectral");
         saturationTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         saturationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -176,7 +176,7 @@ public class GLIconSettingsView extends LinearLayout {
         addView(seekBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 38, 0, 5, 4, 5, 0));
 
 
-        saturationTextView = new TextView(context);
+        saturationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         saturationTextView.setText("Setup normal spec color");
         saturationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         saturationTextView.setLines(1);
@@ -217,7 +217,7 @@ public class GLIconSettingsView extends LinearLayout {
 
 
 
-        saturationTextView = new TextView(context);
+        saturationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         saturationTextView.setText("Small starts size");
         saturationTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
         saturationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);

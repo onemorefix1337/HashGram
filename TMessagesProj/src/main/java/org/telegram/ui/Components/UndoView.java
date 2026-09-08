@@ -260,7 +260,7 @@ public class UndoView extends FrameLayout {
         infoTextView.setMovementMethod(new LinkMovementMethodMy());
         addView(infoTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 45, 13, 0, 0));
 
-        subinfoTextView = new TextView(context);
+        subinfoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         subinfoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         subinfoTextView.setTextColor(getThemedColor(Theme.key_undo_infoColor));
         subinfoTextView.setLinkTextColor(getThemedColor(Theme.key_undo_cancelColor));
@@ -309,7 +309,7 @@ public class UndoView extends FrameLayout {
         undoImageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_undo_cancelColor), PorterDuff.Mode.MULTIPLY));
         undoButton.addView(undoImageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.LEFT, 4, 4, 0, 4));
 
-        undoTextView = new TextView(context);
+        undoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         undoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         undoTextView.setTypeface(AndroidUtilities.bold());
         undoTextView.setTextColor(getThemedColor(Theme.key_undo_cancelColor));
@@ -324,7 +324,7 @@ public class UndoView extends FrameLayout {
         progressPaint.setStrokeCap(Paint.Cap.ROUND);
         progressPaint.setColor(getThemedColor(Theme.key_undo_infoColor));
 
-        textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTextSize(AndroidUtilities.dp(12));
         textPaint.setTypeface(AndroidUtilities.bold());
         textPaint.setColor(getThemedColor(Theme.key_undo_infoColor));

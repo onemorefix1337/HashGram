@@ -214,7 +214,7 @@ public class FloatingDebugView extends FrameLayout implements NotificationCenter
         bigLayout.setOrientation(LinearLayout.VERTICAL);
         bigLayout.setVisibility(GONE);
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setText(LocaleController.getString(R.string.DebugMenu));
         titleView.setTypeface(AndroidUtilities.bold());
@@ -604,7 +604,7 @@ public class FloatingDebugView extends FrameLayout implements NotificationCenter
 
             setWillNotDraw(false);
 
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(AndroidUtilities.dp(16));
 
             seekBar = new SeekBarView(context);

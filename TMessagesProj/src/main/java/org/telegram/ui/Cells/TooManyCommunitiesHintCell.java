@@ -33,20 +33,20 @@ public class TooManyCommunitiesHintCell extends FrameLayout {
         imageView = new ImageView(context);
         imageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chats_nameMessage_threeLines), PorterDuff.Mode.MULTIPLY));
 
-        headerTextView = new TextView(context);
+        headerTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         headerTextView.setTextColor(Theme.getColor(Theme.key_chats_nameMessage_threeLines));
         headerTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         headerTextView.setTypeface(AndroidUtilities.bold());
         headerTextView.setGravity(Gravity.CENTER);
         addView(headerTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 52, 75, 52, 0));
 
-        messageTextView = new TextView(context);
+        messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         messageTextView.setTextColor(Theme.getColor(Theme.key_chats_message));
         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         messageTextView.setGravity(Gravity.CENTER);
         addView(messageTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 36, 110, 36, 0));
 
-        TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setColor(Color.WHITE);
         textPaint.setTextSize(AndroidUtilities.dp(12));
         textPaint.setTypeface(AndroidUtilities.bold());

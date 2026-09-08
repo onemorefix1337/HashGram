@@ -348,7 +348,7 @@ public class BottomSheetTabs extends FrameLayout {
     private static TextPaint textPaint;
     private static TextPaint getTextPaint() {
         if (textPaint == null) {
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTypeface(AndroidUtilities.bold());
             textPaint.setTextSize(AndroidUtilities.dp(17));
         }

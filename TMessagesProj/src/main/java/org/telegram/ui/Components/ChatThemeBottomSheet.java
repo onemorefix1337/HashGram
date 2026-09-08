@@ -152,7 +152,7 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
         rootLayout = new FrameLayout(getContext());
         setCustomView(rootLayout);
 
-        titleView = new TextView(getContext());
+        titleView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         titleView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
         titleView.setLines(1);
         titleView.setSingleLine(true);
@@ -279,7 +279,7 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
         applyButton.setOnClickListener((view) -> applySelectedTheme());
         rootLayout.addView(applyButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.START, 16, 162, 16, 16));
 
-        chooseBackgroundTextView = new TextView(getContext());
+        chooseBackgroundTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         chooseBackgroundTextView.setEllipsize(TextUtils.TruncateAt.END);
         chooseBackgroundTextView.setGravity(Gravity.CENTER);
         chooseBackgroundTextView.setLines(1);
@@ -319,7 +319,7 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
         rootLayout.addView(applySubTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.START, 16, 162, 16, 16));
 
         if (currentWallpaper != null) {
-            cancelOrResetTextView = new TextView(getContext());
+            cancelOrResetTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             cancelOrResetTextView.setEllipsize(TextUtils.TruncateAt.END);
             cancelOrResetTextView.setGravity(Gravity.CENTER);
             cancelOrResetTextView.setLines(1);
@@ -339,7 +339,7 @@ public class ChatThemeBottomSheet extends BottomSheet implements NotificationCen
 
             rootLayout.addView(cancelOrResetTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.START, 16, 214, 16, 12));
 
-            themeHintTextView = new TextView(getContext());
+            themeHintTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             themeHintTextView.setEllipsize(TextUtils.TruncateAt.END);
             themeHintTextView.setGravity(Gravity.CENTER);
             themeHintTextView.setLines(1);

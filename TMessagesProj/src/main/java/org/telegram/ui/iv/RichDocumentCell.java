@@ -61,8 +61,8 @@ public class RichDocumentCell extends RichBlockCell implements Theme.Colorable,
     private final Theme.ResourcesProvider resourcesProvider;
     private final Paint selectionPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint previewBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-    private final TextPaint sizePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint sizePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private final RadialProgress2 radialProgress;
     private final ImageReceiver previewImage;
     private final RichCaptionController caption;

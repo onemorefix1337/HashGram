@@ -410,7 +410,7 @@ public class AvatarConstructorFragment extends BaseFragment {
             }
         });
 
-        chooseBackgroundHint = new TextView(getContext());
+        chooseBackgroundHint = new org.telegram.ui.Components.TypefaceTextView(getContext());
         chooseBackgroundHint.setText(getString(R.string.ChooseBackground));
         chooseBackgroundHint.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         chooseBackgroundHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -440,7 +440,7 @@ public class AvatarConstructorFragment extends BaseFragment {
         backgroundContainer.addView(backgroundSelectView = new BackgroundSelectView(getContext()));
         linearLayout.addView(backgroundContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48, 0, 12, 0, 12, 0));
 
-        chooseEmojiHint = new TextView(getContext());
+        chooseEmojiHint = new org.telegram.ui.Components.TypefaceTextView(getContext());
         chooseEmojiHint.setText(getString(R.string.ChooseEmojiOrSticker));
         chooseEmojiHint.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         chooseEmojiHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -1253,7 +1253,7 @@ public class AvatarConstructorFragment extends BaseFragment {
         FrameLayout button = new FrameLayout(getContext());
         button.setBackground(Theme.AdaptiveRipple.filledRectByKey(Theme.key_featuredStickers_addButton, 8));
 
-        TextView textView = new TextView(getContext());
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setText(getString(R.string.SetColor));
         textView.setGravity(Gravity.CENTER);

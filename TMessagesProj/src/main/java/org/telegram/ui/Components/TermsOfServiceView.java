@@ -61,14 +61,14 @@ public class TermsOfServiceView extends FrameLayout {
         imageView.setImageResource(R.drawable.logo_middle);
         linearLayout.addView(imageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT, 0, 28, 0, 0));
 
-        titleTextView = new TextView(context);
+        titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
         titleTextView.setTypeface(AndroidUtilities.bold());
         titleTextView.setText(LocaleController.getString(R.string.PrivacyPolicyAndTerms));
         linearLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT, 0, 20, 0, 0));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setLinkTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteLinkText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -84,7 +84,7 @@ public class TermsOfServiceView extends FrameLayout {
         scrollView.addView(linearLayout, new LayoutParams(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         addView(scrollView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        TextView declineTextView = new TextView(context);
+        TextView declineTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         declineTextView.setText(LocaleController.getString(R.string.Decline).toUpperCase());
         declineTextView.setGravity(Gravity.CENTER);
         declineTextView.setTypeface(AndroidUtilities.bold());
@@ -136,7 +136,7 @@ public class TermsOfServiceView extends FrameLayout {
             builder.show();
         });
 
-        TextView acceptTextView = new TextView(context);
+        TextView acceptTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         acceptTextView.setText(LocaleController.getString(R.string.Accept));
         acceptTextView.setGravity(Gravity.CENTER);
         acceptTextView.setTypeface(AndroidUtilities.bold());

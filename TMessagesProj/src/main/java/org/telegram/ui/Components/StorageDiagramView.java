@@ -132,7 +132,7 @@ public class StorageDiagramView extends View implements NotificationCenter.Notif
 
         if (dialogText != null) {
             if (dialogTextPaint == null) {
-                dialogTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                dialogTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             }
             dialogTextPaint.setTextSize(AndroidUtilities.dp(13));
             int width = MeasureSpec.getSize(widthMeasureSpec) - AndroidUtilities.dp(60);

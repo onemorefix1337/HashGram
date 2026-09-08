@@ -144,7 +144,7 @@ public class SellGiftEnterPriceSheet extends BottomSheet {
             dollarsEqView.setGravity(Gravity.RIGHT);
             starsCountEditOutline.addView(dollarsEqView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.RIGHT | Gravity.CENTER_VERTICAL, 0, 0, 16, 0));
 
-            starsCountEditHint = new TextView(context);
+            starsCountEditHint = new org.telegram.ui.Components.TypefaceTextView(context);
             starsCountEditHint.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             starsCountEditHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             bodyLayout.addView(starsCountEditHint, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 33, 4, 33, 0));

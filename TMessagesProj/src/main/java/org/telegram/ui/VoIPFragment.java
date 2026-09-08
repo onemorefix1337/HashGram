@@ -961,14 +961,14 @@ public class VoIPFragment implements
         emojiRationalLayout = new EmojiRationalLayout(context, backgroundProvider);
         emojiRationalLayout.setOrientation(LinearLayout.VERTICAL);
 
-        emojiRationalTopTextView = new TextView(context);
+        emojiRationalTopTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emojiRationalTopTextView.setText(LocaleController.getString(R.string.VoipCallEncryptionEndToEnd));
         emojiRationalTopTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         emojiRationalTopTextView.setTypeface(AndroidUtilities.bold());
         emojiRationalTopTextView.setTextColor(Color.WHITE);
         emojiRationalTopTextView.setGravity(Gravity.CENTER);
 
-        emojiRationalTextView = new TextView(context) {
+        emojiRationalTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
                 super.onLayout(changed, left, top, right, bottom);
@@ -1029,7 +1029,7 @@ public class VoIPFragment implements
         callingUserPhotoViewMini.setImage(ImageLocation.getForUserOrChat(currentAccount, callingUser, ImageLocation.TYPE_BIG), null, avatarDrawable, callingUser);
         callingUserPhotoViewMini.setRoundRadius(AndroidUtilities.dp(135) / 2);
 
-        callingUserTitle = new TextView(context);
+        callingUserTitle = new org.telegram.ui.Components.TypefaceTextView(context);
         callingUserTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 28);
         CharSequence name = ContactsController.formatName(callingUser.first_name, callingUser.last_name);
         name = Emoji.replaceEmoji(name, callingUserTitle.getPaint().getFontMetricsInt(), false);
@@ -2489,7 +2489,7 @@ public class VoIPFragment implements
                 drawable.setBounds(0, 0, AndroidUtilities.dp(40), AndroidUtilities.dp(40));
                 ((Emoji.EmojiDrawable) drawable).preload();
                 int[] emojiOnly = new int[1];
-                TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                 paint.setTextSize(AndroidUtilities.dp(28));
                 CharSequence txt = emoji[i];
                 txt = Emoji.replaceEmoji(txt, paint.getFontMetricsInt(), false, emojiOnly);

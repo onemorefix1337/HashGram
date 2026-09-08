@@ -31,7 +31,7 @@ public class SelectorCountryCell extends BaseCell {
 
     private final CheckBox2 checkBox;
     private TLRPC.TL_help_country country;
-    private TextPaint paint = new TextPaint();
+    private TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint();
 
     public SelectorCountryCell(Context context, Theme.ResourcesProvider resourcesProvider) {
         super(context, resourcesProvider);

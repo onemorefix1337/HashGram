@@ -4369,7 +4369,7 @@ public class LocaleController {
             sb.append(code);
         }
 
-        final TextPaint paint = new TextPaint();
+        final TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint();
         paint.setTextSize(dp(textSizeDp));
         return Emoji.replaceEmoji(sb, paint.getFontMetricsInt(), true);
     }

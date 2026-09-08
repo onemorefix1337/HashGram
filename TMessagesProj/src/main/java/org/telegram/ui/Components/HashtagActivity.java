@@ -274,7 +274,7 @@ public class HashtagActivity extends BaseFragment implements NotificationCenter.
         sharedMediaLayoutContainer.addView(sharedMediaLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL, 0, 0, 0, 49));
         storiesTotal = new FrameLayout(context);
         storiesTotal.setBackgroundColor(getThemedColor(Theme.key_windowBackgroundWhite));
-        storiesTotalTextView = new TextView(context);
+        storiesTotalTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         storiesTotalTextView.setTypeface(AndroidUtilities.bold());
         storiesTotalTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         storiesTotalTextView.setTextColor(getThemedColor(Theme.key_chat_searchPanelText));

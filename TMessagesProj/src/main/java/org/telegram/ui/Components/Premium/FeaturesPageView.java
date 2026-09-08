@@ -275,7 +275,7 @@ public class FeaturesPageView extends BaseListPageView {
                 avatarDrawable.setInfo(user);
                 imageView.getImageReceiver().setForUserOrChat(user, avatarDrawable);
 
-                TextView textView = new TextView(context);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 textView.setTypeface(AndroidUtilities.bold());
                 textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
@@ -345,7 +345,7 @@ public class FeaturesPageView extends BaseListPageView {
                     iconTextureView.startEnterAnimation(-360, 100);
                 }
 
-                TextView textView = new TextView(context);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 textView.setTypeface(AndroidUtilities.bold());
                 textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
@@ -353,7 +353,7 @@ public class FeaturesPageView extends BaseListPageView {
                 textView.setGravity(Gravity.CENTER);
                 addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 33, 150, 33, 0));
 
-                textView = new TextView(context);
+                textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
                 textView.setText(LocaleController.getString(R.string.TelegramBusinessSubtitle2));
@@ -402,13 +402,13 @@ public class FeaturesPageView extends BaseListPageView {
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             addView(imageView, LayoutHelper.createFrame(28, 28, 0, 25, 12, 16, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 68, 8, 16, 0));
 
-            description = new TextView(context);
+            description = new org.telegram.ui.Components.TypefaceTextView(context);
             description.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
             description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addView(description, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 68, 28, 16, 8));

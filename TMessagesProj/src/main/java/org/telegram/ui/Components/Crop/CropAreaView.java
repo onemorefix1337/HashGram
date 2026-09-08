@@ -166,7 +166,7 @@ public class CropAreaView extends ViewGroup {
     private void updateSubtitle() {
         if (subtitle != null) {
             if (subtitlePaint == null) {
-                subtitlePaint = new TextPaint();
+                subtitlePaint = new org.telegram.ui.Components.TypefaceTextPaint();
                 subtitlePaint.setColor(ColorUtils.setAlphaComponent(Color.WHITE, 120));
                 subtitlePaint.setTextSize(AndroidUtilities.dp(13));
                 subtitlePaint.setTextAlign(Paint.Align.CENTER);

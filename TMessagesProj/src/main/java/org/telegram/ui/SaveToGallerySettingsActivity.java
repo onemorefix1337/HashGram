@@ -250,7 +250,7 @@ public class SaveToGallerySettingsActivity extends BaseFragment {
             FrameLayout button = new FrameLayout(getContext());
             button.setBackground(Theme.AdaptiveRipple.filledRectByKey(Theme.key_featuredStickers_addButton, 8));
 
-            TextView textView = new TextView(getContext());
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setText(isNewException ? LocaleController.getString(R.string.AddException) : LocaleController.getString(R.string.SaveException));
             textView.setGravity(Gravity.CENTER);

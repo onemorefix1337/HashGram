@@ -28,7 +28,7 @@ public class SharedMediaFastScrollTooltip extends FrameLayout {
 
     public SharedMediaFastScrollTooltip(Context context) {
         super(context);
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setText(LocaleController.getString(R.string.SharedMediaFastScrollHint));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setMaxLines(3);

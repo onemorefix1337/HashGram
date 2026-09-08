@@ -1594,14 +1594,14 @@ public class LiveCommentsView extends FrameLayout implements NotificationCenter.
             NotificationCenter.listenEmojiLoading(textView);
             textLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
-            starsView = new TextView(context);
+            starsView = new org.telegram.ui.Components.TypefaceTextView(context);
             starsView.setTextColor(0xFFFFFFFF);
             starsView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
             starsView.setPadding(dp(4.66f), 0, dp(4.66f), 0);
             starsView.setVisibility(View.GONE);
             layout.addView(starsView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 16, 0, Gravity.RIGHT | Gravity.CENTER_VERTICAL, -3, 0, 6, 0));
 
-            smallStarsView = new TextView(context);
+            smallStarsView = new org.telegram.ui.Components.TypefaceTextView(context);
             smallStarsView.setTextColor(0xFFFFFFFF);
             smallStarsView.setAlpha(0.65f);
             smallStarsView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
@@ -1938,7 +1938,7 @@ public class LiveCommentsView extends FrameLayout implements NotificationCenter.
             crownView.setVisibility(View.GONE);
             layout.addView(crownView, LayoutHelper.createLinear(18, 18, Gravity.CENTER_VERTICAL | Gravity.LEFT, 0, 0, 3, 0));
 
-            textView = new TextView(context) {
+            textView = new org.telegram.ui.Components.TypefaceTextView(context) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                     super.onMeasure(MeasureSpec.makeMeasureSpec(dp(100), MeasureSpec.AT_MOST), heightMeasureSpec);
@@ -2093,7 +2093,7 @@ public class LiveCommentsView extends FrameLayout implements NotificationCenter.
         final LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
 
-        final TextView title = new TextView(context);
+        final TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         title.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         title.setTypeface(AndroidUtilities.bold());

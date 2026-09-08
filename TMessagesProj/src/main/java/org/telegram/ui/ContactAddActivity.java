@@ -267,7 +267,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
         showAvatarProgress(false, false);
 
-        nameTextView = new TextView(context);
+        nameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         nameTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         nameTextView.setLines(1);
@@ -278,7 +278,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         nameTextView.setTypeface(AndroidUtilities.bold());
         infoLayout.addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 94, 25.66f, LocaleController.isRTL ? 94 : 0, 0));
 
-        onlineTextView = new TextView(context);
+        onlineTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         onlineTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3, resourcesProvider));
         onlineTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         onlineTextView.setLines(1);

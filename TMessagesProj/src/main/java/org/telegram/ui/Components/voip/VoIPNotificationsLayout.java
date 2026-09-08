@@ -51,7 +51,7 @@ public class VoIPNotificationsLayout extends LinearLayout {
     boolean wasChanged;
     Runnable onViewsUpdated;
     VoIPBackgroundProvider backgroundProvider;
-    TextPaint textPaint = new TextPaint();
+    TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint();
 
     public VoIPNotificationsLayout(Context context, VoIPBackgroundProvider backgroundProvider) {
         super(context);
@@ -226,7 +226,7 @@ public class VoIPNotificationsLayout extends LinearLayout {
             iconView = new ImageView(context);
             addView(iconView, LayoutHelper.createFrame(24, 24, Gravity.CENTER_VERTICAL, 8, 2, 8, 2));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Color.WHITE);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, iconRes == 0 ? 14 : 36, 2, 14, 2));

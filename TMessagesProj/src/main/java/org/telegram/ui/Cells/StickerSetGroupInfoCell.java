@@ -30,13 +30,13 @@ public class StickerSetGroupInfoCell extends LinearLayout {
         super(context);
         setOrientation(VERTICAL);
 
-        TextView infoTextView = new TextView(context);
+        TextView infoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         infoTextView.setTextColor(Theme.getColor(Theme.key_chat_emojiPanelTrendingDescription));
         infoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         infoTextView.setText(LocaleController.getString(R.string.GroupStickersInfo));
         addView(infoTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 17, 4, 17, 0));
 
-        addButton = new TextView(context);
+        addButton = new org.telegram.ui.Components.TypefaceTextView(context);
         addButton.setPadding(AndroidUtilities.dp(17), 0, AndroidUtilities.dp(17), 0);
         addButton.setGravity(Gravity.CENTER);
         addButton.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));

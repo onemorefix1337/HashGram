@@ -36,7 +36,7 @@ public class FoundStickerPacksHeaderCell extends FrameLayout implements Theme.Co
         backButton.setImageResource(R.drawable.msg_arrow_back);
         addView(backButton, LayoutHelper.createFrame(48, 48, Gravity.START | Gravity.CENTER_VERTICAL, 6, 0, 0, 0));
 
-        headerText = new TextView(context);
+        headerText = new org.telegram.ui.Components.TypefaceTextView(context);
         headerText.setText(LocaleController.getString( R.string.EmojiSearchBackToSearch));
         headerText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         headerText.setTypeface(AndroidUtilities.bold());

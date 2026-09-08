@@ -40,14 +40,14 @@ public class PremiumGiftHeaderCell extends LinearLayout {
         avatarImageView.setRoundRadius(AndroidUtilities.dp(50));
         addView(avatarImageView, LayoutHelper.createLinear(100, 100, Gravity.CENTER_HORIZONTAL, 0, 28, 0, 0));
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleView.setGravity(Gravity.CENTER_HORIZONTAL);
         addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 24, 24, 24, 0));
 
-        subtitleView = new TextView(context);
+        subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         subtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         subtitleView.setGravity(Gravity.CENTER_HORIZONTAL);

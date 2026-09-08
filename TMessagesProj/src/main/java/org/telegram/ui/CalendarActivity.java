@@ -80,9 +80,9 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
 
     RecyclerListView listView;
     LinearLayoutManager layoutManager;
-    TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-    TextPaint activeTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-    TextPaint textPaint2 = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+    TextPaint activeTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+    TextPaint textPaint2 = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     TextView selectDaysButton;
     TextView removeDaysButton;
@@ -389,7 +389,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
             bottomBar.setWillNotDraw(false);
             bottomBar.setPadding(0, AndroidUtilities.getShadowHeight(), 0, 0);
             bottomBar.setClipChildren(false);
-            selectDaysButton = new TextView(context);
+            selectDaysButton = new org.telegram.ui.Components.TypefaceTextView(context);
             selectDaysButton.setGravity(Gravity.CENTER);
             selectDaysButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             selectDaysButton.setTypeface(AndroidUtilities.bold());
@@ -401,7 +401,7 @@ public class CalendarActivity extends BaseFragment implements NotificationCenter
             selectDaysButton.setAllCaps(true);
             bottomBar.addView(selectDaysButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0, 0, 0f, 0, 0));
 
-            removeDaysButton = new TextView(context);
+            removeDaysButton = new org.telegram.ui.Components.TypefaceTextView(context);
             removeDaysButton.setGravity(Gravity.CENTER);
             removeDaysButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             removeDaysButton.setTypeface(AndroidUtilities.bold());

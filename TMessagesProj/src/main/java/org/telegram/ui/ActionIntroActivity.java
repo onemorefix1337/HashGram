@@ -387,14 +387,14 @@ public class ActionIntroActivity extends BaseFragment implements LocationControl
         imageView = new RLottieImageView(context);
         viewGroup.addView(imageView);
 
-        titleTextView = new TextView(context);
+        titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         titleTextView.setPadding(AndroidUtilities.dp(32), 0, AndroidUtilities.dp(32), 0);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24);
         viewGroup.addView(titleTextView);
 
-        subtitleTextView = new TextView(context);
+        subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleTextView.setTextColor(Theme.getColor(currentType == ACTION_TYPE_CHANGE_PHONE_NUMBER ? Theme.key_featuredStickers_addButton : Theme.key_windowBackgroundWhiteBlackText));
         subtitleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -404,7 +404,7 @@ public class ActionIntroActivity extends BaseFragment implements LocationControl
         subtitleTextView.setVisibility(View.GONE);
         viewGroup.addView(subtitleTextView);
 
-        descriptionText = new TextView(context);
+        descriptionText = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText6));
         descriptionText.setGravity(Gravity.CENTER_HORIZONTAL);
         descriptionText.setLineSpacing(AndroidUtilities.dp(2), 1);
@@ -428,14 +428,14 @@ public class ActionIntroActivity extends BaseFragment implements LocationControl
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
                 descriptionLayout.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, a != 2 ? 7 : 0));
 
-                descriptionLines[a * 2] = new TextView(context);
+                descriptionLines[a * 2] = new org.telegram.ui.Components.TypefaceTextView(context);
                 descriptionLines[a * 2].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
                 descriptionLines[a * 2].setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
                 descriptionLines[a * 2].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                 descriptionLines[a * 2].setText(String.format(LocaleController.isRTL ? ".%d" : "%d.", a + 1));
                 descriptionLines[a * 2].setTypeface(AndroidUtilities.bold());
 
-                descriptionLines[a * 2 + 1] = new TextView(context);
+                descriptionLines[a * 2 + 1] = new org.telegram.ui.Components.TypefaceTextView(context);
                 descriptionLines[a * 2 + 1].setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
                 descriptionLines[a * 2 + 1].setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
                 descriptionLines[a * 2 + 1].setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -471,7 +471,7 @@ public class ActionIntroActivity extends BaseFragment implements LocationControl
             descriptionText.setVisibility(View.GONE);
         }
 
-        descriptionText2 = new TextView(context);
+        descriptionText2 = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionText2.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText6));
         descriptionText2.setGravity(Gravity.CENTER_HORIZONTAL);
         descriptionText2.setLineSpacing(AndroidUtilities.dp(2), 1);
@@ -481,7 +481,7 @@ public class ActionIntroActivity extends BaseFragment implements LocationControl
         viewGroup.addView(descriptionText2);
 
         startMessagingButtonBackground = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, null);
-        buttonTextView = new TextView(context) {
+        buttonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
             private final CellFlickerDrawable cellFlickerDrawable = new CellFlickerDrawable(); {
                 cellFlickerDrawable.drawFrame = false;
                 cellFlickerDrawable.repeatProgress = 2f;

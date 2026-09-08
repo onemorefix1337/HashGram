@@ -61,7 +61,7 @@ public class ProfileChannelCell extends FrameLayout implements Theme.Colorable {
         headerLayout.setOrientation(LinearLayout.HORIZONTAL);
         addView(headerLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 16.66f, 11.6f, 16.66f, 0));
 
-        headerView = new TextView(context);
+        headerView = new org.telegram.ui.Components.TypefaceTextView(context);
         headerView.setTypeface(AndroidUtilities.bold());
         headerView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         headerView.setText(LocaleController.getString(R.string.ProfileChannel));

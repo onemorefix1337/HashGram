@@ -214,7 +214,7 @@ public class PreviewButtons extends FrameLayout {
 
     private class ShareButtonView extends View {
 
-        private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private final Paint buttonPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint darkenPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final StaticLayout staticLayout;

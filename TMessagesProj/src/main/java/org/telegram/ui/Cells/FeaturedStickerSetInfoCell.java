@@ -77,7 +77,7 @@ public class FeaturedStickerSetInfoCell extends FrameLayout {
 
         FrameLayout.LayoutParams lp;
 
-        nameTextView = new TextView(context);
+        nameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         nameTextView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelTrendingTitle));
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
         nameTextView.setTypeface(AndroidUtilities.bold());
@@ -90,7 +90,7 @@ public class FeaturedStickerSetInfoCell extends FrameLayout {
         }
         addView(nameTextView, lp);
 
-        infoTextView = new TextView(context);
+        infoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         infoTextView.setTextColor(getThemedColor(Theme.key_chat_emojiPanelTrendingDescription));
         infoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         infoTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -113,7 +113,7 @@ public class FeaturedStickerSetInfoCell extends FrameLayout {
             }
             addView(addButton, lp);
 
-            delButton = new TextView(context);
+            delButton = new org.telegram.ui.Components.TypefaceTextView(context);
             delButton.setGravity(Gravity.CENTER);
             delButton.setTextColor(getThemedColor(Theme.key_featuredStickers_removeButtonText));
             delButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

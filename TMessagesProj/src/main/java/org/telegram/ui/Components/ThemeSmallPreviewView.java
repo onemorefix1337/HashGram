@@ -556,7 +556,7 @@ public class ThemeSmallPreviewView extends FrameLayout implements NotificationCe
         if (textLayout != null) {
             return textLayout;
         }
-        noThemeTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG + TextPaint.SUBPIXEL_TEXT_FLAG);
+        noThemeTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG + TextPaint.SUBPIXEL_TEXT_FLAG);
         noThemeTextPaint.setColor(getThemedColor(Theme.key_chat_emojiPanelTrendingDescription));
         noThemeTextPaint.setTextSize(AndroidUtilities.dp(noThemeStringTextSize()));
         noThemeTextPaint.setTypeface(AndroidUtilities.bold());

@@ -567,7 +567,7 @@ public class ColorPicker extends FrameLayout {
         clearButton.setContentDescription(LocaleController.getString(R.string.ClearButton));
         addView(clearButton, LayoutHelper.createFrame(30, 30, Gravity.TOP | Gravity.LEFT, 97, 1, 0, 0));
 
-        resetButton = new TextView(context);
+        resetButton = new org.telegram.ui.Components.TypefaceTextView(context);
         resetButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         resetButton.setTypeface(AndroidUtilities.bold());
         resetButton.setGravity(Gravity.CENTER);

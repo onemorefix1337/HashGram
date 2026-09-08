@@ -23,7 +23,7 @@ final class RichBlockSelection {
 
     private static Layout placeholder() {
         if (placeholder == null) {
-            placeholder = new StaticLayout(" ", new TextPaint(), 1, Layout.Alignment.ALIGN_NORMAL, 1f, 0f, false);
+            placeholder = new StaticLayout(" ", new org.telegram.ui.Components.TypefaceTextPaint(), 1, Layout.Alignment.ALIGN_NORMAL, 1f, 0f, false);
         }
         return placeholder;
     }

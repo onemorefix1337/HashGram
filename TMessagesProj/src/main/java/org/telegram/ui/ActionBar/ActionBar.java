@@ -650,7 +650,7 @@ public class ActionBar extends FrameLayout implements FactorAnimator.Target, The
 
     public Paint.FontMetricsInt getTitleFontMetricsInt() {
         if (titleTextView[0] == null) {
-            TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             paint.setTextSize(dp(!AndroidUtilities.isTablet() && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 18 : 20));
             return paint.getFontMetricsInt();
         }

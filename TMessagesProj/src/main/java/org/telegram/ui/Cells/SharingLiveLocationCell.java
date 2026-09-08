@@ -107,7 +107,7 @@ public class SharingLiveLocationCell extends FrameLayout {
             addView(avatarImageView, LayoutHelper.createFrame(42, 42, Gravity.TOP | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT), LocaleController.isRTL ? 0 : 15, 12, LocaleController.isRTL ? 15 : 0, 0));
             addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 20, Gravity.TOP | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT), LocaleController.isRTL ? padding : 73, 12, LocaleController.isRTL ? 73 : 16, 0));
 
-            distanceTextView = new TextView(context);
+            distanceTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             distanceTextView.setSingleLine();
             distanceTextViewSingle = true;
             distanceTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

@@ -1513,7 +1513,7 @@ public class ChatActivity extends BaseFragment implements
 
     public TextView getOrCreateWebBotTitleView() {
         if (webBotTitle == null) {
-            webBotTitle = new TextView(getContext());
+            webBotTitle = new org.telegram.ui.Components.TypefaceTextView(getContext());
             webBotTitle.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             webBotTitle.setTypeface(AndroidUtilities.bold());
             webBotTitle.setGravity(Gravity.CENTER_VERTICAL);
@@ -8311,7 +8311,7 @@ public class ChatActivity extends BaseFragment implements
 
             button.addSpaceView(new Space(context), LayoutHelper.createLinear(10, LayoutHelper.MATCH_PARENT));
 
-            final TextView textView = new TextView(context);
+            final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setMaxLines(1);
             textView.setSingleLine(true);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -8348,7 +8348,7 @@ public class ChatActivity extends BaseFragment implements
         bottomOverlay.setClickable(true);
         chatInputBubbleContainer.addView(bottomOverlay, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 44, Gravity.BOTTOM, 7, 0, 7, 0));
 
-        bottomOverlayText = new TextView(context);
+        bottomOverlayText = new org.telegram.ui.Components.TypefaceTextView(context);
         bottomOverlayText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         bottomOverlayText.setGravity(Gravity.CENTER);
         bottomOverlayText.setMaxLines(2);
@@ -8435,7 +8435,7 @@ public class ChatActivity extends BaseFragment implements
 
         chatInputBubbleContainer.addView(bottomChannelButtonsLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 56, Gravity.BOTTOM, 0, 0, 0, (44 - 56) / 2));
 
-        bottomOverlayStartButton = new TextView(context) {
+        bottomOverlayStartButton = new org.telegram.ui.Components.TypefaceTextView(context) {
             CellFlickerDrawable cellFlickerDrawable;
 
             @Override
@@ -9682,7 +9682,7 @@ public class ChatActivity extends BaseFragment implements
         topPanelLayout.setPriority(topChatPanelView, 2);
         topPanelLayout.setDebugName(topChatPanelView, "top chat panel view");
 
-        reportSpamButton = new TextView(getContext());
+        reportSpamButton = new org.telegram.ui.Components.TypefaceTextView(getContext());
         reportSpamButton.setTextColor(getThemedColor(Theme.key_text_RedBold));
         reportSpamButton.setBackground(Theme.createInsetRoundRectDrawable(getThemedColor(Theme.key_text_RedBold) & 0x19ffffff, dp(18), dp(4)));
         reportSpamButton.setTag(Theme.key_text_RedBold);
@@ -9711,7 +9711,7 @@ public class ChatActivity extends BaseFragment implements
         topPanelLayout.setPriority(emojiStatusSpamHint, 8);
         topPanelLayout.setDebugName(emojiStatusSpamHint, "emoji status spam hint");
 
-        addToContactsButton = new TextView(getContext());
+        addToContactsButton = new org.telegram.ui.Components.TypefaceTextView(getContext());
         addToContactsButton.setTextColor(getThemedColor(Theme.key_chat_addContact));
         addToContactsButton.setVisibility(View.GONE);
         addToContactsButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -9769,7 +9769,7 @@ public class ChatActivity extends BaseFragment implements
             }
         });
 
-        restartTopicButton = new TextView(getContext());
+        restartTopicButton = new org.telegram.ui.Components.TypefaceTextView(getContext());
         restartTopicButton.setTextColor(getThemedColor(Theme.key_chat_addContact));
         restartTopicButton.setVisibility(View.GONE);
         restartTopicButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -9848,7 +9848,7 @@ public class ChatActivity extends BaseFragment implements
         createTopPanel();
         if (topPanelLayout == null) return;
 
-        addProfilePictureButton = new TextView(getContext());
+        addProfilePictureButton = new org.telegram.ui.Components.TypefaceTextView(getContext());
         addProfilePictureButton.setGravity(Gravity.CENTER);
         addProfilePictureButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         addProfilePictureButton.setTypeface(AndroidUtilities.bold());
@@ -28143,7 +28143,7 @@ public class ChatActivity extends BaseFragment implements
         topPanelLayout.setPriority(alertView, 11);
         topPanelLayout.setDebugName(alertView, "alert view");
 
-        alertNameTextView = new TextView(getContext());
+        alertNameTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         alertNameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         alertNameTextView.setTextColor(getThemedColor(Theme.key_chat_topPanelTitle));
         alertNameTextView.setTypeface(AndroidUtilities.bold());
@@ -28152,7 +28152,7 @@ public class ChatActivity extends BaseFragment implements
         alertNameTextView.setMaxLines(1);
         alertView.addView(alertNameTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 8, 5, 8, 0));
 
-        alertTextView = new TextView(getContext());
+        alertTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         alertTextView.setTextColor(getThemedColor(Theme.key_chat_topPanelMessage));
 
@@ -29178,7 +29178,7 @@ public class ChatActivity extends BaseFragment implements
                             ArrayList<View> sections = new ArrayList<>();
 
                             if (botSponsoredMessage.sponsoredUrl != null && !TextUtils.equals(AndroidUtilities.getHostAuthority(botSponsoredMessage.sponsoredUrl), MessagesController.getInstance(currentAccount).linkPrefix)) {
-                                TextView textView = new TextView(getContext());
+                                TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                                 textView.setTextColor(Theme.getColor(Theme.key_chat_messageLinkIn, resourceProvider));
                                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                                 textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -29203,7 +29203,7 @@ public class ChatActivity extends BaseFragment implements
                             }
 
                             if (botSponsoredMessage.sponsoredInfo != null) {
-                                TextView textView = new TextView(getContext());
+                                TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                                 textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourceProvider));
                                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                                 textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -29219,7 +29219,7 @@ public class ChatActivity extends BaseFragment implements
                             }
 
                             if (botSponsoredMessage.sponsoredAdditionalInfo != null) {
-                                TextView textView = new TextView(getContext());
+                                TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                                 textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourceProvider));
                                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                                 textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -29320,7 +29320,7 @@ public class ChatActivity extends BaseFragment implements
             }
             isChatWithAdmin = true;
             if (chatWithAdminTextView == null) {
-                chatWithAdminTextView = new TextView(getContext());
+                chatWithAdminTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 chatWithAdminTextView.setGravity(Gravity.CENTER_VERTICAL);
                 chatWithAdminTextView.setPadding(AndroidUtilities.dp(14), 0, AndroidUtilities.dp(46), 0);
                 chatWithAdminTextView.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), 2));
@@ -31574,7 +31574,7 @@ public class ChatActivity extends BaseFragment implements
 
                     final FrameLayout rateTranscription = new FrameLayout(contentView.getContext());
 
-                    TextView textView = new TextView(contentView.getContext());
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(contentView.getContext());
                     textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText));
                     textView.setGravity(Gravity.CENTER_HORIZONTAL);
                     textView.setText(LocaleController.getString(R.string.RateTranscription));
@@ -31671,7 +31671,7 @@ public class ChatActivity extends BaseFragment implements
                         ArrayList<View> sections = new ArrayList<>();
 
                         if (selectedObject.sponsoredUrl != null && !selectedObject.sponsoredUrl.startsWith(getMessagesController().linkPrefix)) {
-                            TextView textView = new TextView(getParentActivity());
+                            TextView textView = new org.telegram.ui.Components.TypefaceTextView(getParentActivity());
                             textView.setTextColor(getThemedColor(Theme.key_chat_messageLinkIn));
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                             textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -31699,7 +31699,7 @@ public class ChatActivity extends BaseFragment implements
                         }
 
                         if (selectedObject.sponsoredInfo != null) {
-                            TextView textView = new TextView(getParentActivity());
+                            TextView textView = new org.telegram.ui.Components.TypefaceTextView(getParentActivity());
                             textView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                             textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -31715,7 +31715,7 @@ public class ChatActivity extends BaseFragment implements
                         }
 
                         if (selectedObject.sponsoredAdditionalInfo != null) {
-                            TextView textView = new TextView(getParentActivity());
+                            TextView textView = new org.telegram.ui.Components.TypefaceTextView(getParentActivity());
                             textView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                             textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -31767,7 +31767,7 @@ public class ChatActivity extends BaseFragment implements
                         infoImage.setImageResource(R.drawable.msg_info);
                         sponsoredAbout.addView(infoImage, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 40, Gravity.CENTER_VERTICAL | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT)));
 
-                        TextView infoText = new TextView(getParentActivity()) {
+                        TextView infoText = new org.telegram.ui.Components.TypefaceTextView(getParentActivity()) {
                             @Override
                             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                                 if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST && getLayout() != null) {
@@ -32021,7 +32021,7 @@ public class ChatActivity extends BaseFragment implements
                 if (selectedObject != null && selectedObject.messageOwner != null && selectedObject.messageOwner.video_processing_pending) {
                     popupLayout.addView(new ActionBarPopupWindow.GapView(contentView.getContext(), themeDelegate), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
                     FrameLayout layout = new FrameLayout(getParentActivity());
-                    TextView infoText = new TextView(getParentActivity()) {
+                    TextView infoText = new org.telegram.ui.Components.TypefaceTextView(getParentActivity()) {
                         @Override
                         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                             if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST && getLayout() != null) {
@@ -32193,7 +32193,7 @@ public class ChatActivity extends BaseFragment implements
                 if (showNoForwards) {
                     popupLayout.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
                     boolean isChannel = ChatObject.isChannel(currentChat) && !currentChat.megagroup;
-                    TextView tv = new TextView(contentView.getContext());
+                    TextView tv = new org.telegram.ui.Components.TypefaceTextView(contentView.getContext());
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     tv.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
                     if (isPeerNoForwards()) {
@@ -32228,7 +32228,7 @@ public class ChatActivity extends BaseFragment implements
 
                 if (message.isSendError() && message.messageOwner != null && message.messageOwner.errorNewPriceStars > 0) {
                     popupLayout.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-                    TextView tv = new TextView(contentView.getContext());
+                    TextView tv = new org.telegram.ui.Components.TypefaceTextView(contentView.getContext());
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     tv.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
                     CharSequence text = TextUtils.concat(
@@ -32519,7 +32519,7 @@ public class ChatActivity extends BaseFragment implements
         emptyViewContainer.setTranslationX(getSideMenuWidth() / 2f);
 
         if (chatAdapter.isFiltered) {
-            emptyView = new TextView(getContext());
+            emptyView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             emptyView.setText(LocaleController.getString(R.string.NoFilteredMessages));
             emptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             emptyView.setGravity(Gravity.CENTER);
@@ -32611,7 +32611,7 @@ public class ChatActivity extends BaseFragment implements
                     emptyViewContainer.addView(emptyViewContent, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
                     updateGreetInfo();
                 } else {
-                    emptyView = new TextView(getContext());
+                    emptyView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     emptyView.setText(emptyMessage);
                     emptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     emptyView.setGravity(Gravity.CENTER);
@@ -40310,7 +40310,7 @@ public class ChatActivity extends BaseFragment implements
                 imageView.setForUserOrChat(obj, avatarDrawable);
                 userButton.addView(imageView, LayoutHelper.createFrame(34, 34, Gravity.LEFT | Gravity.CENTER_VERTICAL, 13, 0, 0, 0));
 
-                final TextView titleText = new TextView(getContext());
+                final TextView titleText = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 titleText.setTextColor(getThemedColor(Theme.key_dialogTextBlack));
                 titleText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 titleText.setEllipsize(TextUtils.TruncateAt.END);
@@ -40323,7 +40323,7 @@ public class ChatActivity extends BaseFragment implements
                 }
                 userButton.addView(titleText, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 59, 6, 16, 0));
 
-                final TextView subtitleText = new TextView(getContext());
+                final TextView subtitleText = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 subtitleText.setTextColor(getThemedColor(Theme.key_dialogTextGray2));
                 subtitleText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 subtitleText.setText(AndroidUtilities.replaceArrows(LocaleController.formatTodoCompletedDate(completion.date), false, dp(1), dp(.66f)));
@@ -43842,7 +43842,7 @@ public class ChatActivity extends BaseFragment implements
                 Paint oldPaint = entry.getValue();
                 Paint newPaint;
                 if (oldPaint instanceof TextPaint) {
-                    newPaint = new TextPaint();
+                    newPaint = new org.telegram.ui.Components.TypefaceTextPaint();
                     newPaint.setTextSize(oldPaint.getTextSize());
                     newPaint.setTypeface(oldPaint.getTypeface());
                 } else {
@@ -46930,7 +46930,7 @@ public class ChatActivity extends BaseFragment implements
         sponsoredAbout.setMinimumHeight(dp(48));
         sponsoredAbout.setPadding(dp(14), dp(4), dp(14), dp(4));
 
-        TextView infoText = new TextView(context) {
+        TextView infoText = new org.telegram.ui.Components.TypefaceTextView(context) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST && getLayout() != null) {

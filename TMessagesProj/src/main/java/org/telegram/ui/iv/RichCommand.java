@@ -107,10 +107,10 @@ public class RichCommand {
 
             addView(iconView, LayoutHelper.createLinear(42, 42, Gravity.LEFT | Gravity.CENTER_VERTICAL, 0, 0, 0, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
 
-            textView2 = new TextView(context);
+            textView2 = new org.telegram.ui.Components.TypefaceTextView(context);
             textView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView2.setGravity(Gravity.RIGHT);
 

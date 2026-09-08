@@ -198,7 +198,7 @@ public class PremiumPreviewGiftSentBottomSheet extends PremiumPreviewBottomSheet
 
     static class AdditionalCounterView extends View {
 
-        TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         int count;
 
         public AdditionalCounterView(Context context) {

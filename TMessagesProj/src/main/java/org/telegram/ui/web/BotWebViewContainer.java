@@ -302,7 +302,7 @@ public abstract class BotWebViewContainer extends FrameLayout implements Notific
         flickerView.getImageReceiver().setAspectFit(true);
         addView(flickerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP));
 
-        webViewNotAvailableText = new TextView(context);
+        webViewNotAvailableText = new org.telegram.ui.Components.TypefaceTextView(context);
         webViewNotAvailableText.setText(getString(R.string.BotWebViewNotAvailablePlaceholder));
         webViewNotAvailableText.setTextColor(getColor(Theme.key_windowBackgroundWhiteGrayText));
         webViewNotAvailableText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);

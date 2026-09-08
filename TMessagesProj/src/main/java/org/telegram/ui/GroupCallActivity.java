@@ -807,7 +807,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
             speakerDrawable.setCustomEndFrame(currentProgress == 0 ? 17 : 34);
             speakerDrawable.setCurrentFrame(speakerDrawable.getCustomEndFrame() - 1, false, true);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setLines(1);
             textView.setSingleLine(true);
             textView.setGravity(Gravity.LEFT);
@@ -4774,7 +4774,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
         titleTextView = new AudioPlayerAlert.ClippingTextViewSwitcher(context) {
             @Override
             protected TextView createTextView() {
-                TextView textView = new TextView(context);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextColor(Theme.getColor(Theme.key_voipgroup_actionBarItems));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 textView.setTypeface(AndroidUtilities.bold());
@@ -4800,7 +4800,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
 
         liveLabelPaint =  new Paint(Paint.ANTI_ALIAS_FLAG);
         liveLabelPaint.setColor(0xff3d4657);
-        liveLabelTextView = new TextView(getContext()) {
+        liveLabelTextView = new org.telegram.ui.Components.TypefaceTextView(getContext()) {
             private RectF rect = new RectF();
 
             @Override
@@ -5553,7 +5553,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
         oldCount = listAdapter.getItemCount();
 
         if (schedulePeer != null) {
-            scheduleInfoTextView = new TextView(context);
+            scheduleInfoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             scheduleInfoTextView.setGravity(Gravity.CENTER);
             scheduleInfoTextView.setTextColor(0xff7B8389);
             scheduleInfoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -5588,7 +5588,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
             minutePicker.setSelectorColor(0xff6D89ED);
             minutePicker.setTextOffset(-dp(34));
 
-            scheduleButtonTextView = new TextView(context) {
+            scheduleButtonTextView = new org.telegram.ui.Components.TypefaceTextView(context) {
                 private final RectF tmpRectF = new RectF();
                 private final Paint tmpPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -7725,7 +7725,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setDialogButtonColorKey(Theme.key_voipgroup_listeningText);
 
-            TextView messageTextView = new TextView(getContext());
+            TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             messageTextView.setTextColor(Theme.getColor(Theme.key_voipgroup_actionBarItems));
             messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -7752,7 +7752,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
                 name = chat.title;
             }
 
-            TextView textView = new TextView(getContext());
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             textView.setTextColor(Theme.getColor(Theme.key_voipgroup_actionBarItems));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             textView.setTypeface(AndroidUtilities.bold());
@@ -8952,7 +8952,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
                     };
                     break;
                 case VIEW_TYPE_VIDEO_NOT_AVAILABLE:
-                    TextView textView = new TextView(mContext);
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(mContext);
                     textView.setTextColor(0xff7B8389);
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                     textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -9655,7 +9655,7 @@ public class GroupCallActivity extends BottomSheet implements NotificationCenter
             watchersCountTextView.setTypeface(AndroidUtilities.bold());
             watchersCountTextView.setGravity(Gravity.CENTER_HORIZONTAL);
 
-            TextView labelTextView = new TextView(context);
+            TextView labelTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             labelTextView.setTextColor(Color.WHITE);
             labelTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             labelTextView.setTypeface(AndroidUtilities.bold());

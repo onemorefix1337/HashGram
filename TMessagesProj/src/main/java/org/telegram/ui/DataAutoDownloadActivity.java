@@ -462,7 +462,7 @@ public class DataAutoDownloadActivity extends BaseFragment {
                     buttonsLayout.setPadding(dp(8), dp(8), dp(8), dp(8));
                     linearLayout.addView(buttonsLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 52));
 
-                    TextView textView = new TextView(getParentActivity());
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(getParentActivity());
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
                     textView.setGravity(Gravity.CENTER);
@@ -472,7 +472,7 @@ public class DataAutoDownloadActivity extends BaseFragment {
                     buttonsLayout.addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 36, Gravity.TOP | Gravity.LEFT));
                     textView.setOnClickListener(v14 -> builder.getDismissRunnable().run());
 
-                    textView = new TextView(getParentActivity());
+                    textView = new org.telegram.ui.Components.TypefaceTextView(getParentActivity());
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlue2));
                     textView.setGravity(Gravity.CENTER);

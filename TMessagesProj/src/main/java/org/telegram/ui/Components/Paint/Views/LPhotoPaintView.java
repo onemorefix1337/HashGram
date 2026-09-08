@@ -559,7 +559,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         zoomOutButton.setOrientation(LinearLayout.HORIZONTAL);
         zoomOutButton.setBackground(Theme.createSelectorDrawable(0x30ffffff, Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         zoomOutButton.setPadding(dp(8), 0, dp(8), 0);
-        zoomOutText = new TextView(context);
+        zoomOutText = new org.telegram.ui.Components.TypefaceTextView(context);
         zoomOutText.setTextColor(Color.WHITE);
         zoomOutText.setTypeface(AndroidUtilities.bold());
         zoomOutText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -574,7 +574,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         });
         topLayout.addView(zoomOutButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 32, Gravity.CENTER));
 
-        undoAllButton = new TextView(context);
+        undoAllButton = new org.telegram.ui.Components.TypefaceTextView(context);
         undoAllButton.setBackground(Theme.createSelectorDrawable(0x30ffffff, Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         undoAllButton.setPadding(dp(8), 0, dp(8), 0);
         undoAllButton.setText(LocaleController.getString(R.string.PhotoEditorClearAll));
@@ -598,7 +598,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         undoAllButton.setAlpha(0.6f);
         topLayout.addView(undoAllButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 32, Gravity.RIGHT, 0, 0, 4, 0));
 
-        cancelTextButton = new TextView(context);
+        cancelTextButton = new org.telegram.ui.Components.TypefaceTextView(context);
         cancelTextButton.setBackground(Theme.createSelectorDrawable(0x30ffffff, Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         cancelTextButton.setText(LocaleController.getString(R.string.Clear));
         cancelTextButton.setPadding(dp(8), 0, dp(8), 0);
@@ -620,7 +620,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         cancelTextButton.setVisibility(View.GONE);
         topLayout.addView(cancelTextButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 32, Gravity.LEFT | Gravity.TOP, 4, 0, 0, 0));
 
-        doneTextButton = new TextView(context);
+        doneTextButton = new org.telegram.ui.Components.TypefaceTextView(context);
         doneTextButton.setBackground(Theme.createSelectorDrawable(0x30ffffff, Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         doneTextButton.setText(LocaleController.getString(R.string.Done));
         doneTextButton.setPadding(dp(8), 0, dp(8), 0);
@@ -1173,7 +1173,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         tabsLayout.setOrientation(LinearLayout.HORIZONTAL);
         bottomLayout.addView(tabsLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 32 + 8, Gravity.BOTTOM, 52, 0, 52, 0));
 
-        drawTab = new TextView(context);
+        drawTab = new org.telegram.ui.Components.TypefaceTextView(context);
         drawTab.setText(LocaleController.getString(R.string.PhotoEditorDraw).toUpperCase());
         drawTab.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         drawTab.setPadding(0, dp(8), 0, dp(8));
@@ -1191,7 +1191,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         });
         tabsLayout.addView(drawTab, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1f));
 
-        stickerTab = new TextView(context);
+        stickerTab = new org.telegram.ui.Components.TypefaceTextView(context);
         stickerTab.setText(LocaleController.getString(R.string.PhotoEditorSticker).toUpperCase());
         stickerTab.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         stickerTab.setPadding(0, dp(8), 0, dp(8));
@@ -1204,7 +1204,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
         stickerTab.setSingleLine();
         tabsLayout.addView(stickerTab, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1f));
 
-        textTab = new TextView(context);
+        textTab = new org.telegram.ui.Components.TypefaceTextView(context);
         textTab.setText(LocaleController.getString(R.string.PhotoEditorText).toUpperCase());
         textTab.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector), Theme.RIPPLE_MASK_ROUNDRECT_6DP));
         textTab.setPadding(0, dp(8), 0, dp(8));
@@ -2414,7 +2414,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
             image2View.setVisibility(View.GONE);
             imagesView.addView(image2View, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL, 0, 0, 16, 0));
@@ -2611,7 +2611,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
             LinearLayout parent = new LinearLayout(getContext());
             parent.setOrientation(LinearLayout.HORIZONTAL);
 
-            TextView deleteView = new TextView(getContext());
+            TextView deleteView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             deleteView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
             deleteView.setBackground(Theme.getSelectorDrawable(false));
             deleteView.setGravity(Gravity.CENTER_VERTICAL);
@@ -2630,7 +2630,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
             parent.addView(deleteView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 48));
 
             if (entityView instanceof TextPaintView) {
-                TextView editView = new TextView(getContext());
+                TextView editView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 editView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
                 editView.setBackground(Theme.getSelectorDrawable(false));
                 editView.setGravity(Gravity.CENTER_VERTICAL);
@@ -2650,7 +2650,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
             }
 
             if (entityView instanceof StickerView) {
-                TextView flipView = new TextView(getContext());
+                TextView flipView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 flipView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
                 flipView.setBackgroundDrawable(Theme.getSelectorDrawable(false));
                 flipView.setGravity(Gravity.CENTER_VERTICAL);
@@ -2670,7 +2670,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
             }
 
             if (!(entityView instanceof PhotoView)) {
-                TextView duplicateView = new TextView(getContext());
+                TextView duplicateView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 duplicateView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
                 duplicateView.setBackgroundDrawable(Theme.getSelectorDrawable(false));
                 duplicateView.setGravity(Gravity.CENTER_VERTICAL);
@@ -2691,7 +2691,7 @@ public class LPhotoPaintView extends SizeNotifierFrameLayoutPhoto implements IPh
 
             if (entityView instanceof PhotoView && ((PhotoView) entityView).hasSegmentedImage()) {
                 PhotoView photoView = (PhotoView) entityView;
-                TextView cutView = new TextView(getContext());
+                TextView cutView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 cutView.setTextColor(getThemedColor(Theme.key_actionBarDefaultSubmenuItem));
                 cutView.setBackgroundDrawable(Theme.getSelectorDrawable(false));
                 cutView.setGravity(Gravity.CENTER_VERTICAL);

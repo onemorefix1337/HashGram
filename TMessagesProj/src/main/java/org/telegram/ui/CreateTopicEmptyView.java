@@ -37,7 +37,7 @@ public class CreateTopicEmptyView extends LinearLayout {
 
         backupImageView = new BackupImageView(context);
 
-        TextView headerTextView = new TextView(context);
+        TextView headerTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         headerTextView.setTypeface(AndroidUtilities.bold());
         headerTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         headerTextView.setTextColor(getThemedColor(Theme.key_chat_serviceText));
@@ -47,7 +47,7 @@ public class CreateTopicEmptyView extends LinearLayout {
         headerTextView.setText(LocaleController.getString(R.string.AlmostDone));
 
 
-        TextView description = new TextView(context);
+        TextView description = new org.telegram.ui.Components.TypefaceTextView(context);
         description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         description.setTextColor(getThemedColor(Theme.key_chat_serviceText));
         description.setGravity(Gravity.CENTER_HORIZONTAL);

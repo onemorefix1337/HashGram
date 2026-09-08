@@ -506,7 +506,7 @@ public class LivePlayerView extends FrameLayout implements RendererCommon.Render
             imageView = new BackupImageView(context);
             layout.addView(imageView, LayoutHelper.createLinear(130, 130, Gravity.CENTER_HORIZONTAL));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(0xFFFFFFFF);
             textView.setText(LocaleController.getString(R.string.LiveStoryDisconnected));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);

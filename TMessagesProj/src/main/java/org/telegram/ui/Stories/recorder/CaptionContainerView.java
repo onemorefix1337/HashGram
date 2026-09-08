@@ -109,7 +109,7 @@ public class CaptionContainerView extends FrameLayout {
     private final Matrix matrix = new Matrix();
 
     private Bitmap hintTextBitmap;
-    private final TextPaint hintTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+    private final TextPaint hintTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
     private final Paint hintTextBitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
 
     private final FrameLayout rootView;

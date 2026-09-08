@@ -46,29 +46,29 @@ public class ChartHeaderView extends FrameLayout {
     public ChartHeaderView(Context context, Theme.ResourcesProvider resourcesProvider) {
         super(context);
         this.resourcesProvider = resourcesProvider;
-        TextPaint textPaint = new TextPaint();
+        TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint();
         textPaint.setTextSize(14);
         textPaint.setTypeface(AndroidUtilities.bold());
         textMargin = (int) textPaint.measureText("00 MMM 0000 - 00 MMM 000");
 
-        title = new TextView(context);
+        title = new org.telegram.ui.Components.TypefaceTextView(context);
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         title.setTypeface(AndroidUtilities.bold());
         addView(title, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.CENTER_VERTICAL, 16, 0, textMargin, 0));
 
-        back = new TextView(context);
+        back = new org.telegram.ui.Components.TypefaceTextView(context);
         back.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         back.setTypeface(Typeface.DEFAULT_BOLD);
         back.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
         addView(back, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.CENTER_VERTICAL, 8, 0, 8, 0));
 
-        dates = new TextView(context);
+        dates = new org.telegram.ui.Components.TypefaceTextView(context);
         dates.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         dates.setTypeface(AndroidUtilities.bold());
         dates.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
         addView(dates, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.END | Gravity.CENTER_VERTICAL, 16, 0, 16, 0));
 
-        datesTmp = new TextView(context);
+        datesTmp = new org.telegram.ui.Components.TypefaceTextView(context);
         datesTmp.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         datesTmp.setTypeface(AndroidUtilities.bold());
         datesTmp.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);

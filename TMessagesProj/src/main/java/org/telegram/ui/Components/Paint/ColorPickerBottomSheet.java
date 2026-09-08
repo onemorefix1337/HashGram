@@ -621,7 +621,7 @@ public class ColorPickerBottomSheet extends BottomSheet {
             hexLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             addView(hexLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 64));
 
-            TextView hexTitle = new TextView(context);
+            TextView hexTitle = new org.telegram.ui.Components.TypefaceTextView(context);
             hexTitle.setTextColor(0x99ffffff);
             hexTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             hexTitle.setText(LocaleController.getString(R.string.PaintPaletteSlidersHexColor).toUpperCase());
@@ -737,7 +737,7 @@ public class ColorPickerBottomSheet extends BottomSheet {
         public SliderCell(@NonNull Context context) {
             super(context);
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextColor(0x99ffffff);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             titleView.setTypeface(AndroidUtilities.bold());

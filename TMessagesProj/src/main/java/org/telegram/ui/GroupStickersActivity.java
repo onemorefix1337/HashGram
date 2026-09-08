@@ -1006,7 +1006,7 @@ public class GroupStickersActivity extends BaseFragment implements NotificationC
 
         public AddEmojiCell(Context context) {
             super(context);
-            TextView textView = new TextView(context);
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
             textView.setText("t.me/addemoji/");

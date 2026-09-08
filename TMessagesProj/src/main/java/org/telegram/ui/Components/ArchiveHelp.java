@@ -50,7 +50,7 @@ public class ArchiveHelp extends FrameLayout implements NotificationCenter.Notif
         archiveIcon.setScaleType(ImageView.ScaleType.CENTER);
         layout.addView(archiveIcon, LayoutHelper.createLinear(80, 80, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, (buttonCallback != null ? 14 : 0), 0, 14));
 
-        TextView titleTextView = new TextView(context);
+        TextView titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleTextView.setTypeface(AndroidUtilities.bold());
@@ -121,14 +121,14 @@ public class ArchiveHelp extends FrameLayout implements NotificationCenter.Notif
 
         LinearLayout textLayout = new LinearLayout(getContext());
         textLayout.setOrientation(LinearLayout.VERTICAL);
-        TextView textView1 = new TextView(getContext());
+        TextView textView1 = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView1.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView1.setTypeface(AndroidUtilities.bold());
         textView1.setTextSize(TypedValue.COMPLEX_UNIT_PX, dp(14));
         textView1.setText(title);
         textLayout.addView(textView1, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 2.6f, 0, 0));
 
-        TextView textView2 = new TextView(getContext());
+        TextView textView2 = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView2.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         textView2.setTextSize(TypedValue.COMPLEX_UNIT_PX, dp(14));
         textView2.setText(subtitle);

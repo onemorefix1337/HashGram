@@ -21,7 +21,7 @@ import org.telegram.messenger.Utilities;
 @SuppressLint("ViewConstructor")
 public class VoIpBitmapTextView extends View {
 
-    private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final float textWidth;
     private final String text;

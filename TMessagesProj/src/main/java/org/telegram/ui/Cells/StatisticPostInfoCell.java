@@ -103,7 +103,7 @@ public class StatisticPostInfoCell extends FrameLayout {
         message.setMaxLines(1);
         message.setTextColor(Color.BLACK);
         message.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-        views = new TextView(context);
+        views = new org.telegram.ui.Components.TypefaceTextView(context);
         views.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         views.setTextColor(Color.BLACK);
         if (!LocaleController.isRTL) {
@@ -116,18 +116,18 @@ public class StatisticPostInfoCell extends FrameLayout {
 
         contentLayout.addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 0, 7, 0, 0));
 
-        date = new TextView(context);
+        date = new org.telegram.ui.Components.TypefaceTextView(context);
         date.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         date.setTextColor(Color.BLACK);
         date.setLines(1);
         date.setEllipsize(TextUtils.TruncateAt.END);
 
-        shares = new TextView(context);
+        shares = new org.telegram.ui.Components.TypefaceTextView(context);
         shares.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         shares.setTextColor(Color.BLACK);
         shares.setGravity(Gravity.CENTER_VERTICAL);
 
-        likes = new TextView(context);
+        likes = new org.telegram.ui.Components.TypefaceTextView(context);
         likes.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         likes.setTextColor(Color.BLACK);
         likes.setGravity(Gravity.CENTER_VERTICAL);

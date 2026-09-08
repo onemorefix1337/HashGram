@@ -998,7 +998,7 @@ public class FilterChatlistActivity extends BaseFragment {
             buttonsBox = new ButtonsBox(context);
             addView(buttonsBox, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 42, Gravity.FILL_HORIZONTAL | Gravity.TOP, 22, 69, 22, 0));
 
-            copyButton = new TextView(context) {
+            copyButton = new org.telegram.ui.Components.TypefaceTextView(context) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                     super.onMeasure(
@@ -1023,7 +1023,7 @@ public class FilterChatlistActivity extends BaseFragment {
             copyButton.setVisibility(GONE);
             buttonsBox.addView(copyButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT));
 
-            shareButton = new TextView(context) {
+            shareButton = new org.telegram.ui.Components.TypefaceTextView(context) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                     super.onMeasure(
@@ -1048,7 +1048,7 @@ public class FilterChatlistActivity extends BaseFragment {
             shareButton.setVisibility(GONE);
             buttonsBox.addView(shareButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.RIGHT));
 
-            generateButton = new TextView(context);
+            generateButton = new org.telegram.ui.Components.TypefaceTextView(context);
             generateButton.setGravity(Gravity.CENTER);
             generateButton.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
             generateButton.setBackground(Theme.createRadSelectorDrawable(0x30ffffff, 8, 8));

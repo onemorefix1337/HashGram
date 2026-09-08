@@ -695,7 +695,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         AnimatedTextView.AnimatedTextDrawable left;
-        TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint paint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         StaticLayout center;
         float centerWidth, centerTop;
         AnimatedTextView.AnimatedTextDrawable right;
@@ -2364,7 +2364,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         public CounterView(Context context) {
             super(context);
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(dp(15));
             textPaint.setTypeface(AndroidUtilities.bold());
             textPaint.setColor(0xffffffff);
@@ -6258,7 +6258,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         };
         containerView.addView(pickerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.LEFT));
 
-        docNameTextView = new TextView(containerView.getContext());
+        docNameTextView = new org.telegram.ui.Components.TypefaceTextView(containerView.getContext());
         docNameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         docNameTextView.setTypeface(AndroidUtilities.bold());
         docNameTextView.setSingleLine(true);
@@ -6268,7 +6268,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         docNameTextView.setGravity(Gravity.LEFT);
         pickerView.addView(docNameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 20, 23, 84, 0));
 
-        docInfoTextView = new TextView(containerView.getContext());
+        docInfoTextView = new org.telegram.ui.Components.TypefaceTextView(containerView.getContext());
         docInfoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         docInfoTextView.setSingleLine(true);
         docInfoTextView.setMaxLines(1);
@@ -6278,7 +6278,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         pickerView.addView(docInfoTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 20, 46, 84, 0));
 
 
-        doneButtonFullWidth = new TextView(containerView.getContext());
+        doneButtonFullWidth = new org.telegram.ui.Components.TypefaceTextView(containerView.getContext());
         doneButtonFullWidth.setBackground(Theme.AdaptiveRipple.filledRect(getThemedColor(Theme.key_featuredStickers_addButton), 6));
         doneButtonFullWidth.setTextColor(getThemedColor(Theme.key_featuredStickers_buttonText));
         doneButtonFullWidth.setEllipsize(TextUtils.TruncateAt.END);
@@ -7325,7 +7325,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         bottomBulletinUnderCaption = new FrameLayout(parentActivity);
         containerView.addView(bottomBulletinUnderCaption, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 120, Gravity.FILL_HORIZONTAL | Gravity.BOTTOM, 0, 0, 0, 0));
 
-        videoAvatarTooltip = new TextView(parentActivity);
+        videoAvatarTooltip = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
         videoAvatarTooltip.setSingleLine(true);
         videoAvatarTooltip.setVisibility(View.GONE);
         videoAvatarTooltip.setText(getString("ChooseCover", R.string.ChooseCover));
@@ -7718,7 +7718,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             switchToEditMode(EDIT_MODE_NONE);
         });
 
-        resetButton = new TextView(activityContext);
+        resetButton = new org.telegram.ui.Components.TypefaceTextView(activityContext);
         resetButton.setClickable(false);
         resetButton.setVisibility(View.GONE);
         resetButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -8529,7 +8529,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             videoQualityLayout.removeAllViews();
             videoQualityItems.clear();
 
-            final TextView header = new TextView(activityContext);
+            final TextView header = new org.telegram.ui.Components.TypefaceTextView(activityContext);
             header.setText(getString(R.string.QualityList));
             header.setTypeface(AndroidUtilities.bold());
             header.setPadding(dp(16), dp(9), dp(16), dp(8));
@@ -21050,7 +21050,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             super(context);
 
             paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(dp(14));
             textPaint.setColor(0xffcdcdcd);
 
@@ -22945,7 +22945,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 //            infoImage.setImageResource(R.drawable.msg_info);
 //            sponsoredAbout.addView(infoImage, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 40, Gravity.CENTER_VERTICAL | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT)));
 //
-//            TextView infoText = new TextView(activityContext) {
+//            TextView infoText = new org.telegram.ui.Components.TypefaceTextView(activityContext) {
 //                @Override
 //                protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 //                    if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST && getLayout() != null) {
@@ -23001,7 +23001,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             ArrayList<View> sections = new ArrayList<>();
 
             if (currentMessageObject.sponsoredUrl != null && !TextUtils.equals(AndroidUtilities.getHostAuthority(currentMessageObject.sponsoredUrl), MessagesController.getInstance(currentAccount).linkPrefix)) {
-                TextView textView = new TextView(activityContext);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(activityContext);
                 textView.setTextColor(Theme.getColor(Theme.key_chat_messageLinkIn, resourcesProvider));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -23032,7 +23032,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             }
 
             if (currentMessageObject.sponsoredInfo != null) {
-                TextView textView = new TextView(activityContext);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(activityContext);
                 textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -23048,7 +23048,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             }
 
             if (currentMessageObject.sponsoredAdditionalInfo != null) {
-                TextView textView = new TextView(activityContext);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(activityContext);
                 textView.setTextColor(Theme.getColor(Theme.key_actionBarDefaultSubmenuItem, resourcesProvider));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 textView.setPadding(AndroidUtilities.dp(18), AndroidUtilities.dp(10), AndroidUtilities.dp(18), AndroidUtilities.dp(10));
@@ -23160,7 +23160,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         adButtonView.setBackground(Theme.createRadSelectorDrawable(0x24FFFFFF, 0x15FFFFFF, 8, 8));
         ScaleStateListAnimator.apply(adButtonView, .05f, 1.25f);
 
-        adButtonTextView = new TextView(activityContext);
+        adButtonTextView = new org.telegram.ui.Components.TypefaceTextView(activityContext);
         adButtonTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         adButtonTextView.setTextColor(0xFFFFFFFF);
         adButtonTextView.setTypeface(AndroidUtilities.bold());

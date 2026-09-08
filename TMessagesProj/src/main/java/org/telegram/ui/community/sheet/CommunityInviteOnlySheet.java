@@ -122,13 +122,13 @@ public class CommunityInviteOnlySheet extends BottomSheetWithRecyclerListView {
             avatarImage.setRoundRadius(dp(35));
             addView(avatarImage, LayoutHelper.createLinear(70, 70, Gravity.CENTER_HORIZONTAL));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTypeface(AndroidUtilities.bold());
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             titleView.setGravity(Gravity.CENTER);
             addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.NO_GRAVITY, 0, 11.33f, 0, 1 + 6));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setLineSpacing(dp(2), 1);
             textView.setGravity(Gravity.CENTER);

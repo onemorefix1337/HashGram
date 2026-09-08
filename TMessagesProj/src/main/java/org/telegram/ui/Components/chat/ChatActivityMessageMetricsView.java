@@ -402,7 +402,7 @@ public class ChatActivityMessageMetricsView extends View implements ViewTreeObse
         }
 
         if (tmpTextPaint == null) {
-            tmpTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            tmpTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             tmpTextPaint.setColor(0xFF0000FF);
             tmpTextPaint.setTextSize(dp(10));
         }

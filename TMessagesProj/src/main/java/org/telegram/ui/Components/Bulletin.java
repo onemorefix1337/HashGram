@@ -1371,7 +1371,7 @@ public class Bulletin {
     public static class MultiLineLayout extends ButtonLayout {
 
         public final BackupImageView imageView = new BackupImageView(getContext());
-        public final TextView textView = new TextView(getContext());
+        public final TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
 
         public MultiLineLayout(@NonNull Context context, Theme.ResourcesProvider resourcesProvider) {
             super(context, resourcesProvider);
@@ -1409,14 +1409,14 @@ public class Bulletin {
             linearLayout.setOrientation(LinearLayout.VERTICAL);
             addView(linearLayout, LayoutHelper.createFrameRelatively(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.CENTER_VERTICAL, 54, 8, 12, 8));
 
-            titleTextView = new TextView(context);
+            titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleTextView.setSingleLine();
             titleTextView.setTextColor(undoInfoColor);
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             titleTextView.setTypeface(AndroidUtilities.bold());
             linearLayout.addView(titleTextView);
 
-            subtitleTextView = new TextView(context);
+            subtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleTextView.setMaxLines(2);
             subtitleTextView.setTextColor(undoInfoColor);
             subtitleTextView.setLinkTextColor(getThemedColor(Theme.key_undo_cancelColor));
@@ -2255,7 +2255,7 @@ public class Bulletin {
             final int undoCancelColor = getThemedColor(Theme.key_undo_cancelColor);
 
             if (text) {
-                undoTextView = new TextView(context);
+                undoTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                 undoTextView.setBackground(Theme.createSelectorDrawable((undoCancelColor & 0x00ffffff) | 0x19000000, Theme.RIPPLE_MASK_ROUNDRECT_6DP));
                 undoTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 undoTextView.setTypeface(AndroidUtilities.bold());
@@ -2374,7 +2374,7 @@ public class Bulletin {
         public TimerView(Context context, Theme.ResourcesProvider resourcesProvider) {
             super(context);
 
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(dp(12));
             textPaint.setTypeface(AndroidUtilities.getTypeface("fonts/num.otf"));
 

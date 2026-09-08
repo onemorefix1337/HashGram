@@ -67,7 +67,7 @@ public class GiftedUserCell extends UserCell {
     private void init() {
         counterDrawable = new CounterDrawable(getContext());
         badgeLayout = new FrameLayout(getContext());
-        badgeTextView = new TextView(getContext());
+        badgeTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         badgeTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         badgeTextView.setTypeface(AndroidUtilities.bold());
         badgeTextView.setTextSize(12);

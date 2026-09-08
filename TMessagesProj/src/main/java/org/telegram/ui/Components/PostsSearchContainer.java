@@ -123,7 +123,7 @@ public class PostsSearchContainer extends FrameLayout {
         emptyImageView.setVisibility(View.GONE);
         emptyView.addView(emptyImageView, LayoutHelper.createLinear(130, 130, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 12));
 
-        emptyTitleView = new TextView(context);
+        emptyTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         emptyTitleView.setTypeface(AndroidUtilities.bold());
         emptyTitleView.setGravity(Gravity.CENTER);
@@ -132,7 +132,7 @@ public class PostsSearchContainer extends FrameLayout {
         emptyTitleView.setEllipsize(TextUtils.TruncateAt.END);
         emptyView.addView(emptyTitleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL));
 
-        emptyTextView = new TextView(context);
+        emptyTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         emptyTextView.setGravity(Gravity.CENTER);
         emptyTextView.setSingleLine(false);
@@ -143,7 +143,7 @@ public class PostsSearchContainer extends FrameLayout {
         emptyButton = new ButtonWithCounterView(context, null).setRound();
         emptyView.addView(emptyButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 44, Gravity.FILL_HORIZONTAL, 0, 19, 0, 0));
 
-        emptyUnderButtonTextView = new TextView(context);
+        emptyUnderButtonTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyUnderButtonTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         emptyUnderButtonTextView.setGravity(Gravity.CENTER);
         emptyView.addView(emptyUnderButtonTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 11, 0, 0));

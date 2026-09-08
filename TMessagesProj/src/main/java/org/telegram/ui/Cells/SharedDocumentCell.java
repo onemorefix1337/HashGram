@@ -121,7 +121,7 @@ public class SharedDocumentCell extends FrameLayout implements DownloadControlle
             addView(placeholderImageView, LayoutHelper.createFrame(40, 40, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 12, 8, LocaleController.isRTL ? 12 : 0, 0));
         }
 
-        extTextView = new TextView(context);
+        extTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         extTextView.setTextColor(getThemedColor(Theme.key_files_iconText));
         extTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         extTextView.setTypeface(AndroidUtilities.bold());
@@ -158,7 +158,7 @@ public class SharedDocumentCell extends FrameLayout implements DownloadControlle
             addView(thumbImageView, LayoutHelper.createFrame(40, 40, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 12, 8, LocaleController.isRTL ? 12 : 0, 0));
         }
 
-        nameTextView = new TextView(context);
+        nameTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         nameTextView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         nameTextView.setTypeface(AndroidUtilities.bold());
@@ -176,7 +176,7 @@ public class SharedDocumentCell extends FrameLayout implements DownloadControlle
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
             addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 16 : 72, 5, LocaleController.isRTL ? 72 : 16, 0));
 
-            rightDateTextView = new TextView(context);
+            rightDateTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             rightDateTextView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText3));
             rightDateTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             if (!LocaleController.isRTL) {
@@ -188,7 +188,7 @@ public class SharedDocumentCell extends FrameLayout implements DownloadControlle
             }
             nameTextView.setMaxLines(2);
 
-            captionTextView = new TextView(context);
+            captionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             captionTextView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
             captionTextView.setLines(1);
             captionTextView.setMaxLines(1);

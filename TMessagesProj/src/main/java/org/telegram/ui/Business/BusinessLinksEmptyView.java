@@ -43,7 +43,7 @@ public class BusinessLinksEmptyView extends LinearLayout {
         imageView.setImageResource(R.drawable.filled_chatlink_large);
         addView(imageView, LayoutHelper.createLinear(78, 78, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 17, 17, 17, 9));
 
-        descriptionView = new TextView(context);
+        descriptionView = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionView.setTextAlignment(TEXT_ALIGNMENT_CENTER);
         descriptionView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         descriptionView.setTextColor(Theme.getColor(Theme.key_chat_serviceText, resourcesProvider));
@@ -52,7 +52,7 @@ public class BusinessLinksEmptyView extends LinearLayout {
         descriptionView.setText(AndroidUtilities.replaceTags(LocaleController.getString(R.string.BusinessLinksIntro)));
         addView(descriptionView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 17, 0, 17, 9));
 
-        linkView = new TextView(context);
+        linkView = new org.telegram.ui.Components.TypefaceTextView(context);
         linkView.setTextAlignment(TEXT_ALIGNMENT_CENTER);
         linkView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         linkView.setTextColor(Theme.getColor(Theme.key_chat_serviceText, resourcesProvider));

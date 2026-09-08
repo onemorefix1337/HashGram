@@ -69,7 +69,7 @@ public class CommunityBanGroupConfirmCell extends FrameLayout {
             addView(minusBg, LayoutHelper.createFrame(22.66f, 22.66f, Gravity.LEFT | Gravity.BOTTOM, 50 - 1.34f, 0, 0, 5 - 1.34f));
         }
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -78,7 +78,7 @@ public class CommunityBanGroupConfirmCell extends FrameLayout {
         addView(titleView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT,
                 Gravity.LEFT | Gravity.TOP, 80, 7, 0, 0));
 
-        subtitleView = new TextView(context);
+        subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         subtitleView.setSingleLine(true);

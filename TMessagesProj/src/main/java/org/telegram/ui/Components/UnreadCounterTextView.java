@@ -22,7 +22,7 @@ public class UnreadCounterTextView extends View {
     private int currentCounter;
     private String currentCounterString;
     private int textWidth;
-    private TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private RectF rect = new RectF();
     private int circleWidth;
@@ -33,7 +33,7 @@ public class UnreadCounterTextView extends View {
     private Drawable iconOut;
     private StaticLayout textLayoutOut;
     private int layoutTextWidth;
-    private TextPaint layoutPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private TextPaint layoutPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     Drawable selectableBackground;
 

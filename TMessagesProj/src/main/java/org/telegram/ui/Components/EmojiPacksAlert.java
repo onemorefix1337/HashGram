@@ -509,7 +509,7 @@ public class EmojiPacksAlert extends BottomSheet implements NotificationCenter.N
         buttonsView.setBackgroundColor(getThemedColor(Theme.key_dialogBackground));
         containerView.addView(buttonsView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 68, Gravity.BOTTOM | Gravity.FILL_HORIZONTAL));
 
-        addButtonView = new TextView(context);
+        addButtonView = new org.telegram.ui.Components.TypefaceTextView(context);
         addButtonView.setVisibility(View.GONE);
         addButtonView.setBackground(Theme.AdaptiveRipple.filledRect(getThemedColor(Theme.key_featuredStickers_addButton), 24));
         addButtonView.setTextColor(getThemedColor(Theme.key_featuredStickers_buttonText));
@@ -518,7 +518,7 @@ public class EmojiPacksAlert extends BottomSheet implements NotificationCenter.N
         ScaleStateListAnimator.apply(addButtonView, .02f, 1.2f);
         buttonsView.addView(addButtonView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM, 12, 10, 12, 10));
 
-        removeButtonView = new TextView(context);
+        removeButtonView = new org.telegram.ui.Components.TypefaceTextView(context);
         removeButtonView.setVisibility(View.GONE);
         removeButtonView.setBackground(Theme.createRadSelectorDrawable(0x0fffffff & getThemedColor(Theme.key_text_RedBold), 0, 0));
         removeButtonView.setTextColor(getThemedColor(Theme.key_text_RedBold));
@@ -1304,7 +1304,7 @@ public class EmojiPacksAlert extends BottomSheet implements NotificationCenter.N
             } else if (viewType == VIEW_TYPE_HEADER) {
                 view = new EmojiPackHeader(getContext(), customEmojiPacks.data.length <= 1);
             } else if (viewType == VIEW_TYPE_TEXT) {
-                view = new TextView(getContext());
+                view = new org.telegram.ui.Components.TypefaceTextView(getContext());
             } else if (viewType == VIEW_TYPE_SEPARATOR) {
                 view = new SeparatorView(getContext());
             }
@@ -1652,7 +1652,7 @@ public class EmojiPacksAlert extends BottomSheet implements NotificationCenter.N
                     endMarginDp = (unlockButtonView.getMeasuredWidth() + AndroidUtilities.dp(8 + 8)) / AndroidUtilities.density;
                 }
 
-                addButtonView = new TextView(context);
+                addButtonView = new org.telegram.ui.Components.TypefaceTextView(context);
                 addButtonView.setTypeface(AndroidUtilities.bold());
                 addButtonView.setTextColor(getThemedColor(Theme.key_featuredStickers_buttonText));
                 addButtonView.setBackground(Theme.AdaptiveRipple.filledRect(getThemedColor(Theme.key_featuredStickers_addButton), 14));
@@ -1668,7 +1668,7 @@ public class EmojiPacksAlert extends BottomSheet implements NotificationCenter.N
                 addButtonView.measure(MeasureSpec.makeMeasureSpec(99999, MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(28), MeasureSpec.EXACTLY));
                 endMarginDp = Math.max(endMarginDp, (addButtonView.getMeasuredWidth() + AndroidUtilities.dp(8 + 8)) / AndroidUtilities.density);
 
-                removeButtonView = new TextView(context);
+                removeButtonView = new org.telegram.ui.Components.TypefaceTextView(context);
                 removeButtonView.setTypeface(AndroidUtilities.bold());
                 removeButtonView.setTextColor(getThemedColor(Theme.key_featuredStickers_addButton));
                 removeButtonView.setBackground(Theme.createRadSelectorDrawable(0x0fffffff & getThemedColor(Theme.key_featuredStickers_addButton), 4, 4));
@@ -1711,7 +1711,7 @@ public class EmojiPacksAlert extends BottomSheet implements NotificationCenter.N
             }
 
             if (!single) {
-                subtitleView = new TextView(context);
+                subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
                 subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 subtitleView.setTextColor(getThemedColor(Theme.key_dialogTextGray2));
                 subtitleView.setEllipsize(TextUtils.TruncateAt.END);

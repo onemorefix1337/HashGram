@@ -37,7 +37,7 @@ public class LocationPoweredCell extends FrameLayout {
         LinearLayout linearLayout = new LinearLayout(context);
         addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText3));
         textView.setText("Powered by");
@@ -49,7 +49,7 @@ public class LocationPoweredCell extends FrameLayout {
         imageView.setPadding(0, AndroidUtilities.dp(2), 0, 0);
         linearLayout.addView(imageView, LayoutHelper.createLinear(35, LayoutHelper.WRAP_CONTENT));
 
-        textView2 = new TextView(context);
+        textView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         textView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView2.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteGrayText3));
         textView2.setText("Foursquare");

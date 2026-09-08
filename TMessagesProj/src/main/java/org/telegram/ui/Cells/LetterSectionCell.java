@@ -29,7 +29,7 @@ public class LetterSectionCell extends FrameLayout {
         super(context);
         setLayoutParams(new ViewGroup.LayoutParams(dp(12 + 64), dp(64)));
 
-        textView = new TextView(getContext());
+        textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));

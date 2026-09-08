@@ -28,7 +28,7 @@ public class TopicExceptionCell extends FrameLayout {
         backupImageView = new BackupImageView(context);
         addView(backupImageView, LayoutHelper.createFrame(30, 30, Gravity.CENTER_VERTICAL, 20, 0, 0, 0));
 
-        title = new TextView(context);
+        title = new org.telegram.ui.Components.TypefaceTextView(context);
         title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         title.setTypeface(AndroidUtilities.bold());
@@ -36,7 +36,7 @@ public class TopicExceptionCell extends FrameLayout {
         addView(title, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 72, 8, 12, 0));
 
 
-        subtitle = new TextView(context);
+        subtitle = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitle.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         addView(subtitle, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 72, 32, 12, 0));

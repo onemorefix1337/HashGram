@@ -75,7 +75,7 @@ public class ChannelRecommendationsCell {
     private TLRPC.Chat currentChat;
     public long chatId;
 
-    private final TextPaint serviceTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint serviceTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private StaticLayout serviceText;
     private float serviceTextLeft, serviceTextRight;
     private int serviceTextHeight;
@@ -412,7 +412,7 @@ public class ChannelRecommendationsCell {
         public final AvatarDrawable[] avatarDrawable;
         public final ImageReceiver[] avatarImageReceiver;
 
-        private final TextPaint nameTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint nameTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private final CharSequence name;
         private StaticLayout nameText;
 

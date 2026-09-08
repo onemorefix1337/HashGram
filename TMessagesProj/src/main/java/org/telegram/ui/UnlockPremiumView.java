@@ -32,7 +32,7 @@ public class UnlockPremiumView extends FrameLayout {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
 
-        TextView descriptionTextView = new TextView(context);
+        TextView descriptionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionTextView.setTextColor(ColorUtils.setAlphaComponent(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider), 100));
         descriptionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         descriptionTextView.setGravity(Gravity.CENTER);

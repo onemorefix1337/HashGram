@@ -109,7 +109,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
         setWillNotDraw(false);
 
         ActionBarMenu menu = parentAlert.actionBar.createMenu();
-        header = new TextView(context);
+        header = new org.telegram.ui.Components.TypefaceTextView(context);
         ActionBarMenuItem dropDownContainer = new ActionBarMenuItem(context, menu, 0, 0, resourcesProvider) {
             @Override
             public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
@@ -2206,7 +2206,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
                         bitmapCanvas.drawColor(0x00000000);
 
                         if (textPaint == null) {
-                            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                             textPaint.setTypeface(AndroidUtilities.bold());
                         }
                         textPaint.setColor(getThemedColor(Theme.key_chat_attachCheckBoxCheck));
@@ -2249,7 +2249,7 @@ public class ChatAttachAlertPhotoLayoutPreview extends ChatAttachAlert.AttachAle
                     if (durationText != null) {
                         if (videoDurationBitmap == null || videoDurationBitmapText == null || !videoDurationBitmapText.equals(durationText)) {
                             if (videoDurationTextPaint == null) {
-                                videoDurationTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                                videoDurationTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                                 videoDurationTextPaint.setTypeface(AndroidUtilities.bold());
                                 videoDurationTextPaint.setColor(0xffffffff);
                             }

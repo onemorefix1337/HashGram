@@ -294,7 +294,7 @@ public class SharingLocationsAlert extends BottomSheet implements NotificationCe
                         }
                     };
                     frameLayout.setWillNotDraw(false);
-                    textView = new TextView(context);
+                    textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     textView.setTextColor(getThemedColor(Theme.key_dialogIcon));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     textView.setGravity(Gravity.CENTER);

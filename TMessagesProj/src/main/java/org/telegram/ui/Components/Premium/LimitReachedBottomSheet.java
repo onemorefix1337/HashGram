@@ -360,7 +360,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                 ((ViewGroup) divider.getParent()).removeView(divider);
             }
             recyclerListView.setPadding(0, 0, 0, 0);
-            actionBtn = new TextView(context);
+            actionBtn = new org.telegram.ui.Components.TypefaceTextView(context);
             actionBtn.setGravity(Gravity.CENTER);
             actionBtn.setEllipsize(TextUtils.TruncateAt.END);
             actionBtn.setSingleLine(true);
@@ -584,7 +584,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                     FrameLayout containerLayout = new FrameLayout(getContext());
                     containerLayout.addView(frameLayout, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 60, Gravity.CENTER_HORIZONTAL));
                     containerLayout.setClipChildren(false);
-                    TextView textView = new TextView(context);
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         textView.setLetterSpacing(0.025f);
                     }
@@ -1348,7 +1348,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                     case VIEW_TYPE_BOOST_LINK:
                         FrameLayout frameLayout = new FrameLayout(getContext());
                         frameLayout.setPadding(backgroundPaddingLeft + dp(6), 0, backgroundPaddingLeft + dp(6), 0);
-                        TextView linkView = new TextView(context);
+                        TextView linkView = new org.telegram.ui.Components.TypefaceTextView(context);
 
                         if (statisticClickRunnable == null && ChatObject.hasAdminRights(getChat())) {
                             statisticClickRunnable = () -> getBaseFragment().presentFragment(StatisticActivity.create(getChat()));
@@ -1858,7 +1858,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                 avatarsImageView.commitTransition(false);
                 addView(avatarsImageView, LayoutHelper.createLinear(72 + (count - 1) * 30, 72, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 13));
 
-                TextView title = new TextView(context);
+                TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
                 title.setGravity(Gravity.CENTER);
                 title.setTypeface(AndroidUtilities.bold());
                 title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -1866,7 +1866,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                 title.setText(getString(R.string.InvitePremiumBlockedTitle));
                 addView(title, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 0, 32, 9));
 
-                TextView description = new TextView(context);
+                TextView description = new org.telegram.ui.Components.TypefaceTextView(context);
                 description.setGravity(Gravity.CENTER);
                 description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 description.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -1920,7 +1920,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                     });
                     addView(premiumButtonView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48, 4 + backgroundPaddingLeft / AndroidUtilities.density, 0, 4 + backgroundPaddingLeft / AndroidUtilities.density, 18));
 
-                    TextView or = new TextView(context) {
+                    TextView or = new org.telegram.ui.Components.TypefaceTextView(context) {
                         private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
                         @Override
                         protected void dispatchDraw(Canvas canvas) {
@@ -1944,7 +1944,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                     or.setTextSize(14);
                     addView(or, LayoutHelper.createLinear(190, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 12, 0, 12, 20));
 
-                    title = new TextView(context);
+                    title = new org.telegram.ui.Components.TypefaceTextView(context);
                     title.setGravity(Gravity.CENTER);
                     title.setTypeface(AndroidUtilities.bold());
                     title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -1952,7 +1952,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                     title.setText(getString(R.string.InviteBlockedTitle));
                     addView(title, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 0, 32, 9));
 
-                    description = new TextView(context);
+                    description = new org.telegram.ui.Components.TypefaceTextView(context);
                     description.setGravity(Gravity.CENTER);
                     description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                     description.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -2018,7 +2018,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                 addView(frameLayout, LayoutHelper.createLinear(79, 79, Gravity.CENTER_HORIZONTAL, 0, 23, 0, 0));
             }
 
-            title = new TextView(context);
+            title = new org.telegram.ui.Components.TypefaceTextView(context);
             title.setTypeface(AndroidUtilities.bold());
             if (type == TYPE_FEATURES) {
                 title.setText(getString(R.string.BoostingAdditionalFeaturesTitle));
@@ -2106,7 +2106,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
                     avatarDrawable.setInfo(currentAccount, chat);
                     backupImageView.setForUserOrChat(chat, avatarDrawable);
                     frameLayout.addView(backupImageView, LayoutHelper.createFrame(28, 28));
-                    TextView textView = new TextView(getContext());
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
                     if (chat != null) {
                         textView.setText(chat.title);
                     }
@@ -2135,7 +2135,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
             } else {
                 addView(title, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, premiumLocked ? 8 : 22, 0, 10));
             }
-            description = new TextView(context);
+            description = new org.telegram.ui.Components.TypefaceTextView(context);
             description.setText(AndroidUtilities.replaceTags(descriptionStr));
             description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             description.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -2180,7 +2180,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
             } else {
                 int titleIndex = indexOfChild(title);
                 removeView(title);
-                title = new TextView(getContext());
+                title = new org.telegram.ui.Components.TypefaceTextView(getContext());
                 title.setTypeface(AndroidUtilities.bold());
                 title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
@@ -2189,7 +2189,7 @@ public class LimitReachedBottomSheet extends BottomSheetWithRecyclerListView imp
             }
 
             removeView(description);
-            description = new TextView(getContext());
+            description = new org.telegram.ui.Components.TypefaceTextView(getContext());
             description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             description.setLineSpacing(description.getLineSpacingExtra(), description.getLineSpacingMultiplier() * 1.1f);
             description.setGravity(Gravity.CENTER_HORIZONTAL);

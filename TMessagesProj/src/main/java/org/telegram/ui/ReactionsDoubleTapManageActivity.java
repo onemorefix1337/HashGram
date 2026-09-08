@@ -201,7 +201,7 @@ public class ReactionsDoubleTapManageActivity extends BaseFragment implements No
         public SetDefaultReactionCell(Context context) {
             super(context);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setText(LocaleController.getString(R.string.DoubleTapSetting));

@@ -21,7 +21,7 @@ import org.telegram.ui.LauncherIconController;
 public class AppIconBulletinLayout extends Bulletin.ButtonLayout {
 
     public final AppIconsSelectorCell.AdaptiveIconImageView imageView = new AppIconsSelectorCell.AdaptiveIconImageView(getContext());
-    public final TextView textView = new TextView(getContext());
+    public final TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
 
     public AppIconBulletinLayout(@NonNull Context context, LauncherIconController.LauncherIcon icon, Theme.ResourcesProvider resourcesProvider) {
         super(context, resourcesProvider);

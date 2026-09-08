@@ -125,7 +125,7 @@ public class StorageUsageView extends FrameLayout {
         linearLayout.addView(legendLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 21, 40, 21, 16));
 
 
-        calculatingTextView = new TextView(context);
+        calculatingTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         calculatingTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
 
         String calculatingString = LocaleController.getString("CalculatingSize",R.string.CalculatingSize);
@@ -140,19 +140,19 @@ public class StorageUsageView extends FrameLayout {
         }
 
 
-        telegramCacheTextView = new TextView(context);
+        telegramCacheTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         telegramCacheTextView.setCompoundDrawablePadding(AndroidUtilities.dp(6));
         telegramCacheTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
 
-        telegramDatabaseTextView = new TextView(context);
+        telegramDatabaseTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         telegramDatabaseTextView.setCompoundDrawablePadding(AndroidUtilities.dp(6));
         telegramDatabaseTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
 
-        freeSizeTextView = new TextView(context);
+        freeSizeTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         freeSizeTextView.setCompoundDrawablePadding(AndroidUtilities.dp(6));
         freeSizeTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
 
-        totlaSizeTextView = new TextView(context);
+        totlaSizeTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         totlaSizeTextView.setCompoundDrawablePadding(AndroidUtilities.dp(6));
         totlaSizeTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
 

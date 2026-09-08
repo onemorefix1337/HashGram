@@ -63,13 +63,13 @@ public class ProfileLocationCell extends LinearLayout {
 
         imageReceiver.setRoundRadius(dp(4));
 
-        textView1 = new TextView(context);
+        textView1 = new org.telegram.ui.Components.TypefaceTextView(context);
         textView1.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         textView1.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         addView(textView1, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, LocaleController.isRTL ? 70 : 18, 10, LocaleController.isRTL ? 18 : 70, 4));
 
-        textView2 = new TextView(context);
+        textView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         textView2.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         textView2.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
         textView2.setText(LocaleController.getString(R.string.BusinessProfileLocation));

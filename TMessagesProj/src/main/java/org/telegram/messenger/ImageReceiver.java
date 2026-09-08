@@ -1280,7 +1280,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
             imageW = this.imageW;
             drawRegion = this.drawRegion;
             colorFilter = this.colorFilter;
-            roundRadius = this.roundRadius;
+            roundRadius = getRoundRadius(false);
         }
         if (!useRoundRadius) roundRadius = emptyRoundRadius;
         if (drawable instanceof BitmapDrawable) {
@@ -1928,7 +1928,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
             } else {
                 animation = getAnimation();
                 lottieDrawable = getLottieAnimation();
-                roundRadius = this.roundRadius;
+                roundRadius = getRoundRadius(false);
                 currentMediaDrawable = this.currentMediaDrawable;
                 mediaShader = this.mediaShader;
                 currentImageDrawable = this.currentImageDrawable;
@@ -3306,8 +3306,9 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
         holder.threadIndex = threadIndex;
         holder.animation = getAnimation();
         holder.lottieDrawable = getLottieAnimation();
+        int[] effectiveRadius = getRoundRadius(false);
         for (int i = 0; i < 4; i++) {
-            holder.roundRadius[i] = roundRadius[i];
+            holder.roundRadius[i] = effectiveRadius[i];
         }
         holder.mediaDrawable = currentMediaDrawable;
         holder.mediaShader = mediaShader;

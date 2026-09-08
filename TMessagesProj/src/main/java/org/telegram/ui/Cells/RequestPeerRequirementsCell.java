@@ -268,7 +268,7 @@ public class RequestPeerRequirementsCell extends LinearLayout {
             imageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader), PorterDuff.Mode.MULTIPLY));
             addView(imageView, LayoutHelper.createLinear(20, 20, 0, Gravity.TOP | Gravity.LEFT, 17 + requirement.padding * 16, -1, 0, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
             textView.setSingleLine(false);

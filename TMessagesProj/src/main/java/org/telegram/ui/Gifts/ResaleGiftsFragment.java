@@ -273,7 +273,7 @@ public class ResaleGiftsFragment extends BaseFragment implements FactorAnimator.
         checkbox.setScaleY(0.8f);
         checkboxLayout.addView(checkbox, LayoutHelper.createLinear(26, 26, Gravity.CENTER_VERTICAL));
 
-        final TextView checkboxTextView = new TextView(context);
+        final TextView checkboxTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         checkboxTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourceProvider));
         checkboxTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         checkboxTextView.setText(LocaleController.getString(R.string.GiftResaleStarsOnly));
@@ -312,7 +312,7 @@ public class ResaleGiftsFragment extends BaseFragment implements FactorAnimator.
             .setRadius(dp(22)));
         fragmentView.addView(clearFiltersContainer, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 44 + 8 + 8, Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 0, 0, AndroidUtilities.navigationBarHeight / AndroidUtilities.density));
 
-        clearFiltersButton = new TextView(context);
+        clearFiltersButton = new org.telegram.ui.Components.TypefaceTextView(context);
         SpannableStringBuilder sb = new SpannableStringBuilder("x");
         sb.setSpan(new ColoredImageSpan(R.drawable.msg_clearcache), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         sb.append(" ").append(getString(R.string.Gift2ResaleFiltersClear));
@@ -1230,7 +1230,7 @@ public class ResaleGiftsFragment extends BaseFragment implements FactorAnimator.
             imageView.setImageDrawable(new RLottieDrawable(R.raw.utyan_empty, "utyan_empty", dp(130), dp(130)));
             addView(imageView, LayoutHelper.createLinear(64, 64, Gravity.CENTER, 0, 32, 0, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3, resourcesProvider));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textView.setGravity(Gravity.CENTER);
@@ -1291,7 +1291,7 @@ public class ResaleGiftsFragment extends BaseFragment implements FactorAnimator.
             imageView.setImageDrawable(new RLottieDrawable(R.raw.utyan_empty, "utyan_empty", dp(130), dp(130)));
             layout.addView(imageView, LayoutHelper.createLinear(130, 130, Gravity.CENTER));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
             titleView.setGravity(Gravity.CENTER);
@@ -1307,7 +1307,7 @@ public class ResaleGiftsFragment extends BaseFragment implements FactorAnimator.
             subtitleView.setMaxWidth(dp(200));
             layout.addView(subtitleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 32, 0, 32, 12));
 
-            buttonView = new TextView(context);
+            buttonView = new org.telegram.ui.Components.TypefaceTextView(context);
             buttonView.setTextColor(Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider));
             buttonView.setBackground(Theme.createRadSelectorDrawable(Theme.multAlpha(Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider), .10f), 6, 6));
             buttonView.setGravity(Gravity.CENTER);

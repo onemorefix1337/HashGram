@@ -450,7 +450,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
 
             int padding = currentActivityType == TYPE_MANAGE ? 21 : 51;
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setLines(1);
@@ -460,7 +460,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
             textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, (LocaleController.isRTL ? padding : 21), 10, (LocaleController.isRTL ? 21 : padding), 0));
 
-            valueTextView = new TextView(context);
+            valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
             valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             valueTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
@@ -532,7 +532,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
             imageView = new BackupImageView(context);
             addView(imageView, LayoutHelper.createFrame(48, 48, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 21, 8, 21, 0));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setLines(1);
@@ -542,7 +542,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
             textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, (LocaleController.isRTL ? 21 : 81), 10, (LocaleController.isRTL ? 81 : 21), 0));
 
-            valueTextView = new TextView(context);
+            valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
             valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             valueTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
@@ -1548,7 +1548,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         noPasswordImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_chat_messagePanelIcons), PorterDuff.Mode.MULTIPLY));
         linearLayout2.addView(noPasswordImageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 13, 0, 0));
 
-        noPasswordTextView = new TextView(context);
+        noPasswordTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         noPasswordTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         noPasswordTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         noPasswordTextView.setPadding(AndroidUtilities.dp(21), AndroidUtilities.dp(10), AndroidUtilities.dp(21), AndroidUtilities.dp(17));
@@ -1556,7 +1556,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         noPasswordTextView.setText(LocaleController.getString(R.string.TelegramPassportCreatePasswordInfo));
         linearLayout2.addView(noPasswordTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 21, 10, 21, 0));
 
-        noPasswordSetTextView = new TextView(context);
+        noPasswordSetTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         noPasswordSetTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText5));
         noPasswordSetTextView.setGravity(Gravity.CENTER);
         noPasswordSetTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -1626,7 +1626,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         passwordInfoRequestTextView.setText(LocaleController.formatString("PassportRequestPasswordInfo", R.string.PassportRequestPasswordInfo));
         linearLayout2.addView(passwordInfoRequestTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        passwordForgotButton = new TextView(context);
+        passwordForgotButton = new org.telegram.ui.Components.TypefaceTextView(context);
         passwordForgotButton.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
         passwordForgotButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         passwordForgotButton.setText(LocaleController.getString(R.string.ForgotPassword));
@@ -2401,7 +2401,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
             ConnectionsManager.getInstance(currentAccount).bindRequestToGuid(reqId, classGuid);
         });
 
-        acceptTextView = new TextView(context);
+        acceptTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         acceptTextView.setCompoundDrawablePadding(AndroidUtilities.dp(8));
         acceptTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.authorize, 0, 0, 0);
         acceptTextView.setTextColor(Theme.getColor(Theme.key_passport_authorizeText));
@@ -2500,7 +2500,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         emptyImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_sessions_devicesImage), PorterDuff.Mode.MULTIPLY));
         emptyLayout.addView(emptyImageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
-        emptyTextView1 = new TextView(context);
+        emptyTextView1 = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyTextView1.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
         emptyTextView1.setGravity(Gravity.CENTER);
         emptyTextView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -2508,7 +2508,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         emptyTextView1.setText(LocaleController.getString(R.string.PassportNoDocuments));
         emptyLayout.addView(emptyTextView1, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 16, 0, 0));
 
-        emptyTextView2 = new TextView(context);
+        emptyTextView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyTextView2.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
         emptyTextView2.setGravity(Gravity.CENTER);
         emptyTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -2516,7 +2516,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
         emptyTextView2.setText(LocaleController.getString(R.string.PassportNoDocumentsInfo));
         emptyLayout.addView(emptyTextView2, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 14, 0, 0));
 
-        emptyTextView3 = new TextView(context);
+        emptyTextView3 = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyTextView3.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
         emptyTextView3.setPadding(AndroidUtilities.dp(12), AndroidUtilities.dp(4), AndroidUtilities.dp(12), AndroidUtilities.dp(4));
         emptyTextView3.setBackground(Theme.createSelectorDrawable(ColorUtils.setAlphaComponent(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4), 0x20), Theme.RIPPLE_MASK_ROUNDRECT_6DP));
@@ -2901,7 +2901,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
             inputFields[a].setSelection(inputFields[a].length());
 
             if (a == FIELD_PHONECODE) {
-                plusTextView = new TextView(context);
+                plusTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                 plusTextView.setText("+");
                 plusTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
                 plusTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -7263,12 +7263,12 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
             verificationType = type;
             setOrientation(VERTICAL);
 
-            confirmTextView = new TextView(context);
+            confirmTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             confirmTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText6));
             confirmTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             confirmTextView.setLineSpacing(AndroidUtilities.dp(2), 1.0f);
 
-            titleTextView = new TextView(context);
+            titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             titleTextView.setTypeface(AndroidUtilities.bold());
@@ -7327,7 +7327,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
                 codeFieldContainer.setVisibility(GONE);
             }
 
-            timeText = new TextView(context) {
+            timeText = new org.telegram.ui.Components.TypefaceTextView(context) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                     super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(100), MeasureSpec.AT_MOST));
@@ -7349,7 +7349,7 @@ public class PassportActivity extends BaseFragment implements NotificationCenter
                 addView(timeText, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL));
             }
 
-            problemText = new TextView(context) {
+            problemText = new org.telegram.ui.Components.TypefaceTextView(context) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                     super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(100), MeasureSpec.AT_MOST));

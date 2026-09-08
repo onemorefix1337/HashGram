@@ -260,7 +260,7 @@ public class TimelineView extends View {
     private final Paint regionHandlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint progressShadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint progressWhitePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final TextPaint countTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint countTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     private final RectF audioBounds = new RectF();
     private final Path audioClipPath = new Path();
@@ -269,10 +269,10 @@ public class TimelineView extends View {
 
     private final Paint audioDotPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Drawable audioIcon;
-    private final TextPaint audioAuthorPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint audioAuthorPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private StaticLayout audioAuthor;
     private float audioAuthorWidth, audioAuthorLeft;
-    private final TextPaint audioTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint audioTitlePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private StaticLayout audioTitle;
     private float audioTitleWidth, audioTitleLeft;
 

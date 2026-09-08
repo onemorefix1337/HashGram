@@ -38,7 +38,7 @@ public class PickerBottomLayoutViewer extends FrameLayout {
 
         setBackgroundColor(isDarkTheme ? 0xff1a1a1a : 0xffffffff);
 
-        cancelButton = new TextView(context);
+        cancelButton = new org.telegram.ui.Components.TypefaceTextView(context);
         cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         cancelButton.setTextColor(isDarkTheme ? 0xffffffff : 0xff19a7e8);
         cancelButton.setGravity(Gravity.CENTER);
@@ -48,7 +48,7 @@ public class PickerBottomLayoutViewer extends FrameLayout {
         cancelButton.setTypeface(AndroidUtilities.bold());
         addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
-        doneButton = new TextView(context);
+        doneButton = new org.telegram.ui.Components.TypefaceTextView(context);
         doneButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         doneButton.setTextColor(isDarkTheme ? 0xffffffff : 0xff19a7e8);
         doneButton.setGravity(Gravity.CENTER);
@@ -58,7 +58,7 @@ public class PickerBottomLayoutViewer extends FrameLayout {
         doneButton.setTypeface(AndroidUtilities.bold());
         addView(doneButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.RIGHT));
 
-        doneButtonBadgeTextView = new TextView(context);
+        doneButtonBadgeTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         doneButtonBadgeTextView.setTypeface(AndroidUtilities.bold());
         doneButtonBadgeTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         doneButtonBadgeTextView.setTextColor(0xffffffff);

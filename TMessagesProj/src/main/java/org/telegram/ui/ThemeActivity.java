@@ -311,7 +311,7 @@ public class ThemeActivity extends BaseFragment implements NotificationCenter.No
 
             setWillNotDraw(false);
 
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(dp(16));
 
             sizeBar = new SeekBarView(context);
@@ -395,7 +395,7 @@ public class ThemeActivity extends BaseFragment implements NotificationCenter.No
 
             setWillNotDraw(false);
 
-            textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setTextSize(dp(16));
 
             sizeBar = new SeekBarView(context);

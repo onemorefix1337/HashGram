@@ -847,7 +847,7 @@ public class ChangeUsernameActivity extends BaseFragment {
             if (botId != 0) {
                 field.setEnabled(false);
             }
-            tme = new TextView(getContext());
+            tme = new org.telegram.ui.Components.TypefaceTextView(getContext());
             tme.setMaxLines(1);
             tme.setLines(1);
             tme.setPadding(0, 0, 0, 0);

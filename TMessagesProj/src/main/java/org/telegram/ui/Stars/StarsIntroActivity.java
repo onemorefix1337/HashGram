@@ -334,7 +334,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         starBalanceIcon.setSpan(starBalanceIconSpan, 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         balanceLayout.addView(starBalanceTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 40, Gravity.CENTER, 24, 0, 24, 0));
 
-        starBalanceTitleView = new TextView(getContext());
+        starBalanceTitleView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         starBalanceTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         starBalanceTitleView.setGravity(Gravity.CENTER);
         starBalanceTitleView.setText(LocaleController.getString(R.string.YourStarsBalance));
@@ -793,7 +793,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             setOrientation(VERTICAL);
             setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
 
-            headerTextView = new TextView(context);
+            headerTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             headerTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             headerTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             headerTextView.setText(getString(R.string.StarsBalance));
@@ -967,7 +967,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             starDrawable = context.getResources().getDrawable(R.drawable.star_small_inner).mutate();
             setWillNotDraw(false);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
@@ -1523,7 +1523,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             textLayout.setGravity(Gravity.CENTER | Gravity.LEFT);
             addView(textLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, 1, Gravity.FILL));
 
-            titleTextView = new TextView(context);
+            titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleTextView.setTypeface(AndroidUtilities.bold());
             titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -1538,14 +1538,14 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             subtitleTextView.setSingleLine(true);
             textLayout.addView(subtitleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, .33f));
 
-            dateTextView = new TextView(context);
+            dateTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             dateTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
             dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             dateTextView.setEllipsize(TextUtils.TruncateAt.END);
             dateTextView.setSingleLine(true);
             textLayout.addView(dateTextView, dateTextViewParams = LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-            amountTextView = new TextView(context);
+            amountTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             amountTextView.setTypeface(AndroidUtilities.bold());
             amountTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15.3f);
             amountTextView.setGravity(Gravity.RIGHT);
@@ -1901,13 +1901,13 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             NotificationCenter.listenEmojiLoading(titleView);
             textLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, 2));
 
-            productView = new TextView(context);
+            productView = new org.telegram.ui.Components.TypefaceTextView(context);
             productView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             productView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             productView.setVisibility(View.GONE);
             textLayout.addView(productView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, 1));
 
-            subtitleView = new TextView(context);
+            subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             textLayout.addView(subtitleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, 0));
@@ -1916,14 +1916,14 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             priceLayout.setOrientation(VERTICAL);
             addView(priceLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, Gravity.CENTER_VERTICAL, 0, 0, 18, 0));
 
-            priceTitleView = new TextView(context);
+            priceTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             priceTitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             priceTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             priceTitleView.setTypeface(AndroidUtilities.bold());
             priceTitleView.setGravity(Gravity.RIGHT);
             priceLayout.addView(priceTitleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT, 0, 0, 0, 1));
 
-            priceSubtitleView = new TextView(context);
+            priceSubtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
             priceSubtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2, resourcesProvider));
             priceSubtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             priceSubtitleView.setGravity(Gravity.RIGHT);
@@ -2151,7 +2151,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             imageViewLayout.addView(imageView, LayoutHelper.createFrame(80, 80, Gravity.TOP));
             topView.addView(imageViewLayout, LayoutHelper.createFrame(80, 87, Gravity.CENTER));
 
-            TextView priceView = new TextView(context);
+            TextView priceView = new org.telegram.ui.Components.TypefaceTextView(context);
             priceView.setTypeface(AndroidUtilities.getTypeface("fonts/num.otf"));
             priceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             priceView.setTextColor(0xFFFFFFFF);
@@ -2181,7 +2181,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
 
         linearLayout.addView(topView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 117, Gravity.FILL_HORIZONTAL));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -2204,7 +2204,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             avatarDrawable.setInfo(user);
             imageView.setForUserOrChat(user, avatarDrawable);
             chipLayout.addView(imageView, LayoutHelper.createLinear(28, 28));
-            TextView textView = new TextView(context);
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             textView.setText(UserObject.getUserName(user));
@@ -2212,7 +2212,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             linearLayout.addView(chipLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, Gravity.CENTER_HORIZONTAL, 0, 8, 0, 2));
         }
 
-        TextView subtitleView = new TextView(context);
+        TextView subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         if (messageObject != null && messageObject.messageOwner != null && messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPaidMedia) {
@@ -2389,7 +2389,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
 
         linearLayout.addView(topView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 117, Gravity.FILL_HORIZONTAL));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -2397,7 +2397,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         titleView.setGravity(Gravity.CENTER);
         linearLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 8, 0, 0));
 
-        TextView subtitleView = new TextView(context);
+        TextView subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         if (chatInvite.subscription_pricing.period == StarsController.PERIOD_MONTHLY) {
@@ -2411,7 +2411,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         linearLayout.addView(subtitleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 6, 0, 22));
 
         if (!TextUtils.isEmpty(chatInvite.about)) {
-            TextView aboutView = new TextView(context);
+            TextView aboutView = new org.telegram.ui.Components.TypefaceTextView(context);
             aboutView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             aboutView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             aboutView.setText(Emoji.replaceEmoji(chatInvite.about, aboutView.getPaint().getFontMetricsInt(), false));
@@ -2995,14 +2995,14 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
 
                 addView(topView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 150));
 
-                titleView = new TextView(context);
+                titleView = new org.telegram.ui.Components.TypefaceTextView(context);
                 titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 titleView.setTypeface(AndroidUtilities.bold());
                 titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                 titleView.setGravity(Gravity.CENTER);
                 addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 2, 0, 0));
 
-                subtitleView = new TextView(context);
+                subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
                 subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                 subtitleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                 subtitleView.setGravity(Gravity.CENTER);
@@ -3249,7 +3249,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
 
                 addView(topView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 150));
 
-                titleView = new TextView(context);
+                titleView = new org.telegram.ui.Components.TypefaceTextView(context);
                 titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                 titleView.setTypeface(AndroidUtilities.bold());
                 titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -3994,7 +3994,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
                 // linearLayout.addView(imageView, LayoutHelper.createLinear(100, 100, Gravity.CENTER, 0, 0, 0, 10));
             }
 
-            TextView textView = new TextView(context);
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             textView.setTypeface(AndroidUtilities.bold());
@@ -4002,7 +4002,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             textView.setText(getTransactionTitle(currentAccount, bot, transaction));
             linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 36, 0, 36, 4));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             textView.setTypeface(AndroidUtilities.bold());
             textView.setGravity(Gravity.CENTER);
@@ -4085,7 +4085,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
                 ));
                 linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 36, 0, 36, 4));
             } else if (transaction.description != null && transaction.extended_media.isEmpty()) {
-                textView = new TextView(context);
+                textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                 textView.setGravity(Gravity.CENTER);
@@ -4667,7 +4667,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
             starFgView.setTranslationY(dp(35));
         }
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -4679,7 +4679,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         }
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 20, 0, 20, 4));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4, resourcesProvider));
@@ -5001,7 +5001,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         topView.addView(iconView, LayoutHelper.createFrame(170, 170, Gravity.CENTER, 0, 32, 0, 24));
         iconView.setPaused(false);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -5009,7 +5009,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         textView.setText(LocaleController.formatPluralStringSpaced("BoostStars", (int) boost.stars));
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 20, 0, 20, 4));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setBackground(Theme.createRoundRectDrawable(dp(20), 0xFF967BFF));
         textView.setTextColor(0xFFFFFFFF);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11.33f);
@@ -5115,7 +5115,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         linearLayout.setClipToPadding(false);
         linearLayout.setPadding(dp(16), dp(16), dp(16), dp(8));
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setText(getString(R.string.PaidContentTitle));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -5153,7 +5153,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         editTextContainer.addView(editTextLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP));
         linearLayout.addView(editTextContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        TextView subPriceView = new TextView(context);
+        TextView subPriceView = new org.telegram.ui.Components.TypefaceTextView(context);
         subPriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         subPriceView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3));
         editTextContainer.addView(subPriceView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.RIGHT, 0, 0, 14, 0));
@@ -5336,7 +5336,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         linearLayout.setClipToPadding(false);
         linearLayout.setPadding(dp(16), dp(16), dp(16), dp(8));
 
-        final TextView titleView = new TextView(context);
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setText(getString(R.string.ResellGiftTitle));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
@@ -5374,7 +5374,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         editTextContainer.addView(editTextLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP));
         linearLayout.addView(editTextContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 //
-//        TextView subPriceView = new TextView(context);
+//        TextView subPriceView = new org.telegram.ui.Components.TypefaceTextView(context);
 //        subPriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
 //        subPriceView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3));
 //        editTextContainer.addView(subPriceView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.RIGHT, 0, 0, 14, 0));
@@ -5570,7 +5570,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         setGiftImage(imageView.getImageReceiver(), gift, 160);
         linearLayout.addView(imageView, LayoutHelper.createLinear(160, 160, Gravity.CENTER, 0, -8, 0, 10));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());
@@ -5578,7 +5578,7 @@ public class StarsIntroActivity extends GradientHeaderActivity implements Notifi
         textView.setText(getString(R.string.Gift2SoldOutSheetTitle));
         linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 20, 0, 20, 4));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setGravity(Gravity.CENTER);

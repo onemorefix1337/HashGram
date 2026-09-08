@@ -79,7 +79,7 @@ public class WebActionBar extends FrameLayout {
     public int textColor, iconColor;
     public int addressBackgroundColor, addressTextColor;
 
-    public final TextPaint titlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    public final TextPaint titlePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
     public boolean isMenuShown = false;
 

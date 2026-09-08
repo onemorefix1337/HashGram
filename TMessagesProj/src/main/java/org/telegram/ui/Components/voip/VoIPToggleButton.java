@@ -88,7 +88,7 @@ public class VoIPToggleButton extends FrameLayout {
         addView(textLayoutContainer);
 
         for (int i = 0; i < 2; i++) {
-            TextView textView = new TextView(context);
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setGravity(Gravity.CENTER_HORIZONTAL);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
             textView.setTextColor(Color.WHITE);

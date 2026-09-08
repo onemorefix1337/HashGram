@@ -499,7 +499,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
         imageView.setAnimation(R.raw.statistic_preload, 120, 120);
         imageView.playAnimation();
 
-        TextView loadingTitle = new TextView(context);
+        TextView loadingTitle = new org.telegram.ui.Components.TypefaceTextView(context);
         loadingTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         loadingTitle.setTypeface(AndroidUtilities.bold());
         loadingTitle.setTextColor(Theme.getColor(Theme.key_player_actionBarTitle));
@@ -507,7 +507,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
         loadingTitle.setText(getString("LoadingStats", R.string.LoadingStats));
         loadingTitle.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        TextView loadingSubtitle = new TextView(context);
+        TextView loadingSubtitle = new org.telegram.ui.Components.TypefaceTextView(context);
         loadingSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         loadingSubtitle.setTextColor(Theme.getColor(Theme.key_player_actionBarSubtitle));
         loadingSubtitle.setTag(Theme.key_player_actionBarSubtitle);
@@ -557,7 +557,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
                     builder.setView(linearLayout);
 
-                    TextView messageTextView = new TextView(parentActivity);
+                    TextView messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -573,7 +573,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
                     dotImageView.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(11) : 0, AndroidUtilities.dp(9), LocaleController.isRTL ? 0 : AndroidUtilities.dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(parentActivity);
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -595,7 +595,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
                     dotImageView.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(11) : 0, AndroidUtilities.dp(9), LocaleController.isRTL ? 0 : AndroidUtilities.dp(11), 0);
                     dotImageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogTextBlack), PorterDuff.Mode.MULTIPLY));
 
-                    messageTextView = new TextView(parentActivity);
+                    messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
                     messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                     messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -612,7 +612,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
                         builder.setPositiveButton(LocaleController.getString(R.string.EditAdminTransferSetPassword), (dialogInterface, i) -> fragment.presentFragment(new TwoStepVerificationSetupActivity(TwoStepVerificationSetupActivity.TYPE_INTRO, null)));
                         builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
                     } else {
-                        messageTextView = new TextView(parentActivity);
+                        messageTextView = new org.telegram.ui.Components.TypefaceTextView(parentActivity);
                         messageTextView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                         messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                         messageTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
@@ -1096,7 +1096,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
                 amountContainer[i].addView(amountView[i], LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM));
             }
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
             addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 22, 5, 22, 9));
@@ -1223,12 +1223,12 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
             layout.setOrientation(LinearLayout.VERTICAL);
             addView(layout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL, 17, 9, 130, 9));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             layout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-//            addressView = new TextView(context);
+//            addressView = new org.telegram.ui.Components.TypefaceTextView(context);
 //            addressView.setSingleLine(false);
 //            addressView.setLines(2);
 //            addressView.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_ROBOTO_MONO));
@@ -1236,7 +1236,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
 //            addressView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
 //            layout.addView(addressView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 4, 0, 0));
 
-            dateView = new TextView(context);
+            dateView = new org.telegram.ui.Components.TypefaceTextView(context);
             dateView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             dateView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
             layout.addView(dateView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 4, 0, 0));
@@ -1427,7 +1427,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
         formatter.setMaximumFractionDigits(12);
         formatter.setGroupingUsed(false);
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -1443,7 +1443,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
         textView.setText(amountText);
         layout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 24, 0, 6));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
@@ -1462,7 +1462,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
         }
         layout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(AndroidUtilities.bold());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -1471,7 +1471,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
         layout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 27, 0, 0));
 
 //        if (transaction.type == Transaction.TYPE_WITHDRAW) {
-//            textView = new TextView(getContext());
+//            textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
 //            textView.setPadding(dp(14), dp(8), dp(14), dp(8));
 //            textView.setBackground(Theme.createSimpleSelectorRoundRectDrawable(dp(8), Theme.getColor(Theme.key_windowBackgroundGray, resourcesProvider), Theme.blendOver(Theme.getColor(Theme.key_windowBackgroundGray, resourcesProvider), Theme.getColor(Theme.key_listSelector, resourcesProvider))));
 //            textView.setOnClickListener(v -> {
@@ -1509,7 +1509,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
             chipAvatar.setForUserOrChat(owner, avatarDrawable);
             chipLayout.addView(chipAvatar, LayoutHelper.createFrame(28, 28, Gravity.LEFT | Gravity.TOP));
 
-            TextView chipText = new TextView(context);
+            TextView chipText = new org.telegram.ui.Components.TypefaceTextView(context);
             chipText.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             chipText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             chipText.setSingleLine();
@@ -1553,7 +1553,7 @@ public class ChannelMonetizationLayout extends SizeNotifierFrameLayout implement
         imageView.setBackground(Theme.createCircleDrawable(dp(80), Theme.getColor(Theme.key_featuredStickers_addButton, resourcesProvider)));
         layout.addView(imageView, LayoutHelper.createLinear(80, 80, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 16));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         textView.setTypeface(AndroidUtilities.bold());

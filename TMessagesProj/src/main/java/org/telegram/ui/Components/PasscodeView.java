@@ -128,7 +128,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             stringBuilder = new StringBuilder(4);
 
             for (int a = 0; a < 4; a++) {
-                TextView textView = new TextView(context);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextColor(0xffffffff);
                 textView.setTypeface(AndroidUtilities.bold());
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 36);
@@ -139,7 +139,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
                 addView(textView, LayoutHelper.createFrame(50, 50, Gravity.TOP | Gravity.LEFT));
                 characterTextViews.add(textView);
 
-                textView = new TextView(context);
+                textView = new org.telegram.ui.Components.TypefaceTextView(context);
                 textView.setTextColor(0xffffffff);
                 textView.setTypeface(AndroidUtilities.bold());
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 36);
@@ -556,7 +556,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         passwordFrameLayout = new FrameLayout(context);
         backgroundFrameLayout.addView(passwordFrameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
-        passcodeTextView = new TextView(context);
+        passcodeTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         passcodeTextView.setTextColor(0xffffffff);
         passcodeTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18.33f);
         passcodeTextView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -564,7 +564,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         passcodeTextView.setAlpha(0f);
         passwordFrameLayout.addView(passcodeTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 128));
 
-        retryTextView = new TextView(context);
+        retryTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         retryTextView.setTextColor(0xffffffff);
         retryTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         retryTextView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -728,14 +728,14 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
         numbersTitleContainer = new FrameLayout(context);
         numbersFrameLayout.addView(numbersTitleContainer, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL));
 
-        TextView title = new TextView(context);
+        TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         title.setTypeface(AndroidUtilities.bold());
         title.setTextColor(0xFFFFFFFF);
         title.setText(LocaleController.getString(R.string.UnlockToUse));
         numbersTitleContainer.addView(title, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0, 0, 0));
 
-        subtitleView = new TextView(context);
+        subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setTextColor(0xFFFFFFFF);
         subtitleView.setText(LocaleController.getString(R.string.EnterPINorFingerprint));
@@ -1699,7 +1699,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             container1.setPadding(dp(24), dp(24), dp(24), dp(20));
             container1.setBackground(new BlurBackground(container1, backgroundDrawable, overlayColor, dp(24)));
 
-            TextView title = new TextView(context);
+            TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
             title.setTextColor(0xFFFFFFFF);
             title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19);
             title.setTypeface(AndroidUtilities.bold());
@@ -1707,14 +1707,14 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             title.setGravity(Gravity.CENTER);
             container1.addView(title, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 0, 0, 8));
 
-            TextView subtitle = new TextView(context);
+            TextView subtitle = new org.telegram.ui.Components.TypefaceTextView(context);
             subtitle.setTextColor(0xFFFFFFFF);
             subtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15.33f);
             subtitle.setText("Scan your fingerprint");
             subtitle.setGravity(Gravity.CENTER);
             container1.addView(subtitle, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 0, 0, 8));
 
-            TextView orText = new TextView(context);
+            TextView orText = new org.telegram.ui.Components.TypefaceTextView(context);
             orText.setTextColor(0xFFFFFFFF);
             orText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             orText.setText("or");
@@ -1736,7 +1736,7 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             or.setPadding(dp(70), 0, dp(70), 0);
             container1.addView(or, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 0, 0, 8));
 
-            TextView pinText = new TextView(context);
+            TextView pinText = new org.telegram.ui.Components.TypefaceTextView(context);
             pinText.setText(LocaleController.getString(R.string.UsePIN));
             pinText.setTextColor(0xFFFFFFFF);
             pinText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -1916,14 +1916,14 @@ public class PasscodeView extends FrameLayout implements NotificationCenter.Noti
             imageView.setImageResource(R.drawable.fingerprint);
             addView(imageView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL));
 
-            textView1 = new TextView(context);
+            textView1 = new org.telegram.ui.Components.TypefaceTextView(context);
             textView1.setTypeface(AndroidUtilities.bold());
             textView1.setTextColor(0xffffffff);
             textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 26);
             textView1.setGravity(Gravity.CENTER);
             addView(textView1, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, -5.33f, 0, 0));
 
-            textView2 = new TextView(context);
+            textView2 = new org.telegram.ui.Components.TypefaceTextView(context);
             textView2.setTypeface(AndroidUtilities.bold());
             textView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
             textView2.setTextColor(0x7fffffff);

@@ -138,7 +138,7 @@ public class StickerEmptyView extends FrameLayout implements NotificationCenter.
 
     public void createButtonLayout(CharSequence sting, Runnable action) {
         ((LinearLayout.LayoutParams) subtitle.getLayoutParams()).topMargin = AndroidUtilities.dp(12);
-        TextView buttonTextView = new TextView(getContext());
+        TextView buttonTextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         buttonTextView.setText(sting);
         buttonTextView.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText, resourcesProvider));
         buttonTextView.setPadding(AndroidUtilities.dp(45), AndroidUtilities.dp(12), AndroidUtilities.dp(45), AndroidUtilities.dp(12));

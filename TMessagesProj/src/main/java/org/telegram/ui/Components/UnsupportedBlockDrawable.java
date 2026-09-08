@@ -36,9 +36,9 @@ public class UnsupportedBlockDrawable extends Drawable {
 
     private final Drawable planeDrawable;
     private final Drawable bubbleDrawable;
-    private final TextPaint titlePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-    private final TextPaint subtitlePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-    private final TextPaint buttonTextPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    private final TextPaint titlePaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    private final TextPaint subtitlePaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    private final TextPaint buttonTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
     private final Paint buttonBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF buttonRect = new RectF();
     private final ButtonBounce buttonBounce = new ButtonBounce(null);

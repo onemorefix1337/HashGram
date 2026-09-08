@@ -197,7 +197,7 @@ public class BotVerifySheet {
 
         linearLayout.addView(chipLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 16, 0, 16, 0));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setGravity(Gravity.CENTER);
@@ -213,7 +213,7 @@ public class BotVerifySheet {
         titleView.setTypeface(AndroidUtilities.bold());
         linearLayout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 24, 21, 24, 8.33f));
 
-        TextView textView = new TextView(context);
+        TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(Gravity.CENTER);
@@ -282,7 +282,7 @@ public class BotVerifySheet {
         }
 
         if (settings.can_modify_custom_description) {
-            TextView editTextInfoView = new TextView(context);
+            TextView editTextInfoView = new org.telegram.ui.Components.TypefaceTextView(context);
             editTextInfoView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
             editTextInfoView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
             editTextInfoView.setText(getString(dialogId >= 0 ? R.string.BotVerifyDescriptionInfo : R.string.BotVerifyDescriptionInfoChat));

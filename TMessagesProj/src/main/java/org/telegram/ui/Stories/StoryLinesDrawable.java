@@ -37,7 +37,7 @@ public class StoryLinesDrawable {
         this.sharedResources = sharedResources;
         zoomT = new AnimatedFloat(view, 0, 360, CubicBezierInterpolator.EASE_OUT_QUINT);
 
-        zoomHintPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        zoomHintPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         zoomHintPaint.setTextSize(dp(14));
         zoomHintPaint.setColor(0xffffffff);
         zoomHintPaint.setShadowLayer(dp(3), 0, dp(1), 0x30000000);

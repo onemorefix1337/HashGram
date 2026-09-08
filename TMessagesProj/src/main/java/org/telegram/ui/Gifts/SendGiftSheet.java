@@ -414,7 +414,7 @@ public class SendGiftSheet extends BottomSheetWithRecyclerListView implements No
             limitContainerWrapper = null;
         }
 
-        leftTextView = new TextView(context);
+        leftTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         leftTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         leftTextView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         leftTextView.setTypeface(AndroidUtilities.bold());
@@ -424,7 +424,7 @@ public class SendGiftSheet extends BottomSheetWithRecyclerListView implements No
         }
         limitContainer.addView(leftTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT, 11, 0, 11, 0));
 
-        soldTextView = new TextView(context);
+        soldTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         soldTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         soldTextView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
         soldTextView.setTypeface(AndroidUtilities.bold());
@@ -459,7 +459,7 @@ public class SendGiftSheet extends BottomSheetWithRecyclerListView implements No
         valueContainerView.setWillNotDraw(false);
         limitContainer.addView(valueContainerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.FILL));
 
-        leftTextView2 = new TextView(context);
+        leftTextView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         leftTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         leftTextView2.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         leftTextView2.setTypeface(AndroidUtilities.bold());
@@ -469,7 +469,7 @@ public class SendGiftSheet extends BottomSheetWithRecyclerListView implements No
         }
         valueContainerView.addView(leftTextView2, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT, 11, 0, 11, 0));
 
-        soldTextView2 = new TextView(context);
+        soldTextView2 = new org.telegram.ui.Components.TypefaceTextView(context);
         soldTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         soldTextView2.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
         soldTextView2.setTypeface(AndroidUtilities.bold());

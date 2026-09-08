@@ -99,7 +99,7 @@ public class MessageEntityView extends EntityView {
         }
 //        dateCell = new ChatActionCell(context, false, resourcesProvider) {
 //            public final BlurringShader.StoryBlurDrawer blurDrawer = new BlurringShader.StoryBlurDrawer(blurManager, this, BlurringShader.StoryBlurDrawer.BLUR_TYPE_ACTION_BACKGROUND);
-//            private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG); {
+//            private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG); {
 //                textPaint.setTypeface(AndroidUtilities.medium());
 //                textPaint.setTextSize(AndroidUtilities.dp(Math.max(16, SharedConfig.fontSize) - 2));
 //                textPaint.setColor(0xffffffff);
@@ -762,7 +762,7 @@ public class MessageEntityView extends EntityView {
                 if (viewType == 1) {
                     final ChatActionCell cell = new ChatActionCell(context, false, resourcesProvider) {
                         public final BlurringShader.StoryBlurDrawer blurDrawer = new BlurringShader.StoryBlurDrawer(blurManager, this, BlurringShader.StoryBlurDrawer.BLUR_TYPE_ACTION_BACKGROUND);
-                        private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG); {
+                        private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG); {
                             textPaint.setTypeface(AndroidUtilities.bold());
                             textPaint.setTextSize(AndroidUtilities.dp(Math.max(16, SharedConfig.fontSize) - 2));
                             textPaint.setColor(0xffffffff);
@@ -1250,9 +1250,9 @@ public class MessageEntityView extends EntityView {
     private boolean isDark = Theme.isCurrentThemeDark();
     private final SparseIntArray currentColors = new SparseIntArray();
     public final Theme.ResourcesProvider resourcesProvider = new Theme.ResourcesProvider() {
-        public final TextPaint chat_actionTextPaint = new TextPaint();
-        public final TextPaint chat_actionTextPaint2 = new TextPaint();
-        public final TextPaint chat_botButtonPaint = new TextPaint();
+        public final TextPaint chat_actionTextPaint = new org.telegram.ui.Components.TypefaceTextPaint();
+        public final TextPaint chat_actionTextPaint2 = new org.telegram.ui.Components.TypefaceTextPaint();
+        public final TextPaint chat_botButtonPaint = new org.telegram.ui.Components.TypefaceTextPaint();
 
         public final Paint chat_actionBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
         public final Paint chat_actionBackgroundSelectedPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);

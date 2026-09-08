@@ -681,7 +681,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
         timeTextView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
         playerLayout.addView(timeTextView, LayoutHelper.createFrame(100, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 20, 98, 0, 0));
 
-        durationTextView = new TextView(context);
+        durationTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         durationTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         durationTextView.setTextColor(getThemedColor(Theme.key_player_time));
         durationTextView.setGravity(Gravity.CENTER);
@@ -1125,7 +1125,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
         emptyImageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_dialogEmptyImage), PorterDuff.Mode.MULTIPLY));
         emptyView.addView(emptyImageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
-        emptyTitleTextView = new TextView(context);
+        emptyTitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyTitleTextView.setTextColor(getThemedColor(Theme.key_dialogEmptyText));
         emptyTitleTextView.setGravity(Gravity.CENTER);
         emptyTitleTextView.setText(LocaleController.getString(R.string.NoAudioFound));
@@ -1134,7 +1134,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
         emptyTitleTextView.setPadding(dp(40), 0, dp(40), 0);
         emptyView.addView(emptyTitleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 11, 0, 0));
 
-        emptySubtitleTextView = new TextView(context);
+        emptySubtitleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         emptySubtitleTextView.setTextColor(getThemedColor(Theme.key_dialogEmptyText));
         emptySubtitleTextView.setGravity(Gravity.CENTER);
         emptySubtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);

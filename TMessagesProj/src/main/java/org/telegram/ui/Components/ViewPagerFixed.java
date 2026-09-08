@@ -1479,9 +1479,9 @@ public class ViewPagerFixed extends FrameLayout {
             }
         }
 
-        private final TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        private final TextPaint textCounterPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint deletePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final TextPaint textCounterPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint deletePaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
         private final Paint counterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         private final ArrayList<Tab> tabs = new ArrayList<>();

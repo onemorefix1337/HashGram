@@ -53,7 +53,7 @@ public class HashtagHistoryView extends FrameLayout {
         emptyImage.setImageResource(R.drawable.large_hashtags);
         emptyView.addView(emptyImage, LayoutHelper.createFrame(56, 56, Gravity.CENTER_HORIZONTAL | Gravity.TOP));
 
-        emptyText = new TextView(context);
+        emptyText = new org.telegram.ui.Components.TypefaceTextView(context);
         emptyText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayIcon, resourcesProvider));
         emptyText.setText(LocaleController.getString(R.string.HashtagSearchPlaceholder));
         emptyText.setGravity(Gravity.CENTER);

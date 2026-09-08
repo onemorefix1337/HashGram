@@ -907,7 +907,7 @@ public class AuctionBidSheet extends BottomSheetWithRecyclerListView implements 
             infoView.setTypeface(AndroidUtilities.bold());
             layout.addView(infoView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 23, Gravity.CENTER_HORIZONTAL));
 
-            titleView = new TextView(context);
+            titleView = new org.telegram.ui.Components.TypefaceTextView(context);
             titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
             titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             titleView.setSingleLine();

@@ -873,7 +873,7 @@ public class PaymentFormActivity extends BaseFragment implements NotificationCen
                 inputFields[a].setSelection(inputFields[a].length());
 
                 if (a == FIELD_PHONECODE) {
-                    textView = new TextView(context);
+                    textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     textView.setText("+");
                     textView.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
@@ -2174,7 +2174,7 @@ public class PaymentFormActivity extends BaseFragment implements NotificationCen
                             amount = paymentForm.invoice.suggested_tip_amounts.get(a);
                         }
                         String text = LocaleController.getInstance().formatCurrencyString(amount, paymentForm.invoice.currency);
-                        TextView valueTextView = new TextView(context);
+                        TextView valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
                         valueTextView.setTypeface(AndroidUtilities.bold());
                         valueTextView.setLines(1);
@@ -2461,7 +2461,7 @@ public class PaymentFormActivity extends BaseFragment implements NotificationCen
                         showPayAlert(totalPrice[0]);
                     }
                 });
-                payTextView = new TextView(context);
+                payTextView = new org.telegram.ui.Components.TypefaceTextView(context);
                 payTextView.setTextColor(getThemedColor(Theme.key_contacts_inviteText));
                 payTextView.setText(LocaleController.formatString(R.string.PaymentCheckoutPay, totalPrice[0]));
                 payTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);

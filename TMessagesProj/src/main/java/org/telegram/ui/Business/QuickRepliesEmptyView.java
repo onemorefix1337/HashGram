@@ -50,7 +50,7 @@ public class QuickRepliesEmptyView extends LinearLayout {
         setOrientation(VERTICAL);
         this.resourcesProvider = resourcesProvider;
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextAlignment(TEXT_ALIGNMENT_CENTER);

@@ -56,7 +56,7 @@ public class RichMapCell extends RichBlockCell
     private final Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint placeholderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint selectionPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final TextPaint hintPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+    private final TextPaint hintPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
     private final ImageReceiver imageReceiver;
     private final Drawable placeholderIcon;
     private final View clickView;

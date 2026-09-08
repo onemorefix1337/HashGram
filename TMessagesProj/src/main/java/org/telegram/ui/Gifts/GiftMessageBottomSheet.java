@@ -409,7 +409,7 @@ public class GiftMessageBottomSheet extends BottomSheet {
             }
         });
 
-        previewInChatHeader = new TextView(context);
+        previewInChatHeader = new org.telegram.ui.Components.TypefaceTextView(context);
         previewInChatHeader.setTextColor(getThemedColor(Theme.key_chat_serviceText));
         previewInChatHeader.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         previewInChatHeader.setTypeface(AndroidUtilities.bold());
@@ -420,7 +420,7 @@ public class GiftMessageBottomSheet extends BottomSheet {
         containerView.addView(previewInChatHeader, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 23, Gravity.TOP | Gravity.CENTER_HORIZONTAL));
 
         publicCheckboxButton = new FrameLayout(context);
-        TextView publicCheckboxTextView = new TextView(context);
+        TextView publicCheckboxTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         publicCheckboxTextView.setTextColor(getThemedColor(Theme.key_chat_serviceText));
         publicCheckboxTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         publicCheckboxTextView.setTypeface(AndroidUtilities.bold());

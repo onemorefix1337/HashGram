@@ -329,7 +329,7 @@ public class ReassignBoostBottomSheet extends BottomSheetWithRecyclerListView {
 
             addView(avatarsContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 70, 0, 15, 0, 0));
 
-            TextView title = new TextView(context);
+            TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
             title.setTypeface(AndroidUtilities.bold());
             title.setText(LocaleController.getString(R.string.BoostingReassignBoost));
             title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);

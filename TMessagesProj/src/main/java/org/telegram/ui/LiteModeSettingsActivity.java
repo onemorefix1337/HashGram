@@ -456,7 +456,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
             imageView.setVisibility(View.GONE);
             addView(imageView, LayoutHelper.createFrame(24, 24, Gravity.CENTER_VERTICAL | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT), 20, 0, 20, 0));
 
-            textView = new TextView(context) {
+            textView = new org.telegram.ui.Components.TypefaceTextView(context) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                     if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST) {
@@ -702,7 +702,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
             headerLayout.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
             headerLayout.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
-            headerTextView = new TextView(context);
+            headerTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             headerTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             headerTextView.setTypeface(AndroidUtilities.bold());
             headerTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader));
@@ -761,7 +761,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
             valuesView = new FrameLayout(context);
             valuesView.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
-            leftTextView = new TextView(context);
+            leftTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             leftTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             leftTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             leftTextView.setGravity(Gravity.LEFT);
@@ -793,7 +793,7 @@ public class LiteModeSettingsActivity extends BaseFragment {
             batteryIcon.setBounds(dp(3), dp(-20), dp(20 + 3), 0);
             batteryText.setSpan(new ImageSpan(batteryIcon, DynamicDrawableSpan.ALIGN_BOTTOM), 0, batteryText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            rightTextView = new TextView(context);
+            rightTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             rightTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             rightTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             rightTextView.setGravity(Gravity.RIGHT);

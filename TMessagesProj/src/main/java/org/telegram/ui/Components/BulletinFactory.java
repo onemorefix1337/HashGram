@@ -1605,7 +1605,7 @@ public final class BulletinFactory {
         layout.textView.setEllipsize(TextUtils.TruncateAt.END);
         layout.textView.setPadding(0, 0, 0, dp(8));
 
-        TextPaint textPaint = new TextPaint();
+        TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint();
         textPaint.setTextSize(dp(20));
         SpannableString spannable = new SpannableString("d");
         spannable.setSpan(new AnimatedEmojiSpan(document, textPaint.getFontMetricsInt()), 0, spannable.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

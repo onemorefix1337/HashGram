@@ -355,7 +355,7 @@ public class ActionBarMenuSubItem extends FrameLayout {
 
     public void setSubtext(CharSequence text) {
         if (subtextView == null) {
-            subtextView = new TextView(getContext());
+            subtextView = new org.telegram.ui.Components.TypefaceTextView(getContext());
             subtextView.setLines(1);
             subtextView.setSingleLine(true);
             subtextView.setGravity(Gravity.LEFT);

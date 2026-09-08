@@ -163,7 +163,7 @@ public class CreateRtmpStreamBottomSheet extends BottomSheetWithRecyclerListView
 
         final boolean hasRevoke = ChatObject.isCreator(MessagesController.getInstance(currentAccount).getChat(-dialogId));
         hasButton = true;
-        TextView startBtn = new TextView(context);
+        TextView startBtn = new org.telegram.ui.Components.TypefaceTextView(context);
         startBtn.setGravity(Gravity.CENTER);
         startBtn.setEllipsize(TextUtils.TruncateAt.END);
         startBtn.setSingleLine(true);
@@ -293,14 +293,14 @@ public class CreateRtmpStreamBottomSheet extends BottomSheetWithRecyclerListView
             imageView.playAnimation();
             addView(imageView, LayoutHelper.createLinear(112, 112, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 24, 0, 0));
 
-            TextView title = new TextView(context);
+            TextView title = new org.telegram.ui.Components.TypefaceTextView(context);
             title.setTypeface(AndroidUtilities.bold());
             title.setText(LocaleController.formatString(R.string.Streaming));
             title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
             addView(title, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 14, 0, 7));
 
-            TextView description = new TextView(context);
+            TextView description = new org.telegram.ui.Components.TypefaceTextView(context);
             description.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             description.setGravity(Gravity.CENTER_HORIZONTAL);
             description.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));

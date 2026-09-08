@@ -181,7 +181,7 @@ public class StakedDiceSheet extends BottomSheetWithRecyclerListView {
                 }
             }
 
-            final TextView textView = new TextView(context);
+            final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTypeface(AndroidUtilities.getTypeface("fonts/num.otf"));
             textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
             textView.setText("x" + (x <= 0 ? "0" : x));
@@ -255,7 +255,7 @@ public class StakedDiceSheet extends BottomSheetWithRecyclerListView {
         editTextContainer.addView(editTextLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP));
         editView.addView(editTextContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        TextView subPriceView = new TextView(context);
+        TextView subPriceView = new org.telegram.ui.Components.TypefaceTextView(context);
         subPriceView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         subPriceView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText3));
         editTextContainer.addView(subPriceView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.RIGHT, 0, 0, 14, 0));
@@ -314,7 +314,7 @@ public class StakedDiceSheet extends BottomSheetWithRecyclerListView {
         });
 
         Utilities.CallbackReturn<Long, View> preset = ton -> {
-            TextView textView = new TextView(context);
+            TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setGravity(Gravity.CENTER);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             textView.setTypeface(AndroidUtilities.bold());

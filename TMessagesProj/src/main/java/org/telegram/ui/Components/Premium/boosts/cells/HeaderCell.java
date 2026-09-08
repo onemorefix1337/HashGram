@@ -118,7 +118,7 @@ public class HeaderCell extends FrameLayout {
         starParticlesView.drawable.init();
         iconTextureView.setStarParticlesView(starParticlesView);
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));

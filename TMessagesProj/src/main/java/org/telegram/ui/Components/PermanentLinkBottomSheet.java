@@ -77,21 +77,21 @@ public class PermanentLinkBottomSheet extends BottomSheet {
         linkActionView.hideRevokeOption(true);
         linkActionView.setDelegate(() -> generateLink(true));
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setText(LocaleController.getString(R.string.InviteLink));
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setGravity(Gravity.CENTER_HORIZONTAL);
         titleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
 
-        subtitle = new TextView(context);
+        subtitle = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitle.setText(isChannel ? LocaleController.getString(R.string.LinkInfoChannel) : LocaleController.getString(R.string.LinkInfo));
         subtitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitle.setGravity(Gravity.CENTER_HORIZONTAL);
         subtitle.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
         subtitle.setLineSpacing(subtitle.getLineSpacingExtra(), subtitle.getLineSpacingMultiplier() * 1.1f);
 
-        manage = new TextView(context);
+        manage = new org.telegram.ui.Components.TypefaceTextView(context);
         manage.setText(LocaleController.getString(R.string.ManageInviteLinks));
         manage.setGravity(Gravity.CENTER);
         manage.setEllipsize(TextUtils.TruncateAt.END);

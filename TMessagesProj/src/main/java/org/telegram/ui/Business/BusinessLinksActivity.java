@@ -165,7 +165,7 @@ public class BusinessLinksActivity extends UniversalFragment implements Notifica
         LinearLayout container = new LinearLayout(context);
         container.setOrientation(LinearLayout.VERTICAL);
 
-        final TextView textView = new TextView(context);
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setText(LocaleController.getString(R.string.BusinessLinksRenameMessage));

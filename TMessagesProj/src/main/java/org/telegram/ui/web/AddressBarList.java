@@ -139,14 +139,14 @@ public class AddressBarList extends FrameLayout {
         currentTextContainer.setOrientation(LinearLayout.VERTICAL);
         currentView.addView(currentTextContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 54, 9, 54, 9));
 
-        currentTitleView = new TextView(context);
+        currentTitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         currentTitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         currentTitleView.setTypeface(AndroidUtilities.bold());
         currentTitleView.setMaxLines(4);
         currentTitleView.setEllipsize(TextUtils.TruncateAt.END);
         currentTextContainer.addView(currentTitleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.FILL_HORIZONTAL | Gravity.TOP, 0, 0, 0, 2));
 
-        currentLinkView = new TextView(context);
+        currentLinkView = new org.telegram.ui.Components.TypefaceTextView(context);
         currentLinkView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         currentLinkView.setMaxLines(3);
         currentLinkView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
@@ -456,7 +456,7 @@ public class AddressBarList extends FrameLayout {
 //            iconView2.setVisibility(View.GONE);
 //            addView(iconView2, LayoutHelper.createFrame(32, 32, Gravity.CENTER_VERTICAL | Gravity.LEFT, 10, 8, 8, 8));
 //
-//            textView = new TextView(context);
+//            textView = new org.telegram.ui.Components.TypefaceTextView(context);
 //            textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
 //            addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.LEFT, 59, 8, 54, 8));
 //
@@ -547,7 +547,7 @@ public class AddressBarList extends FrameLayout {
             iconView.setImageResource(R.drawable.menu_clear_recent);
             addView(iconView, LayoutHelper.createFrame(32, 32, Gravity.CENTER_VERTICAL | Gravity.LEFT, 10, 8, 8, 8));
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.LEFT, 64, 8, 64, 8));
 
@@ -664,13 +664,13 @@ public class AddressBarList extends FrameLayout {
             textLayout = new LinearLayout(context);
             textLayout.setOrientation(LinearLayout.VERTICAL);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setMaxLines(1);
             textView.setEllipsize(TextUtils.TruncateAt.END);
             textLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT));
 
-            subtextView = new TextView(context);
+            subtextView = new org.telegram.ui.Components.TypefaceTextView(context);
             subtextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             subtextView.setMaxLines(1);
             subtextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -678,7 +678,7 @@ public class AddressBarList extends FrameLayout {
 
             addView(textLayout, textLayoutParams = LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.LEFT, 64, 0, 70, 0));
 
-            timeView = new TextView(context);
+            timeView = new org.telegram.ui.Components.TypefaceTextView(context);
             timeView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             timeView.setMaxLines(1);
             timeView.setEllipsize(TextUtils.TruncateAt.END);

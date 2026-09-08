@@ -51,7 +51,7 @@ public class TextColorCell extends FrameLayout {
             colorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         }
 
-        textView = new TextView(context);
+        textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setLines(1);

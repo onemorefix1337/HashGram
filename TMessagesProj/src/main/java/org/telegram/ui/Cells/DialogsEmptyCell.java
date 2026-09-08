@@ -95,7 +95,7 @@ public class DialogsEmptyCell extends LinearLayout {
             }
         });
 
-        titleView = new TextView(context);
+        titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextColor(Theme.getColor(Theme.key_chats_nameMessage_threeLines));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.bold());
@@ -104,7 +104,7 @@ public class DialogsEmptyCell extends LinearLayout {
 
         subtitleView = new TextViewSwitcher(context);
         subtitleView.setFactory(() -> {
-            TextView tv = new TextView(context);
+            TextView tv = new org.telegram.ui.Components.TypefaceTextView(context);
             tv.setTextColor(Theme.getColor(Theme.key_chats_message));
             tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             tv.setGravity(Gravity.CENTER);

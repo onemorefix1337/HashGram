@@ -153,7 +153,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
         public SuggestedFilterCell(Context context) {
             super(context);
 
-            textView = new TextView(context);
+            textView = new org.telegram.ui.Components.TypefaceTextView(context);
             textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             textView.setLines(1);
@@ -163,7 +163,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
             addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT, 22, 10, 22, 0));
 
-            valueTextView = new TextView(context);
+            valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
             valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             valueTextView.setLines(1);
@@ -244,7 +244,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
                 }
             });
 
-            messageTextView = new TextView(context);
+            messageTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             messageTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
             messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             messageTextView.setGravity(Gravity.CENTER);
@@ -302,7 +302,7 @@ public class FiltersSetupActivity extends BaseFragment implements NotificationCe
             textView.setEmojiColor(Theme.getColor(Theme.key_featuredStickers_addButton, resourceProvider));
             addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 80 : 64, 10, LocaleController.isRTL ? 64 : 80, 0));
 
-            valueTextView = new TextView(context);
+            valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
             valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             valueTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);

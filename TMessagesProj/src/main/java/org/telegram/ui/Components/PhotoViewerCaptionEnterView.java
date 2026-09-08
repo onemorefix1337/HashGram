@@ -164,7 +164,7 @@ public class PhotoViewerCaptionEnterView extends FrameLayout implements Notifica
         emojiIconDrawable.setColorFilter(new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY));
         emojiIconDrawable.setIcon(R.drawable.input_smile, false);
 
-        lengthTextPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+        lengthTextPaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
         lengthTextPaint.setTextSize(AndroidUtilities.dp(13));
         lengthTextPaint.setTypeface(AndroidUtilities.bold());
         lengthTextPaint.setColor(0xffd9d9d9);

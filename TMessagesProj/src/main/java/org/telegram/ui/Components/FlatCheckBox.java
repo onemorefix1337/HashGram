@@ -20,7 +20,7 @@ public class FlatCheckBox extends View {
     public boolean enabled = true;
 
     String text;
-    TextPaint textPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+    TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(TextPaint.ANTI_ALIAS_FLAG);
     Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Paint outLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Paint checkPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

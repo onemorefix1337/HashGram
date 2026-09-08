@@ -703,7 +703,7 @@ public class ChannelCreateActivity extends BaseFragment implements NotificationC
                 }
             });
 
-            helpTextView = new TextView(context);
+            helpTextView = new org.telegram.ui.Components.TypefaceTextView(context);
             helpTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             helpTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText8));
             helpTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);

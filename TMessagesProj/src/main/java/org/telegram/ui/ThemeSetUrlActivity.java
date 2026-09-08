@@ -357,7 +357,7 @@ public class ThemeSetUrlActivity extends BaseFragment implements NotificationCen
                 LinearLayout container = new LinearLayout(context);
                 container.setOrientation(LinearLayout.VERTICAL);
 
-                TextView titleView = new TextView(context);
+                TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
                 titleView.setText(LocaleController.getString(R.string.ChooseTheme));
                 titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
                 titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);

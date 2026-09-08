@@ -272,6 +272,8 @@ public class AndroidUtilities {
     }
 
     private static final Hashtable<String, Typeface> typefaceCache = new Hashtable<>();
+    private static Typeface customTypefaceCache;
+    private static String customTypefaceCachePath;
     public static float touchSlop;
     private static int prevOrientation = -10;
     private static boolean waitingForSms = false;
@@ -2398,9 +2400,38 @@ public class AndroidUtilities {
             return Typeface.DEFAULT;
         } else if (org.telegram.messenger.SharedConfig.fg_font_type == 2) {
             try {
-                java.io.File customFont = new java.io.File(ApplicationLoader.getFilesDirFixed(), "custom_font.ttf");
-                if (customFont.exists()) {
-                    return Typeface.createFromFile(customFont);
+                String currentPath = org.telegram.messenger.SharedConfig.fg_custom_font_path;
+                if (currentPath == null) currentPath = "";
+                Typeface baseTypeface = null;
+                
+                if (customTypefaceCache != null && currentPath.equals(customTypefaceCachePath)) {
+                    baseTypeface = customTypefaceCache;
+                } else {
+                    if (org.telegram.messenger.SharedConfig.fg_custom_font_path != null && !org.telegram.messenger.SharedConfig.fg_custom_font_path.isEmpty()) {
+                        java.io.File customFont = new java.io.File(org.telegram.messenger.SharedConfig.fg_custom_font_path);
+                        if (customFont.exists()) {
+                            customTypefaceCache = Typeface.createFromFile(customFont);
+                            customTypefaceCachePath = currentPath;
+                            baseTypeface = customTypefaceCache;
+                        }
+                    }
+                    if (baseTypeface == null) {
+                        java.io.File customFont = new java.io.File(ApplicationLoader.getFilesDirFixed(), "custom_font.ttf");
+                        if (customFont.exists()) {
+                            customTypefaceCache = Typeface.createFromFile(customFont);
+                            customTypefaceCachePath = currentPath;
+                            baseTypeface = customTypefaceCache;
+                        }
+                    }
+                }
+                
+                if (baseTypeface != null) {
+                    if (assetPath != null && (assetPath.contains("medium") || assetPath.contains("bold"))) {
+                        return Typeface.create(baseTypeface, Typeface.BOLD);
+                    } else if (assetPath != null && assetPath.contains("italic")) {
+                        return Typeface.create(baseTypeface, Typeface.ITALIC);
+                    }
+                    return baseTypeface;
                 }
             } catch (Exception e) {
                 FileLog.e(e);

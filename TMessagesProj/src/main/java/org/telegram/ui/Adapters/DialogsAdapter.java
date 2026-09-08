@@ -701,7 +701,7 @@ public class DialogsAdapter extends RecyclerListView.SelectionAdapter implements
                 HeaderCell headerCell = new HeaderCell(mContext);
                 headerCell.setText(getString(R.string.RecentlyViewed));
 
-                TextView textView = new TextView(mContext);
+                TextView textView = new org.telegram.ui.Components.TypefaceTextView(mContext);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                 textView.setTypeface(AndroidUtilities.bold());
                 textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader));

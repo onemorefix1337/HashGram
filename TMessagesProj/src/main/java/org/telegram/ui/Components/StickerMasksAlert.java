@@ -1948,7 +1948,7 @@ public class StickerMasksAlert extends BottomSheet implements NotificationCenter
                     imageView.setColorFilter(new PorterDuffColorFilter(0xff949ba1, PorterDuff.Mode.MULTIPLY));
                     frameLayout.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER, 0, 0, 0, 50));
 
-                    TextView textView = new TextView(context);
+                    TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
                     textView.setText(LocaleController.getString(R.string.NoStickersFound));
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
                     textView.setTextColor(0xff949ba1);

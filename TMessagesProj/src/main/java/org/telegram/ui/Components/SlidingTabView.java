@@ -50,7 +50,7 @@ public class SlidingTabView extends LinearLayout {
     }
 
     public void addTextTab(final int position, String title) {
-        TextView tab = new TextView(getContext());
+        TextView tab = new org.telegram.ui.Components.TypefaceTextView(getContext());
         tab.setText(title);
         tab.setFocusable(true);
         tab.setGravity(Gravity.CENTER);

@@ -140,7 +140,7 @@ public class LimitPreviewView extends LinearLayout {
         defaultText.setGravity(Gravity.CENTER_VERTICAL);
         defaultText.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText, resourcesProvider));
 
-        defaultCount = new TextView(context);
+        defaultCount = new org.telegram.ui.Components.TypefaceTextView(context);
         defaultCount.setTypeface(AndroidUtilities.bold());
         defaultCount.setText(String.format("%d", premiumLimit));
         defaultCount.setGravity(Gravity.CENTER_VERTICAL);
@@ -156,7 +156,7 @@ public class LimitPreviewView extends LinearLayout {
 
         premiumLayout = new TextViewHolder(context, false);
 
-        premiumText = new TextView(context);
+        premiumText = new org.telegram.ui.Components.TypefaceTextView(context);
         premiumText.setTypeface(AndroidUtilities.bold());
         premiumText.setText(LocaleController.getString(R.string.LimitPremium));
         premiumText.setGravity(Gravity.CENTER_VERTICAL);
@@ -1003,7 +1003,7 @@ public class LimitPreviewView extends LinearLayout {
 
         Path path = new Path();
         PathEffect pathEffect = new CornerPathEffect(dp(6));
-        TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        TextPaint textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
 
         StaticLayout textLayout;
         float textWidth;

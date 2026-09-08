@@ -5898,7 +5898,7 @@ public class NotificationsController extends BaseController implements Notificat
                     canvas.drawCircle(x + sz * s / 2, y + sz * s / 2, sz * s / 2, paint);
 
                     if (textPaint == null) {
-                        textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+                        textPaint = new org.telegram.ui.Components.TypefaceTextPaint(Paint.ANTI_ALIAS_FLAG);
                         textPaint.setTypeface(AndroidUtilities.bold());
                         textPaint.setTextSize(sz * .25f);
                         textPaint.setColor(0xFFFFFFFF);

@@ -267,7 +267,7 @@ public class GiftOfferSheet extends BottomSheetWithRecyclerListView {
             dollarsEqView.setGravity(Gravity.RIGHT);
             starsCountEditOutline.addView(dollarsEqView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.RIGHT | Gravity.CENTER_VERTICAL, 0, 0, 16, 0));
 
-            starsCountEditHint = new TextView(context);
+            starsCountEditHint = new org.telegram.ui.Components.TypefaceTextView(context);
             starsCountEditHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             bodyLayout.addView(starsCountEditHint, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.FILL_HORIZONTAL, 33, 4, 33, 0));
         }
@@ -315,7 +315,7 @@ public class GiftOfferSheet extends BottomSheetWithRecyclerListView {
             iconArrow.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_dialogEmptyImage, resourcesProvider), PorterDuff.Mode.SRC_IN));
             publishingTimeOutline.addView(iconArrow, LayoutHelper.createFrame(24, 24, Gravity.RIGHT | Gravity.CENTER_VERTICAL, 0, 0, 14, 0));
 
-            publishingTimeHint = new TextView(context);
+            publishingTimeHint = new org.telegram.ui.Components.TypefaceTextView(context);
             publishingTimeHint.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             publishingTimeHint.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
 
@@ -646,14 +646,14 @@ public class GiftOfferSheet extends BottomSheetWithRecyclerListView {
         final LinearLayout topView = new LinearLayout(getContext());
         topView.setOrientation(LinearLayout.VERTICAL);
 
-        final TextView titleView = new TextView(getContext());
+        final TextView titleView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         titleView.setText(getString(R.string.GiftOfferConfirmSend));
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.bold());
         topView.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 24, 4, 24, 14));
 
-        final TextView textView = new TextView(getContext());
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(getContext());
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setText(AndroidUtilities.replaceTags(inputAmount.currency == AmountUtils.Currency.STARS ?
@@ -783,7 +783,7 @@ public class GiftOfferSheet extends BottomSheetWithRecyclerListView {
         topView.setOrientation(LinearLayout.VERTICAL);
         topView.addView(new StarGiftSheet.GiftTransferTopView(context, gift, obj), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP, 0, -4, 0, 0));
 
-        final TextView textView = new TextView(context);
+        final TextView textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         textView.setText(AndroidUtilities.replaceTags(amount.currency == AmountUtils.Currency.STARS ?
@@ -824,7 +824,7 @@ public class GiftOfferSheet extends BottomSheetWithRecyclerListView {
                 badBrice = false;
             }
 
-            final TextView hintView = new TextView(context);
+            final TextView hintView = new org.telegram.ui.Components.TypefaceTextView(context);
             hintView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             hintView.setGravity(Gravity.CENTER);
             hintView.setText(buttonHint);

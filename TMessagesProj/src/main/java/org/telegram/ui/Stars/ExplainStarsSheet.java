@@ -70,7 +70,7 @@ public class ExplainStarsSheet extends BottomSheetWithRecyclerListView {
 
         headerView.addView(topView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 150));
 
-        TextView titleView = new TextView(context);
+        TextView titleView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         titleView.setTypeface(AndroidUtilities.bold());
         titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
@@ -78,7 +78,7 @@ public class ExplainStarsSheet extends BottomSheetWithRecyclerListView {
         titleView.setText(getString(R.string.ExplainStarsTitle));
         headerView.addView(titleView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 2, 0, 0));
 
-        TextView subtitleView = new TextView(context);
+        TextView subtitleView = new org.telegram.ui.Components.TypefaceTextView(context);
         subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         subtitleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
         subtitleView.setGravity(Gravity.CENTER);

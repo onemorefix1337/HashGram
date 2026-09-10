@@ -10534,7 +10534,8 @@ public class MessagesController extends BaseController implements NotificationCe
                         }
 
                         TL_account.updateStatus req = new TL_account.updateStatus();
-                        req.offline = false;
+                        boolean ghost = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_ghost_mode", false) || org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_online", false);
+                        req.offline = ghost;
                         statusRequest = getConnectionsManager().sendRequest(req, (response, error) -> {
                             if (error == null) {
                                 lastStatusUpdateTime = System.currentTimeMillis();
@@ -11383,6 +11384,9 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean sendTyping(long dialogId, long threadMsgId, int action, String emojicon, int classGuid) {
+        if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_typing", false)) {
+            return false;
+        }
         if (action < 0 || action >= sendingTypings.length || dialogId == 0) {
             return false;
         }
@@ -14557,6 +14561,9 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     private void completeReadTask(ReadTask task) {
+        if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_ghost_read", false)) {
+            return;
+        }
         if (task.replyId != 0 && task.monoForumPeerId == 0) {
             TLRPC.TL_messages_readDiscussion req = new TLRPC.TL_messages_readDiscussion();
             req.msg_id = (int) task.replyId;
@@ -18814,6 +18821,15 @@ public class MessagesController extends BaseController implements NotificationCe
                 dialogs_read_outbox_max.put(dialogId, Math.max(value, update.max_id));
             } else if (baseUpdate instanceof TL_update.TL_updateDeleteMessages) {
                 TL_update.TL_updateDeleteMessages update = (TL_update.TL_updateDeleteMessages) baseUpdate;
+                if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_save_deleted", false)) {
+                    android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", android.content.Context.MODE_PRIVATE);
+                    android.content.SharedPreferences.Editor editor = prefs.edit();
+                    for (int i = 0; i < update.messages.size(); i++) {
+                        editor.putBoolean("del_" + update.messages.get(i), true);
+                    }
+                    editor.apply();
+                    update.messages.clear();
+                }
                 if (deletedMessages == null) {
                     deletedMessages = new LongSparseArray<>();
                 }
@@ -19336,6 +19352,15 @@ public class MessagesController extends BaseController implements NotificationCe
                 dialogs_read_outbox_max.put(dialogId, Math.max(value, update.max_id));
             } else if (baseUpdate instanceof TL_update.TL_updateDeleteChannelMessages) {
                 TL_update.TL_updateDeleteChannelMessages update = (TL_update.TL_updateDeleteChannelMessages) baseUpdate;
+                if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_save_deleted", false)) {
+                    android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", android.content.Context.MODE_PRIVATE);
+                    android.content.SharedPreferences.Editor editor = prefs.edit();
+                    for (int i = 0; i < update.messages.size(); i++) {
+                        editor.putBoolean("del_" + (-update.channel_id) + "_" + update.messages.get(i), true);
+                    }
+                    editor.apply();
+                    update.messages.clear();
+                }
                 if (BuildVars.LOGS_ENABLED) {
                     FileLog.d(baseUpdate + " channelId = " + update.channel_id);
                 }

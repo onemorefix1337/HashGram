@@ -6764,6 +6764,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     public MultiLayoutTypingAnimator botDraftTypingAnimator;
 
     private void setMessageContent(MessageObject messageObject, MessageObject.GroupedMessages groupedMessages, boolean bottomNear, boolean topNear, boolean firstInChat, boolean lastInChatList) {
+        if (messageObject != null) {
+        }
         if (messageObject.checkLayout() || currentPosition != null && lastHeight != AndroidUtilities.displaySize.y) {
             currentMessageObject = null;
         }
@@ -18451,6 +18453,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
         }
+        boolean isHashgramDeleted = currentMessageObject != null && (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", android.content.Context.MODE_PRIVATE).getBoolean("del_" + currentMessageObject.getDialogId() + "_" + currentMessageObject.getId(), false) || org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", android.content.Context.MODE_PRIVATE).getBoolean("del_" + currentMessageObject.getId(), false));
         if (currentMessageObject.isWelcomeMessage()) {
             timeString = ""; // Long.toString(currentMessageObject.getId());
         } else if (currentMessageObject.notime || currentMessageObject.isSponsored() || currentMessageObject.isQuickReply() || currentMessageObject.isWelcomeMessage()) {
@@ -18458,11 +18461,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         } else if (currentMessageObject.scheduled && currentMessageObject.messageOwner.date == 0x7FFFFFFE) {
             timeString = "";
         } else if (currentMessageObject.realDate != 0) {
-            timeString = LocaleController.formatSmallDateChat(currentMessageObject.realDate) + ", " + LocaleController.getInstance().getFormatterDay().format((long) (currentMessageObject.realDate) * 1000);
+            timeString = ((currentMessageObject.deleted || isHashgramDeleted) ? "⊗ " : "") + LocaleController.formatSmallDateChat(currentMessageObject.realDate) + ", " + LocaleController.getInstance().getFormatterDay().format((long) (currentMessageObject.realDate) * 1000);
         } else if (currentMessageObject.isRepostPreview) {
-            timeString = LocaleController.formatSmallDateChat(messageObject.messageOwner.date) + ", " + LocaleController.getInstance().getFormatterDay().format((long) (messageObject.messageOwner.date) * 1000);
+            timeString = ((currentMessageObject.deleted || isHashgramDeleted) ? "⊗ " : "") + LocaleController.formatSmallDateChat(messageObject.messageOwner.date) + ", " + LocaleController.getInstance().getFormatterDay().format((long) (messageObject.messageOwner.date) * 1000);
         } else if (edited) {
             String editedPrefix = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_pencil_edited", false) ? "✎" : getString(R.string.EditedMessage);
+            if (currentMessageObject.deleted || isHashgramDeleted) editedPrefix = "⊗ " + editedPrefix;
             timeString = AppGlobalConfig.getInstance(currentAccount).messagePrimaryEditedDate.get() ?
                 LocaleController.formatPmEditedDate(currentMessagesGroup != null ? currentMessagesGroup.getMaxEditDate() : messageObject.messageOwner.edit_date) :
                 (editedPrefix + " " + LocaleController.getInstance().getFormatterDay().format((long) (messageObject.messageOwner.date) * 1000));
@@ -18471,9 +18475,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (date == 0) {
                 date = currentMessageObject.messageOwner.fwd_from.date;
             }
-            timeString = LocaleController.formatSeenDate(date);
+            timeString = ((currentMessageObject.deleted || isHashgramDeleted) ? "⊗ " : "") + LocaleController.formatSeenDate(date);
         } else {
-            timeString = LocaleController.getInstance().getFormatterDay().format((long) (messageObject.messageOwner.date) * 1000);
+            timeString = ((currentMessageObject.deleted || isHashgramDeleted) ? "⊗ " : "") + LocaleController.getInstance().getFormatterDay().format((long) (messageObject.messageOwner.date) * 1000);
         }
         if (currentMessageObject.messageOwner.video_processing_pending) {
             timeString = formatString(R.string.ScheduledTimeApprox, timeString);
@@ -18516,6 +18520,31 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 currentTimeString = TextUtils.concat(getString(R.string.MessageScheduledRepeatDaily), ", ", currentTimeString);
             } else {
                 currentTimeString = TextUtils.concat(formatString(R.string.MessageScheduledRepeatSeconds, period), ", ", currentTimeString);
+            }
+        }
+
+        if (currentTimeString != null) {
+            android.text.SpannableStringBuilder spanBuilder = currentTimeString instanceof android.text.SpannableStringBuilder ? (android.text.SpannableStringBuilder) currentTimeString : new android.text.SpannableStringBuilder(currentTimeString);
+            boolean modified = false;
+            String textStr = spanBuilder.toString();
+            int idx = textStr.indexOf("✎");
+            if (idx >= 0) {
+                org.telegram.ui.Components.ColoredImageSpan span = new org.telegram.ui.Components.ColoredImageSpan(R.drawable.ic_edit_pencil_monet);
+                span.setTopOffset(1);
+                span.setSize(AndroidUtilities.dp(12));
+                spanBuilder.setSpan(span, idx, idx + 1, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                modified = true;
+            }
+            int idxDel = textStr.indexOf("⊗");
+            if (idxDel >= 0) {
+                org.telegram.ui.Components.ColoredImageSpan span = new org.telegram.ui.Components.ColoredImageSpan(R.drawable.ic_deleted_msg_monet);
+                span.setTopOffset(1);
+                span.setSize(AndroidUtilities.dp(12));
+                spanBuilder.setSpan(span, idxDel, idxDel + 1, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                modified = true;
+            }
+            if (modified) {
+                currentTimeString = spanBuilder;
             }
         }
         timeTextWidth = timeWidth = (int) Math.ceil(Theme.chat_timePaint.measureText(currentTimeString, 0, currentTimeString == null ? 0 : currentTimeString.length()));
@@ -28623,9 +28652,29 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 int i = text.toString().indexOf(editedStr);
                 if (i >= 0) {
                     if (i == 0) {
-                        animateEditedLayout = new StaticLayout(editedStr, Theme.chat_timePaint, timeTextWidth + dp(100), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+
+                        CharSequence editedChars = editedStr;
+                        if ("✎".equals(editedStr)) {
+                            android.text.SpannableStringBuilder spanBuilder = new android.text.SpannableStringBuilder(editedStr);
+                            org.telegram.ui.Components.ColoredImageSpan span = new org.telegram.ui.Components.ColoredImageSpan(R.drawable.ic_edit_pencil_monet);
+                            span.setTopOffset(1);
+                            span.setSize(AndroidUtilities.dp(12));
+                            spanBuilder.setSpan(span, 0, 1, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            editedChars = spanBuilder;
+                        }
+                        animateEditedLayout = new StaticLayout(editedChars, Theme.chat_timePaint, timeTextWidth + dp(100), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-                        spannableStringBuilder.append(editedStr);
+
+                        CharSequence editedChars2 = editedStr;
+                        if ("✎".equals(editedStr)) {
+                            android.text.SpannableStringBuilder spanBuilder = new android.text.SpannableStringBuilder(editedStr);
+                            org.telegram.ui.Components.ColoredImageSpan span = new org.telegram.ui.Components.ColoredImageSpan(R.drawable.ic_edit_pencil_monet);
+                            span.setTopOffset(1);
+                            span.setSize(AndroidUtilities.dp(12));
+                            spanBuilder.setSpan(span, 0, 1, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            editedChars2 = spanBuilder;
+                        }
+                        spannableStringBuilder.append(editedChars2);
                         spannableStringBuilder.append(text.subSequence(editedStr.length(), text.length()));
                         spannableStringBuilder.setSpan(new EmptyStubSpan(), 0, editedStr.length(), 0);
                         animateTimeLayout = new StaticLayout(spannableStringBuilder, Theme.chat_timePaint, timeTextWidth + dp(100), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);

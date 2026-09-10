@@ -967,8 +967,13 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
                 WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
                 WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
-        windowLayoutParams.flags |= WindowManager.LayoutParams.FLAG_SECURE;
-        AndroidUtilities.logFlagSecure();
+        
+        boolean fg_allow_screenshots = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_allow_screenshots", false);
+        if (!fg_allow_screenshots) {
+            windowLayoutParams.flags |= WindowManager.LayoutParams.FLAG_SECURE;
+            AndroidUtilities.logFlagSecure();
+        }
+        
         centerImage.setParentView(containerView);
         centerImage.setForceCrossfade(true);
 

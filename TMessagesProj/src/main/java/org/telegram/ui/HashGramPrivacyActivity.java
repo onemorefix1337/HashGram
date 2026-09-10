@@ -35,11 +35,18 @@ public class HashGramPrivacyActivity extends UniversalFragment {
         items.add(UItem.asHeader("Профиль"));
         items.add(UItem.asCheck(10, "Скрыть свой номер телефона").setChecked(prefs.getBoolean("fg_hide_phone", false)));
         items.add(UItem.asCheck(9, "Показывать ID и DC").setChecked(prefs.getBoolean("fg_show_id_dc", false)));
+        items.add(UItem.asCheck(20, "Скрыть статус \"В сети\"").setChecked(prefs.getBoolean("fg_hide_online", false)));
         items.add(UItem.asShadow(null));
 
-        items.add(UItem.asHeader("Сообщения"));
+        items.add(UItem.asHeader("Сообщения и Чаты"));
+        items.add(UItem.asCheck(21, "Скрыть статус \"Печатает...\"").setChecked(prefs.getBoolean("fg_hide_typing", false)));
         items.add(UItem.asCheck(5, "Подтверждение голосовых/видео").setChecked(prefs.getBoolean("fg_confirm_voice", false)));
         items.add(UItem.asCheck(14, "Без реакций по двойному тапу").setChecked(prefs.getBoolean("fg_disable_double_tap", false)));
+        items.add(UItem.asCheck(22, "Разрешить скриншоты везде").setChecked(prefs.getBoolean("fg_allow_screenshots", false)));
+        items.add(UItem.asShadow(null));
+
+        items.add(UItem.asHeader("Прочее"));
+        items.add(UItem.asCheck(23, "Скрыть просмотр историй").setChecked(prefs.getBoolean("fg_hide_stories", false)));
         items.add(UItem.asCheck(16, "Вырезать спонсорские сообщения").setChecked(prefs.getBoolean("fg_anti_ad", false)));
         items.add(UItem.asCheck(13, "Отключить цензуру (18+)").setChecked(prefs.getBoolean("fg_disable_censor", false)));
         items.add(UItem.asShadow(null));
@@ -53,8 +60,12 @@ public class HashGramPrivacyActivity extends UniversalFragment {
         switch (item.id) {
             case 10: key = "fg_hide_phone"; break;
             case 9: key = "fg_show_id_dc"; break;
+            case 20: key = "fg_hide_online"; break;
+            case 21: key = "fg_hide_typing"; break;
             case 5: key = "fg_confirm_voice"; break;
             case 14: key = "fg_disable_double_tap"; break;
+            case 22: key = "fg_allow_screenshots"; break;
+            case 23: key = "fg_hide_stories"; break;
             case 16: key = "fg_anti_ad"; break;
             case 13: key = "fg_disable_censor"; break;
         }

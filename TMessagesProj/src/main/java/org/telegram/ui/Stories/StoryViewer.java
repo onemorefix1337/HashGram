@@ -2877,7 +2877,8 @@ public class StoryViewer implements NotificationCenter.NotificationCenterDelegat
         if (BuildVars.DEBUG_PRIVATE_VERSION) {
             return;
         }
-        allowScreenshots = !isShowing || allowScreenshots;
+        boolean fg_allow_screenshots = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_allow_screenshots", false);
+        allowScreenshots = !isShowing || allowScreenshots || fg_allow_screenshots;
         if (this.allowScreenshots != allowScreenshots) {
             this.allowScreenshots = allowScreenshots;
 

@@ -13776,6 +13776,13 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             args.putLong("user_id", UserConfig.getInstance(currentAccount).getClientUserId());
             presentFragment(new ChatActivity(args));
         });
+        
+        SharedPreferences hashPrefs = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+        boolean isGhost = hashPrefs.getBoolean("fg_ghost_read", false);
+        io.add(R.drawable.msg_secret, isGhost ? "Выключить Призрака" : "Включить Призрака", () -> {
+            hashPrefs.edit().putBoolean("fg_ghost_read", !isGhost).apply();
+            org.telegram.ui.Components.BulletinFactory.of(this).createSimpleBulletin(org.telegram.messenger.R.raw.chats_infotip, !isGhost ? "Призрак включен" : "Призрак выключен").show();
+        });
         if (ApplicationLoader.applicationLoaderInstance != null) {
             ApplicationLoader.applicationLoaderInstance.addItemOptions(io);
         }

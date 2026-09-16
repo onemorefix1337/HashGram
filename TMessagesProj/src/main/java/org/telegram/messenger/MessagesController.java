@@ -1564,6 +1564,24 @@ public class MessagesController extends BaseController implements NotificationCe
             getNotificationCenter().addObserver(messagesController, NotificationCenter.updateMessageMedia);
         });
         addSupportUser();
+        AndroidUtilities.runOnUIThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    android.content.SharedPreferences prefs = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+                    java.util.Set<String> spoofs = prefs.getStringSet("fg_typing_spoofs", null);
+                    if (spoofs != null) {
+                        for (String dialogIdStr : spoofs) {
+                            try {
+                                long dialogId = Long.parseLong(dialogIdStr);
+                                sendTyping(dialogId, 0, 0, 0);
+                            } catch (Exception ignore) {}
+                        }
+                    }
+                } catch (Exception ignore) {}
+                AndroidUtilities.runOnUIThread(this, 4000);
+            }
+        }, 4000);
         if (currentAccount == 0) {
             notificationsPreferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
             mainPreferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -6699,15 +6717,9 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean isChatNoForwards(TLRPC.Chat chat) {
-        if (chat == null) {
-            return false;
-        }
-        if (chat.migrated_to != null) {
-            TLRPC.Chat migratedTo = getChat(chat.migrated_to.channel_id);
-            if (migratedTo != null) {
-                return migratedTo.noforwards;
-            }
-        }
+        if (chat == null) return false;
+        android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+        if (prefs.getBoolean("fg_anti_noforwards", false)) return false;
         return chat.noforwards;
     }
 
@@ -6724,11 +6736,7 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean isUserNoForwards(TLRPC.UserFull userFull) {
-        if (userFull == null) {
-            return false;
-        }
-
-        return userFull.noforwards_peer_enabled || userFull.noforwards_my_enabled;
+        return false;
     }
 
     public TLRPC.User getUser(Long id) {
@@ -10524,8 +10532,9 @@ public class MessagesController extends BaseController implements NotificationCe
         checkReadTasks();
 
         if (getUserConfig().isClientActivated()) {
-            if (!ignoreSetOnline && getConnectionsManager().getPauseTime() == 0 && ApplicationLoader.isScreenOn && !ApplicationLoader.mainInterfacePausedStageQueue) {
-                if (ApplicationLoader.mainInterfacePausedStageQueueTime != 0 && Math.abs(ApplicationLoader.mainInterfacePausedStageQueueTime - System.currentTimeMillis()) > 1000) {
+            boolean alwaysOnline = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_always_online", false);
+            if (!ignoreSetOnline && (alwaysOnline || (getConnectionsManager().getPauseTime() == 0 && ApplicationLoader.isScreenOn && !ApplicationLoader.mainInterfacePausedStageQueue))) {
+                if (alwaysOnline || (ApplicationLoader.mainInterfacePausedStageQueueTime != 0 && Math.abs(ApplicationLoader.mainInterfacePausedStageQueueTime - System.currentTimeMillis()) > 1000)) {
                     if (statusSettingState != 1 && (lastStatusUpdateTime == 0 || Math.abs(System.currentTimeMillis() - lastStatusUpdateTime) >= 55000 || offlineSent)) {
                         statusSettingState = 1;
 
@@ -10534,8 +10543,8 @@ public class MessagesController extends BaseController implements NotificationCe
                         }
 
                         TL_account.updateStatus req = new TL_account.updateStatus();
-                        boolean ghost = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_ghost_mode", false) || org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_online", false);
-                        req.offline = ghost;
+                        boolean ghost = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_online", false);
+                        req.offline = ghost && !alwaysOnline;
                         statusRequest = getConnectionsManager().sendRequest(req, (response, error) -> {
                             if (error == null) {
                                 lastStatusUpdateTime = System.currentTimeMillis();
@@ -10550,7 +10559,7 @@ public class MessagesController extends BaseController implements NotificationCe
                         });
                     }
                 }
-            } else if (statusSettingState != 2 && !offlineSent && Math.abs(System.currentTimeMillis() - getConnectionsManager().getPauseTime()) >= 2000) {
+            } else if (!alwaysOnline && statusSettingState != 2 && !offlineSent && Math.abs(System.currentTimeMillis() - getConnectionsManager().getPauseTime()) >= 2000) {
                 statusSettingState = 2;
                 if (statusRequest != 0) {
                     getConnectionsManager().cancelRequest(statusRequest, true);
@@ -10861,6 +10870,11 @@ public class MessagesController extends BaseController implements NotificationCe
     private long lastCheckPromoInfoTime;
 
     private void checkPromoInfoInternal(boolean reset) {
+        if (org.telegram.messenger.SharedConfig.fg_anti_ad) {
+            promoDialogId = 0;
+            getGlobalMainSettings().edit().putLong("proxy_dialog", 0).remove("proxyDialogAddress").commit();
+            return;
+        }
         if (reset && checkingPromoInfo) {
             checkingPromoInfo = false;
         }
@@ -11384,7 +11398,15 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean sendTyping(long dialogId, long threadMsgId, int action, String emojicon, int classGuid) {
-        if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_typing", false)) {
+        boolean isSpoofing = false;
+        try {
+            java.util.Set<String> spoofs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getStringSet("fg_typing_spoofs", null);
+            if (spoofs != null && spoofs.contains(String.valueOf(dialogId))) {
+                isSpoofing = true;
+            }
+        } catch (Exception ignore) {}
+
+        if (!isSpoofing && org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_typing", false)) {
             return false;
         }
         if (action < 0 || action >= sendingTypings.length || dialogId == 0) {
@@ -11404,7 +11426,7 @@ public class MessagesController extends BaseController implements NotificationCe
                 if (user.id == getUserConfig().getClientUserId()) {
                     return false;
                 }
-                if (user.status != null && user.status.expires != -100 && !onlinePrivacy.containsKey(user.id)) {
+                if (!isSpoofing && user.status != null && user.status.expires != -100 && !onlinePrivacy.containsKey(user.id)) {
                     int time = getConnectionsManager().getCurrentTime();
                     if (user.status.expires <= time - 30) {
                         return false;
@@ -14412,6 +14434,10 @@ public class MessagesController extends BaseController implements NotificationCe
         if (messageObject.getId() < 0) {
             markMessageAsRead(messageObject.getDialogId(), messageObject.messageOwner.random_id, Integer.MIN_VALUE);
         } else {
+            android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+            if (prefs.getBoolean("fg_ghost_read", false)) {
+                return;
+            }
             if (messageObject.messageOwner.peer_id.channel_id != 0) {
                 TLRPC.TL_channels_readMessageContents req = new TLRPC.TL_channels_readMessageContents();
                 req.channel = getInputChannel(messageObject.messageOwner.peer_id.channel_id);
@@ -14561,7 +14587,9 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     private void completeReadTask(ReadTask task) {
-        if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_ghost_read", false)) {
+        android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+        boolean bypass = smartGhostForceReadDialogs.remove(task.dialogId);
+        if (prefs.getBoolean("fg_ghost_read", false) || (!bypass && prefs.getBoolean("fg_smart_ghost", false))) {
             return;
         }
         if (task.replyId != 0 && task.monoForumPeerId == 0) {
@@ -14663,6 +14691,15 @@ public class MessagesController extends BaseController implements NotificationCe
                 readTasksMap.remove(dialogId);
             }
         });
+    }
+
+    public java.util.Set<Long> smartGhostForceReadDialogs = java.util.Collections.newSetFromMap(new java.util.concurrent.ConcurrentHashMap<Long, Boolean>());
+
+    public void markDialogAsReadForce(long dialogId) {
+        TLRPC.Dialog dialog = dialogs_dict.get(dialogId);
+        if (dialog != null) {
+            markDialogAsRead(dialogId, dialog.top_message, dialog.top_message, 0, false, 0, 0, true, 0);
+        }
     }
 
     public void markMentionsAsRead(long dialogId, long topicId) {
@@ -19511,6 +19548,33 @@ public class MessagesController extends BaseController implements NotificationCe
                     message.message = "";
                     message.attachPath = "";
                 }
+
+                // HashGram: Edit History
+                try {
+                    org.telegram.SQLite.SQLiteCursor cursor = getMessagesStorage().getDatabase().queryFinalized("SELECT data FROM messages WHERE mid = " + message.id + " AND uid = " + message.dialog_id);
+                    if (cursor.next()) {
+                        org.telegram.tgnet.NativeByteBuffer data = cursor.byteBufferValue(0);
+                        if (data != null) {
+                            TLRPC.Message oldMsg = TLRPC.Message.TLdeserialize(data, data.readInt32(false), false);
+                            if (oldMsg != null && oldMsg.message != null && oldMsg.message.length() > 0 && !oldMsg.message.equals(message.message)) {
+                                android.content.SharedPreferences prefs = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_edit_history", android.content.Context.MODE_PRIVATE);
+                                String key = "edit_" + message.dialog_id + "_" + message.id;
+                                String history = prefs.getString(key, "");
+                                org.json.JSONArray historyArray;
+                                if (history.isEmpty()) {
+                                    historyArray = new org.json.JSONArray();
+                                } else {
+                                    historyArray = new org.json.JSONArray(history);
+                                }
+                                historyArray.put(oldMsg.message);
+                                prefs.edit().putString(key, historyArray.toString()).apply();
+                            }
+                            data.reuse();
+                        }
+                    }
+                    cursor.dispose();
+                } catch (Exception ignore) {}
+                // End HashGram Edit History
 
                 ImageLoader.saveMessageThumbs(message);
                 AndroidUtilities.runOnUIThread(()-> getSendMessagesHelper().onMessageEdited(message));

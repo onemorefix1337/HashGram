@@ -484,13 +484,38 @@ public class RLottieDrawable extends BitmapDrawable implements Animatable, Bitma
     public RLottieDrawable(File file, String json, int w, int h, BitmapsCache.CacheOptions options, boolean limitFps, int[] colorReplacement, int fitzModifier, boolean isSingleChannel) {
         width = w;
         height = h;
-        shouldLimitFps = limitFps;
         this.isSingleChannel = isSingleChannel;
+        if (json != null && json.length() > 2 * 1024 * 1024) {
+            return;
+        }
+        if (file != null && json == null) {
+            try {
+                long uncompressedSize = 0;
+                java.io.InputStream is;
+                try {
+                    is = new java.util.zip.GZIPInputStream(new java.io.FileInputStream(file));
+                } catch (Exception e) {
+                    is = new java.io.FileInputStream(file);
+                }
+                byte[] buf = new byte[4096];
+                int len;
+                while ((len = is.read(buf)) != -1) {
+                    uncompressedSize += len;
+                    if (uncompressedSize > 2 * 1024 * 1024) {
+                        is.close();
+                        file.delete();
+                        return;
+                    }
+                }
+                is.close();
+            } catch (Exception ignore) {}
+        }
+        shouldLimitFps = limitFps;
         this.precache = options != null;
         this.fallbackCache = json == null && options != null && options.fallback;
         this.createdForFirstFrame = options != null && options.firstFrame;
         args = new NativePtrArgs();
-        args.file = file.getAbsoluteFile();
+        args.file = file != null ? file.getAbsoluteFile() : null;
         args.json = json;
         args.colorReplacement = colorReplacement == null ? null : colorReplacement.clone();
         args.fitzModifier = fitzModifier;
@@ -506,15 +531,19 @@ public class RLottieDrawable extends BitmapDrawable implements Animatable, Bitma
                 return;
             }
             parseLottieMetadata(file, json, metaData);
+            if (metaData[0] > 1000) metaData[0] = 1000;
             if (shouldLimitFps && metaData[1] < 60) {
                 shouldLimitFps = false;
             }
             bitmapsCache = new BitmapsCache(file, this, options, w, h, !limitFps, fitzModifier);
         } else {
-            nativePtr = RLottieNative.createFromFile(file.getAbsolutePath(), json, w, h, metaData, precache, args.colorReplacement, shouldLimitFps, fitzModifier, layerColors);
+            nativePtr = RLottieNative.createFromFile(file != null ? file.getAbsolutePath() : null, json, w, h, metaData, precache, args.colorReplacement, shouldLimitFps, fitzModifier, layerColors);
+            if (metaData[0] > 1000) metaData[0] = 1000;
             if (nativePtr == null) {
-                FileLog.d("RLottieDrawable nativePtr == 0 " + file.getAbsolutePath() + " remove file");
-                file.delete();
+                if (file != null) {
+                    FileLog.d("RLottieDrawable nativePtr == 0 " + file.getAbsolutePath() + " remove file");
+                    file.delete();
+                }
             }
             if (shouldLimitFps && metaData[1] < 60) {
                 shouldLimitFps = false;

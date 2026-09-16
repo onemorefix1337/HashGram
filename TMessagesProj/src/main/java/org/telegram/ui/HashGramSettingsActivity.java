@@ -23,8 +23,8 @@ public class HashGramSettingsActivity extends UniversalFragment {
         items.add(UItem.asButton(3, R.drawable.msg_secret, "Приватность"));
         items.add(UItem.asShadow(null));
 
-        items.add(UItem.asHeader("Larp"));
-        items.add(UItem.asButton(4, R.drawable.msg_permissions, "Larp"));
+        items.add(UItem.asHeader("Медиа"));
+        items.add(UItem.asButton(4, R.drawable.msg_camera, "Камера и Медиа"));
         items.add(UItem.asShadow(null));
 
         items.add(UItem.asButton(99, R.drawable.msg_info, "О проекте HashGram"));
@@ -40,7 +40,7 @@ public class HashGramSettingsActivity extends UniversalFragment {
         } else if (item.id == 3) {
             presentFragment(new HashGramPrivacyActivity());
         } else if (item.id == 4) {
-            presentFragment(new HashGramLarpActivity());
+            presentFragment(new HashGramMediaActivity());
         } else if (item.id == 99) {
             presentFragment(new HashGramAboutActivity());
         }

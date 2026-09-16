@@ -1803,10 +1803,13 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
         }
         if (send) {
-            if (lastSecretChat != null) {
-                SecretChatHelper.getInstance(lastChatAccount).sendScreenshotMessage(lastSecretChat, lastChatVisibleMessages, null);
-            } else {
-                SendMessagesHelper.getInstance(lastChatAccount).sendScreenshotMessage(lastUser, lastMessageId, null);
+            boolean fg_allow_screenshots = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_allow_screenshots", false);
+            if (!fg_allow_screenshots) {
+                if (lastSecretChat != null) {
+                    SecretChatHelper.getInstance(lastChatAccount).sendScreenshotMessage(lastSecretChat, lastChatVisibleMessages, null);
+                } else {
+                    SendMessagesHelper.getInstance(lastChatAccount).sendScreenshotMessage(lastUser, lastMessageId, null);
+                }
             }
         }
     }

@@ -72,6 +72,9 @@ public class SharedConfig {
     public static boolean fg_disable_folder_swipe;
     public static boolean fg_premium_speed;
     public static boolean fg_disable_sticker_loop;
+    public static boolean fg_ask_camera_before_record;
+    public static int fg_round_camera_facing = 0; // 0 - front, 1 - back
+
 
     public static void checkSdCard(File file) {
         if (file == null || SharedConfig.storageCacheDir == null || readOnlyStorageDirAlertShowed) {
@@ -230,10 +233,13 @@ public class SharedConfig {
     @PasscodeType
     public static int passcodeType;
     public static String passcodeHash = "";
+    public static String fakePasscodeHash = "";
     public static long passcodeRetryInMs;
     public static long lastUptimeMillis;
     public static int badPasscodeTries;
     public static byte[] passcodeSalt = new byte[0];
+    public static byte[] fakePasscodeSalt = new byte[0];
+    public static boolean isFakePasscodeEntered = false;
     public static boolean appLocked;
     public static int autoLockIn = 60 * 60;
 
@@ -301,6 +307,7 @@ public class SharedConfig {
     public static int fg_font_type = 0; // 0 - default, 1 - system, 2 - custom
     public static String fg_custom_font_path = "";
     public static boolean fg_hide_mic_cam = false;
+    public static boolean fg_panic_button = false;
     
     public static boolean streamMedia = true;
     public static boolean streamAllVideo = false;
@@ -444,7 +451,9 @@ public class SharedConfig {
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("saveIncomingPhotos", saveIncomingPhotos);
                 editor.putString("passcodeHash1", passcodeHash);
+                editor.putString("fakePasscodeHash1", fakePasscodeHash);
                 editor.putString("passcodeSalt", passcodeSalt.length > 0 ? Base64.encodeToString(passcodeSalt, Base64.DEFAULT) : "");
+                editor.putString("fakePasscodeSalt", fakePasscodeSalt.length > 0 ? Base64.encodeToString(fakePasscodeSalt, Base64.DEFAULT) : "");
                 editor.putBoolean("appLocked", appLocked);
                 editor.putInt("passcodeType", passcodeType);
                 editor.putLong("passcodeRetryInMs", passcodeRetryInMs);
@@ -526,14 +535,19 @@ public class SharedConfig {
             fg_disable_folder_swipe = hashgramPrefs.getBoolean("fg_disable_folder_swipe", false);
             fg_premium_speed = hashgramPrefs.getBoolean("fg_premium_speed", false);
             fg_disable_sticker_loop = hashgramPrefs.getBoolean("fg_disable_sticker_loop", false);
+            fg_ask_camera_before_record = hashgramPrefs.getBoolean("fg_ask_camera_before_record", false);
+            fg_round_camera_facing = hashgramPrefs.getInt("fg_round_camera_facing", 0);
+
             fg_avatar_shape = hashgramPrefs.getInt("fg_avatar_shape", 0);
             fg_font_type = hashgramPrefs.getInt("fg_font_type", 0);
             fg_custom_font_path = hashgramPrefs.getString("fg_custom_font_path", "");
             fg_hide_mic_cam = hashgramPrefs.getBoolean("fg_hide_mic_cam", false);
+            fg_panic_button = hashgramPrefs.getBoolean("fg_panic_button", false);
 
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
             saveIncomingPhotos = preferences.getBoolean("saveIncomingPhotos", false);
             passcodeHash = preferences.getString("passcodeHash1", "");
+            fakePasscodeHash = preferences.getString("fakePasscodeHash1", "");
             appLocked = preferences.getBoolean("appLocked", false);
             passcodeType = preferences.getInt("passcodeType", 0);
             passcodeRetryInMs = preferences.getLong("passcodeRetryInMs", 0);
@@ -566,6 +580,12 @@ public class SharedConfig {
                 passcodeSalt = Base64.decode(passcodeSaltString, Base64.DEFAULT);
             } else {
                 passcodeSalt = new byte[0];
+            }
+            String fakePasscodeSaltString = preferences.getString("fakePasscodeSalt", "");
+            if (fakePasscodeSaltString.length() > 0) {
+                fakePasscodeSalt = Base64.decode(fakePasscodeSaltString, Base64.DEFAULT);
+            } else {
+                fakePasscodeSalt = new byte[0];
             }
             lastUpdateCheckTime = preferences.getLong("appUpdateCheckTime", System.currentTimeMillis());
             try {
@@ -846,19 +866,45 @@ public class SharedConfig {
     }
 
     public static boolean checkPasscode(String passcode) {
-        if (passcodeSalt.length == 0) {
-            boolean result = Utilities.MD5(passcode).equals(passcodeHash);
+        boolean isReal = checkPasscodeInternal(passcode, passcodeSalt, passcodeHash);
+        if (isReal) {
+            isFakePasscodeEntered = false;
+            return true;
+        }
+        
+        if (!TextUtils.isEmpty(fakePasscodeHash)) {
+            boolean isFake = checkPasscodeInternal(passcode, fakePasscodeSalt, fakePasscodeHash);
+            if (isFake) {
+                isFakePasscodeEntered = true;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private static boolean checkPasscodeInternal(String passcode, byte[] salt, String hashStr) {
+        if (salt.length == 0) {
+            boolean result = Utilities.MD5(passcode).equals(hashStr);
             if (result) {
                 try {
-                    passcodeSalt = new byte[16];
-                    Utilities.random.nextBytes(passcodeSalt);
+                    byte[] newSalt = new byte[16];
+                    Utilities.random.nextBytes(newSalt);
                     byte[] passcodeBytes = passcode.getBytes("UTF-8");
                     byte[] bytes = new byte[32 + passcodeBytes.length];
-                    System.arraycopy(passcodeSalt, 0, bytes, 0, 16);
+                    System.arraycopy(newSalt, 0, bytes, 0, 16);
                     System.arraycopy(passcodeBytes, 0, bytes, 16, passcodeBytes.length);
-                    System.arraycopy(passcodeSalt, 0, bytes, passcodeBytes.length + 16, 16);
-                    passcodeHash = Utilities.bytesToHex(Utilities.computeSHA256(bytes, 0, bytes.length));
-                    saveConfig();
+                    System.arraycopy(newSalt, 0, bytes, passcodeBytes.length + 16, 16);
+                    String newHash = Utilities.bytesToHex(Utilities.computeSHA256(bytes, 0, bytes.length));
+                    
+                    if (hashStr == passcodeHash) {
+                        passcodeSalt = newSalt;
+                        passcodeHash = newHash;
+                        saveConfig();
+                    } else if (hashStr == fakePasscodeHash) {
+                        fakePasscodeSalt = newSalt;
+                        fakePasscodeHash = newHash;
+                        saveConfig();
+                    }
                 } catch (Exception e) {
                     FileLog.e(e);
                 }
@@ -868,11 +914,11 @@ public class SharedConfig {
             try {
                 byte[] passcodeBytes = passcode.getBytes("UTF-8");
                 byte[] bytes = new byte[32 + passcodeBytes.length];
-                System.arraycopy(passcodeSalt, 0, bytes, 0, 16);
+                System.arraycopy(salt, 0, bytes, 0, 16);
                 System.arraycopy(passcodeBytes, 0, bytes, 16, passcodeBytes.length);
-                System.arraycopy(passcodeSalt, 0, bytes, passcodeBytes.length + 16, 16);
+                System.arraycopy(salt, 0, bytes, passcodeBytes.length + 16, 16);
                 String hash = Utilities.bytesToHex(Utilities.computeSHA256(bytes, 0, bytes.length));
-                return passcodeHash.equals(hash);
+                return hashStr.equals(hash);
             } catch (Exception e) {
                 FileLog.e(e);
             }

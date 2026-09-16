@@ -282,6 +282,7 @@ public class StoriesController {
     }
 
     public boolean hasStories() {
+        if (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_stories", false)) return false;
         return (dialogListStories != null && dialogListStories.size() > 0) || hasSelfStories();
     }
 

@@ -702,6 +702,16 @@ public class InstantCameraView extends FrameLayout implements NotificationCenter
 
     public void showCamera(boolean fromPaused) {
         if (textureView != null) {
+            if (org.telegram.messenger.SharedConfig.fg_ask_camera_before_record) {
+                boolean requestedFrontface = org.telegram.messenger.SharedConfig.fg_round_camera_facing == 0;
+                if (isFrontface != requestedFrontface) {
+                    if (switchCameraDrawable != null) {
+                        switchCameraDrawable.setCurrentFrame(0);
+                        switchCameraDrawable.start();
+                    }
+                    switchCamera();
+                }
+            }
             return;
         }
 
@@ -730,9 +740,7 @@ public class InstantCameraView extends FrameLayout implements NotificationCenter
         cameraReady = false;
         selectedCamera = null;
         if (!fromPaused) {
-            if (!useCamera2) {
-                isFrontface = true;
-            }
+            isFrontface = org.telegram.messenger.SharedConfig.fg_round_camera_facing == 0;
             updateFlash();
             recordedTime = 0;
             progress = 0;
@@ -798,6 +806,7 @@ public class InstantCameraView extends FrameLayout implements NotificationCenter
                 camera2SessionCurrent.setRecordingVideo(true);
                 previewSize[0] = new Size(camera2SessionCurrent.getPreviewWidth(), camera2SessionCurrent.getPreviewHeight());
             }
+            surfaceIndex = (bothCameras && !isFrontface) ? 1 : 0;
         }
         textureView = new TextureView(getContext());
         textureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {

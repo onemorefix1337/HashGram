@@ -2436,6 +2436,36 @@ public class AndroidUtilities {
             } catch (Exception e) {
                 FileLog.e(e);
             }
+        } else if (org.telegram.messenger.SharedConfig.fg_font_type == 3) {
+            try {
+                String currentPath = org.telegram.messenger.SharedConfig.fg_custom_font_path;
+                if (currentPath == null) currentPath = "";
+                Typeface baseTypeface = null;
+                
+                if (customTypefaceCache != null && currentPath.equals(customTypefaceCachePath)) {
+                    baseTypeface = customTypefaceCache;
+                } else {
+                    if (org.telegram.messenger.SharedConfig.fg_custom_font_path != null && !org.telegram.messenger.SharedConfig.fg_custom_font_path.isEmpty()) {
+                        customTypefaceCache = Typeface.createFromAsset(ApplicationLoader.applicationContext.getAssets(), org.telegram.messenger.SharedConfig.fg_custom_font_path);
+                        customTypefaceCachePath = currentPath;
+                        baseTypeface = customTypefaceCache;
+                    }
+                }
+                
+                if (baseTypeface != null) {
+                    if (assetPath != null && (assetPath.contains("medium") || assetPath.contains("bold"))) {
+                        return Typeface.create(baseTypeface, Typeface.BOLD);
+                    } else if (assetPath != null && assetPath.contains("italic")) {
+                        return Typeface.create(baseTypeface, Typeface.ITALIC);
+                    }
+                    return baseTypeface;
+                }
+            } catch (Exception e) {
+                FileLog.e(e);
+            }
+        }
+        if (assetPath == null) {
+            return Typeface.DEFAULT;
         }
         synchronized (typefaceCache) {
             if (!typefaceCache.containsKey(assetPath)) {

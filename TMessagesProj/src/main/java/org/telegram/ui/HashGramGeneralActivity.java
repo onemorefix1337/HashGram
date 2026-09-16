@@ -37,37 +37,23 @@ public class HashGramGeneralActivity extends UniversalFragment {
         items.add(UItem.asCheck(17, "Копирование части сообщения").setChecked(prefs.getBoolean("fg_copy_part", false)));
         items.add(UItem.asCheck(20, "Обход ограничения скорости (Premium)").setChecked(prefs.getBoolean("fg_premium_speed", false)));
         items.add(UItem.asShadow(null));
-
-        items.add(UItem.asHeader("Камера и Медиа"));
-        items.add(UItem.asCheck(7, "Использовать системную камеру").setChecked(!SharedConfig.inappCamera));
-        items.add(UItem.asCheck(11, "Не паузить музыку при записи ГС").setChecked(!SharedConfig.pauseMusicOnRecord));
-        items.add(UItem.asCheck(18, "Оригинальное качество фото по умолчанию").setChecked(prefs.getBoolean("fg_original_photo", false)));
-        items.add(UItem.asShadow(null));
     }
 
     @Override
     protected void onClick(UItem item, View view, int position, float x, float y) {
         item.checked = !item.checked;
         
-        if (item.id == 7) {
-            SharedConfig.toggleInappCamera();
-        } else if (item.id == 11) {
-            SharedConfig.togglePauseMusicOnRecord();
-        } else {
-            String key = null;
-            switch (item.id) {
-                case 15: key = "fg_unlimited_pins"; break;
-                case 17: key = "fg_copy_part"; break;
-                case 18: key = "fg_original_photo"; break;
-                case 20: key = "fg_premium_speed"; break;
-            }
+        String key = null;
+        switch (item.id) {
+            case 15: key = "fg_unlimited_pins"; break;
+            case 17: key = "fg_copy_part"; break;
+            case 20: key = "fg_premium_speed"; break;
+        }
 
-            if (key != null) {
-                prefs.edit().putBoolean(key, item.checked).apply();
-                if (key.equals("fg_copy_part")) SharedConfig.fg_copy_part = item.checked;
-                if (key.equals("fg_original_photo")) SharedConfig.fg_original_photo = item.checked;
-                if (key.equals("fg_premium_speed")) SharedConfig.fg_premium_speed = item.checked;
-            }
+        if (key != null) {
+            prefs.edit().putBoolean(key, item.checked).apply();
+            if (key.equals("fg_copy_part")) SharedConfig.fg_copy_part = item.checked;
+            if (key.equals("fg_premium_speed")) SharedConfig.fg_premium_speed = item.checked;
         }
         if (listView.getAdapter() != null) {
             listView.getAdapter().notifyItemChanged(position);

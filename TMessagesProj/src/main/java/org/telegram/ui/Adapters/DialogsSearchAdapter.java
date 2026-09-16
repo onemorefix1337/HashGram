@@ -283,6 +283,9 @@ public class DialogsSearchAdapter extends RecyclerListView.SelectionAdapter {
     }
 
     private boolean filter(Object obj) {
+        if (org.telegram.messenger.SharedConfig.isFakePasscodeEntered && obj instanceof TLRPC.EncryptedChat) {
+            return false;
+        }
         if (dialogsType != DialogsActivity.DIALOGS_TYPE_START_ATTACH_BOT) {
             return true;
         }

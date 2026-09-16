@@ -35,6 +35,23 @@ public class HashGramAppearanceActivity extends BaseFragment {
     private ListAdapter listAdapter;
     private RecyclerListView listView;
 
+    private void setAppIcon(String componentName) {
+        try {
+            android.content.pm.PackageManager pm = ApplicationLoader.applicationContext.getPackageManager();
+            String[] icons = {"org.telegram.messenger.DefaultIcon", "org.telegram.messenger.MintIcon", "org.telegram.messenger.GreenIcon"};
+            for (String icon : icons) {
+                pm.setComponentEnabledSetting(
+                        new android.content.ComponentName(ApplicationLoader.applicationContext, icon),
+                        icon.equals(componentName) ? android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED : android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                        android.content.pm.PackageManager.DONT_KILL_APP
+                );
+            }
+            android.widget.Toast.makeText(getParentActivity(), "Иконка изменена! Обновление может занять несколько секунд.", android.widget.Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private int rowCount;
     private int themeHeaderRow;
     private int themeAmoledRow;
@@ -48,10 +65,16 @@ public class HashGramAppearanceActivity extends BaseFragment {
     private int themeSectionRow;
 
     private int customHeaderRow;
+    private int settingsIconsRow;
     private int avatarShapeRow;
     private int fontTypeRow;
     private int hideMicCamRow;
     private int customSectionRow;
+    private int iconHeaderRow;
+    private int iconDefaultRow;
+    private int iconMintRow;
+    private int iconGreenRow;
+    private int iconSectionRow;
 
     @Override
     public boolean onFragmentCreate() {
@@ -74,10 +97,16 @@ public class HashGramAppearanceActivity extends BaseFragment {
         themeSectionRow = rowCount++;
 
         customHeaderRow = rowCount++;
+        settingsIconsRow = rowCount++;
         avatarShapeRow = rowCount++;
         fontTypeRow = rowCount++;
         hideMicCamRow = rowCount++;
         customSectionRow = rowCount++;
+        iconHeaderRow = rowCount++;
+        iconDefaultRow = rowCount++;
+        iconMintRow = rowCount++;
+        iconGreenRow = rowCount++;
+        iconSectionRow = rowCount++;
     }
 
     @Override
@@ -111,6 +140,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
         listView.setOnItemClickListener((view, position) -> {
             if (position >= themeAmoledRow && position <= themeMidnightBlueRow) {
                 applyThemePreview(position);
+            } else if (position == settingsIconsRow) {
+                presentFragment(new HashGramSettingsIconsActivity());
             } else if (position == avatarShapeRow) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setTitle("Форма аватарок");
@@ -126,7 +157,7 @@ public class HashGramAppearanceActivity extends BaseFragment {
             } else if (position == fontTypeRow) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setTitle("Шрифт");
-                builder.setItems(new CharSequence[]{"По умолчанию (Telegram)", "Системный", "Пользовательский"}, (dialog, which) -> {
+                builder.setItems(new CharSequence[]{"По умолчанию (Telegram)", "Системный", "Свой из памяти (Download/HashGram/fonts)", "Ubuntu", "Montserrat", "Pacifico", "Lobster", "Nunito"}, (dialog, which) -> {
                     if (which == 2) {
                         if (android.os.Build.VERSION.SDK_INT >= 30) {
                             if (!android.os.Environment.isExternalStorageManager()) {
@@ -177,10 +208,16 @@ public class HashGramAppearanceActivity extends BaseFragment {
                         });
                         showDialog(pickerBuilder.create());
                     } else {
-                        SharedConfig.fg_font_type = which;
-                        SharedConfig.fg_custom_font_path = "";
+                        if (which >= 3) {
+                            SharedConfig.fg_font_type = 3;
+                            String[] assetPaths = new String[]{"", "", "", "hashgram_fonts/Ubuntu-Regular.ttf", "hashgram_fonts/Montserrat.ttf", "hashgram_fonts/Pacifico.ttf", "hashgram_fonts/Lobster.ttf", "hashgram_fonts/Nunito.ttf"};
+                            SharedConfig.fg_custom_font_path = assetPaths[which];
+                        } else {
+                            SharedConfig.fg_font_type = which;
+                            SharedConfig.fg_custom_font_path = "";
+                        }
                         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
-                        preferences.edit().putInt("fg_font_type", which).putString("fg_custom_font_path", "").apply();
+                        preferences.edit().putInt("fg_font_type", SharedConfig.fg_font_type).putString("fg_custom_font_path", SharedConfig.fg_custom_font_path).apply();
                         if (listView != null) {
                             listView.invalidateViews();
                         }
@@ -201,6 +238,12 @@ public class HashGramAppearanceActivity extends BaseFragment {
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(SharedConfig.fg_hide_mic_cam);
                 }
+            } else if (position == iconDefaultRow) {
+                setAppIcon("org.telegram.messenger.DefaultIcon");
+            } else if (position == iconMintRow) {
+                setAppIcon("org.telegram.messenger.MintIcon");
+            } else if (position == iconGreenRow) {
+                setAppIcon("org.telegram.messenger.GreenIcon");
             }
         });
 
@@ -370,7 +413,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
         public boolean isEnabled(RecyclerView.ViewHolder holder) {
             int position = holder.getAdapterPosition();
             return (position >= themeAmoledRow && position <= themeMidnightBlueRow) ||
-                   position == avatarShapeRow || position == fontTypeRow || position == hideMicCamRow;
+                   position == settingsIconsRow || position == avatarShapeRow || position == fontTypeRow || position == hideMicCamRow ||
+                   position == iconDefaultRow || position == iconMintRow || position == iconGreenRow;
         }
 
         @Override
@@ -415,6 +459,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
                         headerCell.setText("Темы");
                     } else if (position == customHeaderRow) {
                         headerCell.setText("Кастомизация");
+                    } else if (position == iconHeaderRow) {
+                        headerCell.setText("Иконка приложения");
                     }
                     break;
                 }
@@ -428,6 +474,10 @@ public class HashGramAppearanceActivity extends BaseFragment {
                     else if (position == themeSakuraRow) textCell.setText("Sakura", true);
                     else if (position == themeSolarizedLightRow) textCell.setText("Solarized Light", true);
                     else if (position == themeMidnightBlueRow) textCell.setText("Midnight Blue", false);
+                    else if (position == settingsIconsRow) textCell.setText("Иконки настроек", true);
+                    else if (position == iconDefaultRow) textCell.setText("Стандартная (Lavender)", true);
+                    else if (position == iconMintRow) textCell.setText("Mint", true);
+                    else if (position == iconGreenRow) textCell.setText("Green", false);
                     break;
                 }
                 case 2: {
@@ -435,6 +485,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
                     if (position == themeSectionRow) {
                         shadowCell.setBackgroundDrawable(Theme.getThemedDrawable(mContext, org.telegram.messenger.R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
                     } else if (position == customSectionRow) {
+                        shadowCell.setBackgroundDrawable(Theme.getThemedDrawable(mContext, org.telegram.messenger.R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
+                    } else if (position == iconSectionRow) {
                         shadowCell.setBackgroundDrawable(Theme.getThemedDrawable(mContext, org.telegram.messenger.R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
                     }
                     break;
@@ -456,6 +508,12 @@ public class HashGramAppearanceActivity extends BaseFragment {
                                 java.io.File f = new java.io.File(SharedConfig.fg_custom_font_path);
                                 font += " (" + f.getName() + ")";
                             }
+                        } else if (SharedConfig.fg_font_type == 3) {
+                            font = "Встроенный";
+                            if (SharedConfig.fg_custom_font_path != null && !SharedConfig.fg_custom_font_path.isEmpty()) {
+                                java.io.File f = new java.io.File(SharedConfig.fg_custom_font_path);
+                                font += " (" + f.getName().replace(".ttf", "").replace(".otf", "") + ")";
+                            }
                         }
                         else font = "По умолчанию (Telegram)";
                         textCell.setTextAndValue("Шрифт", font, true);
@@ -474,11 +532,11 @@ public class HashGramAppearanceActivity extends BaseFragment {
 
         @Override
         public int getItemViewType(int position) {
-            if (position == themeHeaderRow || position == customHeaderRow) {
+            if (position == themeHeaderRow || position == customHeaderRow || position == iconHeaderRow) {
                 return 0;
-            } else if (position >= themeAmoledRow && position <= themeMidnightBlueRow) {
+            } else if ((position >= themeAmoledRow && position <= themeMidnightBlueRow) || position == settingsIconsRow || position == iconDefaultRow || position == iconMintRow || position == iconGreenRow) {
                 return 1;
-            } else if (position == themeSectionRow || position == customSectionRow) {
+            } else if (position == themeSectionRow || position == customSectionRow || position == iconSectionRow) {
                 return 2;
             } else if (position == avatarShapeRow || position == fontTypeRow) {
                 return 3;

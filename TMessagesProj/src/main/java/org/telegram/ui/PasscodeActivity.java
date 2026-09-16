@@ -158,6 +158,12 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
     private Runnable onShowKeyboardCallback;
 
+    private boolean fakePasscodeMode;
+
+    public void setFakePasscodeMode(boolean fakePasscodeMode) {
+        this.fakePasscodeMode = fakePasscodeMode;
+    }
+
     public PasscodeActivity(@PasscodeActivityType int type) {
         super();
         this.type = type;
@@ -944,21 +950,29 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 return;
             }
 
-            boolean isFirst = SharedConfig.passcodeHash.isEmpty();
+            boolean isFirst = !fakePasscodeMode && SharedConfig.passcodeHash.isEmpty();
             try {
-                SharedConfig.passcodeSalt = new byte[16];
-                Utilities.random.nextBytes(SharedConfig.passcodeSalt);
+                byte[] salt = new byte[16];
+                Utilities.random.nextBytes(salt);
                 byte[] passcodeBytes = firstPassword.getBytes(StandardCharsets.UTF_8);
                 byte[] bytes = new byte[32 + passcodeBytes.length];
-                System.arraycopy(SharedConfig.passcodeSalt, 0, bytes, 0, 16);
+                System.arraycopy(salt, 0, bytes, 0, 16);
                 System.arraycopy(passcodeBytes, 0, bytes, 16, passcodeBytes.length);
-                System.arraycopy(SharedConfig.passcodeSalt, 0, bytes, passcodeBytes.length + 16, 16);
-                SharedConfig.passcodeHash = Utilities.bytesToHex(Utilities.computeSHA256(bytes, 0, bytes.length));
+                System.arraycopy(salt, 0, bytes, passcodeBytes.length + 16, 16);
+                String hash = Utilities.bytesToHex(Utilities.computeSHA256(bytes, 0, bytes.length));
+                
+                if (fakePasscodeMode) {
+                    SharedConfig.fakePasscodeSalt = salt;
+                    SharedConfig.fakePasscodeHash = hash;
+                } else {
+                    SharedConfig.passcodeSalt = salt;
+                    SharedConfig.passcodeHash = hash;
+                    SharedConfig.allowScreenCapture = true;
+                    SharedConfig.passcodeType = currentPasswordType;
+                }
             } catch (Exception e) {
                 FileLog.e(e);
             }
-            SharedConfig.allowScreenCapture = true;
-            SharedConfig.passcodeType = currentPasswordType;
             SharedConfig.saveConfig();
 
             passwordEditText.clearFocus();

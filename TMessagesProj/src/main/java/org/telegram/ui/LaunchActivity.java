@@ -33,6 +33,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
@@ -258,6 +262,38 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class LaunchActivity extends BasePermissionsActivity implements INavigationLayout.INavigationLayoutDelegate, NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate, IPipActivity {
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private float mAccel;
+    private float mAccelCurrent;
+    private float mAccelLast;
+    
+    private final SensorEventListener mSensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            if (!SharedConfig.fg_panic_button) return;
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+            mAccelLast = mAccelCurrent;
+            mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
+            float delta = mAccelCurrent - mAccelLast;
+            mAccel = mAccel * 0.9f + delta;
+            if (mAccel > 15) {
+                // Shake detected! Panic button triggered.
+                // Log out all accounts to be safe.
+                for (int i = 0; i < UserConfig.MAX_ACCOUNT_COUNT; i++) {
+                    if (UserConfig.getInstance(i).isClientActivated()) {
+                        MessagesController.getInstance(i).performLogout(2);
+                    }
+                }
+            }
+        }
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
+
     public final static String EXTRA_FORCE_NOT_INTERNAL_APPS = "force_not_internal_apps";
     public final static String EXTRA_FORCE_REQUEST = "force_request";
     public final static Pattern PREFIX_T_ME_PATTERN = Pattern.compile("^(?:http(?:s|)://|)([A-z0-9-]+?)\\.t\\.me");
@@ -408,6 +444,23 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         instance = this;
         ApplicationLoader.postInitApplication();
         HashGramUpdater.checkUpdate(this, false);
+        
+        if (android.os.Build.VERSION.SDK_INT >= 25) {
+            try {
+                android.content.pm.ShortcutManager shortcutManager = getSystemService(android.content.pm.ShortcutManager.class);
+                if (shortcutManager != null) {
+                    android.content.pm.ShortcutInfo shortcut = new android.content.pm.ShortcutInfo.Builder(this, "ghost_mode")
+                            .setShortLabel("Призрак")
+                            .setLongLabel("Войти с Призраком")
+                            .setIcon(android.graphics.drawable.Icon.createWithResource(this, R.drawable.msg_secret))
+                            .setIntent(new Intent("org.telegram.messenger.GHOST_MODE_INTENT").setPackage(getPackageName()).setClass(this, LaunchActivity.class))
+                            .build();
+                    shortcutManager.addDynamicShortcuts(java.util.Collections.singletonList(shortcut));
+                }
+            } catch (Exception e) {
+                // ignore
+            }
+        }
         AndroidUtilities.checkDisplaySize(this, getResources().getConfiguration());
         currentAccount = UserConfig.selectedAccount;
         registerReceiver(batteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -1513,6 +1566,15 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         }
         if (AndroidUtilities.handleProxyIntent(this, intent, true)) {
             return true;
+        }
+        if (intent != null && "org.telegram.messenger.GHOST_MODE_INTENT".equals(intent.getAction())) {
+            android.content.SharedPreferences hashPrefs = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+            hashPrefs.edit()
+                .putBoolean("fg_ghost_read", true)
+                .putBoolean("fg_ghost_mode", true)
+                .apply();
+            intent.setAction(Intent.ACTION_MAIN);
+            android.widget.Toast.makeText(this, "👻 Призрак активирован (онлайн скрыт + нечиталка)", android.widget.Toast.LENGTH_SHORT).show();
         }
         if (intent == null || !Intent.ACTION_MAIN.equals(intent.getAction())) {
             if (PhotoViewer.hasInstance() && PhotoViewer.getInstance().isVisible()) {
@@ -6727,6 +6789,9 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
     @Override
     protected void onPause() {
         super.onPause();
+        if (mSensorManager != null) {
+            mSensorManager.unregisterListener(mSensorListener);
+        }
         isResumed = false;
         pipActivityHandler.onPause();
         NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.stopAllHeavyOperations, 4096);
@@ -6962,6 +7027,13 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
     @Override
     protected void onResume() {
         super.onResume();
+        
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (mSensorManager != null) {
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            mSensorManager.registerListener(mSensorListener, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
+
         isResumed = true;
         pipActivityHandler.onResume();
         if (onResumeStaticCallback != null) {

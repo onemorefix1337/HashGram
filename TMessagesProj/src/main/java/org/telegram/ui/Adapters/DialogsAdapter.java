@@ -1705,6 +1705,9 @@ public class DialogsAdapter extends RecyclerListView.SelectionAdapter implements
 
         if (collapsedView || isTransitionSupport) {
             for (int k = 0; k < array.size(); k++) {
+                if (org.telegram.messenger.SharedConfig.isFakePasscodeEntered && array.get(k) instanceof TLRPC.Dialog && org.telegram.messenger.DialogObject.isEncryptedDialog(((TLRPC.Dialog) array.get(k)).id)) {
+                    continue;
+                }
                 if (dialogsType == 2 && array.get(k) instanceof DialogsActivity.DialogsHeader) {
                     itemInternals.add(new ItemInternal(VIEW_TYPE_HEADER_2, array.get(k)));
                 } else {
@@ -1738,6 +1741,9 @@ public class DialogsAdapter extends RecyclerListView.SelectionAdapter implements
                 itemInternals.add(new ItemInternal(VIEW_TYPE_HEADER));
             } else {
                 for (int k = 0; k < array.size(); k++) {
+                    if (org.telegram.messenger.SharedConfig.isFakePasscodeEntered && array.get(k) instanceof TLRPC.Dialog && org.telegram.messenger.DialogObject.isEncryptedDialog(((TLRPC.Dialog) array.get(k)).id)) {
+                        continue;
+                    }
                     itemInternals.add(new ItemInternal(VIEW_TYPE_DIALOG, array.get(k)));
                 }
                 itemInternals.add(new ItemInternal(VIEW_TYPE_SHADOW));
@@ -1772,6 +1778,9 @@ public class DialogsAdapter extends RecyclerListView.SelectionAdapter implements
 
         if (!stopUpdate) {
             for (int k = 0; k < array.size(); k++) {
+                if (org.telegram.messenger.SharedConfig.isFakePasscodeEntered && array.get(k) instanceof TLRPC.Dialog && org.telegram.messenger.DialogObject.isEncryptedDialog(((TLRPC.Dialog) array.get(k)).id)) {
+                    continue;
+                }
                 if (dialogsType == DialogsActivity.DIALOGS_TYPE_ADD_USERS_TO && array.get(k) instanceof DialogsActivity.DialogsHeader) {
                     itemInternals.add(new ItemInternal(VIEW_TYPE_HEADER_2, array.get(k)));
                 } else {

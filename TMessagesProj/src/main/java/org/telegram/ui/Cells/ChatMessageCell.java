@@ -4178,7 +4178,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean checkDateMotionEvent(MotionEvent event) {
-        if (!currentMessageObject.isImportedForward()) {
+        if (!currentMessageObject.isImportedForward() && !edited) {
             return false;
         }
         int x = (int) getEventX(event);
@@ -4196,13 +4196,43 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 if (timePressed) {
                     timePressed = false;
                     playSoundEffect(SoundEffectConstants.CLICK);
-                    delegate.didPressTime(this);
+                    if (edited) {
+                        showEditHistoryDialog();
+                    } else if (currentMessageObject.isImportedForward()) {
+                        delegate.didPressTime(this);
+                    }
                     invalidate();
                     result = true;
                 }
             }
         }
         return result;
+    }
+
+    private void showEditHistoryDialog() {
+        android.content.Context context = getContext();
+        if (context == null || currentMessageObject == null || currentMessageObject.messageOwner == null) return;
+        android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_edit_history", android.content.Context.MODE_PRIVATE);
+        String key = "edit_" + currentMessageObject.getDialogId() + "_" + currentMessageObject.getId();
+        String history = prefs.getString(key, "");
+        if (history.isEmpty()) {
+            android.widget.Toast.makeText(context, "No local edit history available.", android.widget.Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            org.json.JSONArray array = new org.json.JSONArray(history);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < array.length(); i++) {
+                sb.append("Edit ").append(i + 1).append(":\n").append(array.getString(i)).append("\n\n");
+            }
+            org.telegram.ui.ActionBar.AlertDialog.Builder builder = new org.telegram.ui.ActionBar.AlertDialog.Builder(context);
+            builder.setTitle("Edit History (Local)");
+            builder.setMessage(sb.toString().trim());
+            builder.setPositiveButton("Close", null);
+            builder.show();
+        } catch (Exception e) {
+            android.widget.Toast.makeText(context, "Failed to load history.", android.widget.Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean checkRoundSeekbar(MotionEvent event) {

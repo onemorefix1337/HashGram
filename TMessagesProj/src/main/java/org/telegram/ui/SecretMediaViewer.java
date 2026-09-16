@@ -971,7 +971,6 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
         boolean fg_allow_screenshots = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_allow_screenshots", false);
         if (!fg_allow_screenshots) {
             windowLayoutParams.flags |= WindowManager.LayoutParams.FLAG_SECURE;
-            AndroidUtilities.logFlagSecure();
         }
         
         centerImage.setParentView(containerView);

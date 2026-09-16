@@ -765,13 +765,14 @@ public class ConnectionsManager extends BaseController {
                 appResumeCount = 0;
             }
         }
-        if (appResumeCount == 0) {
+        boolean alwaysOnline = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_always_online", false);
+        if (appResumeCount == 0 && !alwaysOnline) {
             if (lastPauseTime == 0) {
                 lastPauseTime = System.currentTimeMillis();
             }
             native_pauseNetwork(currentAccount);
         } else {
-            if (appPaused) {
+            if (appPaused && !alwaysOnline) {
                 return;
             }
             if (BuildVars.LOGS_ENABLED) {

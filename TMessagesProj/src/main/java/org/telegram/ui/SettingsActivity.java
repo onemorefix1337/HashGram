@@ -499,6 +499,14 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (listView != null && listView.getAdapter() != null) {
+            listView.getAdapter().notifyDataSetChanged();
+        }
+    }
+
+    @Override
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
 
@@ -1207,11 +1215,33 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             CharSequence subtitle,
             CharSequence value
         ) {
+            SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+            boolean oldStyleIcons = prefs.getBoolean("fg_old_settings_icons", false);
+            boolean unifiedColors = prefs.getBoolean("fg_unified_settings_icons", false);
+            int unifiedColor = prefs.getInt("fg_unified_icon_color", 0xff1488E1);
+
             iconLayout.setVisibility(icon != 0 ? View.VISIBLE : View.GONE);
             titleView.setTranslationX(icon == 0 ? dp(2) : 0);
             subtitleView.setTranslationX(icon == 0 ? dp(2) : 0);
 
-            iconBackground.setColor(iconColorTop, iconColorBottom);
+            if (oldStyleIcons) {
+                iconBackground.setColor(0, 0);
+                iconBackground.setDrawBorder(false);
+                iconView.setColorFilter(new android.graphics.PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteGrayIcon, resourcesProvider), android.graphics.PorterDuff.Mode.MULTIPLY));
+            } else {
+                int overrideColor = prefs.getInt("fg_icon_color_" + icon, 0);
+                if (overrideColor != 0) {
+                    iconColorTop = overrideColor;
+                    iconColorBottom = overrideColor;
+                } else if (unifiedColors) {
+                    iconColorTop = unifiedColor;
+                    iconColorBottom = unifiedColor;
+                }
+                iconBackground.setColor(iconColorTop, iconColorBottom);
+                iconView.clearColorFilter();
+                iconBackground.setDrawBorder(resourcesProvider != null ? resourcesProvider.isDark() : Theme.isCurrentThemeDark());
+            }
+
             iconView.setImageResource(icon);
             titleView.setText(title);
             subtitleView.setVisibility((twoLines = !TextUtils.isEmpty(subtitle)) ? View.VISIBLE : View.GONE);

@@ -241,6 +241,7 @@ public class ChatActivityEnterView extends FrameLayout implements
     private int commonInputType;
     private boolean stickersEnabled;
     private ActionBarMenuSubItem sendWhenOnlineButton;
+    private ActionBarMenuSubItem spamBomberButton; // HashGram: Спам-Бомбер
     private LinearLayout recordTimeContainer;
     private CharSequence overrideHint;
     private CharSequence overrideHint2;
@@ -923,7 +924,40 @@ public class ChatActivityEnterView extends FrameLayout implements
                         return;
                     }
                 }
-                if (!CameraController.getInstance().isCameraInitied()) {
+                if (isInVideoMode() && org.telegram.messenger.SharedConfig.fg_ask_camera_before_record) {
+                    calledRecordRunnable = false;
+                    new org.telegram.ui.ActionBar.AlertDialog.Builder(parentActivity)
+                            .setTitle("Камера для кружка")
+                            .setItems(new CharSequence[]{"Фронтальная", "Основная"}, (dialog, which) -> {
+                                calledRecordRunnable = true;
+                                org.telegram.messenger.SharedConfig.fg_round_camera_facing = which;
+                                org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).edit().putInt("fg_round_camera_facing", which).apply();
+                                if (!CameraController.getInstance().isCameraInitied()) {
+                                    CameraController.getInstance().initCamera(onFinishInitCameraRunnable);
+                                } else {
+                                    onFinishInitCameraRunnable.run();
+                                }
+                                if (!recordingAudioVideo) {
+                                    recordingAudioVideo = true;
+                                    updateRecordInterface(RECORD_STATE_ENTER, true);
+                                    if (recordCircle != null) {
+                                        recordCircle.showWaves(false, false);
+                                    }
+                                    if (recordTimerView != null) {
+                                        recordTimerView.reset();
+                                    }
+                                }
+                                AndroidUtilities.runOnUIThread(() -> {
+                                    startLockTransition();
+                                }, 200);
+                            })
+                            .setOnCancelListener(dialog -> {
+                                calledRecordRunnable = false;
+                                updateRecordInterface(RECORD_STATE_CANCEL, true);
+                            })
+                            .show();
+                    return;
+                } else if (!CameraController.getInstance().isCameraInitied()) {
                     CameraController.getInstance().initCamera(onFinishInitCameraRunnable);
                 } else {
                     onFinishInitCameraRunnable.run();
@@ -4771,7 +4805,10 @@ public class ChatActivityEnterView extends FrameLayout implements
             return false;
         }
 
-        if (isStories || (messageEditText == null || TextUtils.isEmpty(messageEditText.getText())) && parentFragment != null && parentFragment.messagePreviewParams != null && parentFragment.messagePreviewParams.forwardMessages != null && parentFragment.messagePreviewParams.forwardMessages.messages != null && !parentFragment.messagePreviewParams.forwardMessages.messages.isEmpty()) {
+        // HashGram: наличие текста в поле ввода
+        final boolean hasText = messageEditText != null && !TextUtils.isEmpty(messageEditText.getText());
+
+        if (isStories || hasText || (messageEditText == null || TextUtils.isEmpty(messageEditText.getText())) && parentFragment != null && parentFragment.messagePreviewParams != null && parentFragment.messagePreviewParams.forwardMessages != null && parentFragment.messagePreviewParams.forwardMessages.messages != null && !parentFragment.messagePreviewParams.forwardMessages.messages.isEmpty()) {
 
             boolean self = parentFragment != null && UserObject.isUserSelf(parentFragment.getCurrentUser());
 
@@ -4850,7 +4887,55 @@ public class ChatActivityEnterView extends FrameLayout implements
                     });
                     sendPopupLayout.addView(sendWithoutSoundButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, DEFAULT_HEIGHT));
                 }
+
+                // HashGram: Спам-Бомбер пункт меню
+                spamBomberButton = new ActionBarMenuSubItem(getContext(), true, true, resourcesProvider);
+                spamBomberButton.setTextAndIcon("💣 Спам-Бомбер", R.drawable.msg_retry);
+                spamBomberButton.setMinimumWidth(dp(196));
+                spamBomberButton.setOnClickListener(v -> {
+                    if (sendPopupWindow != null && sendPopupWindow.isShowing()) {
+                        sendPopupWindow.dismiss();
+                    }
+                    final String textToSpam = messageEditText != null ? messageEditText.getText().toString() : "";
+                    if (TextUtils.isEmpty(textToSpam)) return;
+                    final org.telegram.ui.Components.EditTextBoldCursor countEditText = new org.telegram.ui.Components.EditTextBoldCursor(getContext());
+                    countEditText.setTextSize(android.util.TypedValue.COMPLEX_UNIT_DIP, 16);
+                    countEditText.setTextColor(org.telegram.ui.ActionBar.Theme.getColor(org.telegram.ui.ActionBar.Theme.key_dialogTextBlack, resourcesProvider));
+                    countEditText.setHintTextColor(org.telegram.ui.ActionBar.Theme.getColor(org.telegram.ui.ActionBar.Theme.key_groupcreate_hintText, resourcesProvider));
+                    countEditText.setBackgroundDrawable(org.telegram.ui.ActionBar.Theme.createEditTextDrawable(getContext(), true));
+                    countEditText.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
+                    countEditText.setHint("Количество (1–1000)");
+                    countEditText.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(8), AndroidUtilities.dp(16), AndroidUtilities.dp(8));
+                    new org.telegram.ui.ActionBar.AlertDialog.Builder(getContext(), resourcesProvider)
+                        .setTitle("💣 Спам-Бомбер")
+                        .setView(countEditText)
+                        .setPositiveButton("Запустить", (dlg, which) -> {
+                            try {
+                                int count = Integer.parseInt(countEditText.getText().toString().trim());
+                                if (count > 0 && count <= 1000) {
+                                    for (int i = 0; i < count; i++) {
+                                        org.telegram.messenger.SendMessagesHelper.getInstance(currentAccount).sendMessage(
+                                            org.telegram.messenger.SendMessagesHelper.SendMessageParams.of(
+                                                textToSpam, dialog_id, null, null, null, false, null, null, null, true, 0, 0, null, false
+                                            )
+                                        );
+                                    }
+                                    if (messageEditText != null) messageEditText.setText("");
+                                } else {
+                                    android.widget.Toast.makeText(getContext(), "Введите число от 1 до 1000", android.widget.Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (Exception ignore) {
+                                android.widget.Toast.makeText(getContext(), "Некорректное число", android.widget.Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("Отмена", null)
+                        .show();
+                });
+                sendPopupLayout.addView(spamBomberButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, DEFAULT_HEIGHT));
+                // End HashGram
+
                 sendPopupLayout.setupRadialSelectors(getThemedColor(Theme.key_dialogButtonSelector));
+
 
                 sendPopupWindow = new ActionBarPopupWindow(sendPopupLayout, LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT) {
                     @Override
@@ -4884,6 +4969,11 @@ public class ChatActivityEnterView extends FrameLayout implements
                     sendWhenOnlineButton.setVisibility(GONE);
                 }
             }
+            // HashGram: показываем Спам-Бомбер только когда есть текст
+            if (spamBomberButton != null) {
+                spamBomberButton.setVisibility(hasText ? VISIBLE : GONE);
+            }
+            // End HashGram
             sendPopupLayout.measure(MeasureSpec.makeMeasureSpec(dp(1000), MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(dp(1000), MeasureSpec.AT_MOST));
             sendPopupWindow.setFocusable(true);
             view.getLocationInWindow(location);

@@ -572,6 +572,9 @@ public class UserConfig extends BaseController {
     }
 
     public boolean isPremium() {
+        if (ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_local_premium", false)) {
+            return true;
+        }
         TLRPC.User user = currentUser;
         if (user == null) {
             return false;

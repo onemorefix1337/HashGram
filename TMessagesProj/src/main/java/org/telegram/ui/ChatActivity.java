@@ -1688,6 +1688,7 @@ public class ChatActivity extends BaseFragment implements
     private final static int charge_fee = 72;
 
     private final static int chat_menu_topic_create = 73;
+    private final static int larp_typing = 101;
 
     private final static int id_chat_compose_panel = 1000;
 
@@ -3968,6 +3969,20 @@ public class ChatActivity extends BaseFragment implements
                     getSendMessagesHelper().sendMessage(SendMessagesHelper.SendMessageParams.of("/help", dialog_id, null, null, null, false, null, null, null, true, 0, 0, null, false));
                 } else if (id == bot_settings) {
                     getSendMessagesHelper().sendMessage(SendMessagesHelper.SendMessageParams.of("/settings", dialog_id, null, null, null, false, null, null, null, true, 0, 0, null, false));
+                } else if (id == larp_typing) {
+                    android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+                    java.util.Set<String> spoofs = prefs.getStringSet("fg_typing_spoofs", new java.util.HashSet<>());
+                    java.util.Set<String> newSpoofs = new java.util.HashSet<>(spoofs);
+                    String dId = String.valueOf(dialog_id);
+                    if (newSpoofs.contains(dId)) {
+                        newSpoofs.remove(dId);
+                    } else {
+                        newSpoofs.add(dId);
+                    }
+                    prefs.edit().putStringSet("fg_typing_spoofs", newSpoofs).apply();
+                    if (org.telegram.ui.Components.BulletinFactory.canShowBulletin(ChatActivity.this)) {
+                        org.telegram.ui.Components.BulletinFactory.of(ChatActivity.this).createSimpleBulletin(org.telegram.messenger.R.drawable.msg_edit, newSpoofs.contains(dId) ? "Вечный тайпинг включен" : "Вечный тайпинг выключен").show();
+                    }
                 } else if (id == search) {
                     openSearchWithText(isSupportedTags() ? "" : null);
                 } else if (id == translate) {
@@ -4432,6 +4447,15 @@ public class ChatActivity extends BaseFragment implements
             }
             if (currentUser != null && currentUser.id != UserObject.VERIFY && currentUser.id != UserObject.REPLY_BOT) {
                 addContactItem = headerItem.lazilyAddSubItem(share_contact, R.drawable.msg_addcontact, LocaleController.getString(R.string.AddToContacts));
+            }
+            if (chatMode != MODE_SAVED && currentEncryptedChat == null) {
+                boolean isSpoofing = false;
+                android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+                java.util.Set<String> spoofs = prefs.getStringSet("fg_typing_spoofs", null);
+                if (spoofs != null && spoofs.contains(String.valueOf(dialog_id))) {
+                    isSpoofing = true;
+                }
+                headerItem.lazilyAddSubItem(larp_typing, org.telegram.messenger.R.drawable.msg_edit, isSpoofing ? "Остановить Тайпинг" : "Вечный Тайпинг");
             }
             if (currentEncryptedChat != null) {
                 timeItem2 = headerItem.lazilyAddSubItem(chat_enc_timer, R.drawable.msg_autodelete, LocaleController.getString(R.string.SetTimer));

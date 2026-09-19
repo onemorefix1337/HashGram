@@ -140,6 +140,17 @@ android {
         buildConfigField "int", "APP_ID", appId
         buildConfigField "String", "APP_HASH", "\"${appHash}\""
 
+        def gitCommitCount = "0"
+        def gitCommitHash = "unknown"
+        try {
+            gitCommitCount = ["git", "rev-list", "--count", "HEAD"].execute([], rootProject.rootDir).text.trim()
+            gitCommitHash = ["git", "rev-parse", "--short", "HEAD"].execute([], rootProject.rootDir).text.trim()
+        } catch (Exception e) {}
+        buildConfigField "String", "HASHGRAM_BUILD_COUNT", "\"${gitCommitCount}\""
+        buildConfigField "String", "HASHGRAM_BUILD_HASH", "\"${gitCommitHash}\""
+        buildConfigField "String", "HASHGRAM_VERSION", "\"1.0.0\""
+
+
         vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']
 
         multiDexEnabled true

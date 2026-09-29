@@ -19551,8 +19551,14 @@ public class MessagesController extends BaseController implements NotificationCe
 
                 // HashGram: Edit History
                 try {
-                    org.telegram.SQLite.SQLiteCursor cursor = getMessagesStorage().getDatabase().queryFinalized("SELECT data FROM messages WHERE mid = " + message.id + " AND uid = " + message.dialog_id);
-                    if (cursor.next()) {
+                    org.telegram.SQLite.SQLiteCursor cursor = getMessagesStorage().getDatabase().queryFinalized("SELECT data FROM messages_v2 WHERE mid = " + message.id + " AND uid = " + message.dialog_id);
+                    boolean found = cursor.next();
+                    if (!found) {
+                        cursor.dispose();
+                        cursor = getMessagesStorage().getDatabase().queryFinalized("SELECT data FROM messages_topics WHERE mid = " + message.id + " AND uid = " + message.dialog_id);
+                        found = cursor.next();
+                    }
+                    if (found) {
                         org.telegram.tgnet.NativeByteBuffer data = cursor.byteBufferValue(0);
                         if (data != null) {
                             TLRPC.Message oldMsg = TLRPC.Message.TLdeserialize(data, data.readInt32(false), false);
@@ -19573,7 +19579,9 @@ public class MessagesController extends BaseController implements NotificationCe
                         }
                     }
                     cursor.dispose();
-                } catch (Exception ignore) {}
+                } catch (Exception ignore) {
+                    FileLog.e(ignore);
+                }
                 // End HashGram Edit History
 
                 ImageLoader.saveMessageThumbs(message);

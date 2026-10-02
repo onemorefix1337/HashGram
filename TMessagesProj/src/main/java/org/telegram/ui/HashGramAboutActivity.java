@@ -74,16 +74,22 @@ public class HashGramAboutActivity extends BaseFragment {
         TextView versionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         versionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         versionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        versionTextView.setText("HashGram v" + org.telegram.messenger.BuildConfig.HASHGRAM_VERSION + " (" + org.telegram.messenger.BuildConfig.HASHGRAM_BUILD_COUNT + ")\n" +
+        versionTextView.setText("HashGram v" + org.telegram.messenger.BuildConfig.HASHGRAM_VERSION + " (" + org.telegram.messenger.BuildConfig.HASHGRAM_BUILD_COUNT + " " + org.telegram.messenger.BuildConfig.HASHGRAM_BUILD_HASH + ")\n" +
                                 "Telegram v" + versionName + " (" + versionCode + ")");
         versionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         linearLayout.addView(versionTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 4, 0, 0));
 
         TextView descriptionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         descriptionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
-        descriptionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        descriptionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         descriptionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-        descriptionTextView.setText("HashGram — это продвинутый мод Telegram, созданный для тех, кто ценит эстетику, свободу и комфорт. Он предлагает расширенные функции настройки, улучшенную приватность, новые шрифты, иконки и уникальный дизайн.\n\nРазработано с душой. Наслаждайтесь!");
+        descriptionTextView.setText("HashGram — это продвинутый и оптимизированный клиент Telegram, созданный для энтузиастов и тех, кто ценит максимальный комфорт, эстетику и свободу.\n\n" +
+                                    "Ключевые особенности:\n" +
+                                    "• Расширенная приватность (Ghost Mode, Stealth)\n" +
+                                    "• Гибкая кастомизация (Шрифты, Иконки, Темы)\n" +
+                                    "• Снятие ограничений и отключение рекламы\n" +
+                                    "• Оптимизация памяти и высокая скорость работы\n\n" +
+                                    "Все изменения автоматизированы и собираются прямо из исходного кода. Разработано с душой специально для вас.");
         linearLayout.addView(descriptionTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 24, 32, 0));
 
         TextView githubButton = new org.telegram.ui.Components.TypefaceTextView(context);

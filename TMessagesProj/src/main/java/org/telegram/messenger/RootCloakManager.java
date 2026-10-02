@@ -19,19 +19,22 @@ public class RootCloakManager {
                     "pm disable " + pkg + "\n" +
                     "seq=\"0\"\n" +
                     "getevent -l | while read line; do\n" +
-                    "    if echo \"$line\" | grep -q \"KEY_VOLUMEUP.*DOWN\"; then\n" +
-                    "        if [ \"$seq\" = \"0\" ]; then seq=\"1\";\n" +
-                    "        elif [ \"$seq\" = \"2\" ]; then seq=\"3\";\n" +
-                    "        else seq=\"1\"; fi\n" +
-                    "    elif echo \"$line\" | grep -q \"KEY_VOLUMEDOWN.*DOWN\"; then\n" +
-                    "        if [ \"$seq\" = \"1\" ]; then seq=\"2\";\n" +
-                    "        elif [ \"$seq\" = \"3\" ]; then\n" +
-                    "            pm enable " + pkg + "\n" +
-                    "            pm enable " + pkg + "/org.telegram.messenger.DefaultIcon\n" +
-                    "            am start -n " + pkg + "/org.telegram.ui.LaunchActivity\n" +
-                    "            exit 0\n" +
-                    "        else seq=\"0\"; fi\n" +
-                    "    fi\n" +
+                    "    case \"$line\" in\n" +
+                    "        *\"KEY_VOLUMEUP\"*\"DOWN\"*)\n" +
+                    "            if [ \"$seq\" = \"0\" ]; then seq=\"1\";\n" +
+                    "            elif [ \"$seq\" = \"2\" ]; then seq=\"3\";\n" +
+                    "            else seq=\"1\"; fi\n" +
+                    "            ;;\n" +
+                    "        *\"KEY_VOLUMEDOWN\"*\"DOWN\"*)\n" +
+                    "            if [ \"$seq\" = \"1\" ]; then seq=\"2\";\n" +
+                    "            elif [ \"$seq\" = \"3\" ]; then\n" +
+                    "                pm enable \"$pkg\"\n" +
+                    "                pm enable \"$pkg\"/org.telegram.messenger.DefaultIcon\n" +
+                    "                am start -n \"$pkg\"/org.telegram.ui.LaunchActivity\n" +
+                    "                exit 0\n" +
+                    "            else seq=\"0\"; fi\n" +
+                    "            ;;\n" +
+                    "    esac\n" +
                     "done\n";
             writer.write(script);
             writer.close();

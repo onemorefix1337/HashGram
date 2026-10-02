@@ -279,7 +279,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
             float delta = mAccelCurrent - mAccelLast;
             mAccel = mAccel * 0.9f + delta;
-            if (mAccel > 15) {
+            if (mAccel > 35) {
                 // Shake detected! Panic button triggered.
                 // Log out all accounts to be safe.
                 for (int i = 0; i < UserConfig.MAX_ACCOUNT_COUNT; i++) {

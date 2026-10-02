@@ -3067,6 +3067,27 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                 if (messageObject.editingMessage != null) {
                     String oldMessge = newMsg.message;
                     newMsg.message = messageObject.editingMessage.toString();
+                    
+                    // HashGram: Save edit history for local outgoing edits
+                    if (oldMessge != null && oldMessge.length() > 0 && !oldMessge.equals(newMsg.message)) {
+                        try {
+                            android.content.SharedPreferences prefs = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_edit_history", android.content.Context.MODE_PRIVATE);
+                            String key = "edit_" + newMsg.dialog_id + "_" + newMsg.id;
+                            String history = prefs.getString(key, "");
+                            org.json.JSONArray historyArray;
+                            if (history.isEmpty()) {
+                                historyArray = new org.json.JSONArray();
+                            } else {
+                                historyArray = new org.json.JSONArray(history);
+                            }
+                            historyArray.put(oldMessge);
+                            prefs.edit().putString(key, historyArray.toString()).apply();
+                        } catch (Exception ignore) {
+                            FileLog.e(ignore);
+                        }
+                    }
+                    // End HashGram
+
                     messageObject.caption = null;
                     if (type == 1) {
                         if (messageObject.editingMessageEntities != null) {

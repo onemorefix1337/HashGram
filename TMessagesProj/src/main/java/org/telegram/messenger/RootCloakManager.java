@@ -15,8 +15,9 @@ public class RootCloakManager {
             
             String pkg = context.getPackageName();
             String script = "#!/system/bin/sh\n" +
+                    "pkg=\"" + pkg + "\"\n" +
                     "sleep 2\n" +
-                    "pm disable " + pkg + "\n" +
+                    "pm disable \"$pkg\"\n" +
                     "seq=\"0\"\n" +
                     "getevent -l | while read line; do\n" +
                     "    case \"$line\" in\n" +

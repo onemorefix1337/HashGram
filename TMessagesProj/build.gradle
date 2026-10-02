@@ -148,7 +148,7 @@ android {
         } catch (Exception e) {}
         buildConfigField "String", "HASHGRAM_BUILD_COUNT", "\"${gitCommitCount}\""
         buildConfigField "String", "HASHGRAM_BUILD_HASH", "\"${gitCommitHash}\""
-        buildConfigField "String", "HASHGRAM_VERSION", "\"1.0.0\""
+        buildConfigField "String", "HASHGRAM_VERSION", "\"1.0.1\""
 
 
         vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi']

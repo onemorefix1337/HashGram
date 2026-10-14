@@ -151,7 +151,7 @@ public class HashGramAppearanceActivity extends BaseFragment {
             } else if (position == avatarShapeRow) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setTitle("Форма аватарок");
-                builder.setItems(new CharSequence[]{"Круг (по умолчанию)", "Квадрат", "Закругленный квадрат"}, (dialog, which) -> {
+                builder.setItems(new CharSequence[]{"Круг", "Квадрат", "Закругленный квадрат (по умолчанию)"}, (dialog, which) -> {
                     SharedConfig.fg_avatar_shape = which;
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
                     preferences.edit().putInt("fg_avatar_shape", which).apply();
@@ -503,7 +503,7 @@ public class HashGramAppearanceActivity extends BaseFragment {
                         String shape;
                         if (SharedConfig.fg_avatar_shape == 1) shape = "Квадрат";
                         else if (SharedConfig.fg_avatar_shape == 2) shape = "Закругленный квадрат";
-                        else shape = "Круг (по умолчанию)";
+                        else shape = "Круг";
                         textCell.setTextAndValue("Форма аватарок", shape, true);
                     } else if (position == fontTypeRow) {
                         String font;

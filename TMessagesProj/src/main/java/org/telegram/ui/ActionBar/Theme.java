@@ -3497,6 +3497,8 @@ public class Theme {
 
     public static final String HASHGRAM_DARK = "HashGram Dark";
     public static final String HASHGRAM_LIGHT = "HashGram Light";
+    public static final String HASHGRAM_AURORA_DARK = "Aurora Dark";
+    public static final String HASHGRAM_AURORA_LIGHT = "Aurora Light";
     private static int[] defaultColors;
     private static SparseIntArray fallbackKeys = new SparseIntArray();
     private static HashSet<Integer> themeAccentExclusionKeys = new HashSet<>();
@@ -4040,6 +4042,30 @@ public class Theme {
         themeInfo.isDark = ThemeInfo.LIGHT;
         themes.add(themeInfo);
         themesDict.put(HASHGRAM_LIGHT, themeInfo);
+
+        // "Aurora": frozen snapshot of the first HashGram look. The assets are static copies (the generator does not
+        // touch them), so Aurora keeps looking the same even when the default HashGram themes evolve.
+        themeInfo = new ThemeInfo();
+        themeInfo.name = HASHGRAM_AURORA_DARK;
+        themeInfo.assetName = "aurora_dark.attheme";
+        themeInfo.previewBackgroundColor = 0xff0B0820;
+        themeInfo.previewInColor = 0xff1A1A28;
+        themeInfo.previewOutColor = 0xff6A4DFF;
+        themeInfo.sortIndex = 0;
+        themeInfo.isDark = ThemeInfo.DARK;
+        themes.add(themeInfo);
+        themesDict.put(HASHGRAM_AURORA_DARK, themeInfo);
+
+        themeInfo = new ThemeInfo();
+        themeInfo.name = HASHGRAM_AURORA_LIGHT;
+        themeInfo.assetName = "aurora_light.attheme";
+        themeInfo.previewBackgroundColor = 0xffF1EEFF;
+        themeInfo.previewInColor = 0xffFFFFFF;
+        themeInfo.previewOutColor = 0xff7A5CFF;
+        themeInfo.sortIndex = 0;
+        themeInfo.isDark = ThemeInfo.LIGHT;
+        themes.add(themeInfo);
+        themesDict.put(HASHGRAM_AURORA_LIGHT, themeInfo);
 
         String themesString = themeConfig.getString("themes2", null);
 

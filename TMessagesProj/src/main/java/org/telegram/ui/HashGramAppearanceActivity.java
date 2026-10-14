@@ -60,6 +60,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
 
     private int rowCount;
     private int themeHeaderRow;
+    private int themeAuroraDarkRow;
+    private int themeAuroraLightRow;
     private int themeAmoledRow;
     private int themeMintRow;
     private int themeLavenderRow;
@@ -92,6 +94,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
     private void updateRows() {
         rowCount = 0;
         themeHeaderRow = rowCount++;
+        themeAuroraDarkRow = rowCount++;
+        themeAuroraLightRow = rowCount++;
         themeAmoledRow = rowCount++;
         themeMintRow = rowCount++;
         themeLavenderRow = rowCount++;
@@ -144,7 +148,13 @@ public class HashGramAppearanceActivity extends BaseFragment {
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         listView.setOnItemClickListener((view, position) -> {
-            if (position >= themeAmoledRow && position <= themeMidnightBlueRow) {
+            if (position == themeAuroraDarkRow || position == themeAuroraLightRow) {
+                Theme.ThemeInfo aurora = Theme.getTheme(position == themeAuroraDarkRow ? Theme.HASHGRAM_AURORA_DARK : Theme.HASHGRAM_AURORA_LIGHT);
+                if (aurora != null && parentLayout != null) {
+                    Theme.applyTheme(aurora);
+                    parentLayout.rebuildAllFragmentViews(true, true);
+                }
+            } else if (position >= themeAmoledRow && position <= themeMidnightBlueRow) {
                 applyThemePreview(position);
             } else if (position == settingsIconsRow) {
                 presentFragment(new HashGramSettingsIconsActivity());
@@ -418,7 +428,7 @@ public class HashGramAppearanceActivity extends BaseFragment {
         @Override
         public boolean isEnabled(RecyclerView.ViewHolder holder) {
             int position = holder.getAdapterPosition();
-            return (position >= themeAmoledRow && position <= themeMidnightBlueRow) ||
+            return position == themeAuroraDarkRow || position == themeAuroraLightRow || (position >= themeAmoledRow && position <= themeMidnightBlueRow) ||
                    position == settingsIconsRow || position == avatarShapeRow || position == fontTypeRow || position == hideMicCamRow ||
                    position == iconDefaultRow || position == iconMintRow || position == iconGreenRow;
         }
@@ -472,7 +482,9 @@ public class HashGramAppearanceActivity extends BaseFragment {
                 }
                 case 1: {
                     TextCell textCell = (TextCell) holder.itemView;
-                    if (position == themeAmoledRow) textCell.setText("AMOLED", true);
+                    if (position == themeAuroraDarkRow) textCell.setText("HashGram Aurora (тёмная)", true);
+                    else if (position == themeAuroraLightRow) textCell.setText("HashGram Aurora (светлая)", true);
+                    else if (position == themeAmoledRow) textCell.setText("AMOLED", true);
                     else if (position == themeMintRow) textCell.setText("Mint", true);
                     else if (position == themeLavenderRow) textCell.setText("Lavender", true);
                     else if (position == themeHackerRow) textCell.setText("Hacker", true);
@@ -540,7 +552,7 @@ public class HashGramAppearanceActivity extends BaseFragment {
         public int getItemViewType(int position) {
             if (position == themeHeaderRow || position == customHeaderRow || position == iconHeaderRow) {
                 return 0;
-            } else if ((position >= themeAmoledRow && position <= themeMidnightBlueRow) || position == settingsIconsRow || position == iconDefaultRow || position == iconMintRow || position == iconGreenRow) {
+            } else if (position == themeAuroraDarkRow || position == themeAuroraLightRow || (position >= themeAmoledRow && position <= themeMidnightBlueRow) || position == settingsIconsRow || position == iconDefaultRow || position == iconMintRow || position == iconGreenRow) {
                 return 1;
             } else if (position == themeSectionRow || position == customSectionRow || position == iconSectionRow) {
                 return 2;

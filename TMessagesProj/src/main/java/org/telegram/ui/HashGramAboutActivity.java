@@ -26,6 +26,8 @@ import java.util.ArrayList;
 
 public class HashGramAboutActivity extends BaseFragment {
 
+    private TextView aboutTitle, aboutVersion, aboutDescription, aboutLink;
+
     @Override
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
@@ -66,6 +68,7 @@ public class HashGramAboutActivity extends BaseFragment {
         titleTextView.setTypeface(AndroidUtilities.bold());
         titleTextView.setText("HashGram");
         titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+        aboutTitle = titleTextView;
         linearLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 0));
 
         String versionName = "?";
@@ -80,6 +83,7 @@ public class HashGramAboutActivity extends BaseFragment {
         versionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         versionTextView.setText("v" + org.telegram.messenger.BuildConfig.HASHGRAM_VERSION + " (" + org.telegram.messenger.BuildConfig.HASHGRAM_BUILD_HASH + ")  \u00b7  Telegram " + versionName);
         versionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+        aboutVersion = versionTextView;
         linearLayout.addView(versionTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 6, 0, 0));
 
         TextView descriptionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
@@ -88,6 +92,7 @@ public class HashGramAboutActivity extends BaseFragment {
         descriptionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         descriptionTextView.setLineSpacing(AndroidUtilities.dp(3), 1f);
         descriptionTextView.setText("Клиент Telegram для тех, кто ценит приватность, эстетику и свободу.");
+        aboutDescription = descriptionTextView;
         linearLayout.addView(descriptionTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 48, 28, 48, 0));
 
         TextView githubButton = new org.telegram.ui.Components.TypefaceTextView(context);
@@ -99,6 +104,7 @@ public class HashGramAboutActivity extends BaseFragment {
         githubButton.setPadding(AndroidUtilities.dp(24), AndroidUtilities.dp(14), AndroidUtilities.dp(24), AndroidUtilities.dp(14));
         githubButton.setBackground(Theme.createSelectorDrawable(Theme.getColor(Theme.key_listSelector), 2));
         githubButton.setOnClickListener(v -> Browser.openUrl(getParentActivity(), "https://github.com/onemorefix1337/HashGram"));
+        aboutLink = githubButton;
         linearLayout.addView(githubButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 20, 0, 0));
 
         return fragmentView;
@@ -107,6 +113,10 @@ public class HashGramAboutActivity extends BaseFragment {
     @Override
     public ArrayList<ThemeDescription> getThemeDescriptions() {
         ArrayList<ThemeDescription> themeDescriptions = new ArrayList<>();
+        themeDescriptions.add(new ThemeDescription(aboutTitle, ThemeDescription.FLAG_TEXTCOLOR, null, null, null, null, Theme.key_windowBackgroundWhiteBlackText));
+        themeDescriptions.add(new ThemeDescription(aboutVersion, ThemeDescription.FLAG_TEXTCOLOR, null, null, null, null, Theme.key_windowBackgroundWhiteGrayText));
+        themeDescriptions.add(new ThemeDescription(aboutDescription, ThemeDescription.FLAG_TEXTCOLOR, null, null, null, null, Theme.key_windowBackgroundWhiteGrayText));
+        themeDescriptions.add(new ThemeDescription(aboutLink, ThemeDescription.FLAG_TEXTCOLOR, null, null, null, null, Theme.key_windowBackgroundWhiteBlueText4));
         themeDescriptions.add(new ThemeDescription(fragmentView, ThemeDescription.FLAG_BACKGROUND, null, null, null, null, Theme.key_windowBackgroundGray));
         themeDescriptions.add(new ThemeDescription(actionBar, ThemeDescription.FLAG_BACKGROUND, null, null, null, null, Theme.key_actionBarDefault));
         themeDescriptions.add(new ThemeDescription(actionBar, ThemeDescription.FLAG_AB_ITEMSCOLOR, null, null, null, null, Theme.key_actionBarDefaultIcon));

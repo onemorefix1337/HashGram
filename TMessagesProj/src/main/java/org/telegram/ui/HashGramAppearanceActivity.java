@@ -149,10 +149,13 @@ public class HashGramAppearanceActivity extends BaseFragment {
 
         listView.setOnItemClickListener((view, position) -> {
             if (position == themeAuroraDarkRow || position == themeAuroraLightRow) {
-                Theme.ThemeInfo aurora = Theme.getTheme(position == themeAuroraDarkRow ? Theme.HASHGRAM_AURORA_DARK : Theme.HASHGRAM_AURORA_LIGHT);
-                if (aurora != null && parentLayout != null) {
-                    Theme.applyTheme(aurora);
-                    parentLayout.rebuildAllFragmentViews(true, true);
+                final boolean dark = position == themeAuroraDarkRow;
+                Theme.ThemeInfo aurora = Theme.getTheme(dark ? Theme.HASHGRAM_AURORA_DARK : Theme.HASHGRAM_AURORA_LIGHT);
+                if (aurora != null && getParentActivity() != null) {
+                    org.telegram.ui.Components.HashGramThemePreviewSheet.show(getParentActivity(), aurora,
+                            dark ? "HashGram Aurora" : "HashGram Aurora Light",
+                            dark ? "Тёмная тема с фиолетово-голубым акцентом" : "Светлая тема с фиолетово-голубым акцентом",
+                            () -> Theme.turnOffAutoNight(HashGramAppearanceActivity.this));
                 }
             } else if (position >= themeAmoledRow && position <= themeMidnightBlueRow) {
                 applyThemePreview(position);
@@ -569,6 +572,15 @@ public class HashGramAppearanceActivity extends BaseFragment {
     public ArrayList<ThemeDescription> getThemeDescriptions() {
         ArrayList<ThemeDescription> themeDescriptions = new ArrayList<>();
         themeDescriptions.add(new ThemeDescription(listView, ThemeDescription.FLAG_CELLBACKGROUNDCOLOR, new Class[]{HeaderCell.class, TextCell.class, TextDetailSettingsCell.class, TextCheckCell.class}, null, null, null, Theme.key_windowBackgroundWhite));
+        themeDescriptions.add(new ThemeDescription(listView, 0, new Class[]{TextCell.class}, new String[]{"textView"}, null, null, null, Theme.key_windowBackgroundWhiteBlackText));
+        themeDescriptions.add(new ThemeDescription(listView, 0, new Class[]{TextCell.class}, new String[]{"valueTextView"}, null, null, null, Theme.key_windowBackgroundWhiteValueText));
+        themeDescriptions.add(new ThemeDescription(listView, 0, new Class[]{HeaderCell.class}, new String[]{"textView"}, null, null, null, Theme.key_windowBackgroundWhiteBlueHeader));
+        themeDescriptions.add(new ThemeDescription(listView, 0, new Class[]{TextDetailSettingsCell.class}, new String[]{"textView"}, null, null, null, Theme.key_windowBackgroundWhiteBlackText));
+        themeDescriptions.add(new ThemeDescription(listView, 0, new Class[]{TextDetailSettingsCell.class}, new String[]{"valueTextView"}, null, null, null, Theme.key_windowBackgroundWhiteGrayText2));
+        themeDescriptions.add(new ThemeDescription(listView, 0, new Class[]{TextCheckCell.class}, new String[]{"textView"}, null, null, null, Theme.key_windowBackgroundWhiteBlackText));
+        themeDescriptions.add(new ThemeDescription(listView, 0, new Class[]{TextCheckCell.class}, new String[]{"checkBox"}, null, null, null, Theme.key_switchTrack));
+        themeDescriptions.add(new ThemeDescription(listView, 0, new Class[]{TextCheckCell.class}, new String[]{"checkBox"}, null, null, null, Theme.key_switchTrackChecked));
+        themeDescriptions.add(new ThemeDescription(listView, ThemeDescription.FLAG_BACKGROUNDFILTER, new Class[]{ShadowSectionCell.class}, null, null, null, Theme.key_windowBackgroundGrayShadow));
         themeDescriptions.add(new ThemeDescription(fragmentView, ThemeDescription.FLAG_BACKGROUND, null, null, null, null, Theme.key_windowBackgroundGray));
         themeDescriptions.add(new ThemeDescription(actionBar, ThemeDescription.FLAG_BACKGROUND, null, null, null, null, Theme.key_actionBarDefault));
         themeDescriptions.add(new ThemeDescription(listView, ThemeDescription.FLAG_LISTGLOWCOLOR, null, null, null, null, Theme.key_actionBarDefault));

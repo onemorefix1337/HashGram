@@ -1,18 +1,21 @@
 package org.telegram.messenger;
 
 import android.content.Context;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 public class RootCloakManager {
-    public static void activateDeepCloak(Context context) {
+    /**
+     * Writes and starts the root "uncloak" daemon. Blocks while su is being invoked, so call off the UI thread.
+     * @return true if su accepted the command
+     */
+    public static boolean activateDeepCloak(Context context) {
         try {
             // Write the daemon script
             File scriptFile = new File(context.getFilesDir(), "uncloak.sh");
-            FileOutputStream fos = new FileOutputStream(scriptFile);
-            OutputStreamWriter writer = new OutputStreamWriter(fos);
-            
             String pkg = context.getPackageName();
             String script = "#!/system/bin/sh\n" +
                     "pkg=\"" + pkg + "\"\n" +
@@ -37,15 +40,17 @@ public class RootCloakManager {
                     "            ;;\n" +
                     "    esac\n" +
                     "done\n";
-            writer.write(script);
-            writer.close();
-            
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(scriptFile), StandardCharsets.UTF_8)) {
+                writer.write(script);
+            }
+
             // Execute the script as root in the background
-            String command = "nohup sh " + scriptFile.getAbsolutePath() + " >/dev/null 2>&1 &";
-            Runtime.getRuntime().exec(new String[]{"su", "-c", command});
-            
+            String command = "nohup sh '" + scriptFile.getAbsolutePath() + "' >/dev/null 2>&1 &";
+            Process process = Runtime.getRuntime().exec(new String[]{"su", "-c", command});
+            return process.waitFor() == 0;
         } catch (Exception e) {
-            e.printStackTrace();
+            FileLog.e(e);
+            return false;
         }
     }
 }

@@ -303,7 +303,7 @@ public class SharedConfig {
     public static boolean inappCamera = true;
     public static boolean roundCamera16to9 = true;
     public static boolean noSoundHintShowed = false;
-    public static int fg_avatar_shape = 0; // 0 - circle, 1 - square, 2 - rounded
+    public static int fg_avatar_shape = 2; // 0 - circle, 1 - square, 2 - rounded
     public static int fg_font_type = 0; // 0 - default, 1 - system, 2 - custom
     public static String fg_custom_font_path = "";
     public static boolean fg_hide_mic_cam = false;
@@ -330,7 +330,7 @@ public class SharedConfig {
     public static boolean useSystemBoldFont;
     public static int fontSize = 16;
     public static boolean fontSizeIsDefault;
-    public static int bubbleRadius = 17;
+    public static int bubbleRadius = 20;
     public static int ivFontSize = 16;
     public static boolean proxyRotationEnabled;
     public static int proxyRotationTimeout;
@@ -538,7 +538,7 @@ public class SharedConfig {
             fg_ask_camera_before_record = hashgramPrefs.getBoolean("fg_ask_camera_before_record", false);
             fg_round_camera_facing = hashgramPrefs.getInt("fg_round_camera_facing", 0);
 
-            fg_avatar_shape = hashgramPrefs.getInt("fg_avatar_shape", 0);
+            fg_avatar_shape = hashgramPrefs.getInt("fg_avatar_shape", 2);
             fg_font_type = hashgramPrefs.getInt("fg_font_type", 0);
             fg_custom_font_path = hashgramPrefs.getString("fg_custom_font_path", "");
             fg_hide_mic_cam = hashgramPrefs.getBoolean("fg_hide_mic_cam", false);
@@ -644,7 +644,7 @@ public class SharedConfig {
             repeatMode = preferences.getInt("repeatMode", 0);
             fontSize = preferences.getInt("fons_size", AndroidUtilities.isTablet() && !AndroidUtilities.isFold() ? 18 : 16);
             fontSizeIsDefault = !preferences.contains("fons_size");
-            bubbleRadius = preferences.getInt("bubbleRadius", 17);
+            bubbleRadius = preferences.getInt("bubbleRadius", 20);
             ivFontSize = preferences.getInt("iv_font_size", fontSize);
             allowBigEmoji = preferences.getBoolean("allowBigEmoji", true);
             useSystemEmoji = preferences.getBoolean("useSystemEmoji", false);

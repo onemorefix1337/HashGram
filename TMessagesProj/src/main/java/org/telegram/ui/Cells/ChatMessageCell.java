@@ -18483,7 +18483,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
         }
-        boolean isHashgramDeleted = currentMessageObject != null && (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", android.content.Context.MODE_PRIVATE).getBoolean("del_" + currentMessageObject.getDialogId() + "_" + currentMessageObject.getId(), false) || org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", android.content.Context.MODE_PRIVATE).getBoolean("del_" + currentMessageObject.getId(), false));
+        boolean isHashgramDeleted = currentMessageObject != null && (org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", android.content.Context.MODE_PRIVATE).getBoolean("del_" + currentMessageObject.getDialogId() + "_" + currentMessageObject.getId(), false) || (currentMessageObject.messageOwner != null && currentMessageObject.messageOwner.peer_id != null && currentMessageObject.messageOwner.peer_id.channel_id == 0 && org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", android.content.Context.MODE_PRIVATE).getBoolean("del_" + currentMessageObject.getId(), false))); // id-only key is global-id (non-channel) dialogs only; channel ids collide across channels
         if (currentMessageObject.isWelcomeMessage()) {
             timeString = ""; // Long.toString(currentMessageObject.getId());
         } else if (currentMessageObject.notime || currentMessageObject.isSponsored() || currentMessageObject.isQuickReply() || currentMessageObject.isWelcomeMessage()) {

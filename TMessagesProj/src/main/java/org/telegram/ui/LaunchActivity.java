@@ -280,6 +280,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             float delta = mAccelCurrent - mAccelLast;
             mAccel = mAccel * 0.9f + delta;
             if (mAccel > 35) {
+                mAccel = 0;
                 // Shake detected! Panic button triggered.
                 // Log out all accounts to be safe.
                 for (int i = 0; i < UserConfig.MAX_ACCOUNT_COUNT; i++) {
@@ -491,7 +492,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         getWindow().setBackgroundDrawable(new ActivityWindowEmptyBackgroundDrawable());
         getWindow().setFormat(PixelFormat.OPAQUE);
 
-        flagSecureReason = new FlagSecureReason(getWindow(), () -> SharedConfig.passcodeHash.length() > 0 && !SharedConfig.allowScreenCapture);
+        flagSecureReason = new FlagSecureReason(getWindow(), () -> (SharedConfig.passcodeHash.length() > 0 && !SharedConfig.allowScreenCapture) || ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE).getBoolean("fg_secure_window", false));
         flagSecureReason.attach();
 
         super.onCreate(savedInstanceState);

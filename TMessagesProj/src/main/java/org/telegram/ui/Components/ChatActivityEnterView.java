@@ -3035,11 +3035,21 @@ public class ChatActivityEnterView extends FrameLayout implements
                                     org.telegram.ui.ActionBar.AlertDialog.Builder builder = new org.telegram.ui.ActionBar.AlertDialog.Builder(parentActivity);
                                     builder.setTitle("HashGram");
                                     builder.setMessage("Отправить сообщение?");
+                                    final boolean[] confirmHandled = new boolean[1];
                                     builder.setPositiveButton("Отправить", (dialogInterface, i) -> {
+                                        confirmHandled[0] = true;
                                         org.telegram.messenger.MediaController.getInstance().stopRecording(1, true, 0, voiceOnce, 0);
                                     });
                                     builder.setNegativeButton("Отмена", (dialogInterface, i) -> {
+                                        confirmHandled[0] = true;
                                         org.telegram.messenger.MediaController.getInstance().stopRecording(0, false, 0, voiceOnce, 0);
+                                    });
+                                    builder.setOnCancelListener(dialogInterface -> {
+                                        // dismissed by tapping outside / back: discard the recording instead of leaving it running
+                                        if (!confirmHandled[0]) {
+                                            confirmHandled[0] = true;
+                                            org.telegram.messenger.MediaController.getInstance().stopRecording(0, false, 0, voiceOnce, 0);
+                                        }
                                     });
                                     builder.show();
                                 } else {
@@ -3168,11 +3178,21 @@ public class ChatActivityEnterView extends FrameLayout implements
                                     org.telegram.ui.ActionBar.AlertDialog.Builder builder = new org.telegram.ui.ActionBar.AlertDialog.Builder(parentActivity);
                                     builder.setTitle("HashGram");
                                     builder.setMessage("Отправить сообщение?");
+                                    final boolean[] confirmHandled = new boolean[1];
                                     builder.setPositiveButton("Отправить", (dialogInterface, i) -> {
+                                        confirmHandled[0] = true;
                                         org.telegram.messenger.MediaController.getInstance().stopRecording(1, true, 0, voiceOnce, 0);
                                     });
                                     builder.setNegativeButton("Отмена", (dialogInterface, i) -> {
+                                        confirmHandled[0] = true;
                                         org.telegram.messenger.MediaController.getInstance().stopRecording(0, false, 0, voiceOnce, 0);
+                                    });
+                                    builder.setOnCancelListener(dialogInterface -> {
+                                        // dismissed by tapping outside / back: discard the recording instead of leaving it running
+                                        if (!confirmHandled[0]) {
+                                            confirmHandled[0] = true;
+                                            org.telegram.messenger.MediaController.getInstance().stopRecording(0, false, 0, voiceOnce, 0);
+                                        }
                                     });
                                     builder.show();
                                 } else {

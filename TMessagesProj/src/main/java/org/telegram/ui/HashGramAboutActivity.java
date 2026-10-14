@@ -47,63 +47,59 @@ public class HashGramAboutActivity extends BaseFragment {
         LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-        frameLayout.addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 40, 0, 0));
+        frameLayout.addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 72, 0, 0));
 
         ImageView imageView = new ImageView(context);
-        imageView.setImageResource(R.mipmap.ic_launcher);
-        linearLayout.addView(imageView, LayoutHelper.createLinear(120, 120, Gravity.CENTER_HORIZONTAL));
+        imageView.setImageResource(R.drawable.hashgram_glyph);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        int pad = AndroidUtilities.dp(14);
+        imageView.setPadding(pad, pad, pad, pad);
+        android.graphics.drawable.GradientDrawable tile = new android.graphics.drawable.GradientDrawable(
+                android.graphics.drawable.GradientDrawable.Orientation.TL_BR, new int[]{0xFF7A5CFF, 0xFF3E7BFF});
+        tile.setCornerRadius(AndroidUtilities.dp(22));
+        imageView.setBackground(tile);
+        linearLayout.addView(imageView, LayoutHelper.createLinear(80, 80, Gravity.CENTER_HORIZONTAL));
 
         TextView titleTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         titleTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24);
-        titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        titleTextView.setTypeface(AndroidUtilities.bold());
         titleTextView.setText("HashGram");
         titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
         linearLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 16, 0, 0));
 
-        String versionName = "Unknown";
-        String versionCode = "0";
+        String versionName = "?";
         try {
-            android.content.pm.PackageInfo info = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-            versionName = info.versionName;
-            versionCode = String.valueOf(info.versionCode);
+            versionName = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0).versionName;
         } catch (Exception e) {
-            e.printStackTrace();
+            org.telegram.messenger.FileLog.e(e);
         }
 
         TextView versionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         versionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
-        versionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        versionTextView.setText("HashGram v" + org.telegram.messenger.BuildConfig.HASHGRAM_VERSION + " (" + org.telegram.messenger.BuildConfig.HASHGRAM_BUILD_COUNT + " " + org.telegram.messenger.BuildConfig.HASHGRAM_BUILD_HASH + ")\n" +
-                                "Telegram v" + versionName + " (" + versionCode + ")");
+        versionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+        versionTextView.setText("v" + org.telegram.messenger.BuildConfig.HASHGRAM_VERSION + " (" + org.telegram.messenger.BuildConfig.HASHGRAM_BUILD_HASH + ")  \u00b7  Telegram " + versionName);
         versionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-        linearLayout.addView(versionTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 4, 0, 0));
+        linearLayout.addView(versionTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 6, 0, 0));
 
         TextView descriptionTextView = new org.telegram.ui.Components.TypefaceTextView(context);
-        descriptionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
+        descriptionTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
         descriptionTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
         descriptionTextView.setGravity(Gravity.CENTER_HORIZONTAL);
-        descriptionTextView.setText("HashGram — это продвинутый и оптимизированный клиент Telegram, созданный для энтузиастов и тех, кто ценит максимальный комфорт, эстетику и свободу.\n\n" +
-                                    "Ключевые особенности:\n" +
-                                    "• Расширенная приватность (Ghost Mode, Stealth)\n" +
-                                    "• Гибкая кастомизация (Шрифты, Иконки, Темы)\n" +
-                                    "• Снятие ограничений и отключение рекламы\n" +
-                                    "• Оптимизация памяти и высокая скорость работы\n\n" +
-                                    "Все изменения автоматизированы и собираются прямо из исходного кода. Разработано с душой специально для вас.");
-        linearLayout.addView(descriptionTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 24, 32, 0));
+        descriptionTextView.setLineSpacing(AndroidUtilities.dp(3), 1f);
+        descriptionTextView.setText("Клиент Telegram для тех, кто ценит приватность, эстетику и свободу.");
+        linearLayout.addView(descriptionTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 48, 28, 48, 0));
 
         TextView githubButton = new org.telegram.ui.Components.TypefaceTextView(context);
         githubButton.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText4));
         githubButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        githubButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        githubButton.setTypeface(AndroidUtilities.bold());
         githubButton.setGravity(Gravity.CENTER_HORIZONTAL);
-        githubButton.setText("Исходный код (GitHub)");
-        githubButton.setPadding(0, AndroidUtilities.dp(16), 0, AndroidUtilities.dp(16));
-        githubButton.setBackgroundDrawable(Theme.createSelectorDrawable(Theme.getColor(Theme.key_listSelector), 2));
-        githubButton.setOnClickListener(v -> {
-            Browser.openUrl(getParentActivity(), "https://github.com/onemorefix1337/HashGram");
-        });
-        linearLayout.addView(githubButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 32, 32, 32, 0));
+        githubButton.setText("Исходный код на GitHub");
+        githubButton.setPadding(AndroidUtilities.dp(24), AndroidUtilities.dp(14), AndroidUtilities.dp(24), AndroidUtilities.dp(14));
+        githubButton.setBackground(Theme.createSelectorDrawable(Theme.getColor(Theme.key_listSelector), 2));
+        githubButton.setOnClickListener(v -> Browser.openUrl(getParentActivity(), "https://github.com/onemorefix1337/HashGram"));
+        linearLayout.addView(githubButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 0, 20, 0, 0));
 
         return fragmentView;
     }

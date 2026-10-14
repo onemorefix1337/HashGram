@@ -38,7 +38,13 @@ public class HashGramAppearanceActivity extends BaseFragment {
     private void setAppIcon(String componentName) {
         try {
             android.content.pm.PackageManager pm = ApplicationLoader.applicationContext.getPackageManager();
-            String[] icons = {"org.telegram.messenger.DefaultIcon", "org.telegram.messenger.MintIcon", "org.telegram.messenger.GreenIcon"};
+            // Disable every launcher alias (including Vintage/Aqua/etc.), otherwise several icons stay on the launcher
+            String[] icons = {
+                    "org.telegram.messenger.DefaultIcon", "org.telegram.messenger.MintIcon", "org.telegram.messenger.GreenIcon",
+                    "org.telegram.messenger.VintageIcon", "org.telegram.messenger.AquaIcon", "org.telegram.messenger.PremiumIcon",
+                    "org.telegram.messenger.TurboIcon", "org.telegram.messenger.NoxIcon"
+            };
+            ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE).edit().putBoolean("light_cloak_active", false).apply();
             for (String icon : icons) {
                 pm.setComponentEnabledSetting(
                         new android.content.ComponentName(ApplicationLoader.applicationContext, icon),
@@ -149,8 +155,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
                     SharedConfig.fg_avatar_shape = which;
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
                     preferences.edit().putInt("fg_avatar_shape", which).apply();
-                    if (listView != null) {
-                        listView.invalidateViews();
+                    if (listAdapter != null) {
+                        listAdapter.notifyDataSetChanged();
                     }
                 });
                 showDialog(builder.create());
@@ -195,8 +201,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
                             SharedConfig.fg_custom_font_path = files[fileIndex].getAbsolutePath();
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
                             preferences.edit().putInt("fg_font_type", 2).putString("fg_custom_font_path", SharedConfig.fg_custom_font_path).apply();
-                            if (listView != null) {
-                                listView.invalidateViews();
+                            if (listAdapter != null) {
+                                listAdapter.notifyDataSetChanged();
                             }
                             AlertDialog.Builder restartBuilder = new AlertDialog.Builder(getParentActivity());
                             restartBuilder.setTitle(LocaleController.getString("AppName", org.telegram.messenger.R.string.AppName));
@@ -218,8 +224,8 @@ public class HashGramAppearanceActivity extends BaseFragment {
                         }
                         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", Context.MODE_PRIVATE);
                         preferences.edit().putInt("fg_font_type", SharedConfig.fg_font_type).putString("fg_custom_font_path", SharedConfig.fg_custom_font_path).apply();
-                        if (listView != null) {
-                            listView.invalidateViews();
+                        if (listAdapter != null) {
+                            listAdapter.notifyDataSetChanged();
                         }
                         AlertDialog.Builder restartBuilder = new AlertDialog.Builder(getParentActivity());
                         restartBuilder.setTitle(LocaleController.getString("AppName", org.telegram.messenger.R.string.AppName));

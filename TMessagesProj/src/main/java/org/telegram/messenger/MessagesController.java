@@ -16193,6 +16193,11 @@ public class MessagesController extends BaseController implements NotificationCe
         }
         getUserConfig().clearConfig();
         SharedPrefsHelper.cleanupAccount(currentAccount);
+        if (UserConfig.getActivatedAccountsCount() == 0) {
+            // HashGram: don't leave saved deleted/edited message traces after the last account is gone
+            ApplicationLoader.applicationContext.getSharedPreferences("hashgram_deleted_msgs", Context.MODE_PRIVATE).edit().clear().apply();
+            ApplicationLoader.applicationContext.getSharedPreferences("hashgram_edit_history", Context.MODE_PRIVATE).edit().clear().apply();
+        }
 
         boolean shouldHandle = true;
         ArrayList<NotificationCenter.NotificationCenterDelegate> observers = getNotificationCenter().getObservers(NotificationCenter.appDidLogout);

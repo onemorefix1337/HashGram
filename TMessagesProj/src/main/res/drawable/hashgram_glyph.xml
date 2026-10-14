@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HashGram glyph: a hash sign with a paper plane. White, meant to sit on a gradient tile. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+    <path
+        android:pathData="M38,22 L30,74 M62,22 L54,74 M18,40 L74,40 M16,58 L72,58"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="7"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M84,12 L52,26 L62,32 L66,46 L72,38 L80,42 Z" />
+    <path
+        android:fillColor="#B8A9FF"
+        android:pathData="M62,32 L84,12 L66,46 Z" />
+</vector>

@@ -8,6 +8,14 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.R;
 
 public class LauncherIconController {
+    // HashGram icons that have a manifest alias but are not part of the LauncherIcon enum
+    public static final String[] HASHGRAM_EXTRA_ICONS = {"MintIcon", "GreenIcon"};
+
+    public static boolean isAliasEnabled(String alias) {
+        Context ctx = ApplicationLoader.applicationContext;
+        return ctx.getPackageManager().getComponentEnabledSetting(new ComponentName(ctx.getPackageName(), "org.telegram.messenger." + alias)) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+    }
+
     public static void tryFixLauncherIconIfNeeded() {
         if (ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE).getBoolean("light_cloak_active", false)) {
             return;
@@ -15,6 +23,11 @@ public class LauncherIconController {
 
         for (LauncherIcon icon : LauncherIcon.values()) {
             if (isEnabled(icon)) {
+                return;
+            }
+        }
+        for (String alias : HASHGRAM_EXTRA_ICONS) {
+            if (isAliasEnabled(alias)) {
                 return;
             }
         }
@@ -33,6 +46,10 @@ public class LauncherIconController {
         PackageManager pm = ctx.getPackageManager();
         for (LauncherIcon i : LauncherIcon.values()) {
             pm.setComponentEnabledSetting(i.getComponentName(ctx), i == icon ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED :
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        }
+        for (String alias : HASHGRAM_EXTRA_ICONS) {
+            pm.setComponentEnabledSetting(new ComponentName(ctx.getPackageName(), "org.telegram.messenger." + alias),
                     PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
         }
     }

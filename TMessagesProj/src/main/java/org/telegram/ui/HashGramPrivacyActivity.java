@@ -32,13 +32,14 @@ public class HashGramPrivacyActivity extends UniversalFragment {
 
     @Override
     protected void fillItems(ArrayList<UItem> items, UniversalAdapter adapter) {
-                items.add(UItem.asHeader("Режим маскировки"));
+        items.add(UItem.asHeader("Режим маскировки"));
         items.add(UItem.asButton(100, "Light Cloak (Скрыть иконку)"));
         items.add(UItem.asButton(101, "Deep Cloak (Требуется Root)"));
         items.add(UItem.asShadow("Light Cloak убирает иконку лаунчера (возврат через код *#*#4274#*#* в звонилке). Deep Cloak полностью замораживает приложение (возврат: Вверх-Вниз-Вверх-Вниз)."));
 
         items.add(UItem.asHeader("Паранойя (Экстремальная приватность)"));
         items.add(UItem.asCheck(103, "Кнопка Паники (Выход по тряске)").setChecked(prefs.getBoolean("fg_panic_button", false)));
+        items.add(UItem.asCheck(105, "Скрыть содержимое в «Недавних» (блокирует скриншоты)").setChecked(prefs.getBoolean("fg_secure_window", false)));
         items.add(UItem.asButton(104, "Установить Фейковый Пароль (Пин-код)"));
         items.add(UItem.asShadow("Кнопка паники мгновенно завершит сессию на всех аккаунтах, если сильно потрясти телефон. Фейковый пароль при вводе скрывает все чаты (нужно включить код-пароль)."));
 
@@ -85,7 +86,7 @@ public class HashGramPrivacyActivity extends UniversalFragment {
                     pm.setComponentEnabledSetting(
                         new android.content.ComponentName(getParentActivity(), alias),
                         android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                        0
+                        android.content.pm.PackageManager.DONT_KILL_APP
                     );
                 }
                 getParentActivity().finishAffinity();
@@ -99,8 +100,17 @@ public class HashGramPrivacyActivity extends UniversalFragment {
             builder.setTitle("Deep Cloak (Root)");
             builder.setMessage("Приложение будет полностью заморожено (pm disable) и исчезнет. Для возврата нажмите кнопки громкости: Вверх-Вниз-Вверх-Вниз. Потребуется доступ Superuser. Продолжить?");
             builder.setPositiveButton("Да", (dialogInterface, i) -> {
-                org.telegram.messenger.RootCloakManager.activateDeepCloak(getParentActivity());
-                getParentActivity().finishAffinity();
+                final android.app.Activity activity = getParentActivity();
+                org.telegram.messenger.Utilities.globalQueue.postRunnable(() -> {
+                    boolean ok = org.telegram.messenger.RootCloakManager.activateDeepCloak(activity);
+                    org.telegram.messenger.AndroidUtilities.runOnUIThread(() -> {
+                        if (ok) {
+                            activity.finishAffinity();
+                        } else {
+                            android.widget.Toast.makeText(activity, "Не удалось получить root-доступ", android.widget.Toast.LENGTH_LONG).show();
+                        }
+                    });
+                });
             });
             builder.setNegativeButton("Отмена", null);
             showDialog(builder.create());
@@ -121,6 +131,7 @@ public class HashGramPrivacyActivity extends UniversalFragment {
         }
         switch (item.id) {
             case 103: key = "fg_panic_button"; break;
+            case 105: key = "fg_secure_window"; break;
             case 20: key = "fg_hide_online"; break;
             case 24: key = "fg_always_online"; break;
             case 2: key = "fg_ghost_read"; break;
@@ -131,7 +142,19 @@ public class HashGramPrivacyActivity extends UniversalFragment {
 
         if (key != null) {
             prefs.edit().putBoolean(key, item.checked).apply();
+            // "Призрак" и "Всегда в сети" взаимоисключающие
+            String opposite = null;
+            if (item.checked && key.equals("fg_hide_online")) opposite = "fg_always_online";
+            if (item.checked && key.equals("fg_always_online")) opposite = "fg_hide_online";
+            if (opposite != null && prefs.getBoolean(opposite, false)) {
+                prefs.edit().putBoolean(opposite, false).apply();
+                listView.adapter.update(true);
+            }
             if (key.equals("fg_panic_button")) SharedConfig.fg_panic_button = item.checked;
+            if (key.equals("fg_secure_window")) {
+                // LaunchActivity re-evaluates FLAG_SECURE on this notification
+                org.telegram.messenger.NotificationCenter.getGlobalInstance().postNotificationName(org.telegram.messenger.NotificationCenter.didSetPasscode);
+            }
                         if (key.equals("fg_ghost_read") || key.equals("fg_smart_ghost")) {
                 org.telegram.messenger.UserConfig.getInstance(org.telegram.messenger.UserConfig.selectedAccount).saveConfig(false);
             }

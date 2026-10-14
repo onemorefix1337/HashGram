@@ -42,6 +42,9 @@ public class HashGramUpdater {
     public static UpdaterDelegate delegate;
 
     public static void checkUpdate(Activity activity, boolean showToastIfLatest) {
+        if (BuildConfig.DEBUG_VERSION && !showToastIfLatest) {
+            return; // dev builds are never "older" than a release; don't nag on every launch
+        }
         Utilities.globalQueue.postRunnable(() -> {
             try {
                 URL url = new URL("https://api.github.com/repos/onemorefix1337/HashGram/releases/latest");
@@ -51,22 +54,28 @@ public class HashGramUpdater {
                 connection.setReadTimeout(5000);
 
                 if (connection.getResponseCode() == 200) {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                     StringBuilder response = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        response.append(line);
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            response.append(line);
+                        }
                     }
-                    reader.close();
 
                     JSONObject jsonObject = new JSONObject(response.toString());
                     String tagName = jsonObject.optString("tag_name", "");
                     
                     String downloadUrl = "";
                     JSONArray assets = jsonObject.optJSONArray("assets");
-                    if (assets != null && assets.length() > 0) {
-                        JSONObject asset = assets.getJSONObject(0);
-                        downloadUrl = asset.optString("browser_download_url", "");
+                    if (assets != null) {
+                        for (int i = 0; i < assets.length(); i++) {
+                            JSONObject asset = assets.getJSONObject(i);
+                            String assetUrl = asset.optString("browser_download_url", "");
+                            if (assetUrl.endsWith(".apk")) {
+                                downloadUrl = assetUrl;
+                                break;
+                            }
+                        }
                     }
 
                     String currentHash = BuildConfig.BUILD_HASH;
@@ -117,54 +126,60 @@ public class HashGramUpdater {
         Toast.makeText(activity, "Загрузка обновления началась...", Toast.LENGTH_SHORT).show();
 
         Utilities.globalQueue.postRunnable(() -> {
+            HttpURLConnection connection = null;
+            File outputFile = null;
+            boolean success = false;
             try {
                 URL url = new URL(downloadUrl);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setConnectTimeout(10000);
+                connection.setReadTimeout(15000);
                 connection.connect();
+                if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                    throw new java.io.IOException("HTTP " + connection.getResponseCode());
+                }
 
                 int fileLength = connection.getContentLength();
-                InputStream input = connection.getInputStream();
-                
+
                 File dir = new File(ApplicationLoader.applicationContext.getFilesDir(), "cache");
                 if (!dir.exists()) dir.mkdirs();
-                File outputFile = new File(dir, "HashGram_" + version + ".apk");
-                
-                FileOutputStream output = new FileOutputStream(outputFile);
+                outputFile = new File(dir, "HashGram_" + version + ".apk");
 
-                byte data[] = new byte[4096];
-                long total = 0;
-                int count;
-                long lastTime = System.currentTimeMillis();
+                try (InputStream input = connection.getInputStream(); FileOutputStream output = new FileOutputStream(outputFile)) {
+                    byte[] data = new byte[4096];
+                    long total = 0;
+                    int count;
+                    long lastTime = System.currentTimeMillis();
 
-                while ((count = input.read(data)) != -1) {
-                    if (!isDownloading) {
-                        output.close();
-                        input.close();
-                        outputFile.delete();
-                        return;
+                    while ((count = input.read(data)) != -1) {
+                        if (!isDownloading) {
+                            return;
+                        }
+                        total += count;
+                        output.write(data, 0, count);
+
+                        if (fileLength > 0 && System.currentTimeMillis() - lastTime > 100) {
+                            lastTime = System.currentTimeMillis();
+                            int progress = (int) (total * 100 / fileLength);
+                            AndroidUtilities.runOnUIThread(() -> {
+                                downloadProgress = progress;
+                                if (delegate != null) delegate.onProgressChanged(progress);
+                            });
+                        }
                     }
-                    total += count;
-                    output.write(data, 0, count);
-
-                    if (fileLength > 0 && System.currentTimeMillis() - lastTime > 100) {
-                        lastTime = System.currentTimeMillis();
-                        int progress = (int) (total * 100 / fileLength);
-                        AndroidUtilities.runOnUIThread(() -> {
-                            downloadProgress = progress;
-                            if (delegate != null) delegate.onProgressChanged(progress);
-                        });
+                    output.flush();
+                    if (fileLength > 0 && total != fileLength) {
+                        throw new java.io.IOException("Incomplete download: " + total + "/" + fileLength);
                     }
                 }
-                
-                output.flush();
-                output.close();
-                input.close();
+                success = true;
 
+                final File apk = outputFile;
                 AndroidUtilities.runOnUIThread(() -> {
                     isDownloading = false;
                     downloadProgress = 100;
                     if (delegate != null) delegate.onDownloadComplete();
-                    installApk(activity, outputFile);
+                    installApk(activity, apk);
                 });
 
             } catch (Exception e) {
@@ -174,6 +189,13 @@ public class HashGramUpdater {
                     if (delegate != null) delegate.onDownloadFailed();
                     Toast.makeText(activity, "Ошибка загрузки обновления", Toast.LENGTH_SHORT).show();
                 });
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+                if (!success && outputFile != null) {
+                    outputFile.delete();
+                }
             }
         });
     }

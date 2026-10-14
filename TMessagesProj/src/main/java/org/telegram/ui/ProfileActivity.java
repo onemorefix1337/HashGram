@@ -11425,8 +11425,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     nameTextView[a].setRightDrawable2(titleTextView.getRightDrawable2());
                 } else if (a == 0 && user.id != getUserConfig().getClientUserId() && !MessagesController.isSupportUser(user) && user.phone != null && user.phone.length() != 0 && getContactsController().contactsDict.get(user.id) == null &&
                         (getContactsController().contactsDict.size() != 0 || !getContactsController().isLoadingContacts())) {
-                    boolean hidePhone = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_phone", false);
-                    nameTextView[a].setText(hidePhone ? "Скрытый номер" : PhoneFormat.getInstance().format("+" + user.phone));
+                    // this branch is for other users only; "hide my number" must not mask someone else's phone
+                    nameTextView[a].setText(PhoneFormat.getInstance().format("+" + user.phone));
                 } else {
                     nameTextView[a].setText(newString);
                 }
@@ -13499,7 +13499,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         String text;
                         TLRPC.User user = getMessagesController().getUser(userId);
                         String phoneNumber;
-                        boolean hidePhone = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_phone", false);
+                        boolean hidePhone = userId == getUserConfig().getClientUserId() && org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE).getBoolean("fg_hide_phone", false);
                         if (hidePhone) {
                             text = "Скрытый номер";
                             phoneNumber = null;

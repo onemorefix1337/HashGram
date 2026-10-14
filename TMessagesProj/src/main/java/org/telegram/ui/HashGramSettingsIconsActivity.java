@@ -170,8 +170,8 @@ public class HashGramSettingsIconsActivity extends BaseFragment {
             } else {
                 prefs.edit().putInt(prefKey, selectedColor).apply();
             }
-            if (listView != null) {
-                listView.invalidateViews();
+            if (listAdapter != null) {
+                listAdapter.notifyDataSetChanged();
             }
         });
         showDialog(builder.create());

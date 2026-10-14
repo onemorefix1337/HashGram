@@ -1911,8 +1911,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
     }
 
     public void sendSticker(TLRPC.Document document, String query, long peer, CharSequence caption, VideoEditedInfo videoEditedInfo, MessageObject replyToMsg, MessageObject replyToTopMsg, TL_stories.StoryItem storyItem, ChatActivity.ReplyQuote quote, MessageObject.SendAnimationData sendAnimationData, boolean notify, int originalScheduleDate, int scheduleRepeatPeriod, boolean updateStickersOrder, Object parentObject, SendMessageChatArguments sendMessageChatArguments, long stars, long monoForumPeerId, MessageSuggestionParams suggestionParams, boolean invertMedia) {
-        android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
-        final int scheduleDate = (prefs.getBoolean("fg_anon_mode", false) && originalScheduleDate == 0) ? getConnectionsManager().getCurrentTime() + 12 : originalScheduleDate;
+        final int scheduleDate = hashgramAnonScheduleDate(getConnectionsManager().getCurrentTime(), originalScheduleDate, peer, false);
         if (document == null) {
             return;
         }
@@ -4279,15 +4278,23 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
         });
     }
 
+    // HashGram: "full anonymity" mode sends through a 12s scheduled delay. Not applicable to secret chats
+    // (no scheduling there), retries of failed messages and edits of existing messages.
+    private static int hashgramAnonScheduleDate(int currentTime, int originalScheduleDate, long dialogId, boolean isRetryOrEdit) {
+        if (originalScheduleDate != 0 || isRetryOrEdit || DialogObject.isEncryptedDialog(dialogId)) {
+            return originalScheduleDate;
+        }
+        android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
+        return prefs.getBoolean("fg_anon_mode", false) ? currentTime + 12 : originalScheduleDate;
+    }
+
     public void sendMessage(SendMessageParams sendMessageParams) {
         android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
         if (prefs.getBoolean("fg_smart_ghost", false) && !prefs.getBoolean("fg_ghost_read", false)) {
             MessagesController.getInstance(currentAccount).smartGhostForceReadDialogs.add(sendMessageParams.peer);
             MessagesController.getInstance(currentAccount).markDialogAsReadForce(sendMessageParams.peer);
         }
-        if (prefs.getBoolean("fg_anon_mode", false) && sendMessageParams.scheduleDate == 0) {
-            sendMessageParams.scheduleDate = getConnectionsManager().getCurrentTime() + 12;
-        }
+        sendMessageParams.scheduleDate = hashgramAnonScheduleDate(getConnectionsManager().getCurrentTime(), sendMessageParams.scheduleDate, sendMessageParams.peer, sendMessageParams.retryMessageObject != null);
         
         final SendMessageChatArguments sendMessageChatArguments = sendMessageParams.sendMessageChatArguments != null ?
                 sendMessageParams.sendMessageChatArguments : SendMessageChatArguments.EMPTY;
@@ -9263,8 +9270,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
     private final static int ERROR_TYPE_FILE_TOO_LARGE = 2;
 
     private static int prepareSendingDocumentInternal(AccountInstance accountInstance, String path, String originalPath, Uri uri, String mime, long dialogId, MessageObject replyToMsg, MessageObject replyToTopMsg, TL_stories.StoryItem storyItem, ChatActivity.ReplyQuote quote, final ArrayList<TLRPC.MessageEntity> entities, final MessageObject editingMessageObject, long[] groupId, boolean isGroupFinal, CharSequence caption, boolean notify, int originalScheduleDate, int scheduleRepeatPeriod, Integer[] docType, boolean forceDocument, SendMessageChatArguments sendMessageChatArguments, long effectId, boolean invertMedia, long payStars, long monoForumPeerId, MessageSuggestionParams suggestionParams, PollSendParams pollSendParams, int pollIndex) {
-        android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
-        final int scheduleDate = (prefs.getBoolean("fg_anon_mode", false) && originalScheduleDate == 0) ? accountInstance.getConnectionsManager().getCurrentTime() + 12 : originalScheduleDate;
+        final int scheduleDate = hashgramAnonScheduleDate(accountInstance.getConnectionsManager().getCurrentTime(), originalScheduleDate, dialogId, editingMessageObject != null);
         final long forcedPollGroupId = pollSendParams != null ? pollSendParams.groupId : 0;
 
         if ((path == null || path.length() == 0) && uri == null) {
@@ -9816,10 +9822,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
 
     @UiThread
     public static void prepareSendingAudioDocuments(AccountInstance accountInstance, ArrayList<MessageObject> messageObjects, CharSequence caption, long dialogId, MessageObject replyToMsg, MessageObject replyToTopMsg, TL_stories.StoryItem storyItem, boolean notify, int scheduleDate, int scheduledRepeatPeriod, MessageObject editingMessageObject, SendMessageChatArguments sendMessageChatArguments, long effectId, boolean invertMedia, long payStars, PollSendParams pollSendParams, ArrayList<Integer> pollSendIndexes, boolean forcedPollDoNotSendFinal, Runnable afterCommandsDone) {
-        android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
-        final int finalScheduleDate = (prefs.getBoolean("fg_anon_mode", false) && scheduleDate == 0)
-                ? accountInstance.getConnectionsManager().getCurrentTime() + 12
-                : scheduleDate;
+        final int finalScheduleDate = hashgramAnonScheduleDate(accountInstance.getConnectionsManager().getCurrentTime(), scheduleDate, dialogId, editingMessageObject != null);
         new Thread(() -> {
             final long forcedPollGroupId = pollSendParams != null ? pollSendParams.groupId : 0;
             final boolean forceDisableCheckSentMedia = pollSendParams != null;
@@ -10695,8 +10698,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
 
     @UiThread
     public static void prepareSendingMedia(AccountInstance accountInstance, ArrayList<SendingMediaInfo> media, long dialogId, MessageObject replyToMsg, MessageObject replyToTopMsg, TL_stories.StoryItem storyItem, ChatActivity.ReplyQuote quote, boolean forceDocument, boolean groupMedia, MessageObject editingMessageObject, TLRPC.TL_inputPollAnswer pollToAddOptionMessageObject, boolean notify, int originalScheduleDate, int scheduleRepeatPeriod, int mode, boolean updateStikcersOrder, InputContentInfoCompat inputContent, SendMessageChatArguments sendMessageChatArguments, long effectId, boolean invertMedia, long payStars, long monoForumPeerId, MessageSuggestionParams suggestionParams, PollSendParams pollSendParams, boolean forcedPollDoNotSendFinal) {
-        android.content.SharedPreferences prefs = org.telegram.messenger.ApplicationLoader.applicationContext.getSharedPreferences("hashgram_config", android.content.Context.MODE_PRIVATE);
-        final int scheduleDate = (prefs.getBoolean("fg_anon_mode", false) && originalScheduleDate == 0) ? accountInstance.getConnectionsManager().getCurrentTime() + 12 : originalScheduleDate;
+        final int scheduleDate = hashgramAnonScheduleDate(accountInstance.getConnectionsManager().getCurrentTime(), originalScheduleDate, dialogId, editingMessageObject != null);
         if (media.isEmpty()) {
             return;
         }

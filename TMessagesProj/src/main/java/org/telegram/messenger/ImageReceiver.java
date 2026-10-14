@@ -33,7 +33,7 @@ import android.view.View;
 
 import androidx.annotation.Keep;
 
-import com.google.android.exoplayer2.util.Log;
+
 
 import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
@@ -1124,9 +1124,10 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
             setImageBackup.parentObject = currentParentObject;
         }
         if (!ignoreNotifications) {
-            NotificationCenter.getGlobalInstance().removeObserver(this, NotificationCenter.didReplacedPhotoInMemCache);
-            NotificationCenter.getGlobalInstance().removeObserver(this, NotificationCenter.stopAllHeavyOperations);
-            NotificationCenter.getGlobalInstance().removeObserver(this, NotificationCenter.startAllHeavyOperations);
+            if (observersGroup != null) {
+                observersGroup.removeAllObservers();
+                observersGroup = null;
+            }
         }
         if (staticThumbDrawable instanceof AttachableDrawable) {
             ((AttachableDrawable) staticThumbDrawable).onDetachedFromWindow(this);
@@ -1186,6 +1187,8 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
         return false;
     }
 
+    private NotificationCenter.ObserversGroup observersGroup;
+
     public boolean onAttachedToWindow() {
         if (attachedToWindow) {
             return false;
@@ -1194,9 +1197,15 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
         currentOpenedLayerFlags = NotificationCenter.getGlobalInstance().getCurrentHeavyOperationFlags();
         currentOpenedLayerFlags &= ~currentLayerNum;
         if (!ignoreNotifications) {
-            NotificationCenter.getGlobalInstance().addObserver(this, NotificationCenter.didReplacedPhotoInMemCache);
-            NotificationCenter.getGlobalInstance().addObserver(this, NotificationCenter.stopAllHeavyOperations);
-            NotificationCenter.getGlobalInstance().addObserver(this, NotificationCenter.startAllHeavyOperations);
+            if (observersGroup != null) {
+                observersGroup.removeAllObservers();
+                observersGroup = null;
+            }
+            observersGroup = NotificationCenter.getGlobalInstance()
+                .createWeakObserversGroup(this)
+                .add(NotificationCenter.didReplacedPhotoInMemCache)
+                .add(NotificationCenter.stopAllHeavyOperations)
+                .add(NotificationCenter.startAllHeavyOperations);
         }
         if (setBackupImage()) {
             return true;
@@ -3095,7 +3104,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                         fileDrawable.stop();
                     }
                 } else {
-                    if (fileDrawable.getParents().isEmpty()) {
+                    if (!fileDrawable.hasParents()) {
                         fileDrawable.recycle();
                     }
                 }

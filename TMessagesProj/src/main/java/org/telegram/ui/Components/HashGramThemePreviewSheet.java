@@ -52,8 +52,8 @@ public class HashGramThemePreviewSheet {
 
         layout.addView(new MockView(context, colors), LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 270));
 
-        final int accent = colors.get(Theme.key_featuredStickers_addButton, 0xFF6A4DFF);
-        final int accent2 = colors.get(Theme.key_chat_outBubbleGradient1, accent);
+        final int accent = colors.indexOfKey(Theme.key_featuredStickers_addButton) >= 0 ? colors.get(Theme.key_featuredStickers_addButton) : Theme.getDefaultColor(Theme.key_featuredStickers_addButton);
+        final int accent2 = colors.indexOfKey(Theme.key_chat_outBubbleGradient1) >= 0 ? colors.get(Theme.key_chat_outBubbleGradient1) : accent;
         TextView apply = new TextView(context);
         apply.setText("Применить");
         apply.setTextColor(0xFFFFFFFF);
@@ -103,7 +103,8 @@ public class HashGramThemePreviewSheet {
         }
 
         private int col(int key, int def) {
-            return c.get(key, def);
+            int v = c.indexOfKey(key) >= 0 ? c.get(key) : Theme.getDefaultColor(key);
+            return v != 0 ? v : def;
         }
 
         @Override

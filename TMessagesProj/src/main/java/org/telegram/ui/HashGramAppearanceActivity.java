@@ -158,7 +158,14 @@ public class HashGramAppearanceActivity extends BaseFragment {
                             () -> Theme.turnOffAutoNight(HashGramAppearanceActivity.this));
                 }
             } else if (position >= themeAmoledRow && position <= themeMidnightBlueRow) {
-                applyThemePreview(position);
+                String[] preset = Theme.HASHGRAM_PRESETS[position - themeAmoledRow];
+                Theme.ThemeInfo info = Theme.getTheme(preset[0]);
+                if (info != null && getParentActivity() != null) {
+                    org.telegram.ui.Components.HashGramThemePreviewSheet.show(getParentActivity(), info,
+                            preset[0].replace("HashGram ", ""),
+                            "1".equals(preset[5]) ? "Тёмная тема" : "Светлая тема",
+                            () -> Theme.turnOffAutoNight(HashGramAppearanceActivity.this));
+                }
             } else if (position == settingsIconsRow) {
                 presentFragment(new HashGramSettingsIconsActivity());
             } else if (position == avatarShapeRow) {
@@ -267,157 +274,6 @@ public class HashGramAppearanceActivity extends BaseFragment {
         });
 
         return fragmentView;
-    }
-
-    private void applyThemePreview(int position) {
-        String themeName = "HashGram Theme";
-        boolean isDark = true;
-        int actionbarDefaultColor = 0xFF000000;
-        int backgroundColor = 0xFF000000;
-        int msgInColor = 0xFF333333;
-        int msgOutColor = 0xFF555555;
-        int textColor = 0xFFFFFFFF; // added for better text visibility
-
-        Theme.ThemeInfo baseTheme = Theme.getTheme("Night");
-
-        if (position == themeAmoledRow) {
-            themeName = "AMOLED";
-            isDark = true;
-            baseTheme = Theme.getTheme("Night");
-            actionbarDefaultColor = 0xFF000000;
-            backgroundColor = 0xFF000000;
-            msgInColor = 0xFF111111;
-            msgOutColor = 0xFF222222;
-            textColor = 0xFFFFFFFF;
-        } else if (position == themeMintRow) {
-            themeName = "Mint";
-            isDark = false;
-            baseTheme = Theme.getTheme("Day");
-            actionbarDefaultColor = 0xFF98FF98;
-            backgroundColor = 0xFFE0FFE0;
-            msgInColor = 0xFFFFFFFF;
-            msgOutColor = 0xFFC0FFC0;
-            textColor = 0xFF000000;
-        } else if (position == themeLavenderRow) {
-            themeName = "Lavender";
-            isDark = false;
-            baseTheme = Theme.getTheme("Day");
-            actionbarDefaultColor = 0xFFE6E6FA;
-            backgroundColor = 0xFFF8F8FF;
-            msgInColor = 0xFFFFFFFF;
-            msgOutColor = 0xFFD8BFD8;
-            textColor = 0xFF000000;
-        } else if (position == themeHackerRow) {
-            themeName = "Hacker";
-            isDark = true;
-            baseTheme = Theme.getTheme("Night");
-            actionbarDefaultColor = 0xFF000000;
-            backgroundColor = 0xFF000000;
-            msgInColor = 0xFF001100;
-            msgOutColor = 0xFF003300;
-            textColor = 0xFF00FF00;
-        } else if (position == themeBloodRedRow) {
-            themeName = "Blood Red";
-            isDark = true;
-            baseTheme = Theme.getTheme("Night");
-            actionbarDefaultColor = 0xFF660000;
-            backgroundColor = 0xFF110000;
-            msgInColor = 0xFF330000;
-            msgOutColor = 0xFF550000;
-            textColor = 0xFFFFFFFF;
-        } else if (position == themeSakuraRow) {
-            themeName = "Sakura";
-            isDark = false;
-            baseTheme = Theme.getTheme("Day");
-            actionbarDefaultColor = 0xFFFFB7C5;
-            backgroundColor = 0xFFFFF0F5;
-            msgInColor = 0xFFFFFFFF;
-            msgOutColor = 0xFFFFC0CB;
-            textColor = 0xFF000000;
-        } else if (position == themeSolarizedLightRow) {
-            themeName = "Solarized Light";
-            isDark = false;
-            baseTheme = Theme.getTheme("Day");
-            actionbarDefaultColor = 0xFFFDF6E3;
-            backgroundColor = 0xFFEEE8D5;
-            msgInColor = 0xFFFDF6E3;
-            msgOutColor = 0xFFE8DDB5;
-            textColor = 0xFF657B83;
-        } else if (position == themeMidnightBlueRow) {
-            themeName = "Midnight Blue";
-            isDark = true;
-            baseTheme = Theme.getTheme("Night");
-            actionbarDefaultColor = 0xFF191970;
-            backgroundColor = 0xFF0A0A2A;
-            msgInColor = 0xFF111144;
-            msgOutColor = 0xFF222266;
-            textColor = 0xFFFFFFFF;
-        }
-
-        // Safe preview workflow
-        
-        // 1. Get base colors synchronously
-        android.util.SparseIntArray baseColors = null;
-        if (baseTheme.pathToFile != null) {
-            baseColors = Theme.getThemeFileValues(new java.io.File(baseTheme.pathToFile), baseTheme.assetName, null);
-        } else {
-            baseColors = Theme.getThemeFileValues(null, baseTheme.assetName, null);
-        }
-        
-        // 2. Create new ThemeInfo using the public factory method
-        Theme.ThemeInfo newTheme = Theme.createPreviewTheme(themeName);
-        
-        // 3. Manually write .attheme file using baseColors
-        try {
-            java.io.FileOutputStream stream = new java.io.FileOutputStream(newTheme.pathToFile);
-            StringBuilder sb = new StringBuilder();
-            
-            if (baseColors != null) {
-                for (int i = 0; i < baseColors.size(); i++) {
-                    int key = baseColors.keyAt(i);
-                    int color = baseColors.valueAt(i);
-                    
-                    if (key == Theme.key_actionBarDefault || key == Theme.key_actionBarDefaultSelector) {
-                        color = actionbarDefaultColor;
-                    } else if (key == Theme.key_windowBackgroundWhite || key == Theme.key_windowBackgroundGray) {
-                        color = backgroundColor;
-                    } else if (key == Theme.key_chat_inBubble) {
-                        color = msgInColor;
-                    } else if (key == Theme.key_chat_outBubble) {
-                        color = msgOutColor;
-                    } else if (key == Theme.key_chat_messageTextIn || 
-                               key == Theme.key_chat_messageTextOut || 
-                               key == Theme.key_windowBackgroundWhiteBlackText || 
-                               key == Theme.key_actionBarDefaultTitle ||
-                               key == Theme.key_actionBarDefaultIcon) {
-                        if (position == themeHackerRow) {
-                            color = 0xFF00FF00;
-                        } else if (position == themeSolarizedLightRow) {
-                            color = 0xFF657B83;
-                        } else {
-                            color = textColor;
-                        }
-                    }
-                    
-                    String colorName = org.telegram.ui.ActionBar.ThemeColors.getStringName(key);
-                    if (colorName != null) {
-                        sb.append(colorName).append("=").append(color).append("\n");
-                    }
-                }
-            }
-            stream.write(sb.toString().getBytes());
-            stream.close();
-        } catch (Exception e) {
-            org.telegram.messenger.FileLog.e(e);
-        }
-        
-        // 4. Present preview
-        Theme.ThemeInfo appliedPreviewTheme = Theme.applyThemeFile(new java.io.File(newTheme.pathToFile), themeName, null, true);
-        if (appliedPreviewTheme != null) {
-            presentFragment(new ThemePreviewActivity(appliedPreviewTheme, true, 0 /* SCREEN_TYPE_PREVIEW */, false, isDark));
-        } else {
-            presentFragment(new ThemePreviewActivity(newTheme, true, 0 /* SCREEN_TYPE_PREVIEW */, false, isDark));
-        }
     }
 
     private class ListAdapter extends RecyclerListView.SelectionAdapter {

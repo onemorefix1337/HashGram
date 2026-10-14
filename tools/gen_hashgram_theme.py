@@ -195,3 +195,33 @@ with open(os.path.join(ASSETS, 'hashgram_light.attheme'), 'w') as f:
     for k in sorted(lout):
         f.write('%s=%d\n' % (k, lout[k]))
 print('wrote light', len(lout), 'colors')
+
+
+# ---------------------------------------------------------------------------------------------
+# Colour presets shown in HashGram settings -> Appearance (previewed in a sheet, applied with a reveal animation).
+# name, asset slug, base theme, action bar, background, bubble in, bubble out, text
+# ---------------------------------------------------------------------------------------------
+PRESETS = [
+    ('amoled',    night, '#000000', '#000000', '#111111', '#222222', '#FFFFFF'),
+    ('mint',      day,   '#98FF98', '#E0FFE0', '#FFFFFF', '#C0FFC0', '#000000'),
+    ('lavender',  day,   '#E6E6FA', '#F8F8FF', '#FFFFFF', '#D8BFD8', '#000000'),
+    ('hacker',    night, '#000000', '#000000', '#001100', '#003300', '#00FF00'),
+    ('bloodred',  night, '#660000', '#110000', '#330000', '#550000', '#FFFFFF'),
+    ('sakura',    day,   '#FFB7C5', '#FFF0F5', '#FFFFFF', '#FFC0CB', '#000000'),
+    ('solarized', day,   '#FDF6E3', '#EEE8D5', '#FDF6E3', '#E8DDB5', '#657B83'),
+    ('midnight',  night, '#191970', '#0A0A2A', '#111144', '#222266', '#FFFFFF'),
+]
+for slug, base, ab, bg, bin_, bout, text in PRESETS:
+    d = dict(base)
+    ov = {
+        'actionBarDefault': c(ab), 'actionBarDefaultSelector': c(text, 0x1A),
+        'windowBackgroundWhite': c(bg), 'windowBackgroundGray': c(bg), 'chat_wallpaper': c(bg),
+        'chat_inBubble': c(bin_), 'chat_outBubble': c(bout),
+        'chat_messageTextIn': c(text), 'chat_messageTextOut': c(text),
+        'windowBackgroundWhiteBlackText': c(text), 'actionBarDefaultTitle': c(text), 'actionBarDefaultIcon': c(text),
+    }
+    d.update(ov)
+    with open(os.path.join(ASSETS, 'hg_%s.attheme' % slug), 'w') as f:
+        for k in sorted(d):
+            f.write('%s=%d\n' % (k, d[k]))
+print('wrote', len(PRESETS), 'presets')

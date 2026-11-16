@@ -133,8 +133,10 @@ public class AboutLinkCell extends FrameLayout {
 
         bottomShadow = new FrameLayout(context);
         Drawable shadowDrawable = context.getResources().getDrawable(R.drawable.gradient_bottom).mutate();
-        shadowDrawable.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider), PorterDuff.Mode.SRC_ATOP));
+        int shadowColor = Theme.isCurrentThemeDark() ? 0xFF141416 : Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider);
+        shadowDrawable.setColorFilter(new PorterDuffColorFilter(shadowColor, PorterDuff.Mode.SRC_ATOP));
         bottomShadow.setBackground(shadowDrawable);
+        bottomShadow.setAlpha(0f);
         addView(bottomShadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 12, Gravity.BOTTOM | Gravity.FILL_HORIZONTAL, 16, 0, 16, 0));
 
         addView(container, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.FILL_HORIZONTAL));
@@ -176,8 +178,9 @@ public class AboutLinkCell extends FrameLayout {
         showMoreTextView.setPadding(dp(2), 0, dp(2), 0);
         showMoreTextBackgroundView = new FrameLayout(context);
         showMoreBackgroundDrawable = context.getResources().getDrawable(R.drawable.gradient_left).mutate();
-        showMoreBackgroundDrawable.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider), PorterDuff.Mode.MULTIPLY));
+        showMoreBackgroundDrawable.setColorFilter(new PorterDuffColorFilter(shadowColor, PorterDuff.Mode.MULTIPLY));
         showMoreTextBackgroundView.setBackground(showMoreBackgroundDrawable);
+        showMoreTextBackgroundView.setAlpha(0f);
         showMoreTextBackgroundView.setPadding(
             showMoreTextBackgroundView.getPaddingLeft() + dp(4),
             dp(1),
@@ -197,6 +200,13 @@ public class AboutLinkCell extends FrameLayout {
 
     public void updateColors() {
         Theme.profile_aboutTextPaint.linkColor = processColor(Theme.getColor(Theme.key_chat_messageLinkIn, resourcesProvider));
+        int shadowColor = Theme.isCurrentThemeDark() ? 0xFF141416 : Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider);
+        if (bottomShadow != null && bottomShadow.getBackground() != null) {
+            bottomShadow.getBackground().setColorFilter(new PorterDuffColorFilter(shadowColor, PorterDuff.Mode.SRC_ATOP));
+        }
+        if (showMoreBackgroundDrawable != null) {
+            showMoreBackgroundDrawable.setColorFilter(new PorterDuffColorFilter(shadowColor, PorterDuff.Mode.MULTIPLY));
+        }
     }
 
     @Override
@@ -263,7 +273,7 @@ public class AboutLinkCell extends FrameLayout {
 
         drawText(canvas);
 
-        float viewAlpha = showMoreTextBackgroundView.getAlpha();
+        float viewAlpha = (shouldExpand && expandT < 1f) ? showMoreTextBackgroundView.getAlpha() : 0;
         if (viewAlpha > 0) {
             canvas.save();
             canvas.saveLayerAlpha(0, 0, getWidth(), getHeight(), (int) (viewAlpha * 255), Canvas.ALL_SAVE_FLAG);
@@ -272,7 +282,7 @@ public class AboutLinkCell extends FrameLayout {
             showMoreTextBackgroundView.draw(canvas);
             canvas.restore();
         }
-        viewAlpha = bottomShadow.getAlpha();
+        viewAlpha = (shouldExpand && expandT < 1f) ? bottomShadow.getAlpha() : 0;
         if (viewAlpha > 0) {
             canvas.save();
             canvas.saveLayerAlpha(0, 0, getWidth(), getHeight(), (int) (viewAlpha * 255), Canvas.ALL_SAVE_FLAG);
@@ -757,11 +767,18 @@ public class AboutLinkCell extends FrameLayout {
             }
         }
         showMoreTextView.setVisibility(shouldExpand ? View.VISIBLE : View.GONE);
-        if (!shouldExpand && container.getBackground() == null) {
-            container.setBackground(rippleBackground);
-        }
-        if (shouldExpand && expandT < 1 && container.getBackground() != null) {
-            container.setBackground(null);
+        if (!shouldExpand) {
+            bottomShadow.setAlpha(0f);
+            showMoreTextBackgroundView.setAlpha(0f);
+            if (container.getBackground() == null) {
+                container.setBackground(rippleBackground);
+            }
+        } else if (expandT < 1) {
+            bottomShadow.setAlpha((float) Math.pow(1f - expandT, 2f));
+            showMoreTextBackgroundView.setAlpha(1f - expandT);
+            if (container.getBackground() != null) {
+                container.setBackground(null);
+            }
         }
     }
 

@@ -103,6 +103,42 @@ public class AboutLinkCell extends FrameLayout {
     private boolean moreButtonDisabled;
 
     private GestureDetectorCompat gestureDetector;
+    private boolean labelOnTop;
+    private boolean needDivider;
+    private static Paint bentoDividerPaint;
+
+    public void setNeedDivider(boolean value) {
+        if (needDivider != value) {
+            needDivider = value;
+            invalidate();
+        }
+    }
+
+    public void setLabelOnTop(boolean value) {
+        if (labelOnTop != value) {
+            labelOnTop = value;
+            if (labelOnTop) {
+                valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+                FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) valueTextView.getLayoutParams();
+                if (lp != null) {
+                    lp.gravity = (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP;
+                    lp.topMargin = dp(8);
+                    lp.bottomMargin = 0;
+                    valueTextView.setLayoutParams(lp);
+                }
+            } else {
+                valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+                FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) valueTextView.getLayoutParams();
+                if (lp != null) {
+                    lp.gravity = (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.BOTTOM;
+                    lp.topMargin = 0;
+                    lp.bottomMargin = dp(10);
+                    valueTextView.setLayoutParams(lp);
+                }
+            }
+            requestLayout();
+        }
+    }
 
     public AboutLinkCell(Context context, BaseFragment fragment) {
         this(context, fragment, null);
@@ -292,17 +328,37 @@ public class AboutLinkCell extends FrameLayout {
         }
 
         container.draw(canvas);
+
+        if (needDivider) {
+            Paint paint = resourcesProvider != null ? resourcesProvider.getPaint(Theme.key_paint_divider) : Theme.dividerPaint;
+            if (paint == null) paint = Theme.dividerPaint;
+            if (Theme.isCurrentThemeDark()) {
+                if (bentoDividerPaint == null) {
+                    bentoDividerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                    bentoDividerPaint.setColor(0x1FFFFFFF);
+                    bentoDividerPaint.setStrokeWidth(1);
+                }
+                paint = bentoDividerPaint;
+            }
+            canvas.drawLine(
+                LocaleController.isRTL ? 0 : dp(20),
+                getHeight() - 1,
+                getWidth() - (LocaleController.isRTL ? dp(20) : 0),
+                getHeight() - 1,
+                paint
+            );
+        }
     }
 
     final float SPACE = dp(3f);
     private void drawText(Canvas canvas) {
         canvas.save();
-        canvas.clipRect(dp(18 - 8), dp(8), getWidth() - dp(18), getHeight());
+        canvas.clipRect(dp(18 - 8), dp(labelOnTop ? 26 : 8), getWidth() - dp(18), getHeight());
         canvas.translate(textX = dp(18), 0);
         if (links != null && links.draw(canvas)) {
             invalidate();
         }
-        canvas.translate(0, textY = dp(8));
+        canvas.translate(0, textY = dp(labelOnTop ? 27 : 8));
 
         try {
             Theme.profile_aboutTextPaint.linkColor = processColor(Theme.getColor(Theme.key_chat_messageLinkIn, resourcesProvider));
@@ -783,9 +839,9 @@ public class AboutLinkCell extends FrameLayout {
     }
 
     private int textHeight() {
-        int height = (textLayout != null ? textLayout.getHeight() : dp(20)) + dp(16);
+        int height = (textLayout != null ? textLayout.getHeight() : dp(20)) + dp(labelOnTop ? 34 : 16);
         if (valueTextView.getVisibility() == VISIBLE) {
-            height += dp(23);
+            height += dp(labelOnTop ? 14 : 23);
         }
         return height;
     }

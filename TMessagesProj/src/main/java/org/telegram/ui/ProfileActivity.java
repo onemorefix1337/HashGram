@@ -653,6 +653,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int infoHeaderRow;
     private int infoHeaderRowEmpty;
     private int infoEndRowEmpty;
+    private int detailsHeaderRow;
     private int phoneRow;
     private int noteRow;
     private int locationRow;
@@ -7405,6 +7406,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
             }
             return true;
+        } else if (position == detailsHeaderRow) {
+            if (myProfile) {
+                presentFragment(new UserInfoActivity());
+            }
+            return true;
         } else if (position == noteRow) {
 
         } else if (position == phoneRow || position == numberRow) {
@@ -10519,6 +10525,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         infoHeaderRow = -1;
         infoHeaderRowEmpty = -1;
         infoEndRowEmpty = -1;
+        detailsHeaderRow = -1;
         phoneRow = -1;
         noteRow = -1;
         userInfoRow = -1;
@@ -10708,6 +10715,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                 }
                 infoStartRow = rowCount;
+                detailsHeaderRow = rowCount++;
                 if (!isBot && (hasPhone || !hasInfo)) {
                     phoneRow = rowCount++;
                 }
@@ -13490,14 +13498,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 text = LocaleController.formatString(today ? R.string.ProfileBirthdayTodayValue : R.string.ProfileBirthdayValue, text);
                             }
 
+                            detailCell.setLabelOnTop(true);
                             detailCell.setTextAndValue(
                                     Emoji.replaceWithRestrictedEmoji(text, detailCell.textView, () -> {
                                         if (holder.getAdapterPosition() == position && birthdayRow == position && holder.getItemViewType() == VIEW_TYPE_TEXT_DETAIL) {
                                             onBindViewHolder(holder, position);
                                         }
                                     }),
-                                    LocaleController.getString(today ? R.string.ProfileBirthdayToday : R.string.ProfileBirthday),
-                                    isTopic || bizHoursRow != -1 || bizLocationRow != -1
+                                    LocaleController.getString(today ? R.string.ProfileBirthdayToday : R.string.ProfileBirthday).toLowerCase(),
+                                    position < infoEndRow
                             );
 
                             containsGift = !myProfile && today && !getMessagesController().premiumPurchaseBlocked();
@@ -13521,7 +13530,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             phoneNumber = null;
                         }
                         isFragmentPhoneNumber = phoneNumber != null && phoneNumber.matches("888\\d{8}");
-                        detailCell.setTextAndValue(text, LocaleController.getString(isFragmentPhoneNumber ? R.string.AnonymousNumber : R.string.PhoneMobile), false);
+                        detailCell.setLabelOnTop(true);
+                        String phoneLabel = (isFragmentPhoneNumber ? LocaleController.getString(R.string.AnonymousNumber) : LocaleController.getString(R.string.PhoneMobile)).toLowerCase();
+                        detailCell.setTextAndValue(text, phoneLabel, position < infoEndRow);
                     } else if (position == noteRow) {
                         final TLRPC.UserFull userInfo = getMessagesController().getUserFull(userId);
                         if (userInfo == null) return;
@@ -13578,7 +13589,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             } else {
                                 text = "—";
                             }
-                            containsQr = !myProfile;
+                            containsQr = true;
                         } else if (currentChat != null) {
                             TLRPC.Chat chat = getMessagesController().getChat(chatId);
                             username = ChatObject.getPublicUsername(chat);
@@ -13586,7 +13597,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 usernames.addAll(chat.usernames);
                             }
                             if (ChatObject.isPublic(chat)) {
-                                containsQr = !myProfile;
+                                containsQr = true;
                                 text = getMessagesController().linkPrefix + "/" + username + (topicId != 0 ? "/" + topicId : "");
                                 value = LocaleController.getString(R.string.InviteLink);
                             } else {
@@ -13598,7 +13609,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             value = "";
                             usernames = new ArrayList<>();
                         }
-                        detailCell.setTextAndValue(text, alsoUsernamesString(username, usernames, value), infoEndRowEmpty == -1 && (isTopic || bizHoursRow != -1 || bizLocationRow != -1) && birthdayRow < 0);
+                        detailCell.setLabelOnTop(true);
+                        detailCell.setTextAndValue(text, alsoUsernamesString(username, usernames, value).toString().toLowerCase(), position < infoEndRow);
                     } else if (position == locationRow) {
                         if (chatInfo != null && chatInfo.location instanceof TLRPC.TL_channelLocation) {
                             TLRPC.TL_channelLocation location = (TLRPC.TL_channelLocation) chatInfo.location;
@@ -13678,7 +13690,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (position == userInfoRow) {
                         TLRPC.User user = userInfo.user != null ? userInfo.user : getMessagesController().getUser(userInfo.id);
                         boolean addlinks = isBot || (user != null && user.premium && userInfo.about != null);
-                        aboutLinkCell.setTextAndValue(userInfo.about, LocaleController.getString(R.string.UserBio), addlinks);
+                        aboutLinkCell.setLabelOnTop(true);
+                        aboutLinkCell.setNeedDivider(position < infoEndRow);
+                        aboutLinkCell.setTextAndValue(userInfo.about, LocaleController.getString(R.string.UserBio).toLowerCase(), addlinks);
                     } else if (position == channelInfoRow) {
                         String text = chatInfo.about;
                         while (text.contains("\n\n\n")) {
@@ -13729,7 +13743,16 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     TextCell textCell = (TextCell) holder.itemView;
                     textCell.setColors(Theme.key_windowBackgroundWhiteGrayIcon, Theme.key_windowBackgroundWhiteBlackText);
                     textCell.setTag(Theme.key_windowBackgroundWhiteBlackText);
-                    if (position == settingsTimerRow) {
+                    if (position == detailsHeaderRow) {
+                        Drawable arrow = ContextCompat.getDrawable(textCell.getContext(), R.drawable.msg_arrowright);
+                        if (arrow != null) {
+                            arrow.setColorFilter(new PorterDuffColorFilter(0x88FFFFFF, PorterDuff.Mode.SRC_IN));
+                        }
+                        textCell.setTextAndValueDrawable("Подробнее", arrow, position < infoEndRow);
+                        textCell.setColors(-1, Theme.key_windowBackgroundWhiteBlackText);
+                        textCell.getTextView().setTypeface(AndroidUtilities.bold());
+                        textCell.getTextView().setTextSize(16);
+                    } else if (position == settingsTimerRow) {
                         TLRPC.EncryptedChat encryptedChat = getMessagesController().getEncryptedChat(DialogObject.getEncryptedChatId(dialogId));
                         String value;
                         if (encryptedChat.ttl == 0) {
@@ -14348,7 +14371,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return VIEW_TYPE_TEXT_DETAIL_MULTILINE_2;
             } else if (position == userInfoRow || position == channelInfoRow || position == bioRow) {
                 return VIEW_TYPE_ABOUT_LINK;
-            } else if (position == settingsTimerRow || position == settingsKeyRow || position == reportRow || position == reportReactionRow || position == deleteReactionRow ||
+            } else if (position == detailsHeaderRow || position == settingsTimerRow || position == settingsKeyRow || position == reportRow || position == reportReactionRow || position == deleteReactionRow ||
                     position == subscribersRow || position == subscribersRequestsRow || position == administratorsRow || position == settingsRow || position == blockedUsersRow ||
                     position == addMemberRow || position == joinRow || position == unblockRow ||
                     position == sendMessageRow || position == notificationRow || position == privacyRow ||
@@ -15738,6 +15761,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             put(++pointer, infoHeaderRow, sparseIntArray);
             put(++pointer, infoHeaderRowEmpty, sparseIntArray);
             put(++pointer, infoEndRowEmpty, sparseIntArray);
+            put(++pointer, detailsHeaderRow, sparseIntArray);
             put(++pointer, phoneRow, sparseIntArray);
             put(++pointer, noteRow, sparseIntArray);
             put(++pointer, locationRow, sparseIntArray);

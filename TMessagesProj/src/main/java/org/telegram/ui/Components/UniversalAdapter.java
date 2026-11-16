@@ -661,6 +661,7 @@ public class UniversalAdapter extends AdapterWithDiffUtils {
                 } else {
                     detailCell.setTextAndValue(item.text, item.subtext, divider);
                 }
+                detailCell.setRightText(item.textValue);
                 break;
             case VIEW_TYPE_TOPVIEW:
                 TopViewCell topCell = (TopViewCell) holder.itemView;

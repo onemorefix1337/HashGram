@@ -9,6 +9,7 @@
 package org.telegram.ui.Cells;
 
 import static org.telegram.messenger.AndroidUtilities.dp;
+import org.telegram.messenger.AndroidUtilities;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -47,6 +48,45 @@ public class TextDetailCell extends FrameLayout {
     private boolean needDivider;
     private boolean contentDescriptionValueFirst;
     private boolean multiline;
+    private boolean labelOnTop;
+    private static Paint bentoDividerPaint;
+
+    public void setLabelOnTop(boolean value) {
+        if (labelOnTop != value) {
+            labelOnTop = value;
+            if (labelOnTop) {
+                textView.setTypeface(AndroidUtilities.bold());
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+                valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+                FrameLayout.LayoutParams lpValue = (FrameLayout.LayoutParams) valueTextView.getLayoutParams();
+                if (lpValue != null) {
+                    lpValue.topMargin = dp(7);
+                    lpValue.bottomMargin = 0;
+                    valueTextView.setLayoutParams(lpValue);
+                }
+                FrameLayout.LayoutParams lpText = (FrameLayout.LayoutParams) textView.getLayoutParams();
+                if (lpText != null) {
+                    lpText.topMargin = dp(27);
+                    lpText.bottomMargin = dp(4);
+                    textView.setLayoutParams(lpText);
+                }
+            } else {
+                textView.setTypeface(android.graphics.Typeface.DEFAULT);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+                valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+                FrameLayout.LayoutParams lpText = (FrameLayout.LayoutParams) textView.getLayoutParams();
+                if (lpText != null) {
+                    lpText.topMargin = dp(6);
+                    textView.setLayoutParams(lpText);
+                }
+                FrameLayout.LayoutParams lpValue = (FrameLayout.LayoutParams) valueTextView.getLayoutParams();
+                if (lpValue != null) {
+                    lpValue.topMargin = dp(32);
+                    valueTextView.setLayoutParams(lpValue);
+                }
+            }
+        }
+    }
 
     private Theme.ResourcesProvider resourcesProvider;
 
@@ -188,7 +228,7 @@ public class TextDetailCell extends FrameLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(
             MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY),
-            multiline ? heightMeasureSpec : MeasureSpec.makeMeasureSpec(dp(60) + (needDivider ? 1 : 0), MeasureSpec.EXACTLY)
+            multiline ? heightMeasureSpec : MeasureSpec.makeMeasureSpec(dp(labelOnTop ? 64 : 60) + (needDivider ? 1 : 0), MeasureSpec.EXACTLY)
         );
     }
 
@@ -271,6 +311,14 @@ public class TextDetailCell extends FrameLayout {
         if (needDivider) {
             Paint paint = resourcesProvider != null ? resourcesProvider.getPaint(Theme.key_paint_divider) : Theme.dividerPaint;
             if (paint == null) paint = Theme.dividerPaint;
+            if (Theme.isCurrentThemeDark()) {
+                if (bentoDividerPaint == null) {
+                    bentoDividerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                    bentoDividerPaint.setColor(0x1FFFFFFF);
+                    bentoDividerPaint.setStrokeWidth(1);
+                }
+                paint = bentoDividerPaint;
+            }
             canvas.drawLine(
                 LocaleController.isRTL ? 0 : dp(20),
                 getMeasuredHeight() - 1,

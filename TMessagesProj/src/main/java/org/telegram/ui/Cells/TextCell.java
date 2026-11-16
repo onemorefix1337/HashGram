@@ -832,12 +832,22 @@ public class TextCell extends FrameLayout {
         return colourful ? 52 : 58;
     }
 
+    private static Paint bentoDividerPaint;
+
     @Override
     protected void onDraw(Canvas canvas) {
         if (needDivider) {
             Paint paint = resourcesProvider != null ? resourcesProvider.getPaint(Theme.key_paint_divider) : null;
             if (paint == null) {
                 paint = Theme.dividerPaint;
+            }
+            if (Theme.isCurrentThemeDark()) {
+                if (bentoDividerPaint == null) {
+                    bentoDividerPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                    bentoDividerPaint.setColor(0x1FFFFFFF);
+                    bentoDividerPaint.setStrokeWidth(1);
+                }
+                paint = bentoDividerPaint;
             }
             canvas.drawLine(LocaleController.isRTL ? 0 : dp(imageView.getVisibility() == VISIBLE ? (inDialogs ? 72 : 58) : 20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? dp(imageView.getVisibility() == VISIBLE ? (inDialogs ? 72 : 58) : 20) : 0), getMeasuredHeight() - 1, paint);
         }

@@ -29,9 +29,11 @@ public class TextDetailSettingsCell extends FrameLayout {
 
     private TextView textView;
     private TextView valueTextView;
+    private TextView rightTextView;
     private ImageView imageView;
     private boolean needDivider;
     private boolean multiline;
+    private static android.graphics.Paint bentoDividerPaint;
 
     public TextDetailSettingsCell(Context context) {
         super(context);
@@ -56,6 +58,13 @@ public class TextDetailSettingsCell extends FrameLayout {
         valueTextView.setSingleLine(true);
         valueTextView.setPadding(0, 0, 0, 0);
         addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 21, 35, 42, 0));
+
+        rightTextView = new org.telegram.ui.Components.TypefaceTextView(context);
+        rightTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
+        rightTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+        rightTextView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        rightTextView.setVisibility(GONE);
+        addView(rightTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, 16, 0, 44, 0));
 
         imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER);
@@ -125,6 +134,15 @@ public class TextDetailSettingsCell extends FrameLayout {
         valueTextView.setText(value);
     }
 
+    public void setRightText(CharSequence text) {
+        if (!TextUtils.isEmpty(text)) {
+            rightTextView.setText(text);
+            rightTextView.setVisibility(VISIBLE);
+        } else {
+            rightTextView.setVisibility(GONE);
+        }
+    }
+
     public void setTextWithEmojiAnd21Value(String text, CharSequence value, boolean divider) {
         textView.setText(Emoji.replaceEmoji(text, textView.getPaint().getFontMetricsInt(), false));
         valueTextView.setText(value);
@@ -140,8 +158,19 @@ public class TextDetailSettingsCell extends FrameLayout {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (needDivider && Theme.dividerPaint != null) {
-            canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(imageView.getVisibility() == VISIBLE ? 71 : 20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(imageView.getVisibility() == VISIBLE ? 71 : 20) : 0), getMeasuredHeight() - 1, Theme.dividerPaint);
+        if (needDivider) {
+            android.graphics.Paint paint = Theme.dividerPaint;
+            if (Theme.isCurrentThemeDark()) {
+                if (bentoDividerPaint == null) {
+                    bentoDividerPaint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+                    bentoDividerPaint.setColor(0x1FFFFFFF);
+                    bentoDividerPaint.setStrokeWidth(1);
+                }
+                paint = bentoDividerPaint;
+            }
+            if (paint != null) {
+                canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(imageView.getVisibility() == VISIBLE ? 71 : 20), getMeasuredHeight() - 1, getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(imageView.getVisibility() == VISIBLE ? 71 : 20) : 0), getMeasuredHeight() - 1, paint);
+            }
         }
     }
 }

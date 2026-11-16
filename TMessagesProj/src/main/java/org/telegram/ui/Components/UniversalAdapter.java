@@ -118,6 +118,7 @@ public class UniversalAdapter extends AdapterWithDiffUtils {
     public static final int VIEW_TYPE_ANIMATED_HEADER = 42;
     public static final int VIEW_TYPE_TEXT_SETTINGS = 43;
     public static final int VIEW_TYPE_RADIO_2 = 44;
+    public static final int VIEW_TYPE_DETAIL_SETTINGS = 45;
 
     protected final RecyclerListView listView;
     private final Context context;
@@ -408,6 +409,9 @@ public class UniversalAdapter extends AdapterWithDiffUtils {
             case VIEW_TYPE_TEXT_SETTINGS:
                 view = new TextSettingsCell(context, resourcesProvider);
                 break;
+            case VIEW_TYPE_DETAIL_SETTINGS:
+                view = new org.telegram.ui.Cells.TextDetailSettingsCell(context);
+                break;
             case VIEW_TYPE_BLACK_HEADER:
                 view = new HeaderCell(context, Theme.key_windowBackgroundWhiteBlackText, 17, 15, false, resourcesProvider);
                 break;
@@ -649,6 +653,14 @@ public class UniversalAdapter extends AdapterWithDiffUtils {
                     }
                 }
                 settingsCell.setIcon(item.iconResId);
+                break;
+            case VIEW_TYPE_DETAIL_SETTINGS:
+                final org.telegram.ui.Cells.TextDetailSettingsCell detailCell = (org.telegram.ui.Cells.TextDetailSettingsCell) holder.itemView;
+                if (item.iconResId != 0) {
+                    detailCell.setTextAndValueAndIcon(item.text != null ? item.text.toString() : "", item.subtext, item.iconResId, divider);
+                } else {
+                    detailCell.setTextAndValue(item.text, item.subtext, divider);
+                }
                 break;
             case VIEW_TYPE_TOPVIEW:
                 TopViewCell topCell = (TopViewCell) holder.itemView;
@@ -1132,6 +1144,8 @@ public class UniversalAdapter extends AdapterWithDiffUtils {
         } else {
             clickable = (
                 viewType == VIEW_TYPE_TEXT ||
+                viewType == VIEW_TYPE_TEXT_SETTINGS ||
+                viewType == VIEW_TYPE_DETAIL_SETTINGS ||
                 viewType == VIEW_TYPE_TEXT_CHECK ||
                 viewType == VIEW_TYPE_ICON_TEXT_CHECK ||
                 viewType == VIEW_TYPE_RIGHT_ICON_TEXT ||

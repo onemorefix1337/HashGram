@@ -39,12 +39,13 @@ public class TextDetailSettingsCell extends FrameLayout {
         textView = new org.telegram.ui.Components.TypefaceTextView(context);
         textView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        textView.setTypeface(AndroidUtilities.bold());
         textView.setLines(1);
         textView.setMaxLines(1);
         textView.setSingleLine(true);
         textView.setEllipsize(TextUtils.TruncateAt.END);
         textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
-        addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 21, 10, 21, 0));
+        addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 21, 10, 42, 0));
 
         valueTextView = new org.telegram.ui.Components.TypefaceTextView(context);
         valueTextView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText2));
@@ -54,13 +55,19 @@ public class TextDetailSettingsCell extends FrameLayout {
         valueTextView.setMaxLines(1);
         valueTextView.setSingleLine(true);
         valueTextView.setPadding(0, 0, 0, 0);
-        addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 21, 35, 21, 0));
+        addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 21, 35, 42, 0));
 
         imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER);
         imageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteGrayIcon), PorterDuff.Mode.MULTIPLY));
         imageView.setVisibility(GONE);
         addView(imageView, LayoutHelper.createFrame(52, 52, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 8, 6, 8, 0));
+
+        ImageView arrowView = new ImageView(context);
+        arrowView.setImageResource(org.telegram.messenger.R.drawable.msg_arrowright);
+        arrowView.setScaleType(ImageView.ScaleType.CENTER);
+        arrowView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteGrayIcon), PorterDuff.Mode.MULTIPLY));
+        addView(arrowView, LayoutHelper.createFrame(24, 24, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, 16, 0, 16, 0));
     }
 
     @Override

@@ -43,6 +43,9 @@ public abstract class UniversalFragment extends BaseFragment {
             }
         });
 
+        boolean isDark = Theme.isCurrentThemeDark();
+        actionBar.setBackgroundColor(isDark ? 0xFF000000 : Theme.getColor(Theme.key_actionBarDefault));
+
         FrameLayout contentView = new SizeNotifierFrameLayout(context) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -52,7 +55,7 @@ public abstract class UniversalFragment extends BaseFragment {
                 );
             }
         };
-        contentView.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray));
+        contentView.setBackgroundColor(isDark ? 0xFF000000 : Theme.getColor(Theme.key_windowBackgroundGray));
 
         listView = new UniversalRecyclerView(this, this::fillItems, this::onClick, this::onLongClick) {
             @Override
@@ -67,9 +70,10 @@ public abstract class UniversalFragment extends BaseFragment {
                 savedScrollPosition = -1;
             }
         };
+        listView.adapter.setApplyBackground(false);
         listView.setSections();
         listView.setClipToPadding(false);
-        listView.setPadding(0, AndroidUtilities.dp(8), 0, AndroidUtilities.dp(20));
+        listView.setPadding(0, AndroidUtilities.dp(4), 0, AndroidUtilities.dp(24));
         contentView.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         return fragmentView = contentView;

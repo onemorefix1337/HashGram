@@ -440,9 +440,17 @@ public class UniversalRecyclerView extends RecyclerListView {
                 final ViewHolder viewHolder = getChildViewHolder(view);
                 if (viewHolder == null) return false;
                 int vt = viewHolder.getItemViewType();
-                return !UniversalAdapter.isShadow(vt) && vt != UniversalAdapter.VIEW_TYPE_HEADER;
+                return !UniversalAdapter.isShadow(vt) &&
+                       vt != UniversalAdapter.VIEW_TYPE_HEADER &&
+                       vt != UniversalAdapter.VIEW_TYPE_BLACK_HEADER &&
+                       vt != UniversalAdapter.VIEW_TYPE_LARGE_HEADER &&
+                       vt != UniversalAdapter.VIEW_TYPE_ANIMATED_HEADER;
             },
-            viewType -> UniversalAdapter.isShadow(viewType) || viewType == UniversalAdapter.VIEW_TYPE_HEADER,
+            viewType -> UniversalAdapter.isShadow(viewType) ||
+                        viewType == UniversalAdapter.VIEW_TYPE_HEADER ||
+                        viewType == UniversalAdapter.VIEW_TYPE_BLACK_HEADER ||
+                        viewType == UniversalAdapter.VIEW_TYPE_LARGE_HEADER ||
+                        viewType == UniversalAdapter.VIEW_TYPE_ANIMATED_HEADER,
             padding, roundRadius,
             super::drawBackgroundRect,
             topPadding

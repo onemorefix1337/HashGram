@@ -135,10 +135,13 @@ public class HashGramAppearanceActivity extends BaseFragment {
             }
         });
 
+        boolean isDark = Theme.isCurrentThemeDark();
+        actionBar.setBackgroundColor(isDark ? 0xFF000000 : Theme.getColor(Theme.key_actionBarDefault));
+
         listAdapter = new ListAdapter(context);
 
         fragmentView = new FrameLayout(context);
-        fragmentView.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray));
+        fragmentView.setBackgroundColor(isDark ? 0xFF000000 : Theme.getColor(Theme.key_windowBackgroundGray));
         FrameLayout frameLayout = (FrameLayout) fragmentView;
 
         listView = new RecyclerListView(context);

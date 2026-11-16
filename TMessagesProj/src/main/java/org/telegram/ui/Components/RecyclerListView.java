@@ -3602,11 +3602,12 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
         } else {
             sectionBackgroundPaint.setShadowLayer(0, 0, 0, 0);
         }
-        sectionBackgroundPaint.setColor(multAlpha(Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider), alpha));
-        
         boolean isDark = Theme.isCurrentThemeDark();
+        int cardBg = isDark ? 0xFF141416 : Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider);
+        sectionBackgroundPaint.setColor(multAlpha(cardBg, alpha));
+        
         bentoStrokePaint.setStrokeWidth(dpf2(1.0f));
-        bentoStrokePaint.setColor(multAlpha(isDark ? 0x22FFFFFF : 0x0F000000, alpha));
+        bentoStrokePaint.setColor(multAlpha(isDark ? 0x24FFFFFF : 0x0F000000, alpha));
 
         float inset = dpf2(0.5f);
         rect.inset(inset, inset);
@@ -3655,10 +3656,11 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
             next = nextChild != null && sectionsItemDecoration.isSectionItem.run(nextChild);
         }
 
+        float pad = sectionsItemDecoration != null ? sectionsItemDecoration.padding : 0;
         AndroidUtilities.rectTmp.set(
-            child.getX(),
+            child.getX() + pad,
             Math.max(applyPaddingToSections ? getPaddingTop() : -sectionRadius, top(child)),
-            child.getX() + child.getWidth(),
+            child.getX() + child.getWidth() - pad,
             Math.min(getHeight() - (applyPaddingToSections ? getPaddingBottom() : -sectionRadius), bottom(child))
         );
         if (prev && next) {

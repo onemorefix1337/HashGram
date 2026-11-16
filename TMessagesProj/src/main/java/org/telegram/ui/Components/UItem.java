@@ -628,6 +628,15 @@ public class UItem extends AdapterWithDiffUtils.Item {
         return item;
     }
 
+    public static UItem asDetailSettingsCell(int id, int icon, CharSequence text, CharSequence subtext) {
+        UItem item = new UItem(UniversalAdapter.VIEW_TYPE_DETAIL_SETTINGS, false);
+        item.id = id;
+        item.iconResId = icon;
+        item.text = text;
+        item.subtext = subtext;
+        return item;
+    }
+
 
     public UItem withUsername(boolean value) {
         withUsername = value;

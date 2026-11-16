@@ -67,6 +67,9 @@ public abstract class UniversalFragment extends BaseFragment {
                 savedScrollPosition = -1;
             }
         };
+        listView.setSections();
+        listView.setClipToPadding(false);
+        listView.setPadding(0, AndroidUtilities.dp(8), 0, AndroidUtilities.dp(20));
         contentView.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         return fragmentView = contentView;

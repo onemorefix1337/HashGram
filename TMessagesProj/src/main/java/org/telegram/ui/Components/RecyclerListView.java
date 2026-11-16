@@ -3586,8 +3586,14 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
 
     private final static Paint sectionBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final static Paint sectionBackgroundStrokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final static Paint bentoStrokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final static Path sectionBackgroundPath = new Path();
     private final static float[] radii = new float[8];
+
+    static {
+        bentoStrokePaint.setStyle(Paint.Style.STROKE);
+    }
+
     public static void drawBackgroundRect(Canvas canvas, RectF rect, float topRadius, float bottomRadius, float alpha, Theme.ResourcesProvider resourcesProvider) {
         if (SharedConfig.shadowsInSections) {
             sectionBackgroundStrokePaint.setShadowLayer(dpf2(0.33f), 0, 0, multAlpha(0x0c000000, alpha));
@@ -3597,21 +3603,32 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
             sectionBackgroundPaint.setShadowLayer(0, 0, 0, 0);
         }
         sectionBackgroundPaint.setColor(multAlpha(Theme.getColor(Theme.key_windowBackgroundWhite, resourcesProvider), alpha));
+        
+        boolean isDark = Theme.isCurrentThemeDark();
+        bentoStrokePaint.setStrokeWidth(dpf2(1.0f));
+        bentoStrokePaint.setColor(multAlpha(isDark ? 0x22FFFFFF : 0x0F000000, alpha));
+
+        float inset = dpf2(0.5f);
+        rect.inset(inset, inset);
+
         if (topRadius == bottomRadius) {
             if (SharedConfig.shadowsInSections) {
                 canvas.drawRoundRect(rect, topRadius, topRadius, sectionBackgroundStrokePaint);
             }
             canvas.drawRoundRect(rect, topRadius, topRadius, sectionBackgroundPaint);
+            canvas.drawRoundRect(rect, topRadius, topRadius, bentoStrokePaint);
         } else {
             sectionBackgroundPath.rewind();
-            radii[0] = radii[1] = radii[2] = radii[3] = topRadius;
-            radii[4] = radii[5] = radii[6] = radii[7] = bottomRadius;
+            radii[0] = radii[1] = radii[2] = radii[3] = Math.max(0, topRadius - inset);
+            radii[4] = radii[5] = radii[6] = radii[7] = Math.max(0, bottomRadius - inset);
             sectionBackgroundPath.addRoundRect(rect, radii, Path.Direction.CW);
             if (SharedConfig.shadowsInSections) {
                 canvas.drawPath(sectionBackgroundPath, sectionBackgroundStrokePaint);
             }
             canvas.drawPath(sectionBackgroundPath, sectionBackgroundPaint);
+            canvas.drawPath(sectionBackgroundPath, bentoStrokePaint);
         }
+        rect.inset(-inset, -inset);
     }
     public void drawBackgroundRect(Canvas canvas, RectF rect, float topRadius, float bottomRadius, float alpha) {
         drawBackgroundRect(canvas, rect, topRadius, bottomRadius, alpha, resourcesProvider);

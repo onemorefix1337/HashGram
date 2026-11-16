@@ -447,6 +447,29 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         }
 
         instance = this;
+        try {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                android.view.Display display = getWindowManager().getDefaultDisplay();
+                android.view.Display.Mode[] modes = display.getSupportedModes();
+                android.view.Display.Mode bestMode = null;
+                float maxRate = 0;
+                if (modes != null) {
+                    for (android.view.Display.Mode mode : modes) {
+                        if (mode.getRefreshRate() > maxRate) {
+                            maxRate = mode.getRefreshRate();
+                            bestMode = mode;
+                        }
+                    }
+                }
+                if (bestMode != null) {
+                    android.view.WindowManager.LayoutParams lp = getWindow().getAttributes();
+                    lp.preferredDisplayModeId = bestMode.getModeId();
+                    getWindow().setAttributes(lp);
+                }
+            }
+        } catch (Throwable e) {
+            FileLog.e(e);
+        }
         ApplicationLoader.postInitApplication();
         HashGramUpdater.checkUpdate(this, false);
         

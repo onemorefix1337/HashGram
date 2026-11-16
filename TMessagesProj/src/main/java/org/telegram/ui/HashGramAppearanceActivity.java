@@ -144,6 +144,15 @@ public class HashGramAppearanceActivity extends BaseFragment {
         listView = new RecyclerListView(context);
         listView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         listView.setVerticalScrollBarEnabled(false);
+        listView.setSections(
+            view -> !(view instanceof HeaderCell || view instanceof ShadowSectionCell || view instanceof org.telegram.ui.Cells.TextInfoPrivacyCell) && !java.util.Objects.equals(view.getTag(), RecyclerListView.TAG_NOT_SECTION),
+            AndroidUtilities.dp(14),
+            AndroidUtilities.dp(18),
+            listView::drawBackgroundRect,
+            false
+        );
+        listView.setClipToPadding(false);
+        listView.setPadding(0, AndroidUtilities.dp(8), 0, AndroidUtilities.dp(20));
         listView.setAdapter(listAdapter);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
@@ -303,23 +312,19 @@ public class HashGramAppearanceActivity extends BaseFragment {
             switch (viewType) {
                 case 0:
                     view = new HeaderCell(mContext);
-                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     break;
                 case 1:
                     view = new TextCell(mContext);
-                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     break;
                 case 2:
                     view = new ShadowSectionCell(mContext);
                     break;
                 case 3:
                     view = new TextDetailSettingsCell(mContext);
-                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     break;
                 case 4:
                 default:
                     view = new TextCheckCell(mContext);
-                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     break;
             }
             return new RecyclerListView.Holder(view);
@@ -359,13 +364,7 @@ public class HashGramAppearanceActivity extends BaseFragment {
                 }
                 case 2: {
                     ShadowSectionCell shadowCell = (ShadowSectionCell) holder.itemView;
-                    if (position == themeSectionRow) {
-                        shadowCell.setBackgroundDrawable(Theme.getThemedDrawable(mContext, org.telegram.messenger.R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
-                    } else if (position == customSectionRow) {
-                        shadowCell.setBackgroundDrawable(Theme.getThemedDrawable(mContext, org.telegram.messenger.R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
-                    } else if (position == iconSectionRow) {
-                        shadowCell.setBackgroundDrawable(Theme.getThemedDrawable(mContext, org.telegram.messenger.R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
-                    }
+                    shadowCell.setBackground(null);
                     break;
                 }
                 case 3: {

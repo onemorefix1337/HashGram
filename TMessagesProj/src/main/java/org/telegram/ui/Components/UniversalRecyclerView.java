@@ -428,19 +428,21 @@ public class UniversalRecyclerView extends RecyclerListView {
     }
 
     public void setSections() {
-        setSections(dp(12), dp(16), false);
+        setSections(dp(14), dp(18), false);
     }
     public void setSections(boolean topPadding) {
-        setSections(dp(12), dp(16), topPadding);
+        setSections(dp(14), dp(18), topPadding);
     }
     public void setSections(int padding, float roundRadius, boolean topPadding) {
         super.setSections(
             view -> {
                 if (view.getParent() != this) return false;
                 final ViewHolder viewHolder = getChildViewHolder(view);
-                return !UniversalAdapter.isShadow(viewHolder.getItemViewType());
+                if (viewHolder == null) return false;
+                int vt = viewHolder.getItemViewType();
+                return !UniversalAdapter.isShadow(vt) && vt != UniversalAdapter.VIEW_TYPE_HEADER;
             },
-            UniversalAdapter::isShadow,
+            viewType -> UniversalAdapter.isShadow(viewType) || viewType == UniversalAdapter.VIEW_TYPE_HEADER,
             padding, roundRadius,
             super::drawBackgroundRect,
             topPadding

@@ -34,6 +34,7 @@ public class HashGramSettingsActivity extends UniversalFragment {
 
     private static android.view.View createHero(android.content.Context context) {
         android.widget.LinearLayout box = new android.widget.LinearLayout(context);
+        box.setTag(org.telegram.ui.Components.RecyclerListView.TAG_NOT_SECTION);
         box.setOrientation(android.widget.LinearLayout.VERTICAL);
         box.setGravity(android.view.Gravity.CENTER);
 
